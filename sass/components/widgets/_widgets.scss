@@ -1,0 +1,91 @@
+.widget {
+	margin: 0 0 35px;
+
+	// Make sure select elements fit in widgets.
+	select {
+		max-width: 100%;
+	}
+
+	ol, ul {
+		margin: 0;
+		padding: 0;
+	}
+
+	ul li {
+		list-style: none;
+		margin-bottom: 0.5em;
+	}
+
+	&:first-of-type {
+		margin-top: 0;
+	}
+
+	.wp-block-spacer {
+		margin-bottom: -50px;
+	}
+
+}
+
+.hm-footer-widget-area .widget:first-of-type {
+	margin-top: 50px;
+}
+
+.clearfix {
+	&:before,
+	&:after {
+		content: "";
+		display: table;
+		table-layout: fixed;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+#secondary {
+	.widget {
+		padding: 30px;
+	}
+	.widget-title,
+	.wp-block-heading {
+		color: var(--hm-color-text-headings);
+	}
+}
+
+.hm-cl-sep #secondary .widget {
+	background: #ffffff;
+	box-shadow: var( --hm-global-box-shadow );
+}
+
+.hm-has-br #secondary .widget {
+	border-radius: 6px;
+}
+
+.widget-title,
+.widget_block h2.wp-block-heading,
+.widget_block h3.wp-block-heading,
+.widget_block h4.wp-block-heading {
+	margin: 0 0 20px;
+	font-size: 21px;
+}
+
+.hm-header-sidebar {
+	figure {
+		margin: 0;
+	}
+}
+
+.hm-sidebar-header-after,
+.hm-header-sidebar {
+	.widget {
+		margin: 1.5em 0 0;
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -1,0 +1,75 @@
+body {
+	background-color: var(--hm-color-body-background); // Fallback for when there is no custom background color defined.
+}
+
+.hm-container {
+	width: 1280px;
+	max-width: 95%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body.hm-boxed {
+	background-color: var(--hm-color-boxed-layout-background);
+
+	#page {
+		margin: 0 auto;
+		width: 1380px;
+		max-width: 100%;
+		background-color: var(--hm-color-body-background);
+	}
+}
+
+body.hm-boxed .hm-container {
+	width: auto;
+	max-width: 92.7536231884058%;
+}
+
+.site-content {
+	padding: 30px 0;
+
+	@media only screen and (min-width: 600px) {
+		padding: 50px 0;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.content-area {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	#primary {
+		width: 70.3125%;
+	}
+	
+	#secondary {
+		width: 29.6875%;
+		padding-left: 35px;
+	}
+
+	.hm-left-sidebar {
+		#secondary {
+			order: -10;
+			padding-left: 0;
+			padding-right: 35px;
+		}
+		.hm-featured-top {
+			order: -20;
+		}
+	}
+
+	.hm-center-content {
+		#primary {
+			margin: 0 auto;
+		}
+	}
+}
+
+.hm-no-sidebar #primary {
+	width: 100%;
+}
+
+.page-template-template-fullwidth #primary {
+	width: 100%;
+}

@@ -1,0 +1,37 @@
+$color__background-screen: #f1f1f1;
+$color__background-hr: #ccc;
+$color__background-ins: #fff9c0;
+$color__text-screen: #21759b;
+$color__border-abbr: #666; 
+
+// Default Colors.
+:root {
+    --hm-color-primary: #E36457;
+    --hm-color-tertiary: #272c30;
+
+    --hm-color-body-background: #EEEEEE;
+    --hm-color-boxed-layout-background: #dddddd;
+    --hm-color-light-background: #F7F6F1;
+    --hm-color-dark-background: #3c3c3c;
+    --hm-color-main-menu: #272c30;
+
+    --hm-color-text-main: #2c2b2b;
+    --hm-color-text-light: #7D7D7D;
+    --hm-color-text-headings: var(--hm-color-text-main);
+    --hm-color-link: #2c2b2b;
+    --hm-color-link-hover: var(--hm-color-primary);
+    --hm-color-link-visited: #5d7ddb;
+
+    --hm-color-button-background: var(--hm-color-primary);
+    --hm-color-button-text: #ffffff;
+    --hm-color-button-hover-text: #ffffff;
+    --hm-color-button-hover-background: #222222;
+    --hm-color-button-focus-background: #111111;
+
+    --hm-color-border: #E0E0E0;
+    --hm-color-input-border: #ccc;
+    --hm-color-text-input-focus: var(--hm-color-text-main);
+    --hm-color-input: var(--hm-color-text-main);
+
+    --hm-color-background-pre: #eeeeee;
+}

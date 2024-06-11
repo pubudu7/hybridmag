@@ -1,0 +1,31 @@
+.hm-entry .entry-content > *.wp-block-image .alignleft, 
+.hm-entry .entry-content > *.alignleft,
+.alignleft {
+
+	/*rtl:ignore*/
+	float: left;
+
+	/*rtl:ignore*/
+	margin-right: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.hm-entry .entry-content > *.wp-block-image .alignright, 
+.hm-entry .entry-content > *.alignright,
+.alignright {
+
+	/*rtl:ignore*/
+	float: right;
+
+	/*rtl:ignore*/
+	margin-left: 1.5em;
+	margin-bottom: 1.5em;
+}
+
+.aligncenter {
+	clear: both;
+
+	@include center-block;
+
+	margin-bottom: 1.5em;
+}

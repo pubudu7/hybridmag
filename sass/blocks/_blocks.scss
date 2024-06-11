@@ -1,0 +1,111 @@
+.hm-entry .entry-content > * {
+	margin-bottom: 30px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.wp-block-group .wp-block-group__inner-container > * {
+	margin-bottom: 20px;
+}
+
+.wp-block-group .wp-block-group__inner-container > *:last-child {
+	margin-bottom: 0;
+}
+
+.wp-block-columns .wp-block-column > *:last-child {
+	margin-bottom: 0;
+}
+
+.wp-block-archives,
+.wp-block-categories,
+.wp-block-latest-posts {
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin-bottom: 0.5em;
+    }
+}
+
+.wp-block-latest-comments {
+    padding-left: 0;
+}
+
+.wp-block-button__link {
+    border-radius: 3px;
+	background: var(--hm-color-button-background);
+	color: var(--hm-color-button-text);
+	cursor: pointer;
+	line-height: 1;
+	padding: 0.8em 1em 0.8em;
+    font-size: var(--hm-font-size-base);
+	font-weight: bold;
+
+	&:hover {
+        color: #ffffff;
+		background: var(--hm-color-button-hover-background);
+	}
+
+	&:active,
+	&:focus {
+        color: #ffffff;
+		background: var(--hm-color-button-focus-background);
+	}
+}
+
+.entry-content .wp-block-button__link {
+	text-decoration: none;
+}
+
+.wp-block-search__button {
+	padding: 0.8rem 1rem;
+	border: none;
+}
+
+.wp-block-pullquote {
+	border-left: none;
+	border-right: none;
+	font-size: var(--hm-font-size-xl);
+	padding: 2rem 0;
+	text-align: left;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.wp-block-pullquote cite,
+.wp-block-pullquote .wp-block-pullquote__citation {
+	font-size: var(--hm-font-size-sm);
+}
+
+.wp-block-pullquote cite::before,
+.wp-block-pullquote .wp-block-pullquote__citation::before {
+	content: "—";
+    margin-right: 0.25rem;
+}
+
+.wp-block-pullquote blockquote {
+	border-left: none;
+}
+
+.wp-block-pullquote blockquote p, 
+.wp-block-pullquote.is-style-solid-color blockquote p {
+	font-size: var(--hm-font-size-xl);
+	line-height: 1.3;
+    margin-bottom: 0.5em;
+	margin-top: 0;
+	font-style: italic;
+}
+
+.wp-block-pullquote.is-style-solid-color, 
+.wp-block-pullquote.has-background, 
+.wp-block-pullquote[style*=border-style][style*=border-width] {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.wp-block-pullquote.is-style-solid-color blockquote {
+	margin-left: 0;
+	margin-right: 0;
+}
