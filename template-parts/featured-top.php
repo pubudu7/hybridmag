@@ -10,106 +10,108 @@ if ( false == get_theme_mod( 'hybridmag_show_featured_content', true ) ) {
     
 do_action( 'hybridmag_before_featured_content' ); 
 
-    $hybridmag_fps_source = get_theme_mod( 'hybridmag_featured_posts_source', 'latest' );
-    $hybridmag_fps_args = array();
+    $hybridmag_slider_source = get_theme_mod( 'hybridmag_slider_posts_source', 'latest' );
+    $hybridmag_slider_args = array();
 
-    if ( 'category' === $hybridmag_fps_source ) {
-        $hybridmag_fps_category = get_theme_mod( 'hybridmag_featured_posts_category', '' );
-        $hybridmag_fps_args = array(
-            'cat'                   => $hybridmag_fps_category,
+    if ( 'category' === $hybridmag_slider_source ) {
+        $hybridmag_slider_category = get_theme_mod( 'hybridmag_slider_posts_category', '' );
+        $hybridmag_slider_args = array(
+            'cat'                   => $hybridmag_slider_category,
             //'ignore_sticky_posts'   => true,
             'posts_per_page'        => 5,
         );
-    } elseif ( 'tag' === $hybridmag_fps_source ) {
-        $hybridmag_fps_tag = get_theme_mod( 'hybridmag_featured_posts_tag', '' );
-        $hybridmag_fps_args = array(
-            'tag'                   => $hybridmag_fps_tag,
+    } elseif ( 'tag' === $hybridmag_slider_source ) {
+        $hybridmag_slider_tag = get_theme_mod( 'hybridmag_slider_posts_tag', '' );
+        $hybridmag_slider_args = array(
+            'tag'                   => $hybridmag_slider_tag,
             //'ignore_sticky_posts'   => true,
             'posts_per_page'        => 5,
         );
     } else {
-        $hybridmag_fps_args = array(
+        $hybridmag_slider_args = array(
             'posts_per_page'        => 5,
             //'ignore_sticky_posts'   => true,
         );
     }
 
-    $hybridmag_fps_posts = new WP_Query( $hybridmag_fps_args );
+    $hybridmag_slider_posts = new WP_Query( $hybridmag_slider_args );
 
-    if ( $hybridmag_fps_posts->have_posts() ) : 
+    if ( $hybridmag_slider_posts->have_posts() ) : 
     $hybridmag_fp_counter = 1;
 
     ?>
 
     <div class="hm-fp1">
 
-    <?php    
+    <div class="hm-fp1-left">
 
-        while( $hybridmag_fps_posts->have_posts() ) :
+        <div class="hm-swiper hm-slider">
 
-            $hybridmag_fps_posts->the_post();
+            <div class="hm-swiper-wrapper">
 
-            if ( $hybridmag_fp_counter == 1 ) { ?>
-                <div class="hm-fp1-left">
-                    <article class="hm-fp1-lg">
-                        <?php if ( has_post_thumbnail() ) { ?>
-                            <div class="hm-fp1-lg-img">
-                                <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail( 'bam-large', array( 'class' => 'bam-fpw-img') ); ?></a>
-                            </div>
-                        <?php } ?>
+                <?php 
+                    if ( $hybridmag_slider_posts->have_posts() ) :
 
-                        <div class="hm-fp-overlay">
-                            <a class="hm-fp-link-overlay" href="<?php the_permalink(); ?>" rel="bookmark"></a>
-                        </div>
+                    $hm_slide_count = 1;
+                    
+                    while( $hybridmag_slider_posts->have_posts() ) : $hybridmag_slider_posts->the_post(); 
+                    
+                    $hm_lazy_loading = 'lazy';
+                    
+                    ?>
 
-                        <div class="hm-fp1-details hm-fp-meta">
-                            <?php hybridmag_categories(); ?>
-                            <?php the_title( '<h3 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
-                            <div class="entry-meta">
-                                <?php hybridmag_entry_meta(); ?>
-                            </div><!-- .entry-meta -->
-                        </div>
-                    </article>
-                </div>
+                        <div class="hm-swiper-slide">
 
-                <div class="hm-fp1-right">
-
-            <?php } else {
+                            <div class="hm-slide-holder">
+                                <div class="hm-slide-image">
+                                    <?php 
+                                        if ( $hm_slide_count == 1 ) {
+                                            $hm_lazy_loading = false;
+                                        }
+                                        if ( has_post_thumbnail() ) {
+                                            the_post_thumbnail( 'post-thumbnail', array( 'loading' => $hm_lazy_loading ) );
+                                        } else {
+                                            $featured_image_url = get_template_directory_uri() . '/assets/images/slide.png'; ?>
+                                            <img src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php the_title_attribute(); ?>">
+                                            <?php
+                                        }
+                                    ?>
+                                </div>
+                                <div class="hmfpwovrlay">
+                                    <a class="hmfpwlnkovrlay" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>" rel="bookmark"></a>
+                                </div>
+                                <div class="hm-slide-content">
+                                    <div class="hm-slider-details-container hmfpwmeta">
+                                        <h3 class="hm-slider-title"><?php the_title(); ?></h3>
+                                    </div><!-- .hm-slider-details-container -->
+                                </div><!-- .hm-slide-content -->
+                            </div><!--.hm-slide-holder-->
+                            
+                        </div><!-- .hm-slider-container -->
+                    
+                <?php 
+                    $hm_slide_count++;
+                    endwhile; 
+                endif;
+                
                 ?>
-                    <article class="hm-fp1-sm">
-                        <?php if ( has_post_thumbnail() ) { ?>
-                            <div class="hm-fp1-sm-img">
-                                <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">	
-                                    <?php the_post_thumbnail( 'hm-thumbnail' ); ?>
-                                </a>
-                            </div>
-                        <?php } elseif ( false == get_theme_mod( 'hybridmag_remove_placeholder', false ) ) { ?>
-                            <div class="hm-fp1-sm-img">
-                                <a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php the_title_attribute(); ?>">	
-                                    <img src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/sm-img.png' ); ?>" />
-                                </a>
-                            </div>
-                        <?php } ?>
-                        <div class="hm-fp1-sm-details">
-                            <?php the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' ); ?>
-                            <div class="entry-meta"><?php echo hybridmag_posted_on(); ?></div>
-                        </div>
-                    </article>
-                        
-                <?php
-            }
 
-            $hybridmag_fp_counter++;
-        endwhile;
-        wp_reset_postdata();
+                <?php wp_reset_postdata(); ?>
 
-        ?>
-                </div><!-- hm-fp1-right -->
+            </div><!-- .hm-swiper-wrapper -->
 
+            <div class="hm-swiper-button-prev"><span class="hm-prev-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 320 512"><path d="M34.52 239.03L228.87 44.69c9.37-9.37 24.57-9.37 33.94 0l22.67 22.67c9.36 9.36 9.37 24.52.04 33.9L131.49 256l154.02 154.75c9.34 9.38 9.32 24.54-.04 33.9l-22.67 22.67c-9.37 9.37-24.57 9.37-33.94 0L34.52 272.97c-9.37-9.37-9.37-24.57 0-33.94z"/></svg></span></div>
+            <div class="hm-swiper-button-next"><span class="hm-next-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"  viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg></span></div>
 
-    </div><!-- .hm-fp1 -->
+        </div><!-- .hm-slider -->
+
+    </div><!-- .hm-fp1-left" -->
+
+    </div><!-- .hm-fp1" -->
+
     <?php
     endif;
+
 ?>
 
 <?php do_action( 'hybridmag_after_featured_content' ); ?>

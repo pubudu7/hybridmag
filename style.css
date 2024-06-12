@@ -2393,10 +2393,10 @@ a.hm-readmore-btn:visited {
 }
 @media (min-width: 1024px) {
   .hm-fp1-left {
-    width: 62.5%;
+    width: 65.234375%;
   }
   .hm-fp1-right {
-    width: 37.5%;
+    width: 34.375%;
   }
 }
 .hm-fp1-lg {
@@ -2496,6 +2496,135 @@ a.hm-readmore-btn:visited {
 .hm-fp-meta .entry-meta a {
   position: relative;
   z-index: 3;
+}
+
+.hm-slider {
+  position: relative;
+  border-radius: var(--hm-global-border-radius);
+}
+
+.hm-slide-holder {
+  position: relative;
+}
+
+.hm-slide-holder > .hm-slide-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.hm-slide-image {
+  position: relative;
+  width: 100%;
+  padding-top: 59.5454545455%;
+}
+.hm-slide-image img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+}
+
+.hm-slider-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  color: #f5f5f5;
+  text-shadow: 0px 1px 1px #000;
+}
+@media (min-width: 992px) {
+  .hm-slider-title {
+    font-size: 26px;
+  }
+}
+
+.hm-slider-details-container {
+  z-index: 1;
+  padding: 33px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+@media (max-width: 767px) {
+  .hm-slider-details-container {
+    padding: 15px;
+  }
+}
+
+.hm-slider-details-container::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; /* FF3.6+ */ /* Chrome,Safari4+ */ /* Chrome10+,Safari5.1+ */ /* Opera 11.10+ */ /* IE10+ */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 100%); /* W3C */
+  opacity: 0.5;
+  transition: opacity 0.2s linear;
+  z-index: -1;
+}
+
+.hm-slider:hover .hm-slider-details-container::before {
+  opacity: 0.7;
+}
+
+.hm-slider:hover .hm-slider-title {
+  color: #ffffff;
+  transition: color 0.2s;
+}
+
+.hmfpwovrlay,
+.hmfpwlnkovrlay {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.hm-slider .hm-swiper-button-prev,
+.hm-slider .hm-swiper-button-next {
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  opacity: 0;
+}
+
+.hm-swiper-button-prev svg,
+.hm-swiper-button-next svg {
+  fill: #fff;
+  width: 26px;
+  height: 26px;
+  top: 5px;
+  position: relative;
+}
+
+.hm-swiper-button-prev {
+  left: 0;
+  right: auto;
+}
+
+.hm-swiper-button-next {
+  right: 0;
+  left: auto;
+}
+
+.hm-slider:hover .hm-swiper-button-next {
+  opacity: 0.7;
+  right: 20px;
+}
+
+.hm-slider:hover .hm-swiper-button-prev {
+  opacity: 0.7;
+  left: 20px;
 }
 
 /* Comments

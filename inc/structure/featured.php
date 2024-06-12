@@ -17,4 +17,4 @@ function hybridmag_display_featured_content_top() { ?>
     </section>
     <?php
 }
-//add_action( 'hybridmag_featured_section_top', 'hybridmag_display_featured_content_top' );
+add_action( 'hybridmag_featured_section_top', 'hybridmag_display_featured_content_top' );
