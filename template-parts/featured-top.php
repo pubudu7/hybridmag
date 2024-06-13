@@ -11,27 +11,54 @@ if ( false == get_theme_mod( 'hybridmag_show_featured_content', true ) ) {
 do_action( 'hybridmag_before_featured_content' ); 
 
     $hybridmag_slider_source = get_theme_mod( 'hybridmag_slider_posts_source', 'latest' );
+    $hybridmag_ignore_sticky_posts_slider = get_theme_mod( 'hybridmag_ignore_sticky_posts_slider', false );
     $hybridmag_slider_args = array();
 
     if ( 'category' === $hybridmag_slider_source ) {
-        $hybridmag_slider_category = get_theme_mod( 'hybridmag_slider_posts_category', '' );
-        $hybridmag_slider_args = array(
-            'cat'                   => $hybridmag_slider_category,
-            //'ignore_sticky_posts'   => true,
-            'posts_per_page'        => 5,
-        );
+        $hybridmag_slider_category = get_theme_mod( 'hybridmag_featured_posts_category', '' );
+        if ( false === $hybridmag_ignore_sticky_posts_slider ) {
+            $hybridmag_slider_args = array(
+                'posts_per_page'        => 2,
+                'cat'                   => $hybridmag_slider_category,
+                'post__in'              => get_option( 'sticky_posts' ),
+                'ignore_sticky_posts'   => 1,
+            );
+        } else {
+            $hybridmag_slider_args = array(
+                'cat'                   => $hybridmag_slider_category,
+                'ignore_sticky_posts'   => true,
+                'posts_per_page'        => 2,
+            );
+        }
     } elseif ( 'tag' === $hybridmag_slider_source ) {
-        $hybridmag_slider_tag = get_theme_mod( 'hybridmag_slider_posts_tag', '' );
-        $hybridmag_slider_args = array(
-            'tag'                   => $hybridmag_slider_tag,
-            //'ignore_sticky_posts'   => true,
-            'posts_per_page'        => 5,
-        );
+        $hybridmag_slider_tag = get_theme_mod( 'hybridmag_featured_posts_tag', '' );
+        if ( false === $hybridmag_ignore_sticky_posts_slider ) {
+            $hybridmag_slider_args = array(
+                'posts_per_page'        => 2,
+                'tag'                   => $hybridmag_slider_tag,
+                'post__in'              => get_option( 'sticky_posts' ),
+                'ignore_sticky_posts'   => 1,
+            );
+        } else {
+            $hybridmag_slider_args = array(
+                'tag'                   => $hybridmag_slider_tag,
+                'ignore_sticky_posts'   => true,
+                'posts_per_page'        => 2,
+            );
+        }
     } else {
-        $hybridmag_slider_args = array(
-            'posts_per_page'        => 5,
-            //'ignore_sticky_posts'   => true,
-        );
+        if ( false === $hybridmag_ignore_sticky_posts_slider ) {
+            $hybridmag_slider_args = array(
+                'posts_per_page'        => 2,
+                'post__in'              => get_option( 'sticky_posts' ),
+                'ignore_sticky_posts'   => 1,
+            );
+        } else {
+            $hybridmag_slider_args = array(
+                'ignore_sticky_posts'   => true,
+                'posts_per_page'        => 2,
+            );
+        }
     }
 
     $hybridmag_slider_posts = new WP_Query( $hybridmag_slider_args );
@@ -71,7 +98,7 @@ do_action( 'hybridmag_before_featured_content' );
                                         if ( has_post_thumbnail() ) {
                                             the_post_thumbnail( 'post-thumbnail', array( 'loading' => $hm_lazy_loading ) );
                                         } else {
-                                            $featured_image_url = get_template_directory_uri() . '/assets/images/slide.png'; ?>
+                                            $featured_image_url = get_template_directory_uri() . '/assets/images/default.jpg'; ?>
                                             <img src="<?php echo esc_url( $featured_image_url ); ?>" alt="<?php the_title_attribute(); ?>">
                                             <?php
                                         }
@@ -107,11 +134,103 @@ do_action( 'hybridmag_before_featured_content' );
 
     </div><!-- .hm-fp1-left" -->
 
-    </div><!-- .hm-fp1" -->
+    <?php endif; ?>
+
+    <div class="hm-fp1-right">
 
     <?php
-    endif;
+
+    $hybridmag_fps_source = get_theme_mod( 'hybridmag_featured_posts_source', 'latest' );
+    $hybridmag_ignore_sticky_posts_fps = get_theme_mod( 'hybridmag_ignore_sticky_posts_fps', false );
+    $hybridmag_fps_args = array();
+
+    if ( 'category' === $hybridmag_fps_source ) {
+        $hybridmag_fps_category = get_theme_mod( 'hybridmag_featured_posts_category', '' );
+        if ( false === $hybridmag_ignore_sticky_posts_fps ) {
+            $hybridmag_fps_args = array(
+                'posts_per_page'        => 2,
+                'cat'                   => $hybridmag_fps_category,
+                'post__in'              => get_option( 'sticky_posts' ),
+                'ignore_sticky_posts'   => 1,
+            );
+        } else {
+            $hybridmag_fps_args = array(
+                'cat'                   => $hybridmag_fps_category,
+                'ignore_sticky_posts'   => true,
+                'posts_per_page'        => 2,
+            );
+        }
+    } elseif ( 'tag' === $hybridmag_fps_source ) {
+        $hybridmag_fps_tag = get_theme_mod( 'hybridmag_featured_posts_tag', '' );
+        if ( false === $hybridmag_ignore_sticky_posts_fps ) {
+            $hybridmag_fps_args = array(
+                'posts_per_page'        => 2,
+                'tag'                   => $hybridmag_fps_tag,
+                'post__in'              => get_option( 'sticky_posts' ),
+                'ignore_sticky_posts'   => 1,
+            );
+        } else {
+            $hybridmag_fps_args = array(
+                'tag'                   => $hybridmag_fps_tag,
+                'ignore_sticky_posts'   => true,
+                'posts_per_page'        => 2,
+            );
+        }
+    } else {
+        if ( false === $hybridmag_ignore_sticky_posts_fps ) {
+            $hybridmag_fps_args = array(
+                'posts_per_page'        => 2,
+                'post__in'              => get_option( 'sticky_posts' ),
+                'ignore_sticky_posts'   => 1,
+            );
+        } else {
+            $hybridmag_fps_args = array(
+                'ignore_sticky_posts'   => true,
+                'posts_per_page'        => 2,
+            );
+        }
+    }
+
+    $hybridmag_highlighted_posts = new WP_Query( $hybridmag_fps_args );
 
 ?>
+
+    <div class="hm-highlighted-posts">
+
+        <?php 
+            while( $hybridmag_highlighted_posts->have_posts() ) : $hybridmag_highlighted_posts->the_post(); ?>
+
+                <div class="hm-highlighted-post">
+                    <div class="hmhp-inner">
+                        <div class="hmhp-thumb">
+                            <?php if ( has_post_thumbnail() ) { ?>
+                                <?php the_post_thumbnail( 'hm-archive-image', array( 'class' => 'hm-fpw-img') ); ?>
+                            <?php } else { 
+                                $featured_image_url = get_template_directory_uri() . '/assets/images/default.jpg'; ?>
+                                <img src="<?php echo esc_url( $featured_image_url ); ?>">
+                            <?php } ?>
+                        </div>
+                        <div class="hmfpwovrlay">
+                            <a class="hmfpwlnkovrlay" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>" rel="bookmark"></a>
+                        </div>
+                        <div class="hmhp-content">
+                            <div class="hmhp-details-container">
+                                <h3 class="hmhp-title">
+                                    <?php the_title(); ?>
+                                </h3>
+                            </div><!-- .hmhp-details-container -->
+                        </div><!-- .hmhp-content -->
+                    </div><!-- .hmhp-inner -->
+                </div><!-- .hm-highlighted-post -->
+
+        <?php endwhile; ?>
+
+        <?php wp_reset_postdata(); ?>
+
+        </div><!-- .hm-highlighted-posts -->
+
+    </div><!-- .hm-fp1-right -->
+
+</div><!-- .hm-fp1" -->
 
 <?php do_action( 'hybridmag_after_featured_content' ); ?>
