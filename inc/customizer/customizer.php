@@ -1670,13 +1670,14 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'hybridmag_slider_posts_source',
 		array(
-			'type' 		=> 'radio',
+			'type' 		=> 'select',
 			'label' 	=> esc_html__( 'Slider Posts Source', 'hybridmag' ),
 			'section' 	=> 'hybridmag_featured_section',
 			'choices' 	=> array(
 				'latest' 	=> esc_html__( 'Latest Posts', 'hybridmag' ),
 				'category' 	=> esc_html__( 'By Category', 'hybridmag' ),
-				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' )
+				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' ),
+				'sticky'	=> esc_html__( 'Sticky Posts', 'hybridmag' ),
 			)
 		)
 	);
@@ -1696,7 +1697,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'hybridmag_slider_posts_category', 
 			array(
 			    'label'   			=> esc_html__( 'Select the category for slider posts.', 'hybridmag' ),
-			    'description'		=> esc_html__( 'Slider images of the posts from selected category will be displayed in the slider', 'hybridmag' ),
 			    'section' 			=> 'hybridmag_featured_section',
 				'active_callback'	=> 'hybridmag_is_slider_source_category'
 			) 
@@ -1727,16 +1727,17 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hybridmag_ignore_sticky_posts_slider',
 		array(
-			'default'           => false,
+			'default'           => true,
 			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
 		)
 	);
 	$wp_customize->add_control(
 		'hybridmag_ignore_sticky_posts_slider',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Ignore Sticky Posts', 'hybridmag' ),
-			'section'     => 'hybridmag_featured_section',
+			'type'        		=> 'checkbox',
+			'label'       		=> esc_html__( 'Ignore Sticky Posts', 'hybridmag' ),
+			'section'     		=> 'hybridmag_featured_section',
+			'active_callback'	=> 'hybridmag_is_not_sticky_posts_slider'
 		)
 	);
 
@@ -1751,13 +1752,14 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'hybridmag_featured_posts_source',
 		array(
-			'type' 		=> 'radio',
+			'type' 		=> 'select',
 			'label' 	=> esc_html__( 'Featured Posts Source', 'hybridmag' ),
 			'section' 	=> 'hybridmag_featured_section',
 			'choices' 	=> array(
 				'latest' 	=> esc_html__( 'Latest Posts', 'hybridmag' ),
 				'category' 	=> esc_html__( 'By Category', 'hybridmag' ),
-				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' )
+				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' ),
+				'sticky'	=> esc_html__( 'Sticky Posts', 'hybridmag' ),
 			)
 		)
 	);
@@ -1777,7 +1779,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'hybridmag_featured_posts_category', 
 			array(
 			    'label'   			=> esc_html__( 'Select the category for featured posts.', 'hybridmag' ),
-			    'description'		=> esc_html__( 'Featured images of the posts from selected category will be displayed in the slider', 'hybridmag' ),
 			    'section' 			=> 'hybridmag_featured_section',
 				'active_callback'	=> 'hybridmag_is_fps_source_category'
 			) 
@@ -1803,24 +1804,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'active_callback'	=> 'hybridmag_is_fps_source_tag'
 		)
 	);
-
-	// Show featured content
-	$wp_customize->add_setting(
-		'hybridmag_ignore_sticky_posts_fps',
-		array(
-			'default'           => false,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_ignore_sticky_posts_fps',
-		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Ignore Sticky Posts', 'hybridmag' ),
-			'section'     => 'hybridmag_featured_section',
-		)
-	);
-
 	
 	// Remove placeholder image
 	$wp_customize->add_setting(
@@ -3263,6 +3246,28 @@ function hybridmag_is_fps_source_category( $control ) {
  */
 function hybridmag_is_fps_source_tag( $control ) {
 	if ( $control->manager->get_setting( 'hybridmag_featured_posts_source' )->value() === 'tag' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Returns true if the slider posts source is not sticky posts.
+ */
+function hybridmag_is_not_sticky_posts_slider( $control ) {
+	if ( $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() !== 'sticky' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Returns true if the featured posts source is not sticky posts.
+ */
+function hybridmag_is_not_sticky_posts_fps( $control ) {
+	if ( $control->manager->get_setting( 'hybridmag_featured_posts_source' )->value() !== 'sticky' ) {
 		return true;
 	} else {
 		return false;
