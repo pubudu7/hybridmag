@@ -1,5 +1,5 @@
 html {
-	font-size: var( --hm-font-size-base );
+	font-size: var( --hybridmag-font-size-base );
 }
 
 body,
@@ -8,10 +8,10 @@ input,
 select,
 optgroup,
 textarea {
-	color: var(--hm-color-text-main);
-	font-family: var(--hm-font-family-body);
+	color: var(--hybridmag-color-text-main);
+	font-family: var(--hybridmag-font-family-body);
 	font-size: 1rem;
-	line-height: var(--hm-line-height-body);
+	line-height: var(--hybridmag-line-height-body);
 }
 
 @import "headings";

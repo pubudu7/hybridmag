@@ -10,12 +10,12 @@ h3.th-reqbox-heading {
 }
 
 .th-theme-page-infobox {
-    width: calc( 50% - var(--hm-theme-info-gap)/2);
+    width: calc( 50% - var(--hybridmag-theme-info-gap)/2);
     background: #ffffff;
 }
 
 .th-theme-info-page-inner {
-    --hm-theme-info-gap: 50px;
+    --hybridmag-theme-info-gap: 50px;
     display: flex;
     flex-wrap: wrap;
     gap: 50px;

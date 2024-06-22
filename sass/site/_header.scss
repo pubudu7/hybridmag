@@ -10,7 +10,7 @@
 		}
 
 		@media only screen and (max-width: 768px) {
-			border-bottom: 1px solid var( --hm-color-border );
+			border-bottom: 1px solid var( --hybridmag-color-border );
 		}
 	}
 
@@ -101,7 +101,7 @@
 
 	.hm-social-menu {
 		a:hover {
-			color: var(--hm-color-link-hover);
+			color: var(--hybridmag-color-link-hover);
 		}
 	}
 
@@ -113,7 +113,7 @@
 		color: #222222;
 
 		&:hover {
-			color: var(--hm-color-text-main);
+			color: var(--hybridmag-color-text-main);
 		}
 	}
 
@@ -331,7 +331,7 @@
     width: 90vw;
 	transition: right 0.2s;
 
-    background-color: var(--hm-color-main-menu);
+    background-color: var(--hybridmag-color-main-menu);
 
     a {
         color: #ffffff;
@@ -415,7 +415,7 @@
 .hm-slideout-sidebar {
 	background-color: #ffffff;
     bottom: 0;
-	color: var(--hm-color-text-main);
+	color: var(--hybridmag-color-text-main);
     overflow: auto;
     padding: 0 30px;
     position: fixed;
@@ -427,7 +427,7 @@
 	transition: right 0.2s;
 
     a {
-        color: var(--hm-color-text-main);
+        color: var(--hybridmag-color-text-main);
     }
 
     @media only screen and (min-width: 768px) {
@@ -462,7 +462,7 @@
 }
 
 .hm-slideout-top {
-	border-bottom: 1px solid var(--hm-color-border);
+	border-bottom: 1px solid var(--hybridmag-color-border);
 	margin-bottom: 10px;
 }
 
@@ -499,7 +499,7 @@
 	width: 350px;
 	padding: 10px;
 	box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
-	background-color: var(--hm-color-body-background);
+	background-color: var(--hybridmag-color-body-background);
 
 	form.search-form {
 		display: flex;
@@ -524,14 +524,14 @@
 
 		&:focus {
 			outline: none;
-			border-bottom: 1px solid var(--hm-color-border);
+			border-bottom: 1px solid var(--hybridmag-color-border);
 		}
 	}
 }
 
 .hm-breadcrumb-wrap {
 	margin-bottom: 15px;
-	font-size: var( --hm-font-size-xs );
+	font-size: var( --hybridmag-font-size-xs );
 	font-weight: 500;
 }
 
@@ -539,7 +539,7 @@
 	.hm-breadcrumb-wrap {
 		padding: 10px 15px;
 		margin-bottom: 0;
-		border-bottom: 1px solid var(--hm-color-border);
+		border-bottom: 1px solid var(--hybridmag-color-border);
 	}
 }
 

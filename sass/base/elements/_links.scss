@@ -1,11 +1,11 @@
 a {
-	color: var(--hm-color-link);
+	color: var(--hybridmag-color-link);
 	text-decoration: none;
 
 	&:hover,
 	&:focus,
 	&:active {
-		color: var(--hm-color-link-hover);
+		color: var(--hybridmag-color-link-hover);
 	}
 
 	&:focus {

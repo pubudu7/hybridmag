@@ -14,18 +14,18 @@ input[type="datetime"],
 input[type="datetime-local"],
 input[type="color"],
 textarea {
-	color: var(--hm-color-input);
-	border: 1px solid var(--hm-color-input-border);
+	color: var(--hybridmag-color-input);
+	border: 1px solid var(--hybridmag-color-input-border);
 	border-radius: 0;
 	padding: 8px;
 
 	&:focus {
-		color: var(--hm-color-text-input-focus);
+		color: var(--hybridmag-color-text-input-focus);
 	}
 }
 
 select {
-	border: 1px solid var(--hm-color-input-border);
+	border: 1px solid var(--hybridmag-color-input-border);
 }
 
 textarea {

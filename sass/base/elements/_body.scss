@@ -1,5 +1,5 @@
 body {
-	background-color: var(--hm-color-body-background); // Fallback for when there is no custom background color defined.
+	background-color: var(--hybridmag-color-body-background); // Fallback for when there is no custom background color defined.
 }
 
 .hm-container {
@@ -10,13 +10,13 @@ body {
 }
 
 body.hm-boxed {
-	background-color: var(--hm-color-boxed-layout-background);
+	background-color: var(--hybridmag-color-boxed-layout-background);
 
 	#page {
 		margin: 0 auto;
 		width: 1380px;
 		max-width: 100%;
-		background-color: var(--hm-color-body-background);
+		background-color: var(--hybridmag-color-body-background);
 	}
 }
 

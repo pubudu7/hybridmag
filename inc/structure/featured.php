@@ -12,6 +12,7 @@ function hybridmag_display_featured_content_top() { ?>
     <section class="hm-featured-top">
         <?php 
             get_template_part( 'template-parts/featured', 'top' );
+            get_template_part( 'template-parts/featured', 'tabs' );
             dynamic_sidebar( 'hm-magazine-1' );
         ?>
     </section>

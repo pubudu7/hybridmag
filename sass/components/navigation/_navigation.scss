@@ -126,14 +126,14 @@
 			}
 
 			a {
-				font-size: var(--hm-font-size-sm);
+				font-size: var(--hybridmag-font-size-sm);
 			}
 		}
 	}
 
 	a {
 		display: block;
-		font-size: var(--hm-font-size-base);
+		font-size: var(--hybridmag-font-size-base);
 		font-weight: 600;
 		text-decoration: none;
 		padding: 0 15px;
@@ -158,7 +158,7 @@
 	a {
 		color: #000000;
 		display: block;
-		font-size: var(--hm-font-size-xs);
+		font-size: var(--hybridmag-font-size-xs);
 		font-weight: 600;
 		text-decoration: none;
 		padding: 0 11px;
@@ -218,7 +218,7 @@
 		.current-menu-item > a,
 		.current_page_ancestor > a,
 		.current-menu-ancestor > a {
-			color: var( --hm-color-primary );
+			color: var( --hybridmag-color-primary );
 		}
 	}
 }
@@ -227,10 +227,10 @@
 .hm-h-lg {
 	.site-header {
 		background-color: #ffffff;
-		box-shadow: var(--hm-global-box-shadow);
+		box-shadow: var(--hybridmag-global-box-shadow);
 		.hm-main-menu {
-			border-top: 1px solid var( --hm-color-border );
-			// border-bottom: 1px solid var( --hm-color-border );
+			border-top: 1px solid var( --hybridmag-color-border );
+			// border-bottom: 1px solid var( --hybridmag-color-border );
 		}
 	}
 	.site-title a {
@@ -260,7 +260,7 @@
 						right: 0;
 						width: 100%;
 						height: 1px;
-						background: var(--hm-color-link-hover);
+						background: var(--hybridmag-color-link-hover);
 					}
 				}
 			}
@@ -300,7 +300,7 @@
 				right: 0;
 				width: 100%;
 				height: 1px;
-				background: var(--hm-color-primary);
+				background: var(--hybridmag-color-primary);
 			}
 		}
 
@@ -325,7 +325,7 @@
 .hm-nav-sticky.hm-header-inner-wrapper {
 	width: 100%;
 	background-color: #ffffff;
-	border-bottom: 1px solid var(--hm-color-border);
+	border-bottom: 1px solid var(--hybridmag-color-border);
 }
 
 .hm-mobile-menu-toggle {
@@ -352,7 +352,7 @@
 .hm-mobile-menu {
 
 	margin-bottom: 20px;
-	border-bottom: 1px solid var( --hm-color-border );
+	border-bottom: 1px solid var( --hybridmag-color-border );
 
 	ul {
 		list-style: none;
@@ -367,7 +367,7 @@
 				width: 100%;
 				line-height: 45px;
 				color: #ffffff;
-				font-size: var(--hm-font-size-base);
+				font-size: var(--hybridmag-font-size-base);
 				font-weight: 600;
 			}
 		}
@@ -437,7 +437,7 @@
 
 .posts-navigation {
 	.nav-links {
-		font-size: var(--hm-font-size-md);
+		font-size: var(--hybridmag-font-size-md);
 		font-weight: 600;
 	}
 }
@@ -447,18 +447,18 @@
 		display: flex;
 
 		.posts-nav-text {
-			color: var(--hm-color-text-light);
+			color: var(--hybridmag-color-text-light);
 			font-weight: 600;
 		}
 
 		.post-title {
-			font-family: var(--hm-font-family-headings);
-			color: var(--hm-color-link);
+			font-family: var(--hybridmag-font-family-headings);
+			color: var(--hybridmag-color-link);
 			font-size: 20px;
 			font-weight: 600;
 
 			&:hover {
-				color: var(--hm-color-link-hover);
+				color: var(--hybridmag-color-link-hover);
 			}
 		}
 	}
@@ -467,8 +467,8 @@
 .hm-cl-sep .post-navigation {
 	background: #ffffff;
 	padding: 30px;
-	border-radius: var(--hm-global-border-radius);
-	box-shadow: var(--hm-global-box-shadow);
+	border-radius: var(--hybridmag-global-border-radius);
+	box-shadow: var(--hybridmag-global-box-shadow);
 }
 
 .hm-social-menu {
@@ -494,7 +494,7 @@
 
 	.page-numbers {
 		background: #eeeeee;
-		color: var(--hm-color-text-main);
+		color: var(--hybridmag-color-text-main);
 		font-weight: 600;
 		padding: 10px 17px;
 		margin: 0 2px 5px 2px;
@@ -506,13 +506,13 @@
 		margin: 0;
 	}
 	.page-numbers.current {
-		background: var(--hm-color-primary);
+		background: var(--hybridmag-color-primary);
 		color: #ffffff;
 		font-weight: 600;
 	}
 	a.page-numbers {
 		&:hover {
-			background: var(--hm-color-primary);
+			background: var(--hybridmag-color-primary);
 			color: #ffffff;
 		}
 	}
@@ -528,7 +528,7 @@
 
 /* Pagination inside post/page content */
 .hm-entry .post-page-numbers {
-    color: var(--hm-color-text-main) !important;
+    color: var(--hybridmag-color-text-main) !important;
 	font-weight: 600;
 	background-color: #eeeeee;
     padding: 8px 17px;
@@ -542,7 +542,7 @@
 
 	&:hover,
 	&.current {
-		background-color: var(--hm-color-primary);
+		background-color: var(--hybridmag-color-primary);
 		color: #ffffff !important;
 	}
 }

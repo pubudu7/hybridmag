@@ -10,24 +10,24 @@
 @media screen and (min-width: 768px) {
     .hm-footer-cols-2 {
         .hm-footer-column {
-            width: calc( 50% - var(--hm-footer-cols-gap)/2);
+            width: calc( 50% - var(--hybridmag-footer-cols-gap)/2);
         }
 
     }
     .hm-footer-cols-3 {
         .hm-footer-column {
-            width: calc( 33.333% - (var(--hm-footer-cols-gap)*2)/3 );
+            width: calc( 33.333% - (var(--hybridmag-footer-cols-gap)*2)/3 );
         }
     }
     .hm-footer-cols-4 {
         .hm-footer-column {
-            width: calc( 25% - (var(--hm-footer-cols-gap)*3)/4);
+            width: calc( 25% - (var(--hybridmag-footer-cols-gap)*3)/4);
         }
     }
 }
 
 .site-footer {
-    background-color: var(--hm-color-tertiary);
+    background-color: var(--hybridmag-color-tertiary);
     color: #cccccc;
     a {
         color: #cccccc;

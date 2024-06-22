@@ -74,7 +74,7 @@ function hybridmag_inline_block_editor_styles() {
 
     if ( $content_width ) {
         $css_variables .= '
-            --hm-content_width: '. esc_attr( $content_width ) .'px !important;
+            --hybridmag-content_width: '. esc_attr( $content_width ) .'px !important;
         ';
     }
 

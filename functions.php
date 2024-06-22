@@ -315,6 +315,11 @@ function hybridmag_scripts() {
 		wp_enqueue_script( 'hybridmag-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', '', '11.1.4', true );
 		wp_enqueue_script( 'hybridmag-swiper-custom', get_template_directory_uri() . '/assets/js/hybridmag-swiper.js', array(), EXALT_VERSION, true );
 	}
+
+	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_display_tabbed_posts', true ) && ! is_page_template( 'page-templates/template-fullwidth.php' ) ) {
+		wp_enqueue_script( 'hybridmag-tabs', get_template_directory_uri() . '/assets/js/tab-widget.js', array(), EXALT_VERSION, true );
+	}
+	
 }
 add_action( 'wp_enqueue_scripts', 'hybridmag_scripts' );
 

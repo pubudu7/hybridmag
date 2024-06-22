@@ -29,61 +29,61 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
         if ( ! empty( $primary_color ) && '#FC5656' != $primary_color ) {
             $css_variables .= '
-                --hm-color-primary: '. esc_attr( $primary_color ) .';
+                --hybridmag-color-primary: '. esc_attr( $primary_color ) .';
             ';
         }
 
         if ( ! empty( $text_color ) && '#2c2b2b' != $text_color ) {
             $css_variables .= '
-                --hm-color-text-main: '. esc_attr( $text_color ) .';
+                --hybridmag-color-text-main: '. esc_attr( $text_color ) .';
             ';
         }
 
         if ( ! empty( $headings_text_color ) && '#2c2b2b' != $headings_text_color ) {
             $css_variables .= '
-                --hm-color-text-headings: '. esc_attr( $headings_text_color ) .';
+                --hybridmag-color-text-headings: '. esc_attr( $headings_text_color ) .';
             ';
         }
 
         if ( ! empty( $links_color ) && '#2c2b2b' != $links_color ) {
             $css_variables .= '
-                --hm-color-link: '. esc_attr( $links_color ) .';
+                --hybridmag-color-link: '. esc_attr( $links_color ) .';
             ';
         }
 
         if ( ! empty( $links_hover_color ) ) {
             $css_variables .= '
-                --hm-color-link-hover: '. esc_attr( $links_hover_color ) .';
+                --hybridmag-color-link-hover: '. esc_attr( $links_hover_color ) .';
             ';
         }
 
         if ( ! empty( $inner_background_color ) && '#ffffff' != $inner_background_color ) {
             $css_variables .= '
-                --hm-color-body-background: '. esc_attr( $inner_background_color ) .';
+                --hybridmag-color-body-background: '. esc_attr( $inner_background_color ) .';
             ';
         }
 
         if ( ! empty( $button_bg_color ) ) {
             $css_variables .= '
-                --hm-color-button-background: '. esc_attr( $button_bg_color ) .';
+                --hybridmag-color-button-background: '. esc_attr( $button_bg_color ) .';
             ';
         }
 
         if ( ! empty( $button_bg_hover_color ) ) {
             $css_variables .= '
-                --hm-color-button-hover-background: '. esc_attr( $button_bg_hover_color ) .';
+                --hybridmag-color-button-hover-background: '. esc_attr( $button_bg_hover_color ) .';
             ';
         }
 
         if ( ! empty( $button_text_color ) ) {
             $css_variables .= '
-                --hm-color-button-text: '. esc_attr( $button_text_color ) .';
+                --hybridmag-color-button-text: '. esc_attr( $button_text_color ) .';
             ';
         }
         
         if ( ! empty( $button_text_hover_color ) ) {
             $css_variables .= '
-                --hm-color-button-hover-text: '. esc_attr( $button_text_hover_color ) .';
+                --hybridmag-color-button-hover-text: '. esc_attr( $button_text_hover_color ) .';
             ';
         }
 

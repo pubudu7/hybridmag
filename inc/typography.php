@@ -27,13 +27,13 @@ function hybridmag_custom_typography_css() {
     if ( $body_font ) {
         $css .= '
             :root {
-                --hm-font-family-body: ' . wp_kses( $body_font, null ) . ', ' . esc_attr( $body_font_fallback, null ) .';
+                --hybridmag-font-family-body: ' . wp_kses( $body_font, null ) . ', ' . esc_attr( $body_font_fallback, null ) .';
             }
         ';
 
         $block_editor_css .= '
             :root .editor-styles-wrapper {
-                --hm-font-family-body: ' . wp_kses( $body_font, null ) . ', ' . esc_attr( $body_font_fallback, null ) .';
+                --hybridmag-font-family-body: ' . wp_kses( $body_font, null ) . ', ' . esc_attr( $body_font_fallback, null ) .';
             }
         ';
     }
@@ -41,13 +41,13 @@ function hybridmag_custom_typography_css() {
     if ( $headings_font ) {
         $css .= '
             :root {
-                --hm-font-family-headings: ' . wp_kses( $headings_font, null ) . ', ' . esc_attr( $headings_font_fallback, null ) .';
+                --hybridmag-font-family-headings: ' . wp_kses( $headings_font, null ) . ', ' . esc_attr( $headings_font_fallback, null ) .';
             }
         ';
 
         $block_editor_css .= '
             :root .editor-styles-wrapper {
-                --hm-font-family-headings: ' . wp_kses( $headings_font, null ) . ', ' . esc_attr( $headings_font_fallback, null ) .';
+                --hybridmag-font-family-headings: ' . wp_kses( $headings_font, null ) . ', ' . esc_attr( $headings_font_fallback, null ) .';
             }
         ';
     }
@@ -55,13 +55,13 @@ function hybridmag_custom_typography_css() {
     if ( $headings_font_weight ) {
         $css .= '
             :root {
-                --hm-font-weight-headings: ' . esc_attr( $headings_font_weight ) . ';
+                --hybridmag-font-weight-headings: ' . esc_attr( $headings_font_weight ) . ';
             }
         ';
 
         $block_editor_css .= '
             :root .editor-styles-wrapper {
-                --hm-font-weight-headings: ' . esc_attr( $headings_font_weight ) . ';
+                --hybridmag-font-weight-headings: ' . esc_attr( $headings_font_weight ) . ';
             }
         ';
     }

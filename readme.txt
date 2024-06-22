@@ -4,7 +4,7 @@ Contributors: pubudu-malalasekara
 Requires at least: 4.5
 Tested up to: 6.5
 Requires PHP: 5.6
-Stable tag: 1.0.5
+Stable tag: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,28 +22,7 @@ HybridMag WordPress theme is designed specially for bloggers who want a seamless
 
 == Changelog ==
 
-= 1.0.5 - May 08 2024 =
-* New option to add a call to action button on the header.
-* Added more social menu display locations.
-
-= 1.0.4 - May 02 2024 =
-* Added a placeholder image for the small posts in the Featured Posts section for demonstration purpose. This can be turned off from Customizer Settings.
-* Added starter content.
-
-= 1.0.3 - April 29 2024 =
-* Now gutenberg editor width changes based on the selected post or page layout.
-* Fixed a few CSS related issues.
-* Moved css, js folders into assets folder.
-* Included default fonts Inter and Roboto Condensed in the theme.
-
-= 1.0.2 - April 26 2024 =
-* Changed theme description.
-
-= 1.0.1 - April 26 2024 =
-* Fixed focused elements are not highlighting properly issue.
-* Fixed few css layout issues.
-
-= 1.0.0 - April 25 2024 =
+= 1.0.0 - July 12 2024 =
 * Initial release
 
 == Credits ==
@@ -53,7 +32,6 @@ HybridMag WordPress theme is designed specially for bloggers who want a seamless
 * Font Awesome SVG, (C) 2018 Dave Gandy, CC BY 4.0 license - https://creativecommons.org/licenses/by/4.0/
 * Slider Control slider.js based on Kirki Customizer Framework, (C) 2019 Ari Stathopoulos, MIT
 * Webfonts Loader, (C) 2020 WPTT, MIT
-* simplebar, (c) 2015 Jonathan Nicol, MIT
 * Inter Font, (c) 2016-2019 The Inter Project Authors (me@rsms.me), SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 * Roboto Condensed, (c) Christian Robertson, SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
 

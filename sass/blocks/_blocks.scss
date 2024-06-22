@@ -35,23 +35,23 @@
 
 .wp-block-button__link {
     border-radius: 3px;
-	background: var(--hm-color-button-background);
-	color: var(--hm-color-button-text);
+	background: var(--hybridmag-color-button-background);
+	color: var(--hybridmag-color-button-text);
 	cursor: pointer;
 	line-height: 1;
 	padding: 0.8em 1em 0.8em;
-    font-size: var(--hm-font-size-base);
+    font-size: var(--hybridmag-font-size-base);
 	font-weight: bold;
 
 	&:hover {
         color: #ffffff;
-		background: var(--hm-color-button-hover-background);
+		background: var(--hybridmag-color-button-hover-background);
 	}
 
 	&:active,
 	&:focus {
         color: #ffffff;
-		background: var(--hm-color-button-focus-background);
+		background: var(--hybridmag-color-button-focus-background);
 	}
 }
 
@@ -67,7 +67,7 @@
 .wp-block-pullquote {
 	border-left: none;
 	border-right: none;
-	font-size: var(--hm-font-size-xl);
+	font-size: var(--hybridmag-font-size-xl);
 	padding: 2rem 0;
 	text-align: left;
 	margin-top: 40px;
@@ -76,7 +76,7 @@
 
 .wp-block-pullquote cite,
 .wp-block-pullquote .wp-block-pullquote__citation {
-	font-size: var(--hm-font-size-sm);
+	font-size: var(--hybridmag-font-size-sm);
 }
 
 .wp-block-pullquote cite::before,
@@ -91,7 +91,7 @@
 
 .wp-block-pullquote blockquote p, 
 .wp-block-pullquote.is-style-solid-color blockquote p {
-	font-size: var(--hm-font-size-xl);
+	font-size: var(--hybridmag-font-size-xl);
 	line-height: 1.3;
     margin-bottom: 0.5em;
 	margin-top: 0;

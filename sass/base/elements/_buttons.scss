@@ -6,23 +6,23 @@ input[type="submit"],
 .hm-readmore-btn {
 	border: none;
 	border-radius: 3px;
-	background: var(--hm-color-button-background);
-	color: var(--hm-color-button-text);
+	background: var(--hybridmag-color-button-background);
+	color: var(--hybridmag-color-button-text);
 	cursor: pointer;
 	line-height: 1;
 	padding: 0.8rem 1rem;
-	font-family: var(--hm-font-family-headings);
-	font-size: var(--hm-font-size-base);
+	font-family: var(--hybridmag-font-family-headings);
+	font-size: var(--hybridmag-font-size-base);
 	font-weight: bold;
 
 	&:hover {
-		color: var(--hm-color-button-hover-text);
-		background: var(--hm-color-button-hover-background);
+		color: var(--hybridmag-color-button-hover-text);
+		background: var(--hybridmag-color-button-hover-background);
 	}
 
 	&:active,
 	&:focus {
-		background: var(--hm-color-button-focus-background);
+		background: var(--hybridmag-color-button-focus-background);
 	}
 }
 
@@ -31,7 +31,7 @@ svg.hm-svg-icon {
 }
 
 .hm-readmore-btn {
-	font-size: var(--hm-font-size-base);
+	font-size: var(--hybridmag-font-size-base);
 	display: inline-block;
 	padding: 0.7rem 0.9rem;
 }

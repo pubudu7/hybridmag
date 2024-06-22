@@ -10,7 +10,7 @@ i {
 }
 
 blockquote {
-    border-left: 4px solid var(--hm-color-primary);
+    border-left: 4px solid var(--hybridmag-color-primary);
     box-shadow: inset 0 0 0 0 #ddd;
     margin: 0;
     padding-left: 1em;
@@ -21,9 +21,9 @@ address {
 }
 
 pre {
-	background: var(--hm-color-background-pre);
-	font-family: var(--hm-font-family-pre);
-	line-height: var(--hm-line-height-pre);
+	background: var(--hybridmag-color-background-pre);
+	font-family: var(--hybridmag-font-family-pre);
+	line-height: var(--hybridmag-line-height-pre);
 	margin-bottom: 1.6em;
 	max-width: 100%;
 	overflow: auto;
@@ -34,7 +34,7 @@ code,
 kbd,
 tt,
 var {
-	font-family: var(--hm-font-family-code);
+	font-family: var(--hybridmag-font-family-code);
 }
 
 abbr,

@@ -1,8 +1,8 @@
 .hm-cl-sep {
 	.comments-area {
 		background: #ffffff;
-		border-radius: var(--hm-global-border-radius);
-		box-shadow: var(--hm-global-box-shadow);
+		border-radius: var(--hybridmag-global-border-radius);
+		box-shadow: var(--hybridmag-global-box-shadow);
 		padding: 30px;
 	}
 }
@@ -84,7 +84,7 @@
 	display: inline;
 
 	a {
-		color: var(--hm-color-primary);
+		color: var(--hybridmag-color-primary);
 
 		&:hover {
 			color: #222;
@@ -104,7 +104,7 @@
 .comment-metadata,
 .pingback .edit-link {
 	color: #888888;
-	font-size: var(--hm-font-size-xxs);
+	font-size: var(--hybridmag-font-size-xxs);
 	line-height: 1.6153846154;
 }
 
@@ -126,7 +126,7 @@ footer.comment-meta {
 .comment-metadata a:focus,
 .pingback .comment-edit-link:hover,
 .pingback .comment-edit-link:focus {
-	color: var(--hm-color-link-hover);
+	color: var(--hybridmag-color-link-hover);
 }
 
 .comment-metadata .edit-link,
@@ -148,7 +148,7 @@ footer.comment-meta {
     border-radius: 2px;
     color: #fff;
     display: inline-block;
-    font-size: var(--hm-font-size-xxs);
+    font-size: var(--hybridmag-font-size-xxs);
     line-height: 1;
     margin-top: 1.250em;
     padding: 0.417em 0.833em;
@@ -159,14 +159,14 @@ footer.comment-meta {
 
 .comment-reply-link:hover,
 .comment-reply-link:focus {
-	background: var(--hm-color-primary);
+	background: var(--hybridmag-color-primary);
 	color: #fff;
 	outline: 0;
 }
 
 .comment-form label {
 	display: block;
-	font-size: var(--hm-font-size-xs);
+	font-size: var(--hybridmag-font-size-xs);
 	letter-spacing: 0.077em;
 	line-height: 1.5;
 	margin-bottom: 0.5em;
@@ -181,7 +181,7 @@ footer.comment-meta {
 .comment-awaiting-moderation,
 .logged-in-as,
 .form-allowed-tags {
-	font-size: var(--hm-font-size-sm);
+	font-size: var(--hybridmag-font-size-sm);
 	line-height: 1.6;
 	margin-bottom: 1.5em;
 }
@@ -207,7 +207,7 @@ footer.comment-meta {
 }
 
 .required {
-	color: var(--hm-color-primary);
+	color: var(--hybridmag-color-primary);
 }
 
 .comment-reply-title {
@@ -247,7 +247,7 @@ footer.comment-meta {
 	content: ' ';
 	height: 26px;
 	width: 2px;
-	background-color: var(--hm-color-text-main);
+	background-color: var(--hybridmag-color-text-main);
 }
 #cancel-comment-reply-link:before {
 	transform: rotate(45deg);
