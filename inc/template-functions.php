@@ -195,6 +195,18 @@ if ( ! function_exists( 'hybridmag_get_layout' ) ) {
 	}
 }
 
+if ( ! function_exists( 'hybridmag_get_sidebar' ) ) {
+	/**
+	 * Selects the sidebar.
+	 */
+	function hybridmag_get_sidebar() {
+		$sidebar_position = hybridmag_get_layout();
+		if ( 'right-sidebar' === $sidebar_position || 'left-sidebar' === $sidebar_position ) {
+			get_sidebar();
+		}
+	}
+}
+
 /**
  * Adds a Sub Nav Toggle to the Mobile Menu.
  *

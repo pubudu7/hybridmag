@@ -89,8 +89,6 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-$hybridmag_archive_layout = get_theme_mod( 'hybridmag_archive_layout', 'right-sidebar' );
-if ( 'right-sidebar' === $hybridmag_archive_layout || 'left-sidebar' === $hybridmag_archive_layout ) {
-	get_sidebar();
-}
+hybridmag_get_sidebar();
+
 get_footer();

@@ -51,9 +51,6 @@ get_header();
 	</main><!-- #main -->
 
 <?php
-	$hybridmag_page_layout = hybridmag_get_layout();
-	if ( 'right-sidebar' === $hybridmag_page_layout || 'left-sidebar' === $hybridmag_page_layout ) {
-		get_sidebar();
-	}
+hybridmag_get_sidebar();
 
 get_footer();
