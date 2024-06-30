@@ -183,7 +183,7 @@ if ( ! function_exists( 'hybridmag_categories' ) ) :
 			if ( is_single() ) {
 				$show_category_list = get_theme_mod( 'hybridmag_show_cat_links_s', true );
 			} else {
-				$show_category_list = get_theme_mod( 'hybridmag_show_cat_links', false );
+				$show_category_list = get_theme_mod( 'hybridmag_show_cat_links', true );
 			}
 
 			if ( ! $show_category_list ) {

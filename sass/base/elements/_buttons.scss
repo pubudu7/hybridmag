@@ -2,7 +2,6 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"],
-.hm-cta-btn,
 .hm-readmore-btn {
 	border: none;
 	border-radius: 3px;
@@ -37,5 +36,22 @@ svg.hm-svg-icon {
 }
 
 .hm-cta-btn {
-	margin: 0 10px;
+	border-radius: 5px;
+	background: var(--hybridmag-color-button-background);
+	color: var(--hybridmag-color-button-text);
+	line-height: 1;
+	padding: 10px 20px;
+	font-family: var(--hybridmag-font-family-headings);
+	font-size: var(--hybridmag-font-size-base);
+	font-weight: bold;
+	margin: 0 12px;
+
+	&:visited {
+		color: var(--hybridmag-color-button-hover-text);
+	}
+	
+	&:hover {
+		color: var(--hybridmag-color-button-hover-text);
+		background: var(--hybridmag-color-button-hover-background);
+	}
 }

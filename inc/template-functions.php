@@ -627,9 +627,9 @@ if ( ! function_exists( 'hybridmag_homepage_article_title' ) ) {
  */
 function hybridmag_set_featured_image_sizes( $image_size ) {
 	if ( is_home() || is_archive() ) {
-		$image_size = 'hm-archive-image';
+		$image_size = 'hybridmag-archive-image';
 	} elseif ( is_single() ) {
-		$image_size = 'hm-featured-image';
+		$image_size = 'hybridmag-featured-image';
 	} else {
 		$image_size = '';
 	}

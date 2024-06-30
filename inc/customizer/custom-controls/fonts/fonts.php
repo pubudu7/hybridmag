@@ -328,6 +328,7 @@ function hybridmag_get_google_fonts() {
             'Fugaz One',
             'GFS Didot',
             'GFS Neohellenic',
+            'Gabarito',
             'Gabriela',
             'Gafata',
             'Galada',

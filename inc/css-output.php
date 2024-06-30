@@ -332,9 +332,11 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
     
             if ( ! empty( $menu_link_color ) ) {
                 $theme_css .= '
-                    .hm-h-de .main-navigation a {
+                    .hm-h-de .main-navigation a,
+                    .hm-h-de .hm-header-inner .hm-social-menu a {
                         color: '. esc_attr( $menu_link_color ) .';
                     }
+                    .hm-h-de .hm-mobile-menu-toggle,
                     .hm-h-de .hm-slideout-toggle {
                         color: '. esc_attr( $menu_link_color ) .';
                     }
@@ -343,10 +345,12 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
     
             if ( ! empty( $menu_link_hover_color ) ) {
                 $theme_css .= '
-                    .hm-h-de .main-navigation ul li a:hover {
+                    .hm-h-de .main-navigation ul li a:hover,
+                    .hm-h-de .hm-header-inner .hm-social-menu a:hover {
                         color: '. esc_attr( $menu_link_hover_color ) .';
                     }
 
+                    .hm-h-de .hm-mobile-menu-toggle:hover,
                     .hm-h-de .hm-slideout-toggle:hover {
                         color: '. esc_attr( $menu_link_hover_color ) .';
                     }

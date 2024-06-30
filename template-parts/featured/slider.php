@@ -145,7 +145,7 @@ do_action( 'hybridmag_before_featured_content' );
                     <div class="hmhp-inner">
                         <div class="hmhp-thumb">
                             <?php if ( has_post_thumbnail() ) { ?>
-                                <?php the_post_thumbnail( 'hm-archive-image', array( 'class' => 'hm-fpw-img') ); ?>
+                                <?php the_post_thumbnail( 'hybridmag-archive-image', array( 'class' => 'hm-fpw-img') ); ?>
                             <?php } else { 
                                 if ( false === get_theme_mod( 'hybridmag_remove_placeholder', false ) ) {
                                     $featured_image_url = get_template_directory_uri() . '/assets/images/default.jpg'; ?>

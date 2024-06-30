@@ -58,14 +58,14 @@ function hybridmag_setup() {
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'hm-featured-image', 1300, 9999 );
-	add_image_size( 'hm-archive-image', 800, 533, true );
-	add_image_size( 'hm-archive-image-large', 1300, 867, true );
-	add_image_size( 'hm-thumbnail', 250, 170, true );
+	add_image_size( 'hybridmag-featured-image', 1300, 9999 );
+	add_image_size( 'hybridmag-archive-image', 800, 533, true );
+	add_image_size( 'hybridmag-archive-image-large', 1300, 867, true );
+	add_image_size( 'hybridmag-thumbnail', 250, 170, true );
 
 	if ( ! get_theme_mod( 'hybridmag_archive_image_crop', true ) ) {
-		add_image_size( 'hm-archive-image', 800, 9999, false );
-		add_image_size( 'hm-archive-image-large', 1300, 9999, false );
+		add_image_size( 'hybridmag-archive-image', 800, 9999, false );
+		add_image_size( 'hybridmag-archive-image-large', 1300, 9999, false );
 	}
 
 	// This theme uses wp_nav_menu() in one location.
@@ -367,14 +367,14 @@ if ( ! function_exists( 'hybridmag_get_fonts_array' ) ) :
 	 */
 	function hybridmag_get_fonts_array() {
 		$fonts_arr = array();
-		$body_font = get_theme_mod( 'hybridmag_font_family_1', 'Inter' );
-		$headings_font = get_theme_mod( 'hybridmag_font_family_2', 'Roboto Condensed' );
+		$body_font = get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' );
+		$headings_font = get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' );
 	
 		if ( $body_font && 'Inter' != $body_font ) {
 			$fonts_arr[] = $body_font;
 		}
 	
-		if ( $headings_font && 'Roboto Condensed' != $headings_font ) {
+		if ( $headings_font && 'DM Sans' != $headings_font ) {
 			$fonts_arr[] = $headings_font;
 		}
 
@@ -416,10 +416,10 @@ endif;
 function hybridmag_load_fonts() {
 
 	// Load default fonts.
-	if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'Inter' ) ) {
+	if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' ) ) {
 		wp_enqueue_style( 'hm-font-inter', get_theme_file_uri( '/assets/css/font-inter.css' ), array(), EXALT_VERSION, 'all' );
 	}
-	if ( 'Roboto Condensed' == get_theme_mod( 'hybridmag_font_family_2', 'Roboto Condensed' ) ) {
+	if ( 'Roboto' == get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' ) ) {
 		wp_enqueue_style( 'hm-font-roboto-condensed', get_theme_file_uri( '/assets/css/font-roboto-condensed.css' ), array(), EXALT_VERSION, 'all' );
 	}
 

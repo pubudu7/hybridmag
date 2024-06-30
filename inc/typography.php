@@ -7,9 +7,9 @@
  */
 
 function hybridmag_custom_typography_css() {
-    $body_font = get_theme_mod( 'hybridmag_font_family_1', 'Inter' );
+    $body_font = get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' );
     $body_font_fallback = get_theme_mod( 'hybridmag_body_font_fallback', 'sans-serif' );
-    $headings_font = get_theme_mod( 'hybridmag_font_family_2', 'Roboto Condensed' );
+    $headings_font = get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' );
     $headings_font_fallback = get_theme_mod( 'hybridmag_headings_font_fallback', 'sans-serif' );
     $headings_font_weight = get_theme_mod( 'hybridmag_headings_font_weight', '' );
 

@@ -21,7 +21,7 @@ if ( ! function_exists( 'hybridmag_search_box' ) ) :
         }
     
         ?>
-            <div class="hm-search-container desktop-only">
+            <div class="hm-search-container">
                 <button id="hm-search-toggle">
                     <span class="hm-search-icon"><?php hybridmag_the_icon_svg( 'search' ) ?></span>
                     <span class="hm-close-icon"><?php hybridmag_the_icon_svg( 'close' ) ?></span>

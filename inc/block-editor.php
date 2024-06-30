@@ -104,10 +104,10 @@ function hybridmag_block_editor_styles() {
 	}
 
 	// Load default fonts.
-	if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'Inter' ) ) {
+	if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' ) ) {
 		wp_enqueue_style( 'hm-font-inter', get_theme_file_uri( '/assets/css/font-inter.css' ), array(), EXALT_VERSION, 'all' );
 	}
-	if ( 'Roboto Condensed' == get_theme_mod( 'hybridmag_font_family_2', 'Roboto Condensed' ) ) {
+	if ( 'Roboto Condensed' == get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' ) ) {
 		wp_enqueue_style( 'hm-font-roboto-condensed', get_theme_file_uri( '/assets/css/font-roboto-condensed.css' ), array(), EXALT_VERSION, 'all' );
 	}
 

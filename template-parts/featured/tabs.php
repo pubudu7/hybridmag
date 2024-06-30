@@ -69,7 +69,7 @@ for ( $i = 1; $i <= 5; $i++ ) {
                         <div class="hm-tab-post-card">
                             <div class="hm-tab-post-img">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail( 'hm-archive-image' ); ?>
+                                    <?php the_post_thumbnail( 'hybridmag-archive-image' ); ?>
                                 </a>
                             </div>
                             <div class="hm-tab-post-details">

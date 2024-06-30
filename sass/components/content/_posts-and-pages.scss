@@ -385,7 +385,7 @@ a.hm-readmore-btn {
 				margin-bottom: 0;
 				border-top-right-radius: var( --hybridmag-global-border-radius );
 				border-bottom-right-radius: var( --hybridmag-global-border-radius );
-				box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.05);
+				box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.08);
 
 				img {
 					width: 100%;
@@ -774,7 +774,6 @@ a.hm-readmore-btn {
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     text-align: center;
-    opacity: 0;
 }
 
 .hm-swiper-button-prev svg,
@@ -787,24 +786,24 @@ a.hm-readmore-btn {
 }
 
 .hm-swiper-button-prev {
-  left: 0;
-  right: auto;
+	left: 20px;
+	right: auto;
 }
 
 .hm-swiper-button-next {
-  right: 0;
-  left: auto;
+	right: 20px;
+  	left: auto;
 }
 
-.hm-slider:hover .hm-swiper-button-next {
-    opacity: 0.7;
-    right: 20px;
-}
+// .hm-slider:hover .hm-swiper-button-next {
+//     opacity: 0.7;
+//     right: 20px;
+// }
 
-.hm-slider:hover .hm-swiper-button-prev {
-    opacity: 0.7;
-    left: 20px;
-}
+// .hm-slider:hover .hm-swiper-button-prev {
+//     opacity: 0.7;
+//     left: 20px;
+// }
 
 .hm-highlighted-posts {
     overflow: hidden;
@@ -928,6 +927,7 @@ a.hm-readmore-btn {
 
 .hm-tab-post-card {
 	border-radius: var( --hybridmag-global-border-radius );
+	box-shadow: var( --hybridmag-global-box-shadow );
 	overflow: hidden;
 	background: #ffffff;
 
@@ -955,4 +955,36 @@ a.hm-readmore-btn {
 
 .hm-tab-post-img img {
 	vertical-align: middle;
+}
+
+/* Featured Posts Small */
+.hm-fp-small-top {
+	@media (min-width: 600px) {
+		display: flex;
+		gap: 30px;
+	}
+	margin-bottom: 50px;
+}
+
+.hm-fp-small {
+	display: flex;
+	width: 25%;
+	padding: 18px;
+	border-radius: var(--hybridmag-global-border-radius);
+	box-shadow: var(--hybridmag-global-box-shadow);
+	background: #ffffff;
+
+	.post-thumbnail {
+		max-width: 64px;
+		margin-right: 16px;
+		img {
+			vertical-align: middle;
+			border-radius: var(--hybridmag-global-border-radius);
+		}
+	}
+
+	.entry-title {
+		margin: 0;
+		font-size: var(--hybridmag-font-size-base);
+	}
 }

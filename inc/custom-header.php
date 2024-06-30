@@ -56,6 +56,9 @@ if ( ! function_exists( 'hybridmag_header_style' ) ) :
 		?>
 		<style type="text/css">
 			.site-title a,
+			.site-title a:hover,
+			.site-title a:active,
+			.site-title a:focus,
 			.site-title a:visited,
 			.site-description {
 				color: #<?php echo esc_attr( $header_text_color ); ?>;

@@ -11,7 +11,7 @@ function hybridmag_get_header_layout() {
  * Header Top Bar
  */
 function hybridmag_header_top_bar() {
-    if ( has_nav_menu( 'secondary' ) || ( has_nav_menu( 'social' ) && true === get_theme_mod( 'hybridmag_display_social_topbar', true ) ) ) : ?>
+    if ( has_nav_menu( 'secondary' ) || ( has_nav_menu( 'social' ) && true === get_theme_mod( 'hybridmag_display_social_topbar', false ) ) ) : ?>
         <div class="hm-top-bar desktop-only">
             <div class="top-bar-inner hm-container">
                 
@@ -193,15 +193,21 @@ function hybridmag_locate_social_menu() {
                 add_action( 'hybridmag_header_inner_left', 'hybridmag_social_nav' );
             }
         }
+
+        if ( true === get_theme_mod( 'hybridmag_social_beside_pmenu', false ) ) {
+            add_action( 'hybridmag_after_primary_nav', 'hybridmag_social_nav', 5 );
+        }
+        
     } elseif ( 'default' == $header_layout ) {
         if ( true === get_theme_mod( 'hybridmag_social_beside_pmenu', false ) ) {
             add_action( 'hybridmag_after_primary_nav', 'hybridmag_social_nav', 5 );
         }
     }
 
-    if ( get_theme_mod( 'hybridmag_display_social_topbar', true ) ) {
+    if ( true === get_theme_mod( 'hybridmag_display_social_topbar', false ) ) {
         add_action( 'hybridmag_after_top_bar_main', 'hybridmag_social_nav' );
     }
+
 }   
 add_action( 'wp', 'hybridmag_locate_social_menu' );
 
