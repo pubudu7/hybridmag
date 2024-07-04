@@ -180,7 +180,7 @@
 			li {
 				a {
 					&:hover {
-						color: #eeeeee;
+						color: #cccccc;
 					}
 				}
 			}
@@ -219,7 +219,7 @@
 		.current-menu-item > a,
 		.current_page_ancestor > a,
 		.current-menu-ancestor > a {
-			color: var( --hybridmag-color-primary );
+			color: #cccccc;
 		}
 	}
 
@@ -500,7 +500,8 @@
 
 	li a {
 		display: flex;
-		padding: 10px 9px;
+		padding: 0 9px;
+		align-items: center;
 	}
 }
 

@@ -8,14 +8,14 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 
     class HybridMag_Slider_Control extends WP_Customize_Control {
 
-        public $type = 'hm-slider';
+        public $type = 'hybridmag-slider';
 
         /**
          * Enqueue our scripts and styles
          */
         public function enqueue() {
-            wp_enqueue_script( 'hm-slider-control-js', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.js', array( 'jquery', 'customize-base' ), false, true );
-            wp_enqueue_style( 'hm-slider-control-css', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.css', array(), '1.0', 'all' );
+            wp_enqueue_script( 'hybridmag-slider-control-js', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.js', array( 'jquery', 'customize-base' ), false, true );
+            wp_enqueue_style( 'hybridmag-slider-control-css', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.css', array(), '1.0', 'all' );
         }
 
         /**
@@ -51,10 +51,10 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
                     <span class="customize-control-description">{{ data.description }}</span>
                 <# } #>
                 
-                <div class="hm-slider-control-wrapper">
-                    <input type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" data-reset_value="{{ data.default }}" {{{ data.link }}} class="hm-slider">
-                    <input class="hm-slider-text" type="number" />
-                    <span class="hm-slider-reset"><span class="dashicons dashicons-image-rotate"></span></span>
+                <div class="hybridmag-slider-control-wrapper">
+                    <input type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" data-reset_value="{{ data.default }}" {{{ data.link }}} class="hybridmag-slider">
+                    <input class="hybridmag-slider-text" type="number" />
+                    <span class="hybridmag-slider-reset"><span class="dashicons dashicons-image-rotate"></span></span>
                 </div>
             </label>
             <?php

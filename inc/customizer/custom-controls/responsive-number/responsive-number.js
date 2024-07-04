@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['hm-responsive-number'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['hybridmag-responsive-number'] = wp.customize.Control.extend({
 
 	// When we're finished loading continue processing.
 	ready: function() {

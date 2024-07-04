@@ -38,6 +38,18 @@
 		color: #222222;
 	}
 
+	#hm-search-toggle {
+		height: 62px;
+	}
+
+	.hm-main-menu .hm-social-menu li a {
+		height: 62px;
+	}
+
+	.hm-main-menu .hm-slideout-toggle {
+		height: 62px;
+	}
+
 }
 
 .hm-wide-topbar {
@@ -85,7 +97,9 @@
 	background-color: transparent;
 	border: none;
 	color: #ffffff;
-	padding: 0.8rem 1rem;
+	padding: 0 1rem;
+	display: flex;
+	align-items: center;
 
 	.hm-svg-icon {
 		font-size: 1.125em;
@@ -283,6 +297,18 @@
 			color: #ffffff;
 		}
 	}
+
+	#hm-search-toggle {
+		height: 62px;
+	}
+
+	.hm-header-inner .hm-social-menu li a {
+		height: 62px;
+	}
+
+	.hm-header-inner .hm-slideout-toggle {
+		height: 62px;
+	}
 }
 
 .hm-menu-wrapper {
@@ -373,7 +399,7 @@
 
 		li {
 			a {
-				padding: 5px 10px;
+				padding: 10px 10px;
 			}
 
 			&:first-child a {
@@ -413,7 +439,7 @@
 	border: none;
 	color: #ffffff;
 	font-size: 21px;
-	padding: 10px;
+	padding: 0 10px;
 
 	&:hover {
 		background-color: transparent;

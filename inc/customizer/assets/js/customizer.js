@@ -60,4 +60,42 @@
 		} )
 	} );
 
+	// Menu height.
+	wp.customize( 'hybridmag_pmenu_line_height', function( value ) {
+		value.bind( function( to ) {
+			if( ( 'blank' !== to ) && ( to >= 20 ) && ( to <= 300 ) ) {
+				$( '.hm-h-lg .main-navigation ul li a' ).css( {
+					'line-height': to + 'px',
+				} );
+				$( '.hm-h-lg .hm-main-menu .hm-social-menu li a' ).css( {
+					'height': to + 'px',
+				} );
+				$( '.hm-h-lg #hm-search-toggle' ).css( {
+					'height': to + 'px',
+				} );
+				$( '.hm-h-lg .hm-main-menu .hm-slideout-toggle' ).css( {
+					'height': to + 'px',
+				} );
+				$( '.hm-h-lg .main-navigation ul ul li a' ).css( {
+					'line-height': 'initial',
+				} );
+				$( '.hm-h-de .main-navigation ul li a' ).css( {
+					'line-height': to + 'px',
+				} );
+				$( '.hm-h-de .hm-header-inner .hm-social-menu li a' ).css( {
+					'height': to + 'px',
+				} );
+				$( '.hm-h-de #hm-search-toggle' ).css( {
+					'height': to + 'px',
+				} );
+				$( '.hm-h-de .hm-header-inner .hm-slideout-toggle' ).css( {
+					'height': to + 'px',
+				} );
+				$( '.hm-h-de .main-navigation ul ul li a' ).css( {
+					'line-height': 'initial',
+				} );
+			}
+		} );
+	} ); 
+
 }( jQuery ) );

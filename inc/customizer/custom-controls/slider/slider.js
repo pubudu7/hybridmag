@@ -1,4 +1,4 @@
-wp.customize.controlConstructor['hm-slider'] = wp.customize.Control.extend({
+wp.customize.controlConstructor['hybridmag-slider'] = wp.customize.Control.extend({
 
     ready: function() {
 
@@ -6,9 +6,9 @@ wp.customize.controlConstructor['hm-slider'] = wp.customize.Control.extend({
         
         var control             = this,
             // changeAction        = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
-            rangeInput          = control.container.find( '.hm-slider' ),
-            textInput           = control.container.find( '.hm-slider-text' ),
-			resetBtn            = control.container.find( '.hm-slider-reset' ),
+            rangeInput          = control.container.find( '.hybridmag-slider' ),
+            textInput           = control.container.find( '.hybridmag-slider-text' ),
+			resetBtn            = control.container.find( '.hybridmag-slider-reset' ),
             value               = control.setting._value;
             
         // Set the initial value in the text input.

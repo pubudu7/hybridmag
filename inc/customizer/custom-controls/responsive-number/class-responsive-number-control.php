@@ -15,7 +15,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
          * @access public
          * @var    string
          */
-        public $type = 'hm-responsive-number';
+        public $type = 'hybridmag-responsive-number';
 
         /**
          * Enqueue scripts/styles.
@@ -25,7 +25,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
          * @return void
          */
         public function enqueue() {
-            wp_enqueue_script( 'hm-responsive-number', get_template_directory_uri() . '/inc/customizer/custom-controls/responsive-number/responsive-number.js', array( 'jquery', 'customize-base' ), false, true );
+            wp_enqueue_script( 'hybridmag-responsive-number', get_template_directory_uri() . '/inc/customizer/custom-controls/responsive-number/responsive-number.js', array( 'jquery', 'customize-base' ), false, true );
         }
 
         /**

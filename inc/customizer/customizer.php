@@ -1066,6 +1066,28 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Primary Menu - Line Height
+	$wp_customize->add_setting( 
+		'hybridmag_pmenu_line_height',
+		array(
+			'default'           => 62,
+			'sanitize_callback' => 'hybridmag_sanitize_slider_number_input',
+			'transport'         => 'postMessage'
+		)
+	);
+	$wp_customize->add_control( 
+		new HybridMag_Slider_Control( $wp_customize, 'hybridmag_pmenu_line_height',
+		array(
+			'label'         => esc_html__( 'Menu Height (px)', 'hybridmag' ),
+			'section'       => 'hybridmag_primary_menu_section',
+			'choices'       => array(
+				'min'   => 20,
+				'max'   => 300,
+				'step'  => 1,
+			)
+		)
+	) );
+
 	// Menu BG Color
 	$wp_customize->add_setting(
 		'hybridmag_menu_bg_color',

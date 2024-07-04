@@ -1,10 +1,10 @@
 /** CSS SLIDER */
-.customize-control-hm-slider {
+.customize-control-hybridmag-slider {
     margin: 15px 0;
 }
 
-.hm-slider,
-input[type=range].hm-slider {
+.hybridmag-slider,
+input[type=range].hybridmag-slider {
     -webkit-appearance: none;
     height: 6px;
     border-radius: 5px;   
@@ -18,7 +18,7 @@ input[type=range].hm-slider {
     margin-top: 12px;
 }
   
-.hm-slider::-webkit-slider-thumb {
+.hybridmag-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 15px;
@@ -28,7 +28,7 @@ input[type=range].hm-slider {
     cursor: pointer;
 }
   
-.hm-slider::-moz-range-thumb {
+.hybridmag-slider::-moz-range-thumb {
     width: 15px;
     height: 15px;
     border-radius: 50%;
@@ -37,7 +37,7 @@ input[type=range].hm-slider {
 }
 
 /* Slider Text */
-.hm-slider-control-wrapper input.hm-slider-text {
+.hybridmag-slider-control-wrapper input.hybridmag-slider-text {
 	width: 21%;
     height: 28px;
     text-align: center;
@@ -51,7 +51,7 @@ input[type=range].hm-slider {
 }
 
 /* Reset Button */
-.hm-slider-control-wrapper span.hm-slider-reset {
+.hybridmag-slider-control-wrapper span.hybridmag-slider-reset {
     display: inline-block;
     position: relative;
     width: 6%;
@@ -63,13 +63,13 @@ input[type=range].hm-slider {
     text-align: center;
 }
 
-.hm-slider-control-wrapper span.hm-slider-reset span {
+.hybridmag-slider-control-wrapper span.hybridmag-slider-reset span {
     width: 16px;
     height: 16px;
     font-size: 16px;
     line-height: 1;
 }
 
-.hm-slider-control-wrapper span.hm-slider-reset span:hover {
+.hybridmag-slider-control-wrapper span.hybridmag-slider-reset span:hover {
     color: #FF4F4F;
 }
