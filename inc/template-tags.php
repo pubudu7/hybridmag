@@ -274,10 +274,36 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 		}
 
 		foreach( $entry_meta_items as $key => $item ) {
-			$item();
+			//$item();
 			// if ( $key !== array_key_last( $entry_meta_items ) ) {
 			// 	echo '<span="hm-meta-sep">&mdash;</span>';
 			// }
+		}
+
+		$entry_meta = get_theme_mod( 'hybridmag_archive_entry_meta', 'author,date,comments' );
+
+		if ( strpos( $entry_meta, ',' ) !== false ) {
+			$entry_meta_array = explode( ',', $entry_meta );
+		} else {
+			$entry_meta_array[] = $entry_meta;
+		}
+		
+		$entry_meta_array = array_map( 'trim', $entry_meta_array );
+
+		foreach( $entry_meta_array as $meta_item ) {
+			if ( 'author' === $meta_item ) {
+				if ( true == get_theme_mod( 'hybridmag_show_author_avatar', false ) ) {
+					hybridmag_author_avatar();
+				}
+
+				hybridmag_posted_by();
+			}
+			if ( 'date' === $meta_item ) {
+				hybridmag_posted_on();
+			}
+			if ( 'comments' === $meta_item ) {
+				hybridmag_comments_link();
+			}
 		}
 
 		//$entry_meta_string = implode( '<span="hm-meta-sep">&mdash;</span>', $entry_meta_items );

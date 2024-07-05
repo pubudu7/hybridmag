@@ -1,5 +1,9 @@
 <?php
 
+if ( false === get_theme_mod( 'hybridmag_show_sfp', false ) ) {
+    return;
+}
+
 $hybridmag_sfp_source = get_theme_mod( 'hybridmag_sfp_source', 'latest' );
 $hybridmag_ignore_sticky_posts_sfp = get_theme_mod( 'hybridmag_ignore_sticky_posts_sfp', true );
 $hybridmag_sfp_args = array(

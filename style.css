@@ -880,6 +880,9 @@ textarea {
     border-bottom: 1px solid var(--hybridmag-color-border);
   }
 }
+.hm-h-lg .hm-header-inner .hm-social-menu li a {
+  height: 50px;
+}
 .hm-h-lg.hm-wide-pmenu-inner .hm-menu-wrapper.hm-container {
   width: 100%;
 }
@@ -966,6 +969,9 @@ textarea {
 .hm-top-bar .hm-social-menu a:hover {
   color: var(--hybridmag-color-link-hover);
 }
+.hm-top-bar .hm-social-menu li a {
+  height: 35px;
+}
 .hm-top-bar .secondary-menu {
   margin-right: auto;
 }
@@ -1037,7 +1043,7 @@ textarea {
   .hm-h-lg.logo-aligned-center .site-logo {
     margin: 0 auto;
   }
-  .hm-h-lg.logo-aligned-center .hm-social-menu {
+  .hm-h-lg.logo-aligned-center .hm-header-inner .hm-social-menu {
     margin-right: auto;
   }
   .hm-h-lg.logo-aligned-center .hm-cta-btn {

@@ -11,6 +11,8 @@ require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custo
 require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/slider/class-slider-control.php';
 require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/radio-image/class-radio-image-control.php';
 require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/class-category-dropdown.php';
-// if ( ! defined( 'HybridMag_PRO_VERSION' ) ) {
-//     require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/class-upsell-customize.php';
-// }
+require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/toggle-switch/class-toggle-switch.php';
+require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/sortable-checkbox/class-sortable-checkbox.php';
+if ( ! defined( 'HybridMag_PRO_VERSION' ) ) {
+    require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/class-upsell-customize.php';
+}

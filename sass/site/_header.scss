@@ -12,6 +12,10 @@
 		@media only screen and (max-width: 768px) {
 			border-bottom: 1px solid var( --hybridmag-color-border );
 		}
+
+		.hm-social-menu li a {
+			height: 50px;
+		}
 	}
 
 	&.hm-wide-pmenu-inner {
@@ -114,6 +118,10 @@
 		a:hover {
 			color: var(--hybridmag-color-link-hover);
 		}
+
+		li a {
+			height: 35px;
+		}
 	}
 
 	.secondary-menu {
@@ -206,7 +214,7 @@
 			margin: 0 auto;
 		}
 
-		.hm-social-menu {
+		.hm-header-inner .hm-social-menu {
 			margin-right: auto;
 		}
 
