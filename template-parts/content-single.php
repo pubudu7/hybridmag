@@ -37,12 +37,11 @@
 		// After entry title hook.
 		do_action( 'hybridmag_after_entry_title' );
 
-		if ( 'post' === get_post_type() ) :
-			?>
-			<div class="entry-meta">
-				<?php hybridmag_entry_meta(); ?>
-			</div><!-- .entry-meta -->
-		<?php endif; ?>
+		if ( 'post' === get_post_type() ) {
+			hybridmag_entry_meta(); 
+		}
+
+		?>
 	</header><!-- .entry-header -->
 
 	<?php

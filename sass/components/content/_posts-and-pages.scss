@@ -103,15 +103,14 @@
 		}
 	}
 
-	.posted-on::before {
-		content: ' — ';
+	svg {
+		margin: 0 0.3em 0 0;
 	}
 
-	.byline,
-	.posted-on {
-		margin-right: 0.62em;
-	}
+}
 
+.hm-meta-sep {
+	margin: 0 0.6em;
 }
 
 .hm-cl-sep .hm-entry {
@@ -309,7 +308,7 @@ a.hm-readmore-btn {
 	}
 }
 
-.cat-links {
+.cat-links:not(.entry-meta .cat-links) {
 	color: #f5f5f5;
 	display: block;
 

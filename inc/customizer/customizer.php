@@ -2204,7 +2204,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_cat_links',
 		array(
-			'label' 	=> esc_html__( 'Show categories top.', 'hybridmag' ),
+			'label' 	=> esc_html__( 'Show category links top', 'hybridmag' ),
 			'section' 	=> 'hybridmag_blog_meta_section'
 		)
 	) );
@@ -2220,22 +2220,72 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control( new HybridMag_Pill_Checkbox_Custom_Control( $wp_customize, 'hybridmag_archive_entry_meta',
 		array(
-			'label' 		=> __( 'Post Meta', 'skyrocket' ),
-			'description' 	=> esc_html__( 'Select what you want to display and order them as you prefer', 'skyrocket' ),
+			'label' 		=> __( 'Post Meta', 'hybridmag' ),
+			'description' 	=> esc_html__( 'Select what you want to display and order them as you prefer', 'hybridmag' ),
 			'section' 		=> 'hybridmag_blog_meta_section',
 			'input_attrs' 	=> array(
 				'sortable' 	=> true,
 				'fullwidth' => true,
 			),
 			'choices' => array(
-				'author' 		=> __( 'Author', 'skyrocket' ),
-				'date' 			=> __( 'Date', 'skyrocket' ),
-				'comments' 		=> __( 'Comments', 'skyrocket'  ),
-				'categories' 	=> __( 'Categories', 'skyrocket'  ),
-				'tags' 			=> __( 'Tags', 'skyrocket'  ),
+				'author' 		=> __( 'Author', 'hybridmag' ),
+				'date' 			=> __( 'Date', 'hybridmag' ),
+				'comments' 		=> __( 'Comments', 'hybridmag'  ),
+				'categories' 	=> __( 'Categories', 'hybridmag'  ),
+				'tags' 			=> __( 'Tags', 'hybridmag'  ),
 			)
 		)
 	) );
+
+	// // Archive Featured Image Align
+	// $wp_customize->add_setting(
+	// 	'hybridmag_entry_meta_seperator',
+	// 	array(
+	// 		'default' => '-',
+	// 		'sanitize_callback' => 'hybridmag_sanitize_select'
+	// 	)
+	// );
+	// $wp_customize->add_control(
+	// 	'hybridmag_entry_meta_seperator',
+	// 	array(
+	// 		'type' => 'select',
+	// 		'label' => esc_html__( 'Meta Separator', 'hybridmag' ),
+	// 		'section' => 'hybridmag_blog_meta_section',
+	// 		'choices' => array(
+	// 			'|' => '|',
+	// 			'-'	=> '-',
+	// 			'.' => '.',
+	// 			'icon'	=> 'icon',
+	// 			'none'	=> 'none'
+	// 		)
+	// 	)
+	// );
+
+	// Archive - Meta Separator
+	$wp_customize->add_setting(
+		'hybridmag_entry_meta_seperator',
+		array(
+			'default' => 'dot',
+			'sanitize_callback' => 'hybridmag_sanitize_select'
+		)
+	);
+	$wp_customize->add_control(
+		'hybridmag_entry_meta_seperator',
+		array(
+			'type' => 'select',
+			'label' => esc_html__( 'Meta Separator', 'hybridmag' ),
+			'section' => 'hybridmag_blog_meta_section',
+			'choices' => array(
+				'dot'		=> '•',
+				'slash'		=> '/',
+				'vbar'		=> '|',
+				'mdash'		=> '—',
+				'dash'		=> '-',
+				'icon' 		=> esc_html__( 'Icon', 'hybridmag' ),
+				'none'		=> esc_html__( 'None', 'hybridmag' ),
+			)
+		)
+	);
 
 	// Archive - Show author avatar
 	$wp_customize->add_setting(
@@ -2251,7 +2301,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'type'        => 'checkbox',
 			'label'       => esc_html__( 'Show author avatar', 'hybridmag' ),
 			'section'     => 'hybridmag_blog_meta_section',
-			//'active_callback'	=> 'hybridmag_is_showing_author'
+			'active_callback'	=> 'hybridmag_is_showing_author'
 		)
 	);
 
@@ -2269,7 +2319,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'type'        		=> 'checkbox',
 			'label'       		=> esc_html__( 'Use "time ago" date format', 'hybridmag' ),
 			'section'     		=> 'hybridmag_blog_meta_section',
-			//'active_callback'	=> 'hybridmag_is_showing_date'
+			'active_callback'	=> 'hybridmag_is_showing_date'
 		)
 	);
 
@@ -2307,7 +2357,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'label'       		=> esc_html__( 'Show "last updated" date.', 'hybridmag' ),
 			'description' 		=> esc_html__( 'When paired with the "time ago" date format, the cut off for that format will automatically be switched to one day.', 'hybridmag' ),
 			'section'     		=> 'hybridmag_blog_meta_section',
-			//'active_callback'	=> 'hybridmag_is_showing_date'
+			'active_callback'	=> 'hybridmag_is_showing_date'
 		)
 	);
 
@@ -2321,7 +2371,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Archive Featured Image Align
+	// Content type
 	$wp_customize->add_setting(
 		'hybridmag_content_type',
 		array(
@@ -2464,38 +2514,48 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 
 	// Post - Show category list
-	$wp_customize->add_setting(
+	$wp_customize->add_setting( 
 		'hybridmag_show_cat_links_s',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_show_cat_links_s',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_cat_links_s',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Show category links', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
+			'label' 	=> esc_html__( 'Show category links top', 'hybridmag' ),
+			'section' 	=> 'hybridmag_post_meta_section'
 		)
-	);
+	) );
 
-	// Post - Show author
-	$wp_customize->add_setting(
-		'hybridmag_show_author_s',
+	// Entry Meta Sort and show/hide
+	$wp_customize->add_setting( 
+		'hybridmag_archive_entry_meta_s',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> 'author,date,comments',
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_sortable_checkbox'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_show_author_s',
+	$wp_customize->add_control( new HybridMag_Pill_Checkbox_Custom_Control( $wp_customize, 'hybridmag_archive_entry_meta_s',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Show author', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
+			'label' 		=> __( 'Post Meta', 'hybridmag' ),
+			'description' 	=> esc_html__( 'Select what you want to display and order them as you prefer', 'hybridmag' ),
+			'section' 		=> 'hybridmag_post_meta_section',
+			'input_attrs' 	=> array(
+				'sortable' 	=> true,
+				'fullwidth' => true,
+			),
+			'choices' => array(
+				'author' 		=> __( 'Author', 'hybridmag' ),
+				'date' 			=> __( 'Date', 'hybridmag' ),
+				'comments' 		=> __( 'Comments', 'hybridmag'  ),
+				'categories' 	=> __( 'Categories', 'hybridmag'  ),
+				'tags' 			=> __( 'Tags', 'hybridmag'  ),
+			)
 		)
-	);
+	) );
 
 	// Post - Show author avatar
 	$wp_customize->add_setting(
@@ -2512,23 +2572,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'label'       => esc_html__( 'Show author avatar', 'hybridmag' ),
 			'section'     => 'hybridmag_post_meta_section',
 			'active_callback'	=> 'hybridmag_is_showing_author_s'
-		)
-	);
-
-	// Post - Show date
-	$wp_customize->add_setting(
-		'hybridmag_show_date_s',
-		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_show_date_s',
-		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Show date', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
 		)
 	);
 
@@ -3315,61 +3358,84 @@ function hybridmag_thumbnail_align_active( $control ) {
  * Checks if hybridmag is showing author.
  */
 function hybridmag_is_showing_author( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_show_author' )->value() === true ) {
-		return true;
+	$entry_meta = $control->manager->get_setting( 'hybridmag_archive_entry_meta' )->value();
+
+	if ( strpos( $entry_meta, ',' ) !== false ) {
+		$entry_meta_type_array = explode( ',', $entry_meta );
 	} else {
-		return false;
+		$entry_meta_type_array = array( $entry_meta );
 	}
-
-	$meta = $control->manager->get_setting( 'hybridmag_archive_entry_meta' )->value();
 	
+	$entry_meta_type_array = array_map( 'trim', $entry_meta_type_array );
 
-	if ( strpos( $input, ',' ) !== false) {
-		$input = explode( ',', $input );
+	if ( in_array( 'author', $entry_meta_type_array ) ) {
+		return true;
 	}
-	if( is_array( $input ) ) {
-		foreach ( $input as $key => $value ) {
-			$input[$key] = sanitize_text_field( $value );
-		}
-		$input = implode( ',', $input );
-	}
-	else {
-		$input = sanitize_text_field( $input );
-	}
-	return $input;
+
+	return false;
 }
 
 /**
  * Checks if hybridmag is showing author in single post.
  */
 function hybridmag_is_showing_author_s( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_show_author_s' )->value() === true ) {
-		return true;
+	$entry_meta = $control->manager->get_setting( 'hybridmag_archive_entry_meta_s' )->value();
+
+	if ( strpos( $entry_meta, ',' ) !== false ) {
+		$entry_meta_type_array = explode( ',', $entry_meta );
 	} else {
-		return false;
+		$entry_meta_type_array = array( $entry_meta );
 	}
+	
+	$entry_meta_type_array = array_map( 'trim', $entry_meta_type_array );
+
+	if ( in_array( 'author', $entry_meta_type_array ) ) {
+		return true;
+	}
+
+	return false;
 }
 
 /**
  * Checks if hybridmag is showing date
  */
 function hybridmag_is_showing_date( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_show_date' )->value() === true ) {
-		return true;
+	$entry_meta = $control->manager->get_setting( 'hybridmag_archive_entry_meta' )->value();
+
+	if ( strpos( $entry_meta, ',' ) !== false ) {
+		$entry_meta_type_array = explode( ',', $entry_meta );
 	} else {
-		return false;
+		$entry_meta_type_array = array( $entry_meta );
 	}
+	
+	$entry_meta_type_array = array_map( 'trim', $entry_meta_type_array );
+
+	if ( in_array( 'date', $entry_meta_type_array ) ) {
+		return true;
+	}
+
+	return false;
 }
 
 /**
  * Checks if hybridmag is showing date in single posts
  */
 function hybridmag_is_showing_date_s( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_show_date_s' )->value() === true ) {
-		return true;
+	$entry_meta = $control->manager->get_setting( 'hybridmag_archive_entry_meta_s' )->value();
+
+	if ( strpos( $entry_meta, ',' ) !== false ) {
+		$entry_meta_type_array = explode( ',', $entry_meta );
 	} else {
-		return false;
+		$entry_meta_type_array = array( $entry_meta );
 	}
+	
+	$entry_meta_type_array = array_map( 'trim', $entry_meta_type_array );
+
+	if ( in_array( 'date', $entry_meta_type_array ) ) {
+		return true;
+	}
+
+	return false;
 }
 
 /**

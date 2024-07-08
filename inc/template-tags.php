@@ -140,7 +140,9 @@ if ( ! function_exists( 'hybridmag_posted_on' ) ) :
 
 		$posted_on = '<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>';
 
-		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		return $posted_on;
+
+		// echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 endif;
@@ -152,7 +154,7 @@ if ( ! function_exists( 'hybridmag_author_avatar' ) ) :
 		$author_email	= get_the_author_meta( 'user_email' );
 		$avatar_url 	= get_avatar_url( $author_email );
 		
-		echo '<span class="hm-author-avatar"><img class="author-photo" alt="' . esc_attr( get_the_author() ) . '" src="' . esc_url( $avatar_url ) . '" /></span>';
+		return '<span class="hm-author-avatar"><img class="author-photo" alt="' . esc_attr( get_the_author() ) . '" src="' . esc_url( $avatar_url ) . '" /></span>';
 
 	}
 
@@ -169,7 +171,9 @@ if ( ! function_exists( 'hybridmag_posted_by' ) ) :
 			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 		);
 
-		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		return $byline;
+
+		//echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 endif;
 
@@ -177,7 +181,7 @@ if ( ! function_exists( 'hybridmag_categories' ) ) :
 	/**
 	 * Prints the category list
 	 */
-	function hybridmag_categories() {
+	function hybridmag_categories( $seperator = '' ) {
 		if ( 'post' === get_post_type() ) {
 
 			if ( is_single() ) {
@@ -229,12 +233,25 @@ if ( ! function_exists( 'hybridmag_comments_link' ) ) :
 	function hybridmag_comments_link() {
 
 		if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-			echo '<span class="hm-comments-icon">' . hybridmag_get_icon_svg( 'comment' ) . '</span>';
-			echo '<span class="comments-link">';
-				comments_popup_link( '0', '1', '%' );
-			echo '</span>';
-		}
+
+			$num_comments = esc_attr( get_comments_number() );
+
+			if ( $num_comments == 0 ) {
+				$comments_txt = __( 'Comment', 'hitmag-pro' );
+			} elseif ( $num_comments > 1 ) {
+				/* translators: %d: number of comments */
+				$comments_txt = sprintf( esc_html__( '%d Comments.', 'hitmag-pro' ), $num_comments );
+			} else {
+				$comments_txt = __( '1 Comment', 'hitmag-pro' );
+			}
+
+			return '<a href="' . esc_url( get_comments_link() ).'">' . $comments_txt . '</a>';
+		}	
+
+		return '';
+
 	}
+
 endif;
 
 if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
@@ -243,72 +260,132 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 	 */
 	function hybridmag_entry_meta() {
 
-		$entry_meta_items = array();
+		// Return early if this function called on other post types.
+		if ( 'post' !== get_post_type() ) {
+			return;
+		}
 	
 		if ( is_single() ) {
-			if ( true == get_theme_mod( 'hybridmag_show_author_avatar_s', false ) ) {
-				$entry_meta_items[] = 'hybridmag_author_avatar';
-			}
-			if ( true == get_theme_mod( 'hybridmag_show_author_s', true ) ) {
-				$entry_meta_items[] = 'hybridmag_posted_by';
-			}
-			if ( true == get_theme_mod( 'hybridmag_show_date_s', true ) ) {
-				$entry_meta_items[] = 'hybridmag_posted_on';
-			}
-			if ( true == get_theme_mod( 'hybridmag_show_comments_link_s', true ) ) {
-				$entry_meta_items[] = 'hybridmag_comments_link';
-			}
+			$entry_meta = get_theme_mod( 'hybridmag_archive_entry_meta_s', 'author,date,comments' );
 		} else {
-			if ( true == get_theme_mod( 'hybridmag_show_author_avatar', false ) ) {
-				$entry_meta_items[] = 'hybridmag_author_avatar';
-			}
-			if ( true == get_theme_mod( 'hybridmag_show_author', true ) ) {
-				$entry_meta_items[] = 'hybridmag_posted_by';
-			}
-			if ( true == get_theme_mod( 'hybridmag_show_date', true ) ) {
-				$entry_meta_items[] = 'hybridmag_posted_on';
-			}
-			if ( true == get_theme_mod( 'hybridmag_show_comments_link', true ) ) {
-				$entry_meta_items[] = 'hybridmag_comments_link';
-			}
+			$entry_meta = get_theme_mod( 'hybridmag_archive_entry_meta', 'author,date,comments' );
 		}
-
-		foreach( $entry_meta_items as $key => $item ) {
-			//$item();
-			// if ( $key !== array_key_last( $entry_meta_items ) ) {
-			// 	echo '<span="hm-meta-sep">&mdash;</span>';
-			// }
-		}
-
-		$entry_meta = get_theme_mod( 'hybridmag_archive_entry_meta', 'author,date,comments' );
 
 		if ( strpos( $entry_meta, ',' ) !== false ) {
-			$entry_meta_array = explode( ',', $entry_meta );
+			$entry_meta_type_array = explode( ',', $entry_meta );
 		} else {
-			$entry_meta_array[] = $entry_meta;
+			$entry_meta_type_array = array( $entry_meta );
 		}
 		
-		$entry_meta_array = array_map( 'trim', $entry_meta_array );
+		$entry_meta_type_array = array_map( 'trim', $entry_meta_type_array );
 
-		foreach( $entry_meta_array as $meta_item ) {
+		$entry_meta_array = array();
+
+		$entry_meta_seperator = get_theme_mod( 'hybridmag_entry_meta_seperator', 'dot' );
+
+		foreach( $entry_meta_type_array as $meta_item ) {
+
 			if ( 'author' === $meta_item ) {
-				if ( true == get_theme_mod( 'hybridmag_show_author_avatar', false ) ) {
-					hybridmag_author_avatar();
+				$show_avatar = get_theme_mod( 'hybridmag_show_author_avatar', false );
+				$author_str = '<span class="byline">';
+				if ( 'icon' === $entry_meta_seperator && false === $show_avatar ) {
+					$author_str .= hybridmag_get_icon_svg( 'user' );
 				}
+				if ( true === $show_avatar ) {
+					$author_str .= hybridmag_author_avatar();
+				}
+				$author_str .= hybridmag_posted_by();
+				$author_str .= '</span>';
+				
+				$entry_meta_array[] = $author_str;
+			}
 
-				hybridmag_posted_by();
-			}
 			if ( 'date' === $meta_item ) {
-				hybridmag_posted_on();
+				$date_str = '<span class="posted-on">';
+				if ( 'icon' === $entry_meta_seperator ) {
+					$date_str .= hybridmag_get_icon_svg( 'clock' );
+				}
+				$date_str .= hybridmag_posted_on();
+				$date_str .= '</span>';
+
+				$entry_meta_array[] = $date_str;
 			}
+
 			if ( 'comments' === $meta_item ) {
-				hybridmag_comments_link();
+				$comments_link = hybridmag_comments_link();
+				if ( ! empty( $comments_link ) ) {
+
+					$comments_str = '<span class="comments-link">';
+					if ( 'icon' === $entry_meta_seperator ) {
+						$comments_str .= hybridmag_get_icon_svg( 'comment' );
+					}
+					$comments_str .= $comments_link;
+					$comments_str .= '</span>';
+
+					$entry_meta_array[] = $comments_str;
+				}
 			}
+
+			if ( 'categories' == $meta_item ) {
+				/* translators: used between list items, there is a space after the comma */
+				$seperator = esc_html__(  ", ", 'hybridmag' );
+				$categories_list = get_the_category_list( $seperator );
+				if ( $categories_list ) {
+					$categories_str = '<span class="cat-links">';
+					$categories_str .= '<span class="screen-reader-text">' . esc_html__( 'Posted in', 'hybridmag' ) . '</span>';
+					if ( 'icon' === $entry_meta_seperator ) {
+						$categories_str .= hybridmag_get_icon_svg( 'folder' );
+					}
+					$categories_str .= apply_filters( 'hybridmag_theme_categories', $categories_list );
+					$categories_str .= '</span>';
+
+					$entry_meta_array[] = $categories_str;
+				}
+			}
+
+			if ( 'tags' == $meta_item ) {
+				/* translators: used between list items, there is a space after the comma */
+				$tags_list = get_the_tag_list( '', esc_html_x( ', ', 'list item separator', 'hybridmag' ) );
+				if ( $tags_list ) {				
+					$tags_str = '<span class="tags-links">';
+					if ( 'icon' === $entry_meta_seperator ) {
+						$tags_str .= hybridmag_get_icon_svg( 'tags' );
+					}
+					$tags_str .= $tags_list;
+					$tags_str .= '</span>';
+
+					$entry_meta_array[] = $tags_str;
+				}
+			}
+
 		}
 
-		//$entry_meta_string = implode( '<span="hm-meta-sep">&mdash;</span>', $entry_meta_items );
-		//echo $entry_meta_string;
-		
+		if ( ! empty( $entry_meta_array ) ) {
+			echo '<div class="entry-meta">';
+				switch( $entry_meta_seperator ) {
+					case "dash":
+						$entry_meta_seperator = '-';
+						break;
+					case "vbar":
+						$entry_meta_seperator = '|';
+						break;
+					case "mdash":
+						$entry_meta_seperator = '—';
+						break;	
+					case "dot":
+						$entry_meta_seperator = '•';
+						break;	
+					case "slash":
+						$entry_meta_seperator = '/';
+						break;
+					default:
+						$entry_meta_seperator = '';
+				}
+				$entry_meta_string = implode( '<span class="hm-meta-sep">' . $entry_meta_seperator . '</span>', $entry_meta_array );
+				echo $entry_meta_string; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo '</div>';
+		}
+
 	}
 
 endif;
