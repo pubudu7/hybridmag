@@ -25,10 +25,6 @@
 }
   
 :root {
-  --hybridmag-font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --hybridmag-font-family-headings: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --hybridmag-font-family-code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  --hybridmag-font-family-pre: "Courier 10 Pitch", courier, monospace;
   --hybridmag-font-size-base: 16px;
   --hybridmag-font-size-xxxs: 0.688rem;
   --hybridmag-font-size-xxs: 0.75rem;
@@ -68,7 +64,7 @@
   optgroup,
   textarea {
     color: var(--hybridmag-color-text-main);
-    font-family: var(--hybridmag-font-family-body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
     font-size: 1rem;
     line-height: var(--hybridmag-line-height-body);
   }
@@ -80,7 +76,7 @@
   h5,
   h6 {
     clear: both;
-    font-family: var(--hybridmag-font-family-headings);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
     line-height: var(--hybridmag-line-height-headings);
     font-weight: var(--hybridmag-font-weight-headings);
     margin: 20px 0;
@@ -125,7 +121,7 @@
   
   pre {
     background: var(--hybridmag-color-background-pre);
-    font-family: var(--hybridmag-font-family-pre);
+    font-family: "Courier 10 Pitch", courier, monospace;
     line-height: var(--hybridmag-line-height-pre);
     margin-bottom: 1.6em;
     max-width: 100%;
@@ -137,7 +133,7 @@
   kbd,
   tt,
   var {
-    font-family: var(--hybridmag-font-family-code);
+    font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
   }
   
   abbr,

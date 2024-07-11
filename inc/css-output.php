@@ -10,7 +10,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
     /**
      * Generate CSS in the <head> section using the 
      */
-    function hybridmag_custom_css() {
+    function hybridmag_custom_css( $output ) {
 
         $theme_css = "";
 
@@ -675,11 +675,17 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             ';
         }
 
+        if ( ! empty( $theme_css ) ) {
+            $output .= '/* Custom CSS */'. $theme_css;
+        }
+
+        return $output;
+
         /**
-         * hybridmag_theme_custom_css hook since HybridMag 1.0.9
+         * hybridmag_theme_custom_css hook since HybridMag 1.0.0
          */
-        return $theme_css = apply_filters( 'hybridmag_theme_custom_css', $theme_css );
+        // return $theme_css = apply_filters( 'hybridmag_theme_custom_css', $theme_css );
 
     }
 }
-
+add_filter( 'hybridmag_head_css', 'hybridmag_custom_css' );

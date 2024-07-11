@@ -10,7 +10,7 @@ input[type="submit"],
 	cursor: pointer;
 	line-height: 1;
 	padding: 0.8rem 1rem;
-	font-family: var(--hybridmag-font-family-headings);
+	font-family: $font__headings;
 	font-size: var(--hybridmag-font-size-base);
 	font-weight: bold;
 
@@ -41,7 +41,7 @@ svg.hm-svg-icon {
 	color: var(--hybridmag-color-button-text);
 	line-height: 1;
 	padding: 10px 20px;
-	font-family: var(--hybridmag-font-family-headings);
+	font-family: $font__headings;
 	font-size: var(--hybridmag-font-size-base);
 	font-weight: bold;
 	margin: 0 12px;

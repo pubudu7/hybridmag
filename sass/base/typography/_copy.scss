@@ -22,7 +22,7 @@ address {
 
 pre {
 	background: var(--hybridmag-color-background-pre);
-	font-family: var(--hybridmag-font-family-pre);
+	font-family: $font__pre;
 	line-height: var(--hybridmag-line-height-pre);
 	margin-bottom: 1.6em;
 	max-width: 100%;
@@ -34,7 +34,7 @@ code,
 kbd,
 tt,
 var {
-	font-family: var(--hybridmag-font-family-code);
+	font-family: $font__code;
 }
 
 abbr,

@@ -5,7 +5,7 @@ h4,
 h5,
 h6 {
 	clear: both;
-	font-family: var(--hybridmag-font-family-headings);
+	font-family: $font__headings;
 	line-height: var(--hybridmag-line-height-headings);
 	font-weight: var(--hybridmag-font-weight-headings);
 	margin: 20px 0;
@@ -36,7 +36,7 @@ h6 {
 }
 
 .site-title {
-	font-family: var(--hybridmag-font-family-body);
+	font-family: $font__main;
 	font-size: 26px;
 	font-weight: bold;
 	line-height: 1.2;

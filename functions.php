@@ -5,9 +5,9 @@
  * @package HybridMag
  */
 
-if ( ! defined( 'EXALT_VERSION' ) ) {
+if ( ! defined( 'HYBRIDMAG_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'EXALT_VERSION', '1.0.5' );
+	define( 'HYBRIDMAG_VERSION', '1.0.0' );
 }
 
 /**
@@ -247,7 +247,7 @@ function hybridmag_widgets_init() {
 		array(
 			'name'          => esc_html__( 'Magazine Builder', 'hybridmag' ),
 			'description'   => esc_html__( 'Add Posts Blocks here.', 'hybridmag' ),
-			'id'            => 'hm-magazine-1',
+			'id'            => 'hybridmag-magazine-1',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -301,10 +301,10 @@ add_action( 'widgets_init', 'hybridmag_widgets_init' );
  * Enqueue scripts and styles.
  */
 function hybridmag_scripts() {
-	wp_enqueue_style( 'hm-style', get_stylesheet_uri(), array(), EXALT_VERSION );
-	wp_style_add_data( 'hm-style', 'rtl', 'replace' );
+	wp_enqueue_style( 'hybridmag-style', get_stylesheet_uri(), array(), HYBRIDMAG_VERSION );
+	wp_style_add_data( 'hybridmag-style', 'rtl', 'replace' );
 
-	wp_enqueue_script( 'hm-main', get_template_directory_uri() . '/assets/js/main.js', array(), EXALT_VERSION, true );
+	wp_enqueue_script( 'hybridmag-main', get_template_directory_uri() . '/assets/js/main.js', array(), HYBRIDMAG_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -313,11 +313,11 @@ function hybridmag_scripts() {
 	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_show_featured_content', true ) && ! is_page_template( 'page-templates/template-fullwidth.php' ) ) {
 		wp_enqueue_style( 'hybridmag-swiper', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', '', '11.1.4', 'screen' );
 		wp_enqueue_script( 'hybridmag-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', '', '11.1.4', true );
-		wp_enqueue_script( 'hybridmag-swiper-custom', get_template_directory_uri() . '/assets/js/hybridmag-swiper.js', array(), EXALT_VERSION, true );
+		wp_enqueue_script( 'hybridmag-swiper-custom', get_template_directory_uri() . '/assets/js/hybridmag-swiper.js', array(), HYBRIDMAG_VERSION, true );
 	}
 
 	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_display_tabbed_posts', true ) && ! is_page_template( 'page-templates/template-fullwidth.php' ) ) {
-		wp_enqueue_script( 'hybridmag-tabs', get_template_directory_uri() . '/assets/js/tab-widget.js', array(), EXALT_VERSION, true );
+		wp_enqueue_script( 'hybridmag-tabs', get_template_directory_uri() . '/assets/js/tab-widget.js', array(), HYBRIDMAG_VERSION, true );
 	}
 	
 }
@@ -354,50 +354,26 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/custom-header.php';
 
 /**
+ * Block editor related functions. 
+ */
+require get_template_directory() . '/inc/block-editor.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/wptt-webfont-loader.php';
 require get_template_directory() . '/inc/customizer/custom-controls/fonts/fonts.php';
 require get_template_directory() . '/inc/customizer/customizer.php';
-require get_template_directory() . '/inc/typography.php';
-
-if ( ! function_exists( 'hybridmag_get_fonts_array' ) ) :
-	/**
-	 * Gets the user chosen fonts from customizer as an array.
-	 */
-	function hybridmag_get_fonts_array() {
-		$fonts_arr = array();
-		$body_font = get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' );
-		$headings_font = get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' );
-	
-		if ( $body_font && 'Inter' != $body_font ) {
-			$fonts_arr[] = $body_font;
-		}
-	
-		if ( $headings_font && 'DM Sans' != $headings_font ) {
-			$fonts_arr[] = $headings_font;
-		}
-
-		/**
-		 * Since 1.0.0
-		 */
-		$fonts_arr = apply_filters( 'hybridmag_fonts_array', $fonts_arr );
-	
-		if ( empty( $fonts_arr ) ) {
-			return;
-		}
-
-		return $fonts_arr;
-	}
-
-endif;
+require get_template_directory() . '/inc/customizer/settings/typography.php';
+require get_template_directory() . '/inc/css-output.php';
+require get_template_directory() . '/inc/editor-custom-css.php';
 
 if ( ! function_exists( 'hybridmag_get_fonts_url' ) ) :
 	/**
 	 * Gets the font url.
 	 */
 	function hybridmag_get_fonts_url() {
-		$fonts_arr = hybridmag_get_fonts_array();
+		$fonts_arr = hybridmag_typography_loop( 'fonts' );
 
 		if ( empty( $fonts_arr ) ) {
 			return;
@@ -416,12 +392,12 @@ endif;
 function hybridmag_load_fonts() {
 
 	// Load default fonts.
-	if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' ) ) {
-		wp_enqueue_style( 'hm-font-inter', get_theme_file_uri( '/assets/css/font-inter.css' ), array(), EXALT_VERSION, 'all' );
-	}
-	if ( 'Roboto' == get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' ) ) {
-		wp_enqueue_style( 'hm-font-roboto-condensed', get_theme_file_uri( '/assets/css/font-roboto-condensed.css' ), array(), EXALT_VERSION, 'all' );
-	}
+	// if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' ) ) {
+	// 	wp_enqueue_style( 'hm-font-inter', get_theme_file_uri( '/assets/css/font-inter.css' ), array(), HYBRIDMAG_VERSION, 'all' );
+	// }
+	// if ( 'Roboto' == get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' ) ) {
+	// 	wp_enqueue_style( 'hm-font-roboto-condensed', get_theme_file_uri( '/assets/css/font-roboto-condensed.css' ), array(), HYBRIDMAG_VERSION, 'all' );
+	// }
 
 	$font_url = hybridmag_get_fonts_url();
 
@@ -442,37 +418,17 @@ add_action( 'wp_enqueue_scripts', 'hybridmag_load_fonts' );
 /**
  * Display custom color CSS in customizer and on frontend.
  */
-function hybridmag_custom_css_wrap() {
-	require_once get_parent_theme_file_path( 'inc/css-output.php' );
-	?>
+function hybridmag_custom_css_wrap( $output = NULL ) {
 
-	<style type="text/css" id="hm-custom-css">
-		<?php echo wp_strip_all_tags( hybridmag_custom_css() ); ?>
+	// Add filter for adding custom css via other functions
+	$output = apply_filters( 'hybridmag_head_css', $output ); ?>
+
+	<style type="text/css" id="hybridmag-custom-css">
+		<?php echo wp_strip_all_tags( $output ); ?>
 	</style>
 	<?php
 }
 add_action( 'wp_head', 'hybridmag_custom_css_wrap' );
-
-/**
- * Display custom font CSS in customizer and on frontend.
- */
-function hybridmag_custom_typography_wrap() {
-	if ( is_admin() ) {
-		return;
-	}
-	?>
-
-	<style type="text/css" id="hm-fonts-css">
-		<?php echo wp_strip_all_tags( hybridmag_custom_typography_css() ); ?>
-	</style>
-	<?php
-}
-add_action( 'wp_head', 'hybridmag_custom_typography_wrap' );
-
-/**
- * Block editor related functions. 
- */
-require get_template_directory() . '/inc/block-editor.php';
 
 /**
  * Theme Info Page.

@@ -9,7 +9,7 @@ select,
 optgroup,
 textarea {
 	color: var(--hybridmag-color-text-main);
-	font-family: var(--hybridmag-font-family-body);
+	font-family: $font__main;
 	font-size: 1rem;
 	line-height: var(--hybridmag-line-height-body);
 }

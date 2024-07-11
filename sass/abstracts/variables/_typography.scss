@@ -1,9 +1,9 @@
-:root {
-    --hybridmag-font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --hybridmag-font-family-headings: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-    --hybridmag-font-family-code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-    --hybridmag-font-family-pre: "Courier 10 Pitch", courier, monospace;
+$font__main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$font__headings: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$font__code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font__pre: "Courier 10 Pitch", courier, monospace;
 
+:root {
     --hybridmag-font-size-base: 16px;
     --hybridmag-font-size-xxxs: 0.75rem; // 12px
     --hybridmag-font-size-xxs: 0.813rem; // 13px

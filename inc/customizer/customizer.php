@@ -406,167 +406,6 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Typography Options Section
-	$wp_customize->add_section(
-		'hybridmag_typography_section',
-		array(
-			'title' 		=> esc_html__( 'Typography', 'hybridmag' ),
-			'description' 	=> esc_html__( 'If you select a "Google" font it will be automatically downloaded and served locally from your server.', 'hybridmag' ),
-			'priority' 		=> 50
-		)
-	);
-
-	$wp_customize->add_setting( 
-		'hybridmag_font_family_1',
-		array(
-			'default'           => 'DM Sans',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control( 
-		new HybridMag_Fonts_Control( $wp_customize, 'hybridmag_font_family_1',
-		array(
-			'label'         => esc_html__( 'Body Font', 'hybridmag' ),
-			'section'       => 'hybridmag_typography_section',
-			'settings'      => 'hybridmag_font_family_1'
-		)
-	) );
-
-	$wp_customize->add_setting( 
-		'hybridmag_font_family_2',
-		array(
-			'default'           => 'DM Sans',
-			'sanitize_callback' => 'sanitize_text_field',
-		)
-	);
-	$wp_customize->add_control( 
-		new HybridMag_Fonts_Control( $wp_customize, 'hybridmag_font_family_2',
-		array(
-			'label'         => esc_html__( 'Headings Font', 'hybridmag' ),
-			'section'       => 'hybridmag_typography_section',
-			'settings'      => 'hybridmag_font_family_2'
-		)
-	) );
-
-	$wp_customize->add_setting(
-		'hybridmag_headings_font_weight',
-		array(
-			'default'			=> '',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'hybridmag_sanitize_select'
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_headings_font_weight',
-		array(
-			'settings'		=> 'hybridmag_headings_font_weight',
-			'section'		=> 'hybridmag_typography_section',
-			'type'			=> 'select',
-			'label'			=> esc_html__( 'Headings Font Weight', 'hybridmag' ),
-			'description'	=> esc_html__( 'Only the font supported font weights will be applied.', 'hybridmag' ),
-			'choices'		=> array(
-				''          => esc_html__( 'Default', 'hybridmag' ),
-				'100'       => esc_html__( 'Thin: 100', 'hybridmag' ),
-				'200'       => esc_html__( 'Extra Light: 200', 'hybridmag' ),
-				'300'       => esc_html__( 'Light: 300', 'hybridmag' ),
-				'400'       => esc_html__( 'Normal: 400', 'hybridmag' ),
-				'500'       => esc_html__( 'Medium: 500', 'hybridmag' ),
-				'600'       => esc_html__( 'Semi Bold: 600', 'hybridmag' ),
-				'700'       => esc_html__( 'Bold: 700', 'hybridmag' ),
-				'800'       => esc_html__( 'Extra Bold: 800', 'hybridmag' ),
-				'900'       => esc_html__( 'Black: 900', 'hybridmag' )
-			)
-		)
-	);
-
-	// Site Title Font Size - Desktop.
-	$wp_customize->add_setting(
-		'hybridmag_site_title_desktop_font_size',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'sanitize_text_field'
-		)
-	);
-	// Site Title Font Size - Tab.
-	$wp_customize->add_setting(
-		'hybridmag_site_title_tablet_font_size',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'sanitize_text_field'
-		)
-	);
-	// Site Title Font Size - Mobile.
-	$wp_customize->add_setting(
-		'hybridmag_site_title_mobile_font_size',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'sanitize_text_field'
-		)
-	);
-	$wp_customize->add_control( 
-		new HybridMag_Responsive_Number_Control( $wp_customize, 'hybridmag_site_title_font_size',
-		array(
-			'label'         => esc_html__( 'Site Title Font Size', 'hybridmag' ),
-			'description' 	=> esc_html__( 'You can add: px-em-rem', 'hybridmag' ),
-			'section'       => 'hybridmag_typography_section',
-			'settings'      => array(
-				'desktop'   => 'hybridmag_site_title_desktop_font_size',
-				'tablet'    => 'hybridmag_site_title_tablet_font_size',
-				'mobile'    => 'hybridmag_site_title_mobile_font_size'
-			)
-		)
-	) );
-
-	// Article Font Size - Desktop.
-	$wp_customize->add_setting(
-		'hybridmag_post_desktop_font_size',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'sanitize_text_field'
-		)
-	);
-	// Article Font Size - Tab.
-	$wp_customize->add_setting(
-		'hybridmag_post_tablet_font_size',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'sanitize_text_field'
-		)
-	);
-	// Article Font Size - Mobile.
-	$wp_customize->add_setting(
-		'hybridmag_post_mobile_font_size',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'sanitize_text_field'
-		)
-	);
-	$wp_customize->add_control( 
-		new HybridMag_Responsive_Number_Control( $wp_customize, 'hybridmag_post_font_size',
-		array(
-			'label'         => esc_html__( 'Single Post Content Font Size', 'hybridmag' ),
-			'description' 	=> esc_html__( 'You can add: px-em-rem', 'hybridmag' ),
-			'section'       => 'hybridmag_typography_section',
-			'settings'      => array(
-				'desktop'   => 'hybridmag_post_desktop_font_size',
-				'tablet'    => 'hybridmag_post_tablet_font_size',
-				'mobile'    => 'hybridmag_post_mobile_font_size'
-			)
-		)
-	) );
-
 	// General Settings Panel
 	$wp_customize->add_panel(
 		'hybridmag_panel_general_settings',
@@ -3017,7 +2856,7 @@ function hybridmag_customize_partial_blogdescription() {
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
  */
 function hybridmag_customize_preview_js() {
-	wp_enqueue_script( 'hm-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/customizer.js', array( 'customize-preview' ), EXALT_VERSION, true );
+	wp_enqueue_script( 'hm-customizer', get_template_directory_uri() . '/inc/customizer/assets/js/customizer.js', array( 'customize-preview' ), HYBRIDMAG_VERSION, true );
 }
 add_action( 'customize_preview_init', 'hybridmag_customize_preview_js' );
 
@@ -3034,7 +2873,7 @@ add_action( 'customize_controls_print_styles', 'hybridmag_enqueue_customizer_sty
  * Enqueue Customize Control JS
  */
 function hybridmag_enqueue_customize_control_scripts() {
-	wp_enqueue_script( 'hm-customizer-controls', get_template_directory_uri() . '/inc/customizer/assets/js/customizer-controls.js', array( 'jquery', 'customize-base' ), false, true );
+	wp_enqueue_script( 'hm-customizer-controls', get_template_directory_uri() . '/inc/customizer/assets/js/customizer-controls.js', array( 'jquery', 'customize-base', 'customize-controls' ), false, true );
 }
 add_action( 'customize_controls_enqueue_scripts', 'hybridmag_enqueue_customize_control_scripts' );
 

@@ -471,7 +471,7 @@
 		}
 
 		.post-title {
-			font-family: var(--hybridmag-font-family-headings);
+			font-family: $font__headings;
 			color: var(--hybridmag-color-link);
 			font-size: 20px;
 			font-weight: 600;
