@@ -103,8 +103,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
                 ';
             }
         } elseif ( 'boxed' === $site_layout ) {
-            $boxed_container_width = get_theme_mod( 'hybridmag_boxed_width', 1380 );
-            if ( 1380 != $boxed_container_width && ! empty( $boxed_container_width ) && $boxed_container_width >= 300 ) {
+            $boxed_container_width = get_theme_mod( 'hybridmag_boxed_width', 1280 );
+            if ( 1280 != $boxed_container_width && ! empty( $boxed_container_width ) && $boxed_container_width >= 300 ) {
                 $theme_css .= '
                     body.hm-boxed #page {
                         width: '. esc_attr( $boxed_container_width ) .'px;
@@ -232,7 +232,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_top ) {
             $theme_css .= '
                 @media screen and (min-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner {
+                    '.$header_layout_class.' .hm-header-inner-wrapper {
                         padding-top: '. esc_attr( $header_padding_top ) .'px;
                     }
                 }
@@ -244,7 +244,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_bottom ) {
             $theme_css .= '
                 @media screen and (min-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner {
+                    '.$header_layout_class.' .hm-header-inner-wrapper {
                         padding-bottom: '. esc_attr( $header_padding_bottom ) .'px;
                     }
                 }
@@ -256,7 +256,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_top_t ) {
             $theme_css .= '
                 @media (min-width: 480px) and (max-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner {
+                    '.$header_layout_class.' .hm-header-inner-wrapper {
                         padding-top: '. esc_attr( $header_padding_top_t ) .'px;
                     }
                 }
@@ -268,7 +268,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_bottom_t ) {
             $theme_css .= '
                 @media (min-width: 480px) and (max-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner {
+                    '.$header_layout_class.' .hm-header-inner-wrapper {
                         padding-bottom: '. esc_attr( $header_padding_bottom_t ) .'px;
                     }
                 }
@@ -280,7 +280,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_top_m ) {
             $theme_css .= '
                 @media (max-width: 480px) {
-                    '.$header_layout_class.' .hm-header-inner {
+                    '.$header_layout_class.' .hm-header-inner-wrapper {
                         padding-top: '. esc_attr( $header_padding_top_m ) .'px;
                     }
                 }
@@ -292,7 +292,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_bottom_m ) {
             $theme_css .= '
                 @media (max-width: 480px) {
-                    '.$header_layout_class.' .hm-header-inner {
+                    '.$header_layout_class.' .hm-header-inner-wrapper {
                         padding-bottom: '. esc_attr( $header_padding_bottom_m ) .'px;
                     }
                 }
@@ -318,19 +318,11 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         }
 
         // Default header - Primary menu line height.
-        $header_line_height = get_theme_mod( 'hybridmag_pmenu_line_height', 62 );
-        if ( 62 != $header_line_height ) {
+        $header_height = get_theme_mod( 'hybridmag_header_height', '' );
+        if ( ! empty( $header_height ) ) {
             $theme_css .= '
-                .hm-h-de .main-navigation ul li a {
-                    line-height: '. esc_attr( $header_line_height ) .'px;
-                }
-                .hm-h-de .hm-header-inner .hm-social-menu li a,
-                .hm-h-de #hm-search-toggle,
-                .hm-h-de .hm-header-inner .hm-slideout-toggle {
-                    height: '. esc_attr( $header_line_height ) .'px;
-                }
-                .hm-h-de .main-navigation ul ul li a {
-                    line-height: initial;
+                .hm-h-de .hm-header-inner  {
+                    min-height: '. esc_attr( $header_line_height ) .'px;
                 }
             ';
         }

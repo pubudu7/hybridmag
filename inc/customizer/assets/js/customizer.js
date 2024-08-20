@@ -79,20 +79,20 @@
 				$( '.hm-h-lg .main-navigation ul ul li a' ).css( {
 					'line-height': 'initial',
 				} );
-				$( '.hm-h-de .main-navigation ul li a' ).css( {
-					'line-height': to + 'px',
+			}
+		} );
+	} ); 
+
+	// Menu height.
+	wp.customize( 'hybridmag_header_height', function( value ) {
+		value.bind( function( to ) {
+			if( to && ( to >= 30 ) && ( to <= 600 ) ) {
+				$( '.hm-h-de .hm-header-inner' ).css( {
+					'min-height': to + 'px',
 				} );
-				$( '.hm-h-de .hm-header-inner .hm-social-menu li a' ).css( {
-					'height': to + 'px',
-				} );
-				$( '.hm-h-de #hm-search-toggle' ).css( {
-					'height': to + 'px',
-				} );
-				$( '.hm-h-de .hm-header-inner .hm-slideout-toggle' ).css( {
-					'height': to + 'px',
-				} );
-				$( '.hm-h-de .main-navigation ul ul li a' ).css( {
-					'line-height': 'initial',
+			} else {
+				$( '.hm-h-de .hm-header-inner' ).css( {
+					'min-height': 'inherit',
 				} );
 			}
 		} );

@@ -719,6 +719,29 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Header - Height
+	$wp_customize->add_setting( 
+		'hybridmag_header_height',
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'hybridmag_sanitize_slider_number_input',
+			'transport'         => 'postMessage'
+		)
+	);
+	$wp_customize->add_control( 
+		new HybridMag_Slider_Control( $wp_customize, 'hybridmag_header_height',
+		array(
+			'label'         => esc_html__( 'Header Height (px)', 'hybridmag' ),
+			'section'       => 'hybridmag_header_layout_section',
+			'input_attrs'   => array(
+				'min'   => 30,
+				'max'   => 600,
+				'step'  => 1,
+			),
+			'active_callback' => 'hybridmag_is_default_header'
+		)
+	) );
+
 	// Header Padding Top - Desktop
 	$wp_customize->add_setting(
 		'hybridmag_header_padding_top_desktop',
@@ -955,7 +978,8 @@ function hybridmag_customize_register( $wp_customize ) {
 				'min'   => 20,
 				'max'   => 300,
 				'step'  => 1,
-			)
+			),
+			'active_callback' => 'hybridmag_is_large_header'
 		)
 	) );
 
@@ -1216,7 +1240,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Header Width.
+	// Top bar Width.
 	$wp_customize->add_setting(
 		'hybridmag_topbar_width',
 		array(
