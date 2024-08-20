@@ -17,15 +17,16 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         $css_variables = "";
 
         $primary_color = get_theme_mod( 'hybridmag_primary_color', '#FC5656' );
+        $inner_background_color = get_theme_mod( 'hybridmag_inner_bg_color', '' );
         $text_color = get_theme_mod( 'hybridmag_text_color', '#2c2b2b' );
         $headings_text_color = get_theme_mod( 'hybridmag_headings_text_color', '#2c2b2b' );
         $links_color = get_theme_mod( 'hybridmag_links_color', '#2c2b2b' );
         $links_hover_color = get_theme_mod( 'hybridmag_links_hover_color', '' );
-        $inner_background_color = get_theme_mod( 'hybridmag_boxed_inner_bg_color', '#ffffff' );
         $button_bg_color = get_theme_mod( 'hybridmag_button_bg_color', '' );
         $button_bg_hover_color = get_theme_mod( 'hybridmag_button_bg_hover_color', '' );
         $button_text_color = get_theme_mod( 'hybridmag_button_text_color', '' );
         $button_text_hover_color = get_theme_mod( 'hybridmag_button_text_hover_color', '' );
+        $global_border_radius = get_theme_mod( 'hybridmag_global_border_radius', 6 );
 
         if ( ! empty( $primary_color ) && '#FC5656' != $primary_color ) {
             $css_variables .= '
@@ -57,12 +58,6 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             ';
         }
 
-        if ( ! empty( $inner_background_color ) && '#ffffff' != $inner_background_color ) {
-            $css_variables .= '
-                --hybridmag-color-body-background: '. esc_attr( $inner_background_color ) .';
-            ';
-        }
-
         if ( ! empty( $button_bg_color ) ) {
             $css_variables .= '
                 --hybridmag-color-button-background: '. esc_attr( $button_bg_color ) .';
@@ -86,6 +81,12 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
                 --hybridmag-color-button-hover-text: '. esc_attr( $button_text_hover_color ) .';
             ';
         }
+        
+        if ( 6 != $global_border_radius ) {
+            $css_variables .= '
+                --hybridmag-global-border-radius: '. esc_attr( $global_border_radius ) .'px;
+            ';
+        }
 
         $theme_css .= '
             :root { ' . $css_variables . ' }
@@ -93,8 +94,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
         $site_layout = get_theme_mod( 'hybridmag_site_layout', 'wide' );
         if ( 'wide' === $site_layout ) {
-            $container_width = get_theme_mod( 'hybridmag_container_width', 1280 );
-            if ( 1280 != $container_width && ! empty( $container_width ) && $container_width >= 300 ) {
+            $container_width = get_theme_mod( 'hybridmag_container_width', 1200 );
+            if ( 1200 != $container_width && ! empty( $container_width ) && $container_width >= 300 ) {
                 $theme_css .= '
                     .hm-container {
                         width: '. esc_attr( $container_width ) .'px;
@@ -112,10 +113,10 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             }
         }
 
-        $sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 29.6875 );
+        $sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 30 );
         $sidebar_width = floatval( $sidebar_width );
         $content_area_width = 100 - $sidebar_width;
-        if ( ! empty( $sidebar_width ) && 29.6875 != $sidebar_width && 50 >= $sidebar_width && 15 <= $sidebar_width ) {
+        if ( ! empty( $sidebar_width ) && 30 != $sidebar_width && 50 >= $sidebar_width && 15 <= $sidebar_width ) {
             $theme_css .= '
                 @media only screen and (min-width: 768px) {
                     #primary {
@@ -197,6 +198,24 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
                     }
                 }
             ';
+        }
+
+        if ( ! empty( $inner_background_color ) ) {
+
+            if ( 'separate-containers' === get_theme_mod( 'hybridmag_content_layout', 'separate-containers' ) ) {
+                $theme_css .= '
+                    body.hm-boxed #page {
+                        background-color: '. esc_attr( $inner_background_color ) .';
+                    }
+                ';   
+            } else {
+                $theme_css .= '
+                    body.hm-boxed.hm-cl-one #page {
+                        background-color: '. esc_attr( $inner_background_color ) .';
+                    }
+                ';     
+            }
+       
         }
 
         $header_layout_class = ".hm-h-lg";

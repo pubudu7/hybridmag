@@ -4,62 +4,46 @@
  * 
  * @since 1.0.0
  */
+
+/**
+ * Slider Custom Control
+ *
+ * @author Anthony Hortin <http://maddisondesigns.com>
+ * @license http://www.gnu.org/licenses/gpl-2.0.html
+ * @link https://github.com/maddisondesigns
+ */
 if ( class_exists( 'WP_Customize_Control' ) ) :
 
     class HybridMag_Slider_Control extends WP_Customize_Control {
-
-        public $type = 'hybridmag-slider';
-
+        /**
+         * The type of control being rendered
+         */
+        public $type = 'hybridmag-slider-control';
         /**
          * Enqueue our scripts and styles
          */
         public function enqueue() {
-            wp_enqueue_script( 'hybridmag-slider-control-js', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.js', array( 'jquery', 'customize-base' ), false, true );
-            wp_enqueue_style( 'hybridmag-slider-control-css', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.css', array(), '1.0', 'all' );
+            wp_enqueue_script( 'hybridmag-slider-control', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.js', array( 'jquery', 'jquery-ui-core' ), '1.0', true );
+            wp_enqueue_style( 'hybridmag-slider-control', get_template_directory_uri() . '/inc/customizer/custom-controls/slider/slider.css', array(), '1.0', 'all' );
         }
-
         /**
-         * Refresh the parameters passed to the JavaScript via JSON.
-         *
-         * @see WP_Customize_Control::to_json()
+         * Render the control in the customizer
          */
-        public function to_json() {
-            parent::to_json();
-            $this->json[ 'value' ]      = $this->setting->value();
-            $this->json[ 'link' ]       = $this->get_link();
-            $this->json[ 'default' ]    = isset( $this->setting->default ) ? $this->setting->default : ''; 
-            
-            $this->json[ 'choices' ]['min'] = ( isset( $this->choices['min'] ) ? $this->choices['min'] : '0' );
-            $this->json[ 'choices' ]['max'] = ( isset( $this->choices['max'] ) ? $this->choices['max'] : '100' );
-            $this->json[ 'choices' ]['step'] = ( isset( $this->choices['step'] ) ? $this->choices['step'] : '1' );
-        }
-
-        /**
-         * Render content function should be empty.
-         */
-        public function render_content() {}
-
-        /**
-         * Render JS template for the content of the Slider Control.
-         */
-        protected function content_template() { ?>
-            <label>
-                <# if ( data.label ) { #>
-                    <span class="customize-control-title">{{ data.label }}</span>
-                <# } #>
-                <# if ( data.description ) { #>
-                    <span class="customize-control-description">{{ data.description }}</span>
-                <# } #>
-                
-                <div class="hybridmag-slider-control-wrapper">
-                    <input type="range" min="{{ data.choices['min'] }}" max="{{ data.choices['max'] }}" step="{{ data.choices['step'] }}" value="{{ data.value }}" data-reset_value="{{ data.default }}" {{{ data.link }}} class="hybridmag-slider">
-                    <input class="hybridmag-slider-text" type="number" />
-                    <span class="hybridmag-slider-reset"><span class="dashicons dashicons-image-rotate"></span></span>
+        public function render_content() {
+            $default_value = isset( $this->setting->default ) ? $this->setting->default : '';  
+        ?>
+            <div class="hybridmag-slider-control">
+                <span class="customize-control-title">
+                    <?php echo esc_html( $this->label ); ?>
+                </span>
+                <div class="hybridmag-slider-control-wrap">
+                    <div class="slider" slider-min-value="<?php echo esc_attr( $this->input_attrs['min'] ); ?>" slider-max-value="<?php echo esc_attr( $this->input_attrs['max'] ); ?>" slider-step-value="<?php echo esc_attr( $this->input_attrs['step'] ); ?>"></div>
+                    <input type="number" id="<?php echo esc_attr( $this->id ); ?>" name="<?php echo esc_attr( $this->id ); ?>" value="<?php echo esc_attr( $this->value() ); ?>" class="customize-control-slider-value" <?php $this->link(); ?> />
+                    <span class="slider-reset dashicons dashicons-image-rotate" slider-reset-value="<?php echo esc_attr( $default_value ); ?>"></span>
                 </div>
-            </label>
-            <?php
+            </div>
+        <?php
         }
-
     }
 
 endif;

@@ -149,13 +149,13 @@ function hybridmag_block_editor_styles() {
 
     $theme_customizations = '';
 
-    // Get block editor related customizations.
+    // Get typography related customizations.
     $theme_customizations .= hybridmag_block_editor_css();
 
-    require_once get_parent_theme_file_path( 'inc/css-output.php' );
+    //require_once get_parent_theme_file_path( 'inc/css-output.php' );
 
     // Get theme custom styles.
-	$theme_customizations .= hybridmag_custom_css();
+	//$theme_customizations .= hybridmag_custom_css();
 
 	if ( $theme_customizations ) {
 		wp_add_inline_style( 'hybridmag-block-editor-styles', $theme_customizations );

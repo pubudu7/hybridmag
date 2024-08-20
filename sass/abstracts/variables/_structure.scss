@@ -1,6 +1,14 @@
 :root {
-    --hybridmag-post-cols-gap: 35px;
-    --hybridmag-footer-cols-gap: 35px;
+    --hybridmag-global-spacing: 50px;
+    --hybridmag-global-spacing-inner: 30px;
+    --hybridmag-post-cols-gap: var( --hybridmag-global-spacing );
+    --hybridmag-footer-cols-gap: var( --hybridmag-global-spacing );
     --hybridmag-global-box-shadow: 0 0 15px 0 rgba( 0, 0, 0, 0.06);
     --hybridmag-global-border-radius: 6px;
+}
+
+.hm-cl-sep {
+    --hybridmag-global-spacing: 35px;
+    --hybridmag-post-cols-gap: var( --hybridmag-global-spacing );
+    --hybridmag-footer-cols-gap: var( --hybridmag-global-spacing );
 }

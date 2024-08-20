@@ -41,10 +41,6 @@
 
 			// After entry title hook.
 			do_action( 'hybridmag_after_entry_title' );
-
-			if ( 'post' === get_post_type() ) {
-				hybridmag_entry_meta();
-			}
 			
 			?>
 
@@ -78,6 +74,10 @@
 			<?php 
 				// After entry content hook.
 				do_action( 'hybridmag_after_entry_content' );
+
+				if ( 'post' === get_post_type() ) {
+					hybridmag_entry_meta();
+				}
 			?>
 
 		</div><!-- .entry-content-wrapper -->

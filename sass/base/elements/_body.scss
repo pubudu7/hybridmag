@@ -1,35 +1,46 @@
 body {
-	background-color: var(--hybridmag-color-body-background); // Fallback for when there is no custom background color defined.
+	background-color: #f5f5f5; // Fallback for when there is no custom background color defined.
+
+	&.hm-cl-one {
+		background-color: #ffffff;
+	}
+
+	&.hm-boxed {
+		background-color: #dddddd;
+
+		#page {
+			margin: 0 auto;
+			width: 1280px;
+			max-width: 100%;
+			background-color: #f5f5f5;
+		}
+
+		&.hm-cl-one {
+			#page {
+				background-color: #ffffff;
+			}
+		}
+	}
+
 }
 
 .hm-container {
-	width: 1280px;
+	width: 1200px;
 	max-width: 95%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-body.hm-boxed {
-	background-color: var(--hybridmag-color-boxed-layout-background);
-
-	#page {
-		margin: 0 auto;
-		width: 1380px;
-		max-width: 100%;
-		background-color: var(--hybridmag-color-body-background);
-	}
-}
-
 body.hm-boxed .hm-container {
 	width: auto;
-	max-width: 92.7536231884058%;
+	max-width: 93.75%;
 }
 
 .site-content {
 	padding: 30px 0;
 
 	@media only screen and (min-width: 600px) {
-		padding: 50px 0;
+		padding: var( --hybridmag-global-spacing ) 0;
 	}
 }
 
@@ -40,19 +51,19 @@ body.hm-boxed .hm-container {
 	}
 	
 	#primary {
-		width: 70.3125%;
+		width: 67.083333333%;
 	}
 	
 	#secondary {
-		width: 29.6875%;
-		padding-left: 35px;
+		width: 32.916666667%;
+		padding-left: var( --hybridmag-global-spacing );
 	}
 
 	.hm-left-sidebar {
 		#secondary {
 			order: -10;
 			padding-left: 0;
-			padding-right: 35px;
+			padding-right: var( --hybridmag-global-spacing );
 		}
 		.hm-featured-top {
 			order: -20;

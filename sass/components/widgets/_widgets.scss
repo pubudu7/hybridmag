@@ -1,5 +1,5 @@
 .widget {
-	margin: 0 0 35px;
+	margin: 0 0 var( --hybridmag-global-spacing );
 
 	// Make sure select elements fit in widgets.
 	select {
@@ -43,9 +43,6 @@
 }
 
 #secondary {
-	.widget {
-		padding: 30px;
-	}
 	.widget-title,
 	.wp-block-heading {
 		color: var(--hybridmag-color-text-headings);
@@ -53,12 +50,10 @@
 }
 
 .hm-cl-sep #secondary .widget {
+	padding: 30px;
 	background: #ffffff;
-	box-shadow: var( --hybridmag-global-box-shadow );
-}
-
-.hm-has-br #secondary .widget {
-	border-radius: 6px;
+	box-shadow: var(--hybridmag-global-box-shadow);
+	border-radius: var(--hybridmag-global-border-radius);
 }
 
 .widget-title,

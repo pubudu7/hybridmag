@@ -305,6 +305,7 @@ function hybridmag_get_google_fonts() {
             'Federo',
             'Felipa',
             'Fenix',
+            'Figtree',
             'Finger Paint',
             'Fira Mono',
             'Fira Sans',

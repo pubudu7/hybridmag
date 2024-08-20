@@ -1,8 +1,6 @@
 :root {
   --hybridmag-color-primary: #FC5656;
   --hybridmag-color-tertiary: #272c30;
-  --hybridmag-color-body-background: #ffffff;
-  --hybridmag-color-boxed-layout-background: #dddddd;
   --hybridmag-color-light-background: #F7F6F1;
   --hybridmag-color-dark-background: #3c3c3c;
   --hybridmag-color-main-menu: #272c30;
@@ -155,7 +153,7 @@
   /* Elements
   --------------------------------------------- */
   body {
-    background-color: var(--hybridmag-color-body-background);
+    background-color: #ffffff;
   }
   
   hr {

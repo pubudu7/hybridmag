@@ -101,7 +101,7 @@
 	background-color: transparent;
 	border: none;
 	color: #ffffff;
-	padding: 0 1rem;
+	padding: 0 8px;
 	display: flex;
 	align-items: center;
 
@@ -277,7 +277,8 @@
 
 .hm-h-de {
 	.site-header {
-		background: #0E2A30;
+		background: #ffffff;
+		box-shadow: var(--hybridmag-global-box-shadow);
 	}
 
 	.hm-header-inner {

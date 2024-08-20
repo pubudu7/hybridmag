@@ -53,14 +53,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 :root {
   --hybridmag-color-primary: #E36457;
   --hybridmag-color-tertiary: #272c30;
-  --hybridmag-color-body-background: #EEEEEE;
-  --hybridmag-color-boxed-layout-background: #dddddd;
   --hybridmag-color-light-background: #F7F6F1;
   --hybridmag-color-dark-background: #3c3c3c;
   --hybridmag-color-main-menu: #272c30;
-  --hybridmag-color-text-main: #2c2b2b;
+  --hybridmag-color-text-main: #404040;
   --hybridmag-color-text-light: #7D7D7D;
-  --hybridmag-color-text-headings: var(--hybridmag-color-text-main);
+  --hybridmag-color-text-headings: #222222;
   --hybridmag-color-link: #2c2b2b;
   --hybridmag-color-link-hover: var(--hybridmag-color-primary);
   --hybridmag-color-link-visited: #5d7ddb;
@@ -77,10 +75,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 
 :root {
-  --hybridmag-font-family-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --hybridmag-font-family-headings: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --hybridmag-font-family-code: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
-  --hybridmag-font-family-pre: "Courier 10 Pitch", courier, monospace;
   --hybridmag-font-size-base: 16px;
   --hybridmag-font-size-xxxs: 0.75rem;
   --hybridmag-font-size-xxs: 0.813rem;
@@ -100,10 +94,18 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 }
 
 :root {
-  --hybridmag-post-cols-gap: 35px;
-  --hybridmag-footer-cols-gap: 35px;
+  --hybridmag-global-spacing: 50px;
+  --hybridmag-global-spacing-inner: 30px;
+  --hybridmag-post-cols-gap: var( --hybridmag-global-spacing );
+  --hybridmag-footer-cols-gap: var( --hybridmag-global-spacing );
   --hybridmag-global-box-shadow: 0 0 15px 0 rgba( 0, 0, 0, 0.06);
   --hybridmag-global-border-radius: 6px;
+}
+
+.hm-cl-sep {
+  --hybridmag-global-spacing: 35px;
+  --hybridmag-post-cols-gap: var( --hybridmag-global-spacing );
+  --hybridmag-footer-cols-gap: var( --hybridmag-global-spacing );
 }
 
 /*--------------------------------------------------------------
@@ -457,7 +459,7 @@ select,
 optgroup,
 textarea {
   color: var(--hybridmag-color-text-main);
-  font-family: var(--hybridmag-font-family-body);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 1rem;
   line-height: var(--hybridmag-line-height-body);
 }
@@ -469,7 +471,7 @@ h4,
 h5,
 h6 {
   clear: both;
-  font-family: var(--hybridmag-font-family-headings);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   line-height: var(--hybridmag-line-height-headings);
   font-weight: var(--hybridmag-font-weight-headings);
   margin: 20px 0;
@@ -500,7 +502,7 @@ h6 {
 }
 
 .site-title {
-  font-family: var(--hybridmag-font-family-body);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: 26px;
   font-weight: bold;
   line-height: 1.2;
@@ -550,7 +552,7 @@ address {
 
 pre {
   background: var(--hybridmag-color-background-pre);
-  font-family: var(--hybridmag-font-family-pre);
+  font-family: "Courier 10 Pitch", courier, monospace;
   line-height: var(--hybridmag-line-height-pre);
   margin-bottom: 1.6em;
   max-width: 100%;
@@ -562,7 +564,7 @@ code,
 kbd,
 tt,
 var {
-  font-family: var(--hybridmag-font-family-code);
+  font-family: monaco, consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
 }
 
 abbr,
@@ -584,29 +586,34 @@ big {
 /* Elements
 --------------------------------------------- */
 body {
-  background-color: var(--hybridmag-color-body-background);
+  background-color: #f5f5f5;
+}
+body.hm-cl-one {
+  background-color: #ffffff;
+}
+body.hm-boxed {
+  background-color: #dddddd;
+}
+body.hm-boxed #page {
+  margin: 0 auto;
+  width: 1280px;
+  max-width: 100%;
+  background-color: #f5f5f5;
+}
+body.hm-boxed.hm-cl-one #page {
+  background-color: #ffffff;
 }
 
 .hm-container {
-  width: 1280px;
+  width: 1200px;
   max-width: 95%;
   margin-left: auto;
   margin-right: auto;
 }
 
-body.hm-boxed {
-  background-color: var(--hybridmag-color-boxed-layout-background);
-}
-body.hm-boxed #page {
-  margin: 0 auto;
-  width: 1380px;
-  max-width: 100%;
-  background-color: var(--hybridmag-color-body-background);
-}
-
 body.hm-boxed .hm-container {
   width: auto;
-  max-width: 92.7536231884%;
+  max-width: 93.75%;
 }
 
 .site-content {
@@ -614,7 +621,7 @@ body.hm-boxed .hm-container {
 }
 @media only screen and (min-width: 600px) {
   .site-content {
-    padding: 50px 0;
+    padding: var(--hybridmag-global-spacing) 0;
   }
 }
 
@@ -624,16 +631,16 @@ body.hm-boxed .hm-container {
     flex-wrap: wrap;
   }
   #primary {
-    width: 70.3125%;
+    width: 67.083333333%;
   }
   #secondary {
-    width: 29.6875%;
-    padding-left: 35px;
+    width: 32.916666667%;
+    padding-left: var(--hybridmag-global-spacing);
   }
   .hm-left-sidebar #secondary {
     order: -10;
     padding-left: 0;
-    padding-right: 35px;
+    padding-right: var(--hybridmag-global-spacing);
   }
   .hm-left-sidebar .hm-featured-top {
     order: -20;
@@ -759,7 +766,7 @@ input[type=submit],
   cursor: pointer;
   line-height: 1;
   padding: 0.8rem 1rem;
-  font-family: var(--hybridmag-font-family-headings);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
 }
@@ -799,7 +806,7 @@ svg.hm-svg-icon {
   color: var(--hybridmag-color-button-text);
   line-height: 1;
   padding: 10px 20px;
-  font-family: var(--hybridmag-font-family-headings);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
   margin: 0 12px;
@@ -954,7 +961,7 @@ textarea {
   background-color: transparent;
   border: none;
   color: #ffffff;
-  padding: 0 1rem;
+  padding: 0 8px;
   display: flex;
   align-items: center;
 }
@@ -1092,7 +1099,8 @@ textarea {
 }
 
 .hm-h-de .site-header {
-  background: #0E2A30;
+  background: #ffffff;
+  box-shadow: var(--hybridmag-global-box-shadow);
 }
 .hm-h-de .hm-header-inner {
   padding-top: 5px;
@@ -1444,7 +1452,7 @@ textarea {
   .hm-footer-widgets-inner {
     display: flex;
     flex-wrap: wrap;
-    gap: 40px;
+    gap: var(--hybridmag-footer-cols-gap);
   }
 }
 
@@ -1818,7 +1826,7 @@ textarea {
   font-weight: 600;
 }
 .post-navigation .nav-links .post-title {
-  font-family: var(--hybridmag-font-family-headings);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: var(--hybridmag-color-link);
   font-size: 20px;
   font-weight: 600;
@@ -1956,7 +1964,7 @@ textarea {
 .hm-entry {
   word-break: break-word;
   overflow-wrap: break-word;
-  margin-bottom: 35px;
+  margin-bottom: var(--hybridmag-global-spacing);
 }
 .hm-entry .post-thumbnail {
   margin: 0 0 15px;
@@ -1972,7 +1980,49 @@ textarea {
   font-size: var(--hybridmag-font-size-lg);
   margin: 0 0 10px;
 }
+.hm-entry .entry-content {
+  color: #505050;
+  margin-top: 0;
+}
+.hm-entry .entry-content p {
+  margin: 0;
+}
 
+.hm-cl-sep .hm-entry {
+  background: #ffffff;
+  box-shadow: var(--hybridmag-global-box-shadow);
+  border-radius: var(--hybridmag-global-border-radius);
+  overflow: hidden;
+}
+
+.hm-post-grid.hm-arc-img-ah .hm-entry .post-thumbnail img, .hm-post-grid.hm-arc-img-bh .hm-entry .post-thumbnail img {
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (min-width: 600px) {
+  .hm-post-grid #blog-entries {
+    display: flex;
+    flex-wrap: wrap;
+    -moz-column-gap: var(--hybridmag-post-cols-gap);
+         column-gap: var(--hybridmag-post-cols-gap);
+  }
+  .hm-post-grid.hm-grid-2 #blog-entries .hm-entry {
+    width: calc(50% - var(--hybridmag-post-cols-gap) / 2);
+  }
+  .hm-post-grid.hm-grid-3 #blog-entries .hm-entry {
+    width: calc(33.333% - var(--hybridmag-post-cols-gap) * 2 / 3);
+  }
+  .hm-post-grid.hm-grid-4 #blog-entries .hm-entry {
+    width: calc(25% - var(--hybridmag-post-cols-gap) * 3 / 4);
+  }
+  .hm-post-grid.hm-grid-5 #blog-entries .hm-entry {
+    width: calc(20% - var(--hybridmag-post-cols-gap) * 4 / 5);
+  }
+  .hm-post-grid.hm-grid-6 #blog-entries .hm-entry {
+    width: calc(16.66667% - var(--hybridmag-post-cols-gap) * 5 / 6);
+  }
+}
 .entry-meta {
   font-size: var(--hybridmag-font-size-xs);
   font-weight: 500;
@@ -2008,32 +2058,6 @@ textarea {
   margin: 0 0.6em;
 }
 
-.hm-cl-sep .hm-entry {
-  background: #ffffff;
-  box-shadow: var(--hybridmag-global-box-shadow);
-}
-
-.hm-has-br .hm-entry {
-  border-radius: var(--hybridmag-global-border-radius);
-  overflow: hidden;
-}
-
-.hm-entry .entry-content {
-  color: #505050;
-  margin-top: 0;
-}
-.hm-entry .entry-content p {
-  margin: 0;
-}
-
-.page-header {
-  margin: 0 0 60px;
-}
-.page-header h1 {
-  margin: 0 0 15px;
-  color: var(--hybridmag-color-text-headings);
-}
-
 .hm-read-more {
   color: var(--hybridmag-color-link);
   font-weight: 600;
@@ -2057,93 +2081,6 @@ a.hm-readmore-btn:visited {
   color: #ffffff;
 }
 
-.page .entry-header {
-  margin: 0 0 35px;
-}
-.page .entry-header h1 {
-  margin: 0;
-}
-.page .hm-entry {
-  font-size: var(--hybridmag-font-size-md);
-  line-height: var(--hybridmag-line-height-article);
-}
-.page .entry-footer {
-  margin: 40px 0;
-}
-.page .edit-link {
-  margin: 0;
-}
-
-.single .entry-title {
-  color: var(--hybridmag-color-text-headings);
-  font-size: 35px;
-  margin: 0 0 10px;
-}
-.single .entry-header {
-  margin: 0 0 35px;
-}
-.single .post-thumbnail {
-  margin: 0 0 35px;
-}
-.single .entry-footer {
-  display: flex;
-  margin: 40px 0;
-}
-
-.hm-entry-single {
-  font-size: var(--hybridmag-font-size-md);
-  line-height: var(--hybridmag-line-height-article);
-}
-.hm-entry-single .entry-content {
-  margin-bottom: 35px;
-}
-
-.hm-cl-sep .hm-entry-single {
-  margin-bottom: 35px;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: var(--hybridmag-global-border-radius);
-  box-shadow: var(--hybridmag-global-box-shadow);
-}
-
-.edit-link {
-  font-style: italic;
-  font-weight: 600;
-  margin-left: 1em;
-}
-
-.hm-img-rb .hm-entry .post-thumbnail img {
-  border-radius: 15px;
-}
-
-.hm-post-grid.hm-arc-img-ah .hm-entry .post-thumbnail img, .hm-post-grid.hm-arc-img-bh .hm-entry .post-thumbnail img {
-  width: 100%;
-  height: auto;
-}
-
-@media only screen and (min-width: 600px) {
-  .hm-post-grid #blog-entries {
-    display: flex;
-    flex-wrap: wrap;
-    -moz-column-gap: var(--hybridmag-post-cols-gap);
-         column-gap: var(--hybridmag-post-cols-gap);
-  }
-  .hm-post-grid.hm-grid-2 #blog-entries .hm-entry {
-    width: calc(50% - var(--hybridmag-post-cols-gap) / 2);
-  }
-  .hm-post-grid.hm-grid-3 #blog-entries .hm-entry {
-    width: calc(33.333% - var(--hybridmag-post-cols-gap) * 2 / 3);
-  }
-  .hm-post-grid.hm-grid-4 #blog-entries .hm-entry {
-    width: calc(25% - var(--hybridmag-post-cols-gap) * 3 / 4);
-  }
-  .hm-post-grid.hm-grid-5 #blog-entries .hm-entry {
-    width: calc(20% - var(--hybridmag-post-cols-gap) * 4 / 5);
-  }
-  .hm-post-grid.hm-grid-6 #blog-entries .hm-entry {
-    width: calc(16.66667% - var(--hybridmag-post-cols-gap) * 5 / 6);
-  }
-}
 .entry-title a {
   color: var(--hybridmag-color-link);
 }
@@ -2186,11 +2123,11 @@ a.hm-readmore-btn:visited {
   display: flex;
 }
 .hm-arc-img-ba .hm-entry .post-thumbnail {
-  flex-basis: 44.4444444%;
+  flex-basis: 46.273291925%;
 }
 .hm-arc-img-ba .hm-entry .hm-article-inner {
+  flex-basis: 46.273291925%;
   flex-grow: 1;
-  flex-basis: 47.777777778%;
 }
 .hm-arc-img-ba.hybridmagaif-right .post-thumbnail {
   order: 2;
@@ -2209,7 +2146,7 @@ a.hm-readmore-btn:visited {
   align-items: center;
 }
 .hm-arc-img-ba.hm-post-list .hm-entry .post-thumbnail {
-  margin-bottom: 0;
+  margin: 0 30px 0 0;
   border-top-right-radius: var(--hybridmag-global-border-radius);
   border-bottom-right-radius: var(--hybridmag-global-border-radius);
   box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.08);
@@ -2222,6 +2159,7 @@ a.hm-readmore-btn:visited {
   .hm-arc-img-ba.hm-post-list .hm-entry .post-thumbnail {
     width: 100%;
     margin: 0 0 30px 0;
+    border-radius: var(--hybridmag-global-border-radius);
   }
 }
 @media (max-width: 599px) {
@@ -2235,6 +2173,9 @@ a.hm-readmore-btn:visited {
 @media (min-width: 600px) {
   .hm-arc-img-ba.hm-post-list.hm-cl-sep .hm-entry {
     padding: 30px 0;
+  }
+  .hm-arc-img-ba.hm-post-list.hm-cl-sep .hm-entry .post-thumbnail {
+    margin-right: 0;
   }
 }
 @media (min-width: 600px) {
@@ -2451,6 +2392,10 @@ a.hm-readmore-btn:visited {
   border-radius: var(--hybridmag-global-border-radius);
 }
 
+.hm-cl-sep .hm-slider {
+  box-shadow: var(--hybridmag-global-box-shadow);
+}
+
 .hm-slide-holder {
   position: relative;
   background-color: #f5f5f5;
@@ -2555,9 +2500,6 @@ a.hm-readmore-btn:visited {
   left: auto;
 }
 
-.hm-highlighted-posts {
-  overflow: hidden;
-}
 @media screen and (max-width: 767px) {
   .hm-highlighted-posts {
     margin: 0 -1px;
@@ -2570,6 +2512,7 @@ a.hm-readmore-btn:visited {
   height: auto;
   z-index: 1;
   border-radius: var(--hybridmag-global-border-radius);
+  box-shadow: var(--hybridmag-global-box-shadow);
   overflow: hidden;
 }
 @media screen and (max-width: 767px) {
@@ -2666,15 +2609,13 @@ a.hm-readmore-btn:visited {
 @media (min-width: 600px) {
   .hm-tab-posts-wrapper {
     display: flex;
+    align-items: flex-start;
     gap: 30px;
   }
 }
 
 .hm-tab-post-card {
-  border-radius: var(--hybridmag-global-border-radius);
-  box-shadow: var(--hybridmag-global-box-shadow);
   overflow: hidden;
-  background: #ffffff;
 }
 @media (min-width: 600px) and (max-width: 767px) {
   .hm-tab-post-card {
@@ -2687,8 +2628,18 @@ a.hm-readmore-btn:visited {
   }
 }
 
-.hm-tab-post-details {
+.hm-cl-sep .hm-tab-post-card {
+  border-radius: var(--hybridmag-global-border-radius);
+  box-shadow: var(--hybridmag-global-box-shadow);
+  background: #ffffff;
+}
+.hm-cl-sep .hm-tab-post-details {
   padding: 20px;
+  margin-top: 0;
+}
+
+.hm-tab-post-details {
+  margin-top: 15px;
 }
 .hm-tab-post-details .entry-meta {
   font-size: var(--hybridmag-font-size-xxs);
@@ -2733,6 +2684,65 @@ a.hm-readmore-btn:visited {
 .hm-fp-small .entry-title {
   margin: 0;
   font-size: var(--hybridmag-font-size-base);
+}
+
+.page .entry-header {
+  margin: 0 0 35px;
+}
+.page .entry-header h1 {
+  margin: 0;
+}
+.page .entry-footer {
+  margin: 40px 0;
+}
+.page .edit-link {
+  margin: 0;
+}
+
+.page-header {
+  margin: 0 0 60px;
+}
+.page-header h1 {
+  margin: 0 0 15px;
+  color: var(--hybridmag-color-text-headings);
+}
+
+.single .entry-title {
+  color: var(--hybridmag-color-text-headings);
+  font-size: 35px;
+  margin: 0 0 10px;
+}
+.single .entry-header {
+  margin: 0 0 35px;
+}
+.single .post-thumbnail {
+  margin: 0 0 35px;
+}
+.single .entry-footer {
+  display: flex;
+  margin: 40px 0;
+}
+
+.hm-entry-single {
+  font-size: var(--hybridmag-font-size-md);
+  line-height: var(--hybridmag-line-height-article);
+}
+.hm-entry-single .entry-content {
+  margin-bottom: 35px;
+}
+
+.hm-cl-sep .hm-entry-single {
+  margin-bottom: 35px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: var(--hybridmag-global-border-radius);
+  box-shadow: var(--hybridmag-global-box-shadow);
+}
+
+.edit-link {
+  font-style: italic;
+  font-weight: 600;
+  margin-left: 1em;
 }
 
 /* Comments
@@ -2999,7 +3009,7 @@ footer.comment-meta {
 /* Widgets
 --------------------------------------------- */
 .widget {
-  margin: 0 0 35px;
+  margin: 0 0 var(--hybridmag-global-spacing);
 }
 .widget select {
   max-width: 100%;
@@ -3032,21 +3042,16 @@ footer.comment-meta {
   clear: both;
 }
 
-#secondary .widget {
-  padding: 30px;
-}
 #secondary .widget-title,
 #secondary .wp-block-heading {
   color: var(--hybridmag-color-text-headings);
 }
 
 .hm-cl-sep #secondary .widget {
+  padding: 30px;
   background: #ffffff;
   box-shadow: var(--hybridmag-global-box-shadow);
-}
-
-.hm-has-br #secondary .widget {
-  border-radius: 6px;
+  border-radius: var(--hybridmag-global-border-radius);
 }
 
 .widget-title,

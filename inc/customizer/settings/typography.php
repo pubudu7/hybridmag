@@ -50,7 +50,7 @@ function hybridmag_customize_typography( $wp_customize ) {
 	$wp_customize->add_panel(
 		'hybridmag_typography_panel',
 		array(
-			'priority' 			=> 50,
+			'priority' 			=> 24,
 			'capability' 		=> 'edit_theme_options',
 			'title' 			=> esc_html__( 'Typography', 'hybridmag' )
 		)

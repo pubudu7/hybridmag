@@ -43,12 +43,12 @@ function hybridmag_get_block_editor_content_width() {
 	$site_layout = get_theme_mod( 'hybridmag_site_layout', 'wide' );
 	if ( 'boxed' == $site_layout ) {
 		$boxed_width = get_theme_mod( 'hybridmag_boxed_width', 1380 );
-		$container_width = ( $boxed_width * 92.7536231884058 ) / 100;
+		$container_width = ( $boxed_width * 93.75 ) / 100;
 	} else {
-		$container_width = get_theme_mod( 'hybridmag_container_width', 1280 );
+		$container_width = get_theme_mod( 'hybridmag_container_width', 1200 );
 	}
 	
-	$sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 29.6875 );
+	$sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 30 );
 	$layout = hybridmag_get_block_editor_sidebar_layout();
 
 	if ( 'left-sidebar' === $layout || 'right-sidebar' === $layout ) {

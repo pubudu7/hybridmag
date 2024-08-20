@@ -1,50 +1,63 @@
-wp.customize.controlConstructor['hybridmag-slider'] = wp.customize.Control.extend({
+/**
+ * Slider Custom Control
+ *
+ * @author Anthony Hortin <http://maddisondesigns.com>
+ * @license http://www.gnu.org/licenses/gpl-2.0.html
+ * @link https://github.com/maddisondesigns
+ */
+jQuery( document ).ready(function($) {
 
-    ready: function() {
+	"use strict";
 
-        'use strict';
-        
-        var control             = this,
-            // changeAction        = ( 'postMessage' === control.setting.transport ) ? 'mousemove change' : 'change',
-            rangeInput          = control.container.find( '.hybridmag-slider' ),
-            textInput           = control.container.find( '.hybridmag-slider-text' ),
-			resetBtn            = control.container.find( '.hybridmag-slider-reset' ),
-            value               = control.setting._value;
-            
-        // Set the initial value in the text input.
-        textInput.attr( 'value', value );
-        
-		// If the range input value changes copy the value to the text input.
-		rangeInput.on( 'mousemove change', function() {
-			textInput.attr( 'value', rangeInput.val() );
-		} );
+	// Set our slider defaults and initialise the slider
+	$('.hybridmag-slider-control').each(function(){
+		var sliderValue = $(this).find('.customize-control-slider-value').val();
+		var newSlider = $(this).find('.slider');
+		var sliderMinValue = parseFloat(newSlider.attr('slider-min-value'));
+		var sliderMaxValue = parseFloat(newSlider.attr('slider-max-value'));
+		var sliderStepValue = parseFloat(newSlider.attr('slider-step-value'));
 
-		// Save the value when the range input value changes.
-		// This is separate from the above because of the postMessage differences.
-		// If the control refreshes the preview pane,
-		// we don't want a refresh for every change
-		// but 1 final refresh when the value is changed.
-		// rangeInput.on( changeAction, function() {
-        //     control.setting.set( rangeInput.val() );
-		// } );
+		newSlider.slider({
+			value: sliderValue,
+			min: sliderMinValue,
+			max: sliderMaxValue,
+			step: sliderStepValue,
+			change: function(e,ui){
+				// Important! When slider stops moving make sure to trigger change event so Customizer knows it has to save the field
+				$(this).parent().find('.customize-control-slider-value').trigger('change');
+	      }
+		});
+	});
 
-        // If the text input value changes,
-		// copy the value to the range input
-		// and then save.
-		textInput.on( 'input paste change', function() {
-			rangeInput.attr( 'value', textInput.val() );
-			control.setting.set( textInput.val() );
-		} );
+	// Change the value of the input field as the slider is moved
+	$('.slider').on('slide', function(event, ui) {
+		$(this).parent().find('.customize-control-slider-value').val(ui.value);
+	});
 
-		// If the reset button is clicked,
-		// set slider and text input values to default
-		// and then save.
-		resetBtn.on( 'click', function() {
-            textInput.attr( 'value', control.params.default );
-			rangeInput.attr( 'value', control.params.default );
-			control.setting.set( textInput.val() );
-		} );
+	// Reset slider and input field back to the default value
+	$('.slider-reset').on('click', function() {
+		var resetValue = $(this).attr('slider-reset-value');
+		$(this).parent().find('.customize-control-slider-value').val(resetValue);
+		$(this).parent().find('.slider').slider('value', resetValue);
+	});
 
-    }
+	// Update slider if the input field loses focus as it's most likely changed
+	$('.customize-control-slider-value').blur(function() {
+		var resetValue = $(this).val();
+		var slider = $(this).parent().find('.slider');
+		var sliderMinValue = parseInt(slider.attr('slider-min-value'));
+		var sliderMaxValue = parseInt(slider.attr('slider-max-value'));
+
+		// Make sure our manual input value doesn't exceed the minimum & maxmium values
+		if(resetValue < sliderMinValue) {
+			resetValue = sliderMinValue;
+			$(this).val(resetValue);
+		}
+		if(resetValue > sliderMaxValue) {
+			resetValue = sliderMaxValue;
+			$(this).val(resetValue);
+		}
+		$(this).parent().find('.slider').slider('value', resetValue);
+	});
 
 });

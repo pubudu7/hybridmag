@@ -1,11 +1,11 @@
 <?php
 
 function hybridmag_enqueue_admin_scripts( $hook ) {
-    if ( 'appearance_page_about-hm-theme' != $hook ) {
+    if ( 'appearance_page_hybridmag' != $hook ) {
         return;
     }
-    wp_register_style( 'hm-admin-css', get_template_directory_uri() . '/inc/dashboard/css/admin.css', false, '1.0.0' );
-    wp_enqueue_style( 'hm-admin-css' );
+    wp_register_style( 'hybridmag-admin-css', get_template_directory_uri() . '/inc/dashboard/css/admin.css', false, '1.0.0' );
+    wp_enqueue_style( 'hybridmag-admin-css' );
 }
 add_action( 'admin_enqueue_scripts', 'hybridmag_enqueue_admin_scripts' );
 
@@ -16,7 +16,7 @@ function hybridmag_admin_notice() {
     ?>
     <div class="updated notice notice-info is-dismissible">
         <p><?php esc_html_e( 'Welcome to HybridMag! To get started with HybridMag please visit the theme Welcome page.', 'hybridmag' ); ?></p>
-        <p><a class="button" href="<?php echo esc_url( admin_url( 'themes.php?page=about-hm-theme' ) ); ?>"><?php _e( 'Get Started with HybridMag', 'hybridmag' ) ?></a></p>
+        <p><a class="button" href="<?php echo esc_url( admin_url( 'themes.php?page=hybridmag' ) ); ?>"><?php _e( 'Get Started with HybridMag', 'hybridmag' ) ?></a></p>
     </div>
     <?php
 }
@@ -36,7 +36,7 @@ function hybridmag_add_themeinfo_page() {
     // Menu title can be displayed with recommended actions count.
     $menu_title = esc_html__( 'HybridMag Theme', 'hybridmag' );
 
-    add_theme_page( esc_html__( 'HybridMag Theme', 'hybridmag' ), $menu_title , 'edit_theme_options', 'about-hm-theme', 'hybridmag_themeinfo_page_render' );
+    add_theme_page( esc_html__( 'HybridMag Theme', 'hybridmag' ), $menu_title , 'edit_theme_options', 'hybridmag', 'hybridmag_themeinfo_page_render' );
 
 }
 add_action( 'admin_menu', 'hybridmag_add_themeinfo_page' );
@@ -51,12 +51,37 @@ function hybridmag_themeinfo_page_render() { ?>
 
         <p><?php echo esc_html( $theme_info->get( 'Description' ) ); ?></p>
 
-        <?php hybridmag_admin_welcome_page(); ?>
+        <h2 class="nav-tab-wrapper">
+            <a class="nav-tab <?php if ( $_GET['page'] == 'hybridmag' && ! isset( $_GET['tab'] ) ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag' ), 'themes.php' ) ) ); ?>">
+                <?php echo 'HybridMag'; ?>
+            </a>
+            <a class="nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'starter-templates' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag', 'tab' => 'starter-templates' ), 'themes.php' ) ) ); ?>">
+                <?php esc_html_e( 'Starter Templates', 'hybridmag' ); ?>
+            </a>
+        </h2>
+
+        <?php
+
+        $current_tab = ! empty( $_GET['tab'] ) ? sanitize_title( $_GET['tab'] ) : '';
+
+        if ( $current_tab == 'starter-templates' ) {
+            hybridmag_starter_templates();
+        } else {
+            hybridmag_admin_welcome_page();
+        } 
+        
+        ?>
 
     </div><!-- .wrap .about-wrap -->
 
     <?php
 
+}
+
+function hybridmag_starter_templates() {
+    if ( function_exists( 'bnmbt_display_demo_showcase' ) ) {
+        bnmbt_display_demo_showcase();
+    }
 }
 
 function hybridmag_admin_welcome_page() {
@@ -75,7 +100,7 @@ function hybridmag_admin_welcome_page() {
             <div class="th-theme-infobox-content">
                 <h3><?php esc_html_e( 'Theme Documentation', 'hybridmag' ); ?></h3>
                 <p><?php esc_html_e( 'Need to learn all about HybridMag? Read the theme documentation carefully.', 'hybridmag' ) ?></p>
-                <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hm-wordpress-theme-documentation/' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>
+                <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hybridmag-wordpress-theme-documentation/' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>
             </div>
             </div>
 

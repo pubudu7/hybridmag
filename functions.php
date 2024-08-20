@@ -95,8 +95,8 @@ function hybridmag_setup() {
 	);
 
 	// Set up the WordPress core custom background feature.
-	add_theme_support( 'custom-background', apply_filters( 'bam_custom_background_args', array(
-		'default-color' => '#ffffff',
+	add_theme_support( 'custom-background', apply_filters( 'hybridmag_custom_background_args', array(
+		'default-color' => '',
 		'default-image' => '',
 	) ) );
 
@@ -171,13 +171,13 @@ function hybridmag_content_width() {
 
 	$site_layout = get_theme_mod( 'hybridmag_site_layout', 'wide' );
 	if ( 'boxed' == $site_layout ) {
-		$boxed_width = get_theme_mod( 'hybridmag_boxed_width', 1380 );
-		$container_width = ( $boxed_width * 92.7536231884058 ) / 100;
+		$boxed_width = get_theme_mod( 'hybridmag_boxed_width', 1280 );
+		$container_width = ( $boxed_width * 93.75 ) / 100;
 	} else {
-		$container_width = get_theme_mod( 'hybridmag_container_width', 1280 );
+		$container_width = get_theme_mod( 'hybridmag_container_width', 1200 );
 	}
 	
-	$sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 29.6875 );
+	$sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 30 );
 	$layout = hybridmag_get_layout();
 
 	if ( 'left-sidebar' === $layout || 'right-sidebar' === $layout ) {
@@ -442,3 +442,8 @@ require get_template_directory() . '/inc/dashboard/theme-info.php';
 require get_template_directory() . '/inc/structure/header.php';
 require get_template_directory() . '/inc/structure/navigation.php';
 require get_template_directory() . '/inc/structure/featured.php';
+
+/**
+ * Demo Data.
+ */
+require get_template_directory() . '/inc/demo-data.php';
