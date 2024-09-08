@@ -460,7 +460,7 @@ if ( ! function_exists( 'hybridmag_post_thumbnail' ) ) :
 	 */
 	function hybridmag_post_thumbnail() {
 
-		if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+		if ( ! hybridmag_can_show_post_thumbnail() ) {
 			return;
 		}
 
@@ -471,6 +471,7 @@ if ( ! function_exists( 'hybridmag_post_thumbnail' ) ) :
 
 			<div class="post-thumbnail">
 				<?php the_post_thumbnail( $image_size ); ?>
+				<?php hybridmag_post_thumbnail_caption(); ?>
 			</div><!-- .post-thumbnail -->
 
 		<?php else : ?>
@@ -496,6 +497,33 @@ if ( ! function_exists( 'hybridmag_post_thumbnail' ) ) :
 		endif; // End is_singular().
 	}
 endif;
+
+if ( ! function_exists( 'hybridmag_post_thumbnail_caption' ) ) {
+	/**
+	 * Displays a post thumbnail caption and/or credit.
+	 *
+	 * Wraps the caption and credit in a figcaption and span.
+	 */
+	function hybridmag_post_thumbnail_caption() {
+		if ( ! hybridmag_can_show_post_thumbnail() ) {
+			return;
+		}
+
+		// Check the existance of the caption separately.
+		$caption_exists = get_post( get_post_thumbnail_id() )->post_excerpt;
+
+		// Only get the caption if one exists.
+		if ( $caption_exists ) {
+			$caption = get_the_excerpt( get_post_thumbnail_id() );
+		}
+
+		if ( $caption_exists ) :
+			?>
+			<figcaption><span><?php echo wp_kses_post( $caption ); ?></span></figcaption>
+			<?php
+		endif;
+	}
+}
 
 if ( ! function_exists( 'hybridmag_post_previous_next' ) ) :
 	/**

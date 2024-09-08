@@ -16,7 +16,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
         $css_variables = "";
 
-        $primary_color = get_theme_mod( 'hybridmag_primary_color', '#FC5656' );
+        $primary_color = get_theme_mod( 'hybridmag_primary_color', '#65bc7b' );
         $inner_background_color = get_theme_mod( 'hybridmag_inner_bg_color', '' );
         $text_color = get_theme_mod( 'hybridmag_text_color', '#2c2b2b' );
         $headings_text_color = get_theme_mod( 'hybridmag_headings_text_color', '#2c2b2b' );
@@ -28,7 +28,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         $button_text_hover_color = get_theme_mod( 'hybridmag_button_text_hover_color', '' );
         $global_border_radius = get_theme_mod( 'hybridmag_global_border_radius', 6 );
 
-        if ( ! empty( $primary_color ) && '#FC5656' != $primary_color ) {
+        if ( ! empty( $primary_color ) && '#65bc7b' != $primary_color ) {
             $css_variables .= '
                 --hybridmag-color-primary: '. esc_attr( $primary_color ) .';
             ';
@@ -218,9 +218,9 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
        
         }
 
-        $header_layout_class = ".hm-h-lg";
+        $header_layout_inner_class = ".hm-h-lg .hm-header-inner";
         if ( 'default' === hybridmag_get_header_layout() ) {
-            $header_layout_class = ".hm-h-de";
+            $header_layout_inner_class = ".hm-h-de .hm-header-inner-wrapper";
         }
 
         /**
@@ -232,7 +232,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_top ) {
             $theme_css .= '
                 @media screen and (min-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner-wrapper {
+                    '.$header_layout_inner_class.' {
                         padding-top: '. esc_attr( $header_padding_top ) .'px;
                     }
                 }
@@ -244,7 +244,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_bottom ) {
             $theme_css .= '
                 @media screen and (min-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner-wrapper {
+                    '.$header_layout_inner_class.' {
                         padding-bottom: '. esc_attr( $header_padding_bottom ) .'px;
                     }
                 }
@@ -256,7 +256,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_top_t ) {
             $theme_css .= '
                 @media (min-width: 480px) and (max-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner-wrapper {
+                    '.$header_layout_inner_class.' {
                         padding-top: '. esc_attr( $header_padding_top_t ) .'px;
                     }
                 }
@@ -268,7 +268,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_bottom_t ) {
             $theme_css .= '
                 @media (min-width: 480px) and (max-width: 768px) {
-                    '.$header_layout_class.' .hm-header-inner-wrapper {
+                    '.$header_layout_inner_class.' {
                         padding-bottom: '. esc_attr( $header_padding_bottom_t ) .'px;
                     }
                 }
@@ -280,7 +280,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_top_m ) {
             $theme_css .= '
                 @media (max-width: 480px) {
-                    '.$header_layout_class.' .hm-header-inner-wrapper {
+                    '.$header_layout_inner_class.' {
                         padding-top: '. esc_attr( $header_padding_top_m ) .'px;
                     }
                 }
@@ -292,7 +292,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         if ( '' != $header_padding_bottom_m ) {
             $theme_css .= '
                 @media (max-width: 480px) {
-                    '.$header_layout_class.' .hm-header-inner-wrapper {
+                    '.$header_layout_inner_class.' {
                         padding-bottom: '. esc_attr( $header_padding_bottom_m ) .'px;
                     }
                 }
@@ -321,8 +321,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
         $header_height = get_theme_mod( 'hybridmag_header_height', '' );
         if ( ! empty( $header_height ) ) {
             $theme_css .= '
-                .hm-h-de .hm-header-inner  {
-                    min-height: '. esc_attr( $header_line_height ) .'px;
+                .hm-h-de .hm-header-inner {
+                    min-height: '. esc_attr( $header_height ) .'px;
                 }
             ';
         }

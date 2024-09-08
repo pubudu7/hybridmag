@@ -536,13 +536,13 @@ if ( ! function_exists( 'hybridmag_get_selected_breadcrumb' ) ) {
 
 }
 
-if ( ! function_exists( 'hybridmag_breadcrumb_template' ) ) {
+if ( ! function_exists( 'hybridmag_locate_breadcrumbs' ) ) {
 	/**
 	 * Adds the breadcrumb to the selected location
 	 * 
 	 * @since 1.0.0
 	 */
-	function hybridmag_breadcrumb_template() {
+	function hybridmag_locate_breadcrumbs() {
 
 		if ( 'none' === get_theme_mod( 'hybridmag_breadcrumb_source', 'none' ) ) {
 			return;
@@ -550,25 +550,25 @@ if ( ! function_exists( 'hybridmag_breadcrumb_template' ) ) {
 
 		if ( 'before-entry-header' === get_theme_mod( 'hybridmag_breadcrumb_location', 'before-entry-header' ) ) {
 			if ( is_archive() || is_search() ) {
-				add_action( 'hybridmag_before_main_content', 'hybridmag_hook_breadcrumb_location', 15 );
+				add_action( 'hybridmag_before_main_content', 'hybridmag_breadcrumb_template', 15 );
 			} elseif ( is_singular() ) {
-				add_action( 'hybridmag_before_entry_header', 'hybridmag_hook_breadcrumb_location', 15 );
+				add_action( 'hybridmag_before_entry_header', 'hybridmag_breadcrumb_template', 15 );
 			}
 		} else {
-			add_action( 'hybridmag_after_header', 'hybridmag_hook_breadcrumb_location', 15 );
+			add_action( 'hybridmag_after_header', 'hybridmag_breadcrumb_template', 15 );
 		}
 
 	}
-	add_action( 'wp', 'hybridmag_breadcrumb_template' );
+	add_action( 'wp', 'hybridmag_locate_breadcrumbs' );
 }
 
-if ( ! function_exists( 'hybridmag_hook_breadcrumb_location' ) ) {
+if ( ! function_exists( 'hybridmag_breadcrumb_template' ) ) {
 	/**
-	 * Hook breadcrumb template to the selected location.
+	 * Hook breadcrumb template.
 	 * 
 	 * @since 1.0.0
 	 */
-	function hybridmag_hook_breadcrumb_location() {
+	function hybridmag_breadcrumb_template() {
 		$breadcrumb_location = get_theme_mod( 'hybridmag_breadcrumb_location', 'before-entry-header' );
 
 		if ( 'after-site-header' === $breadcrumb_location ) {
@@ -669,3 +669,9 @@ function hybridmag_position_featured_image() {
 }
 add_action( 'wp', 'hybridmag_position_featured_image', 5 );
 
+/**
+ * Determines if post thumbnail can be displayed.
+ */
+function hybridmag_can_show_post_thumbnail() {
+	return apply_filters( 'hybridmag_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
+}

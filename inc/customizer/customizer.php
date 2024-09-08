@@ -207,7 +207,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hybridmag_primary_color',
 		array(
-			'default'			=> '#FC5656',
+			'default'			=> '#65bc7b',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
 		)

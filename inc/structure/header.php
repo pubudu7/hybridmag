@@ -82,6 +82,18 @@ function hybridmag_header_template() {
 add_action( 'hybridmag_header', 'hybridmag_header_template' );
 
 /**
+ * Header Widgets area
+ */
+function hybridmag_header_inner_gadgets() {
+    ?>
+        <div class="hm-header-gadgets">
+            <?php do_action( 'hybridmag_header_inner_gadgets' ); ?>
+        </div>
+    <?php
+}
+add_action( 'hybridmag_after_header_main', 'hybridmag_header_inner_gadgets' );
+
+/**
  * Header Sidebar
  */
 function hybridmag_header_sidebar() {
@@ -91,7 +103,7 @@ function hybridmag_header_sidebar() {
         </div>
     <?php endif;
 }
-add_action( 'hybridmag_after_header_main', 'hybridmag_header_sidebar' );
+add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_header_sidebar', 20 );
 
 /**
  * Container Header inner right side
@@ -172,7 +184,7 @@ function hybridmag_locate_cta_btn() {
             add_action( 'hybridmag_header_inner_left', 'hybridmag_header_cta' );
         }
     } elseif ( 'default' == $header_layout ) {
-        add_action( 'hybridmag_after_primary_nav', 'hybridmag_header_cta', 8 );
+        add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_header_cta', 8 );
     }
     
 }
@@ -200,7 +212,7 @@ function hybridmag_locate_social_menu() {
         
     } elseif ( 'default' == $header_layout ) {
         if ( true === get_theme_mod( 'hybridmag_social_beside_pmenu', false ) ) {
-            add_action( 'hybridmag_after_primary_nav', 'hybridmag_social_nav', 5 );
+            add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_social_nav', 5 );
         }
     }
 
