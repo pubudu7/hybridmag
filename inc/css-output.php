@@ -686,6 +686,16 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             ';
         }
 
+        if ( true === get_theme_mod( 'hybridmag_hide_cta_mobile', false ) ) {
+            $theme_css .= '
+                @media ( max-width: 480px ) {
+                    .hm-cta-btn {
+                        display: none;
+                    }
+                }
+            ';
+        }
+
         if ( ! empty( $theme_css ) ) {
             $output .= '/* Custom CSS */'. $theme_css;
         }

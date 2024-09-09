@@ -207,7 +207,7 @@ if ( ! function_exists( 'hybridmag_categories' ) ) :
 	}
 
 endif;
-add_action( 'hybridmag_after_article', 'hybridmag_post_previous_next', 12 );
+add_action( 'hybridmag_before_entry_title', 'hybridmag_categories' );
 
 if ( ! function_exists( 'hybridmag_tags_list' ) ) :
 	/**
@@ -237,12 +237,12 @@ if ( ! function_exists( 'hybridmag_comments_link' ) ) :
 			$num_comments = esc_attr( get_comments_number() );
 
 			if ( $num_comments == 0 ) {
-				$comments_txt = __( 'Comment', 'hitmag-pro' );
+				$comments_txt = __( '0', 'hitmag-pro' );
 			} elseif ( $num_comments > 1 ) {
 				/* translators: %d: number of comments */
-				$comments_txt = sprintf( esc_html__( '%d Comments.', 'hitmag-pro' ), $num_comments );
+				$comments_txt = sprintf( esc_html__( '%d', 'hitmag-pro' ), $num_comments );
 			} else {
-				$comments_txt = __( '1 Comment', 'hitmag-pro' );
+				$comments_txt = __( '1', 'hitmag-pro' );
 			}
 
 			return '<a href="' . esc_url( get_comments_link() ).'">' . $comments_txt . '</a>';
@@ -260,8 +260,15 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 	 */
 	function hybridmag_entry_meta() {
 
+		$entry_meta_post_types = apply_filters(
+			'hybridmag_entry_meta_post_types',
+			array(
+				'post',
+			)
+		);
+	
 		// Return early if this function called on other post types.
-		if ( 'post' !== get_post_type() ) {
+		if ( ! in_array( get_post_type(), $entry_meta_post_types ) ) {
 			return;
 		}
 	
@@ -316,9 +323,9 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 				if ( ! empty( $comments_link ) ) {
 
 					$comments_str = '<span class="comments-link">';
-					if ( 'icon' === $entry_meta_seperator ) {
+					//if ( 'icon' === $entry_meta_seperator ) {
 						$comments_str .= hybridmag_get_icon_svg( 'comment' );
-					}
+					//}
 					$comments_str .= $comments_link;
 					$comments_str .= '</span>';
 
@@ -612,3 +619,36 @@ if ( ! function_exists( 'hybridmag_entry_footer_markup' ) ) {
 	}
 }
 add_action( 'hybridmag_after_entry_content', 'hybridmag_entry_footer_markup' );
+
+
+/**
+ * Add entry meta to the selected locations.
+ */
+function hybridmag_locate_entry_meta() {
+
+	$entry_meta_post_types = apply_filters(
+		'hybridmag_entry_meta_post_types',
+		array(
+			'post',
+		)
+	);
+
+	if ( ! in_array( get_post_type(), $entry_meta_post_types ) ) {
+		return;
+	}
+
+	if ( is_home() || is_archive() || is_search() ) { 
+
+		$location = get_theme_mod( 'hybridmag_entry_meta_location', 'footer' );
+		if ( 'footer' === $location ) {
+			add_action( 'hybridmag_after_entry_content', 'hybridmag_entry_meta' );
+		} else {
+			add_action( 'hybridmag_after_entry_title', 'hybridmag_entry_meta' );
+		}
+		
+	} elseif ( is_single() ) {
+		add_action( 'hybridmag_after_entry_title', 'hybridmag_entry_meta' );
+	}
+
+}
+add_action( 'wp', 'hybridmag_locate_entry_meta', 5 );

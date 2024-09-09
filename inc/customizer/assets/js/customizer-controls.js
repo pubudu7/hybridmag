@@ -45,6 +45,13 @@ jQuery( document ).ready( function() {
 			} );
 		} );
 	} );
+
+    wp.customize.bind( 'ready', function() {
+        $( '#hybridmag_jump_to_nav_menus' ).on( 'click', function( e ) {
+            e.preventDefault();
+            wp.customize.panel( 'nav_menus' ).focus(); // Opens the Menus panel
+        });
+    });
 } )( jQuery );
 
 /**

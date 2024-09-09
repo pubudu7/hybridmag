@@ -26,9 +26,7 @@
 		
 		<header class="entry-header">
 
-			<?php 
-			
-			hybridmag_categories(); 
+			<?php
 
 			// Before entry title hook.
 			do_action( 'hybridmag_before_entry_title' );
@@ -37,10 +35,6 @@
 			
 			// After entry title hook.
 			do_action( 'hybridmag_after_entry_title' );
-			
-			if ( 'post' === get_post_type() ) {
-				hybridmag_entry_meta();
-			}
 
 			?>
 		</header><!-- .entry-header -->

@@ -81,7 +81,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   --hybridmag-font-size-xs: 0.875rem;
   --hybridmag-font-size-sm: 0.938rem;
   --hybridmag-font-size-md: 1.063rem;
-  --hybridmag-font-size-lg: 1.375rem;
+  --hybridmag-font-size-lg: 1.313rem;
   --hybridmag-font-size-xl: 1.5rem;
   --hybridmag-font-size-xxl: 1.625rem;
   --hybridmag-font-size-xxxl: 2rem;
@@ -1998,10 +1998,15 @@ textarea {
 }
 .hm-entry .entry-content {
   color: #505050;
-  margin-top: 0;
 }
-.hm-entry .entry-content p {
-  margin: 0;
+.hm-entry .entry-content > * {
+  margin-bottom: 20px;
+}
+.hm-entry .entry-content > *:last-child {
+  margin-bottom: 0;
+}
+.hm-entry .entry-content-wrapper .entry-meta {
+  margin-top: 20px;
 }
 
 .hm-cl-sep .hm-entry {
@@ -2218,27 +2223,30 @@ a.hm-readmore-btn:visited {
 }
 
 .hm-arc-img-bc .hm-entry .entry-content-wrapper {
-  display: flex;
   margin-top: 1.5em;
 }
 .hm-arc-img-bc .hm-entry .post-thumbnail {
-  flex-basis: 35%;
+  width: 34%;
+  float: left;
   margin: 0 20px 20px 0;
 }
 .hm-arc-img-bc .hm-entry .entry-content {
-  flex-grow: 1;
-  flex-basis: 65%;
+  float: right;
+  width: 63%;
   margin: 0;
 }
 .hm-arc-img-bc .hm-entry .entry-content p {
   margin: 0 0 1.5em;
 }
+.hm-arc-img-bc .hm-entry .entry-meta {
+  width: 63%;
+}
 .hm-arc-img-bc.hybridmagaif-right .post-thumbnail {
-  order: 2;
+  float: right;
   margin: 0 0 20px 20px;
 }
 .hm-arc-img-bc.hybridmagaif-right .entry-content {
-  order: 1;
+  float: left;
 }
 .hm-arc-img-bc.hm-cl-sep .hm-entry {
   padding: 30px;
@@ -2353,10 +2361,6 @@ a.hm-readmore-btn:visited {
 }
 .hm-author-description p {
   margin-bottom: 10px;
-}
-
-.entry-readmore {
-  margin: 20px 0 0;
 }
 
 .hm-blog-section-header {
@@ -2632,15 +2636,18 @@ a.hm-readmore-btn:visited {
 
 .hm-tab-post-card {
   overflow: hidden;
+  margin: 0 0 30px;
 }
 @media (min-width: 600px) and (max-width: 767px) {
   .hm-tab-post-card {
     width: 50%;
+    margin: 0;
   }
 }
 @media (min-width: 768px) {
   .hm-tab-post-card {
     width: 25%;
+    margin: 0;
   }
 }
 
@@ -3230,10 +3237,10 @@ li.hm-tab.th-ui-state-active a {
 /*--------------------------------------------------------------
 # Blocks
 --------------------------------------------------------------*/
-.hm-entry .entry-content > * {
+.hm-entry-single .entry-content > * {
   margin-bottom: 30px;
 }
-.hm-entry .entry-content > *:last-child {
+.hm-entry-single .entry-content > *:last-child {
   margin-bottom: 0;
 }
 

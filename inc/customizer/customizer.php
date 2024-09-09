@@ -1161,6 +1161,15 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
+    // Jump to "Menus" section.
+    $wp_customize->add_control( new HybridMag_Custom_Link_Control( $wp_customize, 'hybridmag_jump_to_nav_menus', 
+		array(
+			'label'    => esc_html__( 'Create / Edit Social Icons Menu', 'hybridmag' ),
+			'section'  => 'hybridmag_social_menu_section',
+			'settings' => array(), // No setting needed
+		) ) 
+	);
+
 	// show social on topbar
 	$wp_customize->add_setting(
 		'hybridmag_display_social_topbar',
@@ -2161,29 +2170,26 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	) );
 
-	// // Archive Featured Image Align
-	// $wp_customize->add_setting(
-	// 	'hybridmag_entry_meta_seperator',
-	// 	array(
-	// 		'default' => '-',
-	// 		'sanitize_callback' => 'hybridmag_sanitize_select'
-	// 	)
-	// );
-	// $wp_customize->add_control(
-	// 	'hybridmag_entry_meta_seperator',
-	// 	array(
-	// 		'type' => 'select',
-	// 		'label' => esc_html__( 'Meta Separator', 'hybridmag' ),
-	// 		'section' => 'hybridmag_blog_meta_section',
-	// 		'choices' => array(
-	// 			'|' => '|',
-	// 			'-'	=> '-',
-	// 			'.' => '.',
-	// 			'icon'	=> 'icon',
-	// 			'none'	=> 'none'
-	// 		)
-	// 	)
-	// );
+	// Entry meta display location
+	$wp_customize->add_setting(
+		'hybridmag_entry_meta_location',
+		array(
+			'default' => 'footer',
+			'sanitize_callback' => 'hybridmag_sanitize_select'
+		)
+	);
+	$wp_customize->add_control(
+		'hybridmag_entry_meta_location',
+		array(
+			'type' => 'select',
+			'label' => esc_html__( 'Post Meta Display', 'hybridmag' ),
+			'section' => 'hybridmag_blog_meta_section',
+			'choices' => array(
+				'footer' 	=> esc_html__( 'After Content/Excerpt', 'hybridmag' ),
+				'header' 	=> esc_html__( 'After Post Title', 'hybridmag' )
+			)
+		)
+	);
 
 	// Archive - Meta Separator
 	$wp_customize->add_setting(
@@ -2285,16 +2291,6 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Blog Section Content / Excerpt
-	$wp_customize->add_section(
-		'hybridmag_blog_content_section',
-		array(
-			'title' => esc_html__( 'Content / Excerpt', 'hybridmag' ),
-			'priority' => 20,
-			'panel'	=> 'hybridmag_panel_blog'
-		)
-	);
-
 	// Content type
 	$wp_customize->add_setting(
 		'hybridmag_content_type',
@@ -2308,7 +2304,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		array(
 			'type' => 'select',
 			'label' => esc_html__( 'Content Type', 'hybridmag' ),
-			'section' => 'hybridmag_blog_content_section',
+			'section' => 'hybridmag_blog_meta_section',
 			'choices' => array(
 				'excerpt' 	=> esc_html__( 'Excerpt', 'hybridmag' ),
 				'content' 	=> esc_html__( 'Content', 'hybridmag' ),
@@ -2330,7 +2326,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'hybridmag_excerpt_length',
 		array(
-			'section'			=> 'hybridmag_blog_content_section',
+			'section'			=> 'hybridmag_blog_meta_section',
 			'type'				=> 'number',
 			'label'				=> esc_html__( 'Excerpt Length', 'hybridmag' ),
 			'active_callback'	=> 'hybridmag_is_excerpt_type'
@@ -2350,7 +2346,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		array(
 			'type' => 'select',
 			'label' => esc_html__( 'Read More Link Type', 'hybridmag' ),
-			'section' => 'hybridmag_blog_content_section',
+			'section' => 'hybridmag_blog_meta_section',
 			'choices' => array(
 				'link'		=> esc_html__( 'Link', 'hybridmag' ),
 				'button' 	=> esc_html__( 'Button', 'hybridmag' ),
@@ -2574,16 +2570,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'section'     => 'hybridmag_post_meta_section',
 		)
 	);
-
-	// Post Meta Section
-	$wp_customize->add_section(
-		'hybridmag_post_content_section',
-		array(
-			'title' => esc_html__( 'Post Content', 'hybridmag' ),
-			'priority' => 10,
-			'panel'	=> 'hybridmag_panel_post'
-		)
-	);
 	
 	// Post - Show category list
 	$wp_customize->add_setting(
@@ -2598,7 +2584,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		array(
 			'type'        => 'checkbox',
 			'label'       => esc_html__( 'Display previous and next links at the bottom of each post.', 'hybridmag' ),
-			'section'     => 'hybridmag_post_content_section',
+			'section'     => 'hybridmag_post_meta_section',
 		)
 	);
 	
@@ -2615,7 +2601,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		array(
 			'type'        => 'checkbox',
 			'label'       => esc_html__( 'Display author bio at the bottom of the post.', 'hybridmag' ),
-			'section'     => 'hybridmag_post_content_section',
+			'section'     => 'hybridmag_post_meta_section',
 		)
 	);
 
