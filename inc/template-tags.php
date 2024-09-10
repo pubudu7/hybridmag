@@ -237,12 +237,12 @@ if ( ! function_exists( 'hybridmag_comments_link' ) ) :
 			$num_comments = esc_attr( get_comments_number() );
 
 			if ( $num_comments == 0 ) {
-				$comments_txt = __( '0', 'hitmag-pro' );
+				$comments_txt = __( '0', 'hybridmag' );
 			} elseif ( $num_comments > 1 ) {
 				/* translators: %d: number of comments */
-				$comments_txt = sprintf( esc_html__( '%d', 'hitmag-pro' ), $num_comments );
+				$comments_txt = sprintf( esc_html__( '%d', 'hybridmag' ), $num_comments );
 			} else {
-				$comments_txt = __( '1', 'hitmag-pro' );
+				$comments_txt = __( '1', 'hybridmag' );
 			}
 
 			return '<a href="' . esc_url( get_comments_link() ).'">' . $comments_txt . '</a>';

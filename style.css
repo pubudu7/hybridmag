@@ -969,7 +969,7 @@ textarea {
 #hm-search-toggle {
   background-color: transparent;
   border: none;
-  color: #ffffff;
+  color: #222222;
   padding: 0 8px;
   display: flex;
   align-items: center;
@@ -1133,10 +1133,10 @@ textarea {
   }
 }
 .hm-h-de .hm-mobile-menu-toggle {
-  color: #ffffff;
+  color: #222222;
 }
 .hm-h-de .hm-mobile-menu-toggle:hover {
-  color: #ffffff;
+  color: #555555;
 }
 .hm-h-de #hm-search-toggle {
   height: 50px;
@@ -1259,13 +1259,13 @@ textarea {
 .hm-slideout-toggle {
   background-color: transparent;
   border: none;
-  color: #ffffff;
+  color: #222222;
   font-size: 21px;
   padding: 0 10px;
 }
 .hm-slideout-toggle:hover {
   background-color: transparent;
-  color: #ffffff;
+  color: #555555;
 }
 .hm-slideout-toggle:active, .hm-slideout-toggle:focus {
   background-color: transparent;
@@ -1638,7 +1638,7 @@ textarea {
   color: var(--hybridmag-color-primary);
 }
 .hm-h-de .main-navigation a {
-  color: #ffffff;
+  color: #222222;
 }
 .hm-h-de .main-navigation ul ul a {
   color: #2c2b2b;
@@ -1651,10 +1651,10 @@ textarea {
 }
 .hm-h-de .hm-header-inner .hm-social-menu a {
   font-size: var(--hybridmag-font-size-sm);
-  color: #ffffff;
+  color: #222222;
 }
 .hm-h-de .hm-header-inner .hm-social-menu a:hover {
-  color: #eeeeee;
+  color: #555555;
 }
 @media (max-width: 959px) {
   .hm-h-de .hm-header-inner .hm-slideout-toggle {

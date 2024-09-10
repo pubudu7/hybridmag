@@ -113,10 +113,10 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             }
         }
 
-        $sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 30 );
+        $sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 32.916666667 );
         $sidebar_width = floatval( $sidebar_width );
         $content_area_width = 100 - $sidebar_width;
-        if ( ! empty( $sidebar_width ) && 30 != $sidebar_width && 50 >= $sidebar_width && 15 <= $sidebar_width ) {
+        if ( ! empty( $sidebar_width ) && 32.916666667 != $sidebar_width && 50 >= $sidebar_width && 15 <= $sidebar_width ) {
             $theme_css .= '
                 @media only screen and (min-width: 768px) {
                     #primary {

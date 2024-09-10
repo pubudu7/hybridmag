@@ -177,7 +177,7 @@ function hybridmag_content_width() {
 		$container_width = get_theme_mod( 'hybridmag_container_width', 1200 );
 	}
 	
-	$sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 30 );
+	$sidebar_width = get_theme_mod( 'hybridmag_sidebar_width', 32.916666667 );
 	$layout = hybridmag_get_layout();
 
 	if ( 'left-sidebar' === $layout || 'right-sidebar' === $layout ) {

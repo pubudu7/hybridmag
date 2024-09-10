@@ -518,7 +518,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting( 
 		'hybridmag_sidebar_width',
 		array(
-			'default'           => 30,
+			'default'           => 32.916666667,
 			'sanitize_callback' => 'hybridmag_sanitize_slider_number_input',
 			//'transport'         => 'postMessage'
 		)
@@ -954,7 +954,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_search_onmenu',
 		array(
-			'label' 	=> esc_html__( 'Display Search Box' ),
+			'label' 	=> esc_html__( 'Display Search Box', 'hybridmag' ),
 			'section' 	=> 'hybridmag_primary_menu_section',
 			'priority'	=> 15,
 		)

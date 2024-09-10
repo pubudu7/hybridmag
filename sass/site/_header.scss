@@ -96,7 +96,7 @@
 #hm-search-toggle {
 	background-color: transparent;
 	border: none;
-	color: #ffffff;
+	color: #222222;
 	padding: 0 8px;
 	display: flex;
 	align-items: center;
@@ -307,10 +307,10 @@
 	}
 
 	.hm-mobile-menu-toggle {
-		color: #ffffff;
+		color: #222222;
 	
 		&:hover {
-			color: #ffffff;
+			color: #555555;
 		}
 	}
 
@@ -460,13 +460,13 @@
 .hm-slideout-toggle {
 	background-color: transparent;
 	border: none;
-	color: #ffffff;
+	color: #222222;
 	font-size: 21px;
 	padding: 0 10px;
 
 	&:hover {
 		background-color: transparent;
-		color: #ffffff;
+		color: #555555;
 	}
 
 	&:active,

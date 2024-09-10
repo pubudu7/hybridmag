@@ -84,7 +84,7 @@ for ( $i = 1; $i <= 5; $i++ ) {
                     
                 <?php else : ?>
                     <div>
-                        <?php esc_html_e( 'No posts found' ); ?>
+                        <?php esc_html_e( 'No posts found', 'hybridmag' ); ?>
                     </div>
                 <?php endif; ?>
                 </div>
