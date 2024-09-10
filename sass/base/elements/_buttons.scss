@@ -30,9 +30,22 @@ svg.hm-svg-icon {
 }
 
 .hm-readmore-btn {
-	font-size: var(--hybridmag-font-size-base);
+	font-size: var(--hybridmag-font-size-xs);
 	display: inline-block;
 	padding: 0.7rem 0.9rem;
+}
+
+a.hm-readmore-btn {
+	text-decoration: none;
+	color: #ffffff;
+
+	&:hover {
+		color: #ffffff;
+	}
+
+	&:visited {
+		color: #ffffff;
+	}
 }
 
 .hm-cta-btn {

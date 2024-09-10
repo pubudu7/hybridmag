@@ -5,6 +5,7 @@ h4,
 h5,
 h6 {
 	clear: both;
+	color: var(--hybridmag-color-text-headings);
 	font-family: $font__headings;
 	line-height: var(--hybridmag-line-height-headings);
 	font-weight: var(--hybridmag-font-weight-headings);
@@ -51,7 +52,7 @@ h6 {
 	a:active,
 	a:focus,
 	a:visited {
-		color: #ffffff;
+		color: #000000;
 	}
 }
 

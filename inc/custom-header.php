@@ -23,7 +23,7 @@ function hybridmag_custom_header_setup() {
 			'hybridmag_custom_header_args',
 			array(
 				'default-image'      => '',
-				'default-text-color' => '222222',
+				'default-text-color' => '000000',
 				'width'              => 2000,
 				'height'             => 550,
 				'flex-height'        => true,

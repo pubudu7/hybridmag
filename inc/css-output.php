@@ -18,9 +18,9 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
         $primary_color = get_theme_mod( 'hybridmag_primary_color', '#65bc7b' );
         $inner_background_color = get_theme_mod( 'hybridmag_inner_bg_color', '' );
-        $text_color = get_theme_mod( 'hybridmag_text_color', '#2c2b2b' );
-        $headings_text_color = get_theme_mod( 'hybridmag_headings_text_color', '#2c2b2b' );
-        $links_color = get_theme_mod( 'hybridmag_links_color', '#2c2b2b' );
+        $text_color = get_theme_mod( 'hybridmag_text_color', '#404040' );
+        $headings_text_color = get_theme_mod( 'hybridmag_headings_text_color', '#222222' );
+        $links_color = get_theme_mod( 'hybridmag_links_color', '#0a0808' );
         $links_hover_color = get_theme_mod( 'hybridmag_links_hover_color', '' );
         $button_bg_color = get_theme_mod( 'hybridmag_button_bg_color', '' );
         $button_bg_hover_color = get_theme_mod( 'hybridmag_button_bg_hover_color', '' );
@@ -34,19 +34,19 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             ';
         }
 
-        if ( ! empty( $text_color ) && '#2c2b2b' != $text_color ) {
+        if ( ! empty( $text_color ) && '#404040' != $text_color ) {
             $css_variables .= '
                 --hybridmag-color-text-main: '. esc_attr( $text_color ) .';
             ';
         }
 
-        if ( ! empty( $headings_text_color ) && '#2c2b2b' != $headings_text_color ) {
+        if ( ! empty( $headings_text_color ) && '#222222' != $headings_text_color ) {
             $css_variables .= '
                 --hybridmag-color-text-headings: '. esc_attr( $headings_text_color ) .';
             ';
         }
 
-        if ( ! empty( $links_color ) && '#2c2b2b' != $links_color ) {
+        if ( ! empty( $links_color ) && '#0a0808' != $links_color ) {
             $css_variables .= '
                 --hybridmag-color-link: '. esc_attr( $links_color ) .';
             ';
@@ -626,7 +626,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
         if ( ! empty( $footer_widget_text_color ) ) {
             $theme_css .= '
-                .site-footer {
+                .site-footer,
+                .site-footer .widget-title {
                     color: '. esc_attr( $footer_widget_text_color ) .';
                 }
             ';

@@ -251,7 +251,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hybridmag_text_color',
 		array(
-			'default'			=> '#2c2b2b',
+			'default'			=> '#404040',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
 		)
@@ -271,7 +271,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hybridmag_headings_text_color',
 		array(
-			'default'			=> '#2c2b2b',
+			'default'			=> '#222222',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
 		)
@@ -291,7 +291,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_setting(
 		'hybridmag_links_color',
 		array(
-			'default'			=> '#2c2b2b',
+			'default'			=> '#0a0808',
 			'capability'		=> 'edit_theme_options',
 			'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
 		)

@@ -136,7 +136,7 @@
 		font-size: var(--hybridmag-font-size-base);
 		font-weight: 600;
 		text-decoration: none;
-		padding: 0 15px;
+		padding: 0 12px;
 		line-height: 50px;
 	}
 }
@@ -227,6 +227,7 @@
 	}
 
 	.hm-header-inner .hm-social-menu a {
+		font-size: var( --hybridmag-font-size-sm );
 		color: #ffffff;
 
 		&:hover {
@@ -251,13 +252,6 @@
 			// border-bottom: 1px solid var( --hybridmag-color-border );
 		}
 	}
-	.site-title a,
-	.site-title a:hover,
-	.site-title a:active,
-	.site-title a:focus,
-	.site-title a:visited {
-		color: #000000;
-	}	
 	&.menu-align-left {
 		.main-navigation { 
 			margin-right: auto;
@@ -504,7 +498,7 @@
 
 	li a {
 		display: flex;
-		padding: 0 9px;
+		padding: 0 7px;
 		align-items: center;
 	}
 }
