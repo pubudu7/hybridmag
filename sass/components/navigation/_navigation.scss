@@ -465,13 +465,14 @@
 
 		.posts-nav-text {
 			color: var(--hybridmag-color-text-light);
+			font-size: 14px;
 			font-weight: 600;
 		}
 
 		.post-title {
 			font-family: $font__headings;
 			color: var(--hybridmag-color-link);
-			font-size: 20px;
+			font-size: 18px;
 			font-weight: 600;
 
 			&:hover {
@@ -483,7 +484,7 @@
 
 .hm-cl-sep .post-navigation {
 	background: #ffffff;
-	padding: 30px;
+	padding: var(--hybridmag-global-inner-spacing);
 	border-radius: var(--hybridmag-global-border-radius);
 	box-shadow: var(--hybridmag-global-box-shadow);
 }
@@ -511,7 +512,8 @@
 	margin: 10px 0 30px;
 
 	.page-numbers {
-		background: #eeeeee;
+		background: #e7e7e7;
+		border-radius: 3px;
 		color: var(--hybridmag-color-text-main);
 		font-weight: 600;
 		padding: 10px 17px;

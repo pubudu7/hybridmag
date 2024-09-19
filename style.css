@@ -90,22 +90,30 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   --hybridmag-line-height-article: 1.7;
   --hybridmag-line-height-headings: 1.3;
   --hybridmag-line-height-pre: 1.6;
-  --hybridmag-font-weight-headings: 700;
+  --hybridmag-font-weight-headings: 600;
 }
 
 :root {
-  --hybridmag-global-spacing: 50px;
-  --hybridmag-global-spacing-inner: 30px;
-  --hybridmag-post-cols-gap: var( --hybridmag-global-spacing );
-  --hybridmag-footer-cols-gap: var( --hybridmag-global-spacing );
+  --hybridmag-global-spacing: 35px;
+  --hybridmag-sidebar-spacing: 35px;
+  --hybridmag-post-cols-gap: 35px;
+  --hybridmag-post-row-gap: 35px;
+  --hybridmag-global-inner-spacing: 15px;
+  --hybridmag-footer-cols-gap: 40px;
   --hybridmag-global-box-shadow: 0 0 15px 0 rgba( 0, 0, 0, 0.06);
   --hybridmag-global-border-radius: 6px;
 }
+@media (min-width: 480px) {
+  :root {
+    --hybridmag-global-inner-spacing: 30px;
+  }
+}
 
-.hm-cl-sep {
-  --hybridmag-global-spacing: 35px;
-  --hybridmag-post-cols-gap: var( --hybridmag-global-spacing );
-  --hybridmag-footer-cols-gap: var( --hybridmag-global-spacing );
+.hm-cl-one {
+  --hybridmag-global-spacing: 50px;
+  --hybridmag-sidebar-spacing: 50px;
+  --hybridmag-post-cols-gap: 50px;
+  --hybridmag-post-row-gap: 50px;
 }
 
 /*--------------------------------------------------------------
@@ -622,7 +630,13 @@ body.hm-boxed .hm-container {
 }
 @media only screen and (min-width: 600px) {
   .site-content {
-    padding: var(--hybridmag-global-spacing) 0;
+    padding: 35px 0;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .hm-cl-one .site-content {
+    padding: 50px 0;
   }
 }
 
@@ -636,12 +650,12 @@ body.hm-boxed .hm-container {
   }
   #secondary {
     width: 32.916666667%;
-    padding-left: var(--hybridmag-global-spacing);
+    padding-left: var(--hybridmag-sidebar-spacing);
   }
   .hm-left-sidebar #secondary {
     order: -10;
     padding-left: 0;
-    padding-right: var(--hybridmag-global-spacing);
+    padding-right: var(--hybridmag-sidebar-spacing);
   }
   .hm-left-sidebar .hm-featured-top {
     order: -20;
@@ -1845,12 +1859,13 @@ textarea {
 }
 .post-navigation .nav-links .posts-nav-text {
   color: var(--hybridmag-color-text-light);
+  font-size: 14px;
   font-weight: 600;
 }
 .post-navigation .nav-links .post-title {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   color: var(--hybridmag-color-link);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
 }
 .post-navigation .nav-links .post-title:hover {
@@ -1859,7 +1874,7 @@ textarea {
 
 .hm-cl-sep .post-navigation {
   background: #ffffff;
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
 }
@@ -1885,7 +1900,8 @@ textarea {
   margin: 10px 0 30px;
 }
 .pagination .page-numbers {
-  background: #eeeeee;
+  background: #e7e7e7;
+  border-radius: 3px;
   color: var(--hybridmag-color-text-main);
   font-weight: 600;
   padding: 10px 17px;
@@ -1986,7 +2002,7 @@ textarea {
 .hm-entry {
   word-break: break-word;
   overflow-wrap: break-word;
-  margin-bottom: var(--hybridmag-global-spacing);
+  margin-bottom: var(--hybridmag-post-row-gap);
 }
 .hm-entry .post-thumbnail {
   margin: 0 0 15px;
@@ -2086,14 +2102,15 @@ textarea {
   margin: 0 0.6em;
 }
 
-.hm-read-more {
+.hm-entry .entry-content .hm-read-more {
+  text-decoration: none;
   color: var(--hybridmag-color-link);
   font-weight: 500;
 }
-.hm-read-more:visited {
+.hm-entry .entry-content .hm-read-more:visited {
   color: var(--hybridmag-color-link);
 }
-.hm-read-more:hover {
+.hm-entry .entry-content .hm-read-more:hover {
   color: var(--hybridmag-color-link-hover);
   text-decoration: underline;
 }
@@ -2185,7 +2202,7 @@ textarea {
   }
 }
 .hm-arc-img-ba.hm-post-list.hm-cl-sep .hm-entry {
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
 }
 @media (min-width: 600px) {
   .hm-arc-img-ba.hm-post-list.hm-cl-sep .hm-entry {
@@ -2199,6 +2216,10 @@ textarea {
   .hm-arc-img-ba.hm-post-list.hm-cl-sep .hm-article-inner {
     margin: 0 30px;
   }
+}
+.hm-arc-img-ba.hm-post-list.hm-cl-one .hm-entry .post-thumbnail {
+  box-shadow: none;
+  border-radius: var(--hybridmag-global-border-radius);
 }
 .hm-arc-img-ba.hm-post-grid.hm-cl-sep .hm-entry {
   padding: 20px;
@@ -2224,7 +2245,7 @@ textarea {
 .hm-arc-img-bc .hm-entry .post-thumbnail {
   width: 34%;
   float: left;
-  margin: 0 20px 20px 0;
+  margin: 0 3% 20px 0;
 }
 .hm-arc-img-bc .hm-entry .entry-content {
   float: right;
@@ -2245,11 +2266,11 @@ textarea {
   float: left;
 }
 .hm-arc-img-bc.hm-cl-sep .hm-entry {
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
 }
 
 .hm-arc-img-bh.hm-cl-sep .hm-article-inner {
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
 }
 .hm-arc-img-bh.hm-cl-sep .post-thumbnail {
   margin-bottom: 0;
@@ -2257,17 +2278,20 @@ textarea {
 
 .hm-arc-img-ah.hm-cl-sep .entry-header {
   margin-bottom: 0;
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
 }
 .hm-arc-img-ah.hm-cl-sep .entry-content-wrapper {
-  padding: 0 30px 30px 30px;
+  padding: 0 var(--hybridmag-global-inner-spacing) var(--hybridmag-global-inner-spacing) var(--hybridmag-global-inner-spacing);
 }
 .hm-arc-img-ah.hm-cl-sep .post-thumbnail {
-  margin-bottom: 30px;
+  margin-bottom: var(--hybridmag-global-inner-spacing);
+}
+.hm-arc-img-ah.hm-cl-sep .hm-entry .entry-title {
+  margin-bottom: 0;
 }
 
 .hm-arc-no-img.hm-cl-sep .hm-entry {
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
 }
 
 .hm-author-avatar {
@@ -2324,10 +2348,10 @@ textarea {
 
 .hm-author-bio {
   display: flex;
-  padding: 25px 0;
-  border-top: 1px solid var(--hybridmag-color-border);
-  border-bottom: 1px solid var(--hybridmag-color-border);
+  padding: 25px;
+  border: 1px solid var(--hybridmag-color-border);
   margin: 60px 0;
+  border-radius: var(--hybridmag-global-border-radius);
 }
 
 .hm-author-name {
@@ -2350,6 +2374,9 @@ textarea {
 .hm-author-image {
   flex-shrink: 0;
   margin-right: 20px;
+}
+.hm-author-image img {
+  border-radius: var(--hybridmag-global-border-radius);
 }
 
 .hm-author-description {
@@ -2621,6 +2648,7 @@ textarea {
 @media (min-width: 600px) {
   .hm-tab-posts-wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     gap: 30px;
   }
@@ -2632,13 +2660,13 @@ textarea {
 }
 @media (min-width: 600px) and (max-width: 767px) {
   .hm-tab-post-card {
-    width: 50%;
+    flex-basis: calc(50% - 15px);
     margin: 0;
   }
 }
 @media (min-width: 768px) {
   .hm-tab-post-card {
-    width: 25%;
+    flex-basis: calc(25% - 22.5px);
     margin: 0;
   }
 }
@@ -2651,6 +2679,11 @@ textarea {
 .hm-cl-sep .hm-tab-post-details {
   padding: 20px;
   margin-top: 0;
+}
+
+.hm-cl-one .hm-tab-post-card .hm-tab-post-img {
+  border-radius: var(--hybridmag-global-border-radius);
+  overflow: hidden;
 }
 
 .hm-tab-post-details {
@@ -2715,10 +2748,16 @@ textarea {
 }
 
 .page-header {
-  margin: 0 0 60px;
+  margin: 0 0 var(--hybridmag-global-spacing);
 }
-.page-header h1 {
-  margin: 0 0 15px;
+.page-header .page-title {
+  margin: 0;
+}
+.page-header .archive-description {
+  margin: 5px 0 0;
+}
+.page-header .archive-description p {
+  margin-bottom: 0;
 }
 
 .single .entry-title {
@@ -2726,9 +2765,6 @@ textarea {
   margin: 0 0 10px;
 }
 .single .entry-header {
-  margin: 0 0 35px;
-}
-.single .post-thumbnail {
   margin: 0 0 35px;
 }
 .single .entry-footer {
@@ -2743,10 +2779,16 @@ textarea {
 .hm-entry-single .entry-content {
   margin-bottom: 35px;
 }
+.hm-entry-single .post-thumbnail {
+  margin: 0 0 35px;
+}
+.hm-entry-single .post-thumbnail img {
+  border-radius: var(--hybridmag-global-border-radius);
+}
 
 .hm-cl-sep .hm-entry-single {
   margin-bottom: 35px;
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
   background: #ffffff;
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
@@ -2766,13 +2808,18 @@ textarea {
   margin-top: 0;
 }
 
+.wp-block-image:not(.alignfull, .is-style-rounded) img,
+.wp-block-gallery .wp-block-image {
+  border-radius: var(--hybridmag-global-border-radius);
+}
+
 /* Comments
 --------------------------------------------- */
 .hm-cl-sep .comments-area {
   background: #ffffff;
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
 }
 
 .comment-content a {
@@ -3069,7 +3116,7 @@ footer.comment-meta {
 }
 
 .hm-cl-sep #secondary .widget {
-  padding: 30px;
+  padding: var(--hybridmag-global-inner-spacing);
   background: #ffffff;
   box-shadow: var(--hybridmag-global-box-shadow);
   border-radius: var(--hybridmag-global-border-radius);
@@ -3125,7 +3172,7 @@ li.hm-tab.th-ui-state-active a {
 }
 
 .hm-featured-tabs {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
 }
 .hm-featured-tabs .hm-tab-anchor {
   font-size: var(--hybridmag-font-size-md);
@@ -3140,6 +3187,10 @@ li.hm-tab.th-ui-state-active a {
 .hm-featured-tabs #hm-tab-posts-3,
 .hm-featured-tabs #hm-tab-posts-4 {
   display: none;
+}
+
+.hm-cl-one .hm-featured-tabs {
+  margin-bottom: 80px;
 }
 
 /* Media
@@ -3337,6 +3388,12 @@ li.hm-tab.th-ui-state-active a {
 .wp-block-pullquote.is-style-solid-color blockquote {
   margin-left: 0;
   margin-right: 0;
+}
+
+.wp-block-latest-posts__featured-image,
+.wp-block-latest-posts__featured-image:not(.alignleft, .alignright),
+.wp-block-latest-posts__featured-image img {
+  border-radius: var(--hybridmag-global-border-radius);
 }
 
 /*--------------------------------------------------------------

@@ -109,3 +109,9 @@
 	margin-left: 0;
 	margin-right: 0;
 }
+
+.wp-block-latest-posts__featured-image,
+.wp-block-latest-posts__featured-image:not(.alignleft, .alignright),
+.wp-block-latest-posts__featured-image img {
+    border-radius: var(--hybridmag-global-border-radius);
+}

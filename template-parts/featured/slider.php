@@ -37,7 +37,7 @@ do_action( 'hybridmag_before_featured_content' );
 
     ?>
 
-    <div class="hm-fp1">
+    <div class="hm-fp1 clearfix">
 
     <div class="hm-fp1-left">
 

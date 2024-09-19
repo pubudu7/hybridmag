@@ -234,7 +234,7 @@ if ( ! function_exists( 'hybridmag_site_title' ) ) :
 		$hybridmag_description = get_bloginfo( 'description', 'display' );
 
 		$hide_title = ( get_theme_mod( 'hybridmag_hide_site_title', false ) || '' == $hybridmag_site_title ) ? true : false;
-		$hide_tagline = ( get_theme_mod( 'hybridmag_hide_site_tagline', false ) || '' == $hybridmag_description ) ? true : false;
+		$hide_tagline = ( get_theme_mod( 'hybridmag_hide_site_tagline', true ) || '' == $hybridmag_description ) ? true : false;
 
 		?>
 		<div class="site-branding-container">

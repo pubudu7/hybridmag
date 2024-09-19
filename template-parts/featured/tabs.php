@@ -74,7 +74,7 @@ for ( $i = 1; $i <= 5; $i++ ) {
                             </div>
                             <div class="hm-tab-post-details">
                                 <?php the_title( '<h3 class="hm-tab-post-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h3>' ); ?>
-                                <?php hybridmag_entry_meta(); ?>
+                                <div class="entry-meta"><span class="posted-on"><?php echo hybridmag_posted_on(); ?></span></div>
                                 <?php //the_excerpt(); ?>        
                             </div>                                
                         </div>

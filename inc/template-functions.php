@@ -67,7 +67,7 @@ function hybridmag_body_classes( $classes ) {
 			$classes[] = 'menu-align-center';
 		}
 
-		$menu_width = get_theme_mod( 'hybridmag_menu_width', 'full' );
+		$menu_width = get_theme_mod( 'hybridmag_menu_width', 'contained' );
 		if ( 'full' === $menu_width ) {
 			$classes[] = 'hm-wide-pmenu';
 		}
@@ -318,7 +318,7 @@ function hybridmag_excerpt_length( $length ) {
 	if( is_admin() ) {
 		return $length;
 	}
-	$custom_length = get_theme_mod( 'hybridmag_excerpt_length', 25 );
+	$custom_length = get_theme_mod( 'hybridmag_excerpt_length', 16 );
 	return absint( $custom_length );
 }
 add_filter( 'excerpt_length', 'hybridmag_excerpt_length', 999 );

@@ -49,7 +49,7 @@
 .hm-entry {
 	word-break: break-word;
     overflow-wrap: break-word;
-	margin-bottom: var( --hybridmag-global-spacing );
+	margin-bottom: var( --hybridmag-post-row-gap );
 
 	.post-thumbnail {
 		margin: 0 0 15px;
@@ -188,9 +188,10 @@
 	margin: 0 0.6em;
 }
 
-.hm-read-more {
+.hm-entry .entry-content .hm-read-more {
+	text-decoration: none;
 	color: var(--hybridmag-color-link);
-	font-weight: 500;;
+	font-weight: 500;
 
 	&:visited {
 		color: var(--hybridmag-color-link);
@@ -255,10 +256,12 @@
 
 		.post-thumbnail {
 			flex-basis: 46.273291925%;
+			//flex-basis: 43.47826087%;
 		}
 
 		.hm-article-inner {
 			flex-basis: 46.273291925%;
+			//flex-basis: 49.068322981%;
 			flex-grow: 1;
 		}
 	}
@@ -314,7 +317,7 @@
 		
 		&.hm-cl-sep {
 			.hm-entry {
-				padding: 30px;
+				padding: var(--hybridmag-global-inner-spacing);
 				@media( min-width: 600px ) {
 					padding: 30px 0;
 					.post-thumbnail {
@@ -326,6 +329,15 @@
 			.hm-article-inner {
 				@media( min-width: 600px ) {
 					margin: 0 30px;
+				}
+			}
+		}
+
+		&.hm-cl-one {
+			.hm-entry {
+				.post-thumbnail {
+					box-shadow: none;
+					border-radius: var(--hybridmag-global-border-radius);
 				}
 			}
 		}
@@ -414,7 +426,7 @@
 		.post-thumbnail {
 			width: 34%;
 			float: left;
-			margin: 0 20px 20px 0;
+			margin: 0 3% 20px 0;
 		}
 
 		.entry-content {
@@ -444,7 +456,7 @@
 
 	&.hm-cl-sep {
 		.hm-entry {
-			padding: 30px;
+			padding: var(--hybridmag-global-inner-spacing);
 		}
 	}
 }
@@ -453,7 +465,7 @@
 .hm-arc-img-bh {
 	&.hm-cl-sep {
 		.hm-article-inner {
-			padding: 30px;
+			padding: var(--hybridmag-global-inner-spacing);
 		}
 
 		.post-thumbnail {
@@ -468,15 +480,19 @@
 
 		.entry-header {
 			margin-bottom: 0;
-			padding: 30px;
+			padding: var(--hybridmag-global-inner-spacing);
 		}
 
 		.entry-content-wrapper {
-			padding: 0 30px 30px 30px;
+			padding: 0 var(--hybridmag-global-inner-spacing) var(--hybridmag-global-inner-spacing) var(--hybridmag-global-inner-spacing);
 		}
 
 		.post-thumbnail {
-			margin-bottom: 30px;
+			margin-bottom: var(--hybridmag-global-inner-spacing);
+		}
+
+		.hm-entry .entry-title {
+			margin-bottom: 0;
 		}
 	}
 }
@@ -484,7 +500,7 @@
 .hm-arc-no-img {
 	&.hm-cl-sep {
 		.hm-entry {
-			padding: 30px;
+			padding: var(--hybridmag-global-inner-spacing);
 		}
 	}
 }
@@ -544,10 +560,10 @@
 
 .hm-author-bio {
 	display: flex;
-	padding: 25px 0;
-	border-top: 1px solid var(--hybridmag-color-border);
-	border-bottom: 1px solid var(--hybridmag-color-border);
+	padding: 25px;
+	border: 1px solid var(--hybridmag-color-border);
 	margin: 60px 0;
+	border-radius: var(--hybridmag-global-border-radius);
 }
 
 .hm-author-name {
@@ -572,6 +588,10 @@
 .hm-author-image {
 	flex-shrink: 0;
 	margin-right: 20px;
+
+	img {
+		border-radius: var(--hybridmag-global-border-radius);
+	}
 }
 
 .hm-author-description {
@@ -874,6 +894,7 @@
 .hm-tab-posts-wrapper {
 	@media(min-width: 600px) {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: flex-start;
 		gap: 30px;
 	}
@@ -884,12 +905,12 @@
 	margin: 0 0 30px;
 
 	@media(min-width: 600px) and (max-width: 767px) {
-		width: 50%;
+		flex-basis: calc(50% - 15px);
 		margin: 0;
 	}
 
 	@media(min-width: 768px) {
-		width: 25%;
+		flex-basis: calc(25% - 22.5px);
 		margin: 0;
 	}
 }
@@ -904,6 +925,14 @@
 	.hm-tab-post-details {
 		padding: 20px;
 		margin-top: 0;
+	}
+}
+
+.hm-cl-one {
+	.hm-tab-post-card .hm-tab-post-img {
+		border-radius: var(--hybridmag-global-border-radius); 
+		overflow: hidden;
+		//box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.08);
 	}
 }
 
@@ -975,10 +1004,18 @@
 }
 
 .page-header {
-	margin: 0 0 60px;
+	margin: 0 0 var(--hybridmag-global-spacing);
 
-	h1 {
-		margin: 0 0 15px;
+	.page-title {
+		margin: 0;
+	}
+
+	.archive-description {
+		margin: 5px 0 0;
+
+		p {
+			margin-bottom: 0;
+		}
 	}
 }
 
@@ -989,10 +1026,6 @@
 	}
 
 	.entry-header {
-		margin: 0 0 35px;
-	}
-
-	.post-thumbnail {
 		margin: 0 0 35px;
 	}
 
@@ -1009,12 +1042,20 @@
 	.entry-content {
 		margin-bottom: 35px;
 	}
+
+	.post-thumbnail {
+		margin: 0 0 35px;
+		
+		img {
+			border-radius: var(--hybridmag-global-border-radius);
+		}
+	}
 }
 
 .hm-cl-sep {
 	.hm-entry-single {
 		margin-bottom: 35px;
-		padding: 30px;
+		padding: var(--hybridmag-global-inner-spacing);
 		background: #ffffff;
 		border-radius: var(--hybridmag-global-border-radius);
 		box-shadow: var(--hybridmag-global-box-shadow);
@@ -1033,4 +1074,9 @@
     text-align: center;
 	margin-bottom: 1em;
     margin-top: 0;
+}
+
+.wp-block-image:not(.alignfull, .is-style-rounded) img,
+.wp-block-gallery .wp-block-image {
+    border-radius: var(--hybridmag-global-border-radius);
 }

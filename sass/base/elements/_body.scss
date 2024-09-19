@@ -40,7 +40,15 @@ body.hm-boxed .hm-container {
 	padding: 30px 0;
 
 	@media only screen and (min-width: 600px) {
-		padding: var( --hybridmag-global-spacing ) 0;
+		padding: 35px 0;
+	}
+}
+
+.hm-cl-one {
+	.site-content {
+		@media only screen and (min-width: 600px) {
+			padding: 50px 0;
+		}
 	}
 }
 
@@ -56,14 +64,14 @@ body.hm-boxed .hm-container {
 	
 	#secondary {
 		width: 32.916666667%;
-		padding-left: var( --hybridmag-global-spacing );
+		padding-left: var(--hybridmag-sidebar-spacing);
 	}
 
 	.hm-left-sidebar {
 		#secondary {
 			order: -10;
 			padding-left: 0;
-			padding-right: var( --hybridmag-global-spacing );
+			padding-right: var(--hybridmag-sidebar-spacing);
 		}
 		.hm-featured-top {
 			order: -20;

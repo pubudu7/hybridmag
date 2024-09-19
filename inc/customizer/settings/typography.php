@@ -13,7 +13,7 @@ function hybridmag_get_typography_elements() {
 
         'headings'  => array(
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
-            'target'    => 'h1, h2, h3, h4, h5, h6',
+            'target'    => 'h1, h2, h3, h4, h5, h6, .site-title',
             'defaults'  => array(),
             'exclude'   => array( 'font-size' ),
         ),
@@ -89,7 +89,8 @@ function hybridmag_customize_typography( $wp_customize ) {
             'hybridmag_'. $element .'_typography_section',
             array(
                 'title'			=> $values['title'],
-                'panel'			=> 'hybridmag_typography_panel'
+                'panel'			=> 'hybridmag_typography_panel',
+                'priority'      => 26
             )
         );
 

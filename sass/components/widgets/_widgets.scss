@@ -50,7 +50,7 @@
 }
 
 .hm-cl-sep #secondary .widget {
-	padding: 30px;
+	padding: var(--hybridmag-global-inner-spacing);
 	background: #ffffff;
 	box-shadow: var(--hybridmag-global-box-shadow);
 	border-radius: var(--hybridmag-global-border-radius);
@@ -106,13 +106,13 @@ li.hm-tab {
 
 }   
 
-li.hm-tab.th-ui-state-active a{
+li.hm-tab.th-ui-state-active a {
 	border-bottom: 2px solid var(--hybridmag-color-primary);
 	outline: 0;
 }
 
 .hm-featured-tabs {
-	margin-bottom: 50px;
+	margin-bottom: 60px;
 
 	.hm-tab-anchor {
 		font-size: var(--hybridmag-font-size-md);
@@ -130,4 +130,8 @@ li.hm-tab.th-ui-state-active a{
 		display: none;
 	}
 
+}
+
+.hm-cl-one .hm-featured-tabs {
+	margin-bottom: 80px;
 }
