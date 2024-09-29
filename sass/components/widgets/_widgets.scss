@@ -1,5 +1,6 @@
 .widget {
 	margin: 0 0 var( --hybridmag-global-spacing );
+	@include clearfix;
 
 	// Make sure select elements fit in widgets.
 	select {

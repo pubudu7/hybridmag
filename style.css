@@ -98,7 +98,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   --hybridmag-sidebar-spacing: 35px;
   --hybridmag-post-cols-gap: 35px;
   --hybridmag-post-row-gap: 35px;
-  --hybridmag-global-inner-spacing: 15px;
+  --hybridmag-global-inner-spacing: 20px;
   --hybridmag-footer-cols-gap: 40px;
   --hybridmag-global-box-shadow: 0 0 15px 0 rgba( 0, 0, 0, 0.06);
   --hybridmag-global-border-radius: 6px;
@@ -467,7 +467,7 @@ select,
 optgroup,
 textarea {
   color: var(--hybridmag-color-text-main);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
   font-size: 1rem;
   line-height: var(--hybridmag-line-height-body);
 }
@@ -480,7 +480,7 @@ h5,
 h6 {
   clear: both;
   color: var(--hybridmag-color-text-headings);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
   line-height: var(--hybridmag-line-height-headings);
   font-weight: var(--hybridmag-font-weight-headings);
   margin: 20px 0;
@@ -511,7 +511,7 @@ h6 {
 }
 
 .site-title {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
   font-size: 26px;
   font-weight: bold;
   line-height: 1.2;
@@ -781,7 +781,7 @@ input[type=submit],
   cursor: pointer;
   line-height: 1;
   padding: 0.8rem 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
   font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
 }
@@ -832,7 +832,7 @@ a.hm-readmore-btn:visited {
   color: var(--hybridmag-color-button-text);
   line-height: 1;
   padding: 10px 20px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
   font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
   margin: 0 8px;
@@ -1028,9 +1028,6 @@ textarea {
   justify-content: space-between;
   flex-wrap: wrap;
   row-gap: 15px;
-  /*.hm-slideout-toggle {
-  	margin-left: 10px;
-  }*/
 }
 
 .hm-h-lg.logo-aligned-center .hm-header-inner {
@@ -1863,7 +1860,7 @@ textarea {
   font-weight: 600;
 }
 .post-navigation .nav-links .post-title {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: "Figtree", Helvetica, Arial, sans-serif;
   color: var(--hybridmag-color-link);
   font-size: 18px;
   font-weight: 600;
@@ -2399,6 +2396,13 @@ textarea {
 .hm-fp1 {
   margin: 0 0 40px;
 }
+@media (max-width: 767px) {
+  .hm-fp1::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
 
 .hm-featured-top {
   width: 100%;
@@ -2808,9 +2812,28 @@ textarea {
   margin-top: 0;
 }
 
-.wp-block-image:not(.alignfull, .is-style-rounded) img,
-.wp-block-gallery .wp-block-image {
-  border-radius: var(--hybridmag-global-border-radius);
+.page-links {
+  clear: both;
+  margin: 3.5em 0 1.5em;
+}
+.page-links .post-page-numbers {
+  border: 1px solid var(--hybridmag-color-border);
+  color: var(--hybridmag-color-text);
+  padding: 5px 14px;
+  font-weight: bold;
+  margin: 0 2px;
+  border-radius: 3px;
+  display: inline-block;
+  text-decoration: none !important;
+}
+.page-links .post-page-numbers:visited {
+  color: #000000;
+}
+.page-links .post-page-numbers:hover,
+.page-links .post-page-numbers.current {
+  background-color: var(--hybridmag-color-primary);
+  border: 1px solid var(--hybridmag-color-primary);
+  color: #ffffff !important;
 }
 
 /* Comments
@@ -3078,6 +3101,11 @@ footer.comment-meta {
 --------------------------------------------- */
 .widget {
   margin: 0 0 var(--hybridmag-global-spacing);
+}
+.widget::after {
+  display: block;
+  content: "";
+  clear: both;
 }
 .widget select {
   max-width: 100%;
@@ -3393,6 +3421,11 @@ li.hm-tab.th-ui-state-active a {
 .wp-block-latest-posts__featured-image,
 .wp-block-latest-posts__featured-image:not(.alignleft, .alignright),
 .wp-block-latest-posts__featured-image img {
+  border-radius: var(--hybridmag-global-border-radius);
+}
+
+.wp-block-image:not(.alignfull, .is-style-rounded) img,
+.wp-block-gallery .wp-block-image {
   border-radius: var(--hybridmag-global-border-radius);
 }
 

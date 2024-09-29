@@ -391,15 +391,32 @@ endif;
 */
 function hybridmag_load_fonts() {
 
-	// Load default fonts.
-	// if ( 'Inter' == get_theme_mod( 'hybridmag_font_family_1', 'DM Sans' ) ) {
-	// 	wp_enqueue_style( 'hm-font-inter', get_theme_file_uri( '/assets/css/font-inter.css' ), array(), HYBRIDMAG_VERSION, 'all' );
-	// }
-	// if ( 'Roboto' == get_theme_mod( 'hybridmag_font_family_2', 'DM Sans' ) ) {
-	// 	wp_enqueue_style( 'hm-font-roboto-condensed', get_theme_file_uri( '/assets/css/font-roboto-condensed.css' ), array(), HYBRIDMAG_VERSION, 'all' );
-	// }
+	$fonts_arr = hybridmag_typography_loop( 'fonts' );
 
-	$font_url = hybridmag_get_fonts_url();
+	if ( empty( $fonts_arr ) ) {
+		return;
+	}
+
+	// Remove duplicates
+	$fonts_arr = array_unique( $fonts_arr );
+
+	$default_font_index = array_search( 'Figtree', $fonts_arr );
+
+	if ( $default_font_index !== false ) {
+
+		// Enqueue Default Font CSS from theme.
+		wp_enqueue_style( 'hybridmag-font-figtree', get_theme_file_uri( '/assets/css/font-figtree.css' ), array(), null );
+
+		unset( $fonts_arr[ $default_font_index ] );
+		$fonts_arr = array_values( $fonts_arr );
+
+	}
+
+	if ( empty( $fonts_arr ) ) {
+		return;
+	}
+
+	$font_url = hybridmag_get_google_font_uri( $fonts_arr );
 
 	if ( ! empty( $font_url ) ) {
 

@@ -881,14 +881,8 @@ if ( ! function_exists( 'hybridmag_get_google_font_uri' ) ) :
      */
 
     function hybridmag_get_google_font_uri( $fonts ) {
-
-        // Return if google fonts are disabled.
-        // if ( true == get_theme_mod( 'hybridmag_disable_google_fonts' ) ) {
-        //     return;
-        // }
-
         // De-dupe the fonts.
-        $fonts          = array_unique( $fonts );
+        //$fonts          = array_unique( $fonts );
         // Array of google fonts.
         $allowed_fonts  = hybridmag_get_google_fonts();
         // Array to hold font families.

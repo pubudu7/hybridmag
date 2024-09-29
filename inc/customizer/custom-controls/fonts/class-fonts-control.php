@@ -24,8 +24,16 @@ if ( class_exists( 'WP_Customize_Control' ) ) :
 
                 <select class="hm-fonts-select" <?php $this->link() ?>>
                     <option value="" <?php if ( ! $this->value() ) echo 'selected="selected"'; ?>><?php esc_html_e( 'Inherit', 'hybridmag' ); ?></option>
-                
+                    
                     <?php
+                        // System Fonts. 
+                        ?>
+                        <optgroup label="<?php esc_attr_e( 'System Font Stack', 'hybridmag' ); ?>">
+                            <option value="system-stack" <?php selected( 'system-stack', $this->value() ); ?>><?php echo esc_html__( 'System Font', 'hybridmag' ); ?></option>
+                        </optgroup>
+
+                    <?php 
+
                     // Standard Fonts.
                     if ( $standard_fonts = hybridmag_get_standard_fonts() ) { ?>
                         <optgroup label="<?php esc_attr_e( 'Standard Fonts', 'hybridmag' ); ?>">

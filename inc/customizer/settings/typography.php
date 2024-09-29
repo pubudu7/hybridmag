@@ -8,13 +8,17 @@ function hybridmag_get_typography_elements() {
         'body'  => array(
             'title'     => esc_html__( 'Body', 'hybridmag' ),
             'target'    => 'body, button, input, select, optgroup, textarea',
-            'defaults'  => array()
+            'defaults'  => array(
+                'font-family'   => 'Figtree'
+            )
         ),
 
         'headings'  => array(
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
             'target'    => 'h1, h2, h3, h4, h5, h6, .site-title',
-            'defaults'  => array(),
+            'defaults'  => array(
+                'font-family'   => 'Figtree'
+            ),
             'exclude'   => array( 'font-size' ),
         ),
 
@@ -414,7 +418,14 @@ function hybridmag_typography_loop( $return = 'css' ) {
 
                 // CSS properties and values.
                 if ( ! empty( $theme_setting ) && $default != $theme_setting ) {
-                    $common_css .= $property .':'. esc_attr( $theme_setting ).';';
+                    if ( $theme_setting === 'system-stack' ) {
+                        // System Fonts Stack.
+                        $system_stack = apply_filters( 'hybridmag_typography_system_stack', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' );
+                        
+                        $common_css .= $property .':'.  $system_stack .';';
+                    } else {
+                        $common_css .= $property .':'. esc_attr( $theme_setting ).';';
+                    }
                 }
 
                 // Add the font family into fonts array.

@@ -1815,6 +1815,42 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Category Colors Section
+	$wp_customize->add_section(
+		'hybridmag_category_colors',
+		array(
+			'title' 	=> esc_html__( 'Category Colors', 'hybridmag' ),
+			'panel'		=> 'hybridmag_colors_panel',
+			'priority' 	=> 25,
+		)
+	);
+
+	$categories = get_categories( array( 'hide_empty' => 1 ) );
+	foreach ( $categories as $category ) {
+
+		$term_id = $category->term_id;
+
+		$wp_customize->add_setting(
+			'hybridmag_cat_color_' . esc_attr( $term_id ),
+			array(
+				'default'			=> '',
+				'capability'		=> 'edit_theme_options',
+				'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
+			)
+		);
+		$wp_customize->add_control(
+			new WP_Customize_Color_Control( 
+				$wp_customize,
+				'hybridmag_cat_color_' . esc_attr( $term_id ),
+				array(
+					'section'		    => 'hybridmag_category_colors',
+					'label'			    => sprintf( esc_html__( '%1$s Color', 'hybridmag' ), esc_html( $category->name ) ),
+				)
+			)
+		);
+
+	}
+
 	// Featured Section settings.
 	$wp_customize->add_panel(
 		'hybridmag_featured_panel',

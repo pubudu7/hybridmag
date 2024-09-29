@@ -194,7 +194,9 @@ if ( ! function_exists( 'hybridmag_categories' ) ) :
 				return;
 			}
 
+			add_filter( 'the_category', 'hybridmag_custom_class_to_category_links', 10, 3 );
 			$categories_list = get_the_category_list();
+			remove_filter( 'the_category', 'hybridmag_custom_class_to_category_links', 10, 3 );
 			if ( $categories_list ) {
 				/* translators: 1: posted in label 2: list of categories. */
 				printf( 
@@ -208,6 +210,24 @@ if ( ! function_exists( 'hybridmag_categories' ) ) :
 
 endif;
 add_action( 'hybridmag_before_entry_title', 'hybridmag_categories' );
+
+/**
+ * Adds a class to class to the category link.
+ */
+function hybridmag_custom_class_to_category_links( $thelist, $separator, $parents ) {
+    // Use regex to find and replace the category links with the added class
+    $thelist = preg_replace_callback(
+        '/<a href="([^"]+)"(.*?)>(.*?)<\/a>/',
+        function( $matches ) {
+			$category_id = get_cat_ID( $matches[3] );
+			$term        = get_term( $category_id );
+			return sprintf( '<a href="%s" class="cat-%d" rel="' . $term->taxonomy . '" >%s</a>', $matches[1], $category_id, $matches[3] );
+        },
+        $thelist
+    );
+
+    return $thelist;
+}
 
 if ( ! function_exists( 'hybridmag_tags_list' ) ) :
 	/**

@@ -697,6 +697,23 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             ';
         }
 
+        // Category Colors.
+        $categories = get_categories( array( 'hide_empty' => 1 ) );
+        foreach ( $categories as $category ) {
+            $term_id   = $category->term_id;
+            $cat_color = get_theme_mod( 'hybridmag_cat_color_' . strtolower( $term_id ), '' );
+
+            if ( ! empty( $cat_color ) ) {
+
+                $theme_css .= '
+                    .cat-links:not(.entry-meta .cat-links) a.cat-' . absint( $term_id ) . ' {
+                        background: ' . esc_attr( $cat_color ) . ';
+                    }
+                ';
+
+            }
+        }
+
         if ( ! empty( $theme_css ) ) {
             $output .= '/* Custom CSS */'. $theme_css;
         }

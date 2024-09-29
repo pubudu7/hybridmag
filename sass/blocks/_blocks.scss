@@ -115,3 +115,8 @@
 .wp-block-latest-posts__featured-image img {
     border-radius: var(--hybridmag-global-border-radius);
 }
+
+.wp-block-image:not(.alignfull, .is-style-rounded) img,
+.wp-block-gallery .wp-block-image {
+    border-radius: var(--hybridmag-global-border-radius);
+}

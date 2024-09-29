@@ -216,7 +216,7 @@
 		}
 	}
 }
-
+ 
 .cat-links:not(.entry-meta .cat-links) {
 	color: #f5f5f5;
 	display: block;
@@ -615,6 +615,10 @@
 
 .hm-fp1 {
 	margin: 0 0 40px;
+
+	@media (max-width: 767px) {
+		@include clearfix;
+	}
 }
 
 .hm-featured-top {
@@ -1076,7 +1080,29 @@
     margin-top: 0;
 }
 
-.wp-block-image:not(.alignfull, .is-style-rounded) img,
-.wp-block-gallery .wp-block-image {
-    border-radius: var(--hybridmag-global-border-radius);
+.page-links {
+	clear: both;
+	margin: 3.5em 0 1.5em;
+
+	.post-page-numbers {
+		border: 1px solid var(--hybridmag-color-border);
+		color: var(--hybridmag-color-text);
+		padding: 5px 14px;
+		font-weight: bold;
+		margin: 0 2px;
+		border-radius: 3px;
+		display: inline-block;
+		text-decoration: none !important;
+	}
+
+	.post-page-numbers:visited {
+		color: #000000;
+	}
+
+	.post-page-numbers:hover, 
+	.post-page-numbers.current {
+		background-color: var(--hybridmag-color-primary);
+		border: 1px solid var(--hybridmag-color-primary);
+		color: #ffffff !important;
+	}
 }

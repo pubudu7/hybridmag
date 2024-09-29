@@ -15,11 +15,6 @@ if ( ! function_exists( 'hybridmag_search_box' ) ) :
      * Displays the search 
      */
     function hybridmag_search_box() {
-    
-        if ( false === get_theme_mod( 'hybridmag_show_search_onmenu', true ) ) {
-            return;
-        }
-    
         ?>
             <div class="hm-search-container">
                 <button id="hm-search-toggle">
@@ -36,6 +31,11 @@ if ( ! function_exists( 'hybridmag_search_box' ) ) :
 endif;
 
 function hybridmag_locate_search() {
+
+    if ( false === get_theme_mod( 'hybridmag_show_search_onmenu', true ) ) {
+        return;
+    }
+
     if ( 'default' === hybridmag_get_header_layout() ) {
         add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_search_box' );
     } else {

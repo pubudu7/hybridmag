@@ -85,35 +85,45 @@ add_action( 'hybridmag_header', 'hybridmag_header_template' );
  * Header Widgets area
  */
 function hybridmag_header_inner_gadgets() {
+
+    if ( has_action( 'hybridmag_header_inner_gadgets' ) || is_active_sidebar( 'header-2' ) ) : 
     ?>
         <div class="hm-header-gadgets">
-            <?php do_action( 'hybridmag_header_inner_gadgets' ); ?>
+            <?php 
+                do_action( 'hybridmag_header_inner_gadgets' ); 
+                hybridmag_header_sidebar();
+            ?>
         </div>
     <?php
+    endif;
 }
 add_action( 'hybridmag_after_header_main', 'hybridmag_header_inner_gadgets' );
 
+if ( ! function_exists( 'hybridmag_header_sidebar' ) ) :
 /**
  * Header Sidebar
  */
 function hybridmag_header_sidebar() {
-    if ( is_active_sidebar( 'header-2' ) ) : ?>
+    ?>
         <div class="hm-header-sidebar">
             <?php dynamic_sidebar( 'header-2' ); ?>
         </div>
-    <?php endif;
+    <?php
 }
-add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_header_sidebar', 20 );
+endif;
+
 
 /**
  * Container Header inner right side
  */
 function hybridmag_header_inner_right_container() {
+    
     ?>
         <div class="hm-header-inner-right">
             <?php do_action( 'hybridmag_header_inner_right' ); ?>
         </div>
     <?php
+    
 }
 add_action( 'hybridmag_after_header_main', 'hybridmag_header_inner_right_container', 15 );
 
@@ -122,11 +132,15 @@ add_action( 'hybridmag_after_header_main', 'hybridmag_header_inner_right_contain
  * @To do decide priority
  */
 function hybridmag_header_inner_left_container() {
+
     ?>
+
         <div class="hm-header-inner-left">
             <?php do_action( 'hybridmag_header_inner_left' ); ?>
         </div>
+
     <?php
+    
 }
 add_action( 'hybridmag_before_header_main', 'hybridmag_header_inner_left_container', 5 );
 
@@ -148,25 +162,21 @@ if ( ! function_exists( 'hybridmag_header_cta' ) ) :
      * Header CTA action button.
      */
     function hybridmag_header_cta() {
-        $show_cta = get_theme_mod( 'hybridmag_show_header_cta', false );
-
-        if ( true === $show_cta ) {
-            $cta_txt = get_theme_mod( 'hybridmag_header_cta_txt', esc_html__( 'Subscribe', 'hybridmag' ) );
-            $cta_url = get_theme_mod( 'hybridmag_header_cta_url', '' );
-            if ( ! $cta_url ) {
-                $cta_url = "#";
-            }
-            $cta_target = get_theme_mod( 'hybridmag_header_cta_target', false );
-    
-            ?>
-                <a href="<?php echo esc_url( $cta_url ); ?>" class="hm-cta-btn"
-                    <?php if ( true == $cta_target ) {
-                        echo 'target="_blank"';
-                    } ?>
-                ><?php echo esc_html( $cta_txt ); ?></a>
-    
-            <?php
+        $cta_txt = get_theme_mod( 'hybridmag_header_cta_txt', esc_html__( 'Subscribe', 'hybridmag' ) );
+        $cta_url = get_theme_mod( 'hybridmag_header_cta_url', '' );
+        if ( ! $cta_url ) {
+            $cta_url = "#";
         }
+        $cta_target = get_theme_mod( 'hybridmag_header_cta_target', false );
+
+        ?>
+            <a href="<?php echo esc_url( $cta_url ); ?>" class="hm-cta-btn"
+                <?php if ( true == $cta_target ) {
+                    echo 'target="_blank"';
+                } ?>
+            ><?php echo esc_html( $cta_txt ); ?></a>
+
+        <?php
     }
 endif;
 
@@ -174,6 +184,11 @@ endif;
  * Place the cta button.
  */
 function hybridmag_locate_cta_btn() {
+
+    if ( false === get_theme_mod( 'hybridmag_show_header_cta', false ) ) {
+        return;
+    }
+
     $header_layout = hybridmag_get_header_layout();
     if ( 'large' == $header_layout ) {
         $logo_align = get_theme_mod( 'hybridmag_logo_align', 'left' );
