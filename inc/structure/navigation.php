@@ -17,11 +17,11 @@ if ( ! function_exists( 'hybridmag_search_box' ) ) :
     function hybridmag_search_box() {
         ?>
             <div class="hm-search-container">
-                <button id="hm-search-toggle">
+                <button class="hm-search-toggle">
                     <span class="hm-search-icon"><?php hybridmag_the_icon_svg( 'search' ) ?></span>
                     <span class="hm-close-icon"><?php hybridmag_the_icon_svg( 'close' ) ?></span>
                 </button>
-                <div id="hm-search-box">
+                <div class="hm-search-box">
                     <?php get_search_form(); ?>
                 </div><!-- hm-search-box -->
             </div><!-- hm-search-container -->
@@ -40,6 +40,7 @@ function hybridmag_locate_search() {
         add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_search_box' );
     } else {
         add_action( 'hybridmag_after_primary_nav', 'hybridmag_search_box' );
+        add_action( 'hybridmag_after_header_main', 'hybridmag_search_box' );
     }
 }
 add_action( 'wp', 'hybridmag_locate_search' );

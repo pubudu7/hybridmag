@@ -98,7 +98,7 @@ hybridmag.searchToggle = {
         
 		var searchBoxContainer = element.parentElement,
             header              = document.getElementById( 'masthead' ),
-            searchBoxContainer  = searchBoxContainer.querySelector('#hm-search-box'),
+            searchBoxContainer  = searchBoxContainer.querySelector('.hm-search-box'),
             inputField          = searchBoxContainer.querySelector('input.search-field');
 
 		// Toggle header search class.
@@ -115,17 +115,23 @@ hybridmag.searchToggle = {
 
 	addListener: function() {
 		
-		var searchButton = document.getElementById( 'hm-search-toggle' );
+		var searchButtons = document.querySelectorAll( '.hm-search-toggle' );
 
-		if ( ! searchButton ) {
-			return false;
-		}
+        if ( ! searchButtons.length ) {
+            return false;
+        }
 
 		var self = this;
+
+        searchButtons.forEach( function( button ) {
+            button.addEventListener( 'click', function() {
+                self.toggle( this );
+            } );
+        } ); 
 		
-		searchButton.addEventListener( 'click', function() {
-			self.toggle( this );
-		} );
+		// searchButton.addEventListener( 'click', function() {
+		// 	self.toggle( this );
+		// } );
 
 	}
 };
@@ -185,7 +191,19 @@ hybridmag.slideOutSidebar = {
                 } else if (!e.shiftKey && document.activeElement === lastFocusable) {
                     // If TAB and last focusable element is focused, focus first element
                     e.preventDefault();
-                    firstFocusable.focus();
+                    firstFocusaslideOutToggles.forEach( function( button ) {
+                        button.addEventListener( 'click', function() {
+                            if ( body.classList.contains( 'slideout-opened' ) ) {
+                                body.classList.remove( 'slideout-opened' );
+                                openBtn.focus();
+                                self.removeOverlay( 'hm-slideout-mask' );
+                            } else {
+                                body.classList.add( 'slideout-opened' );
+                                closeBtn.focus();
+                                self.createOverlay( 'hm-slideout-mask' );
+                            }
+                        } );
+                    } ); ble.focus();
                 }
             }
         }

@@ -70,7 +70,7 @@
 				$( '.hm-h-lg .hm-main-menu .hm-social-menu li a' ).css( {
 					'height': to + 'px',
 				} );
-				$( '.hm-h-lg #hm-search-toggle' ).css( {
+				$( '.hm-h-lg .hm-search-toggle' ).css( {
 					'height': to + 'px',
 				} );
 				$( '.hm-h-lg .hm-main-menu .hm-slideout-toggle' ).css( {

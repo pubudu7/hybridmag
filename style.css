@@ -53,8 +53,6 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 :root {
   --hybridmag-color-primary: #65bc7b;
   --hybridmag-color-tertiary: #272c30;
-  --hybridmag-color-light-background: #F7F6F1;
-  --hybridmag-color-dark-background: #3c3c3c;
   --hybridmag-color-main-menu: #272c30;
   --hybridmag-color-text-main: #404040;
   --hybridmag-color-text-light: #7D7D7D;
@@ -907,6 +905,14 @@ textarea {
     padding-top: 50px;
     padding-bottom: 50px;
   }
+  .hm-h-lg .hm-header-inner .hm-search-container {
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hm-h-lg .hm-header-inner {
+    position: relative;
+  }
 }
 @media only screen and (max-width: 768px) {
   .hm-h-lg .hm-header-inner {
@@ -916,13 +922,18 @@ textarea {
 .hm-h-lg .hm-header-inner .hm-social-menu li a {
   height: 50px;
 }
+@media (max-width: 959px) {
+  .hm-h-lg .hm-header-inner .hm-search-toggle {
+    height: 40px;
+  }
+}
 .hm-h-lg.hm-wide-pmenu-inner .hm-menu-wrapper.hm-container {
   width: 100%;
 }
 .hm-h-lg .site-title {
   font-size: 35px;
 }
-.hm-h-lg #hm-search-toggle,
+.hm-h-lg .hm-search-toggle,
 .hm-h-lg .hm-slideout-toggle:hover {
   color: #222222;
 }
@@ -930,7 +941,7 @@ textarea {
 .hm-h-lg .hm-slideout-toggle:hover {
   color: #222222;
 }
-.hm-h-lg #hm-search-toggle {
+.hm-h-lg .hm-search-toggle {
   height: 62px;
 }
 .hm-h-lg .hm-main-menu .hm-social-menu li a {
@@ -980,7 +991,7 @@ textarea {
   vertical-align: middle;
 }
 
-#hm-search-toggle {
+.hm-search-toggle {
   background-color: transparent;
   border: none;
   color: #222222;
@@ -988,9 +999,13 @@ textarea {
   display: flex;
   align-items: center;
 }
-#hm-search-toggle .hm-svg-icon {
+.hm-search-toggle .hm-svg-icon {
   font-size: 1.125em;
   width: 1em;
+}
+.hm-search-toggle:focus, .hm-search-toggle:active, .hm-search-toggle:hover {
+  background-color: transparent;
+  color: #222222;
 }
 
 .hm-top-bar {
@@ -1034,9 +1049,7 @@ textarea {
   justify-content: center;
   flex-wrap: wrap;
 }
-.hm-h-lg.logo-aligned-center .hm-header-sidebar {
-  margin-left: auto;
-  margin-right: auto;
+.hm-h-lg.logo-aligned-center .hm-header-gadgets {
   order: 20;
   margin-top: 30px;
   flex-basis: 100%;
@@ -1076,13 +1089,20 @@ textarea {
 .hm-h-lg.logo-aligned-right .hm-header-inner {
   justify-content: flex-end;
 }
-@media (min-width: 768px) {
-  .hm-h-lg.logo-aligned-right .hm-header-sidebar {
-    order: -10;
-  }
-  .hm-h-lg.logo-aligned-right .hm-header-inner-left {
-    order: -20;
-  }
+.hm-h-lg.logo-aligned-right .hm-header-inner .hm-search-container {
+  order: -25;
+}
+.hm-h-lg.logo-aligned-right .hm-header-inner .hm-search-box {
+  left: 0;
+  right: auto;
+}
+.hm-h-lg.logo-aligned-right .hm-header-inner-left {
+  order: -20;
+}
+.hm-h-lg.logo-aligned-right .hm-header-gadgets {
+  order: -10;
+  margin-left: 0;
+  margin-right: auto;
 }
 .hm-h-lg.logo-aligned-right .site-branding-container {
   margin-right: 0;
@@ -1090,7 +1110,7 @@ textarea {
 }
 .hm-h-lg.logo-aligned-right .hm-mobile-menu-toggle {
   order: -30;
-  margin-right: auto;
+  margin-right: 0;
   margin-left: 0;
   padding: 10px 10px 10px 0;
 }
@@ -1099,17 +1119,6 @@ textarea {
   .hm-h-de.has-header-sb .hm-header-inner,
   .hm-h-lg.has-header-sb .hm-header-inner {
     flex-wrap: wrap;
-  }
-}
-
-@media (min-width: 768px) {
-  .hm-h-lg.has-header-sb:not(.logo-aligned-center) {
-    /*.hm-header-sidebar {
-    	flex-basis: 60.66667%;
-    }*/
-  }
-  .hm-h-lg.has-header-sb:not(.logo-aligned-center) .site-branding-container {
-    flex-basis: 25%;
   }
 }
 
@@ -1123,6 +1132,11 @@ textarea {
 @media screen and (min-width: 768px) {
   .hm-h-de .hm-header-inner {
     min-height: 40px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .hm-h-de .hm-header-inner {
+    position: relative;
   }
 }
 .hm-h-de .hm-header-inner-wrapper {
@@ -1146,10 +1160,7 @@ textarea {
 .hm-h-de .hm-mobile-menu-toggle {
   color: #222222;
 }
-.hm-h-de .hm-mobile-menu-toggle:hover {
-  color: #555555;
-}
-.hm-h-de #hm-search-toggle {
+.hm-h-de .hm-search-toggle {
   height: 50px;
 }
 .hm-h-de .hm-header-inner .hm-social-menu li a {
@@ -1182,29 +1193,26 @@ textarea {
   display: flex;
   align-items: center;
 }
+@media (max-width: 600px) {
+  .hm-search-container {
+    position: initial;
+  }
+}
 
-.hide-header-search #hm-search-box {
+.hide-header-search .hm-search-box {
   display: none;
 }
 
-#hm-search-toggle .hm-search-icon {
+.hm-search-toggle .hm-search-icon {
   display: none;
 }
 
-.hide-header-search #hm-search-toggle .hm-search-icon {
+.hide-header-search .hm-search-toggle .hm-search-icon {
   display: block;
 }
 
-.hide-header-search #hm-search-toggle .hm-close-icon {
+.hide-header-search .hm-search-toggle .hm-close-icon {
   display: none;
-}
-
-#hm-search-box {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 310px;
-  z-index: 99;
 }
 
 .hm-mobile-sidebar {
@@ -1355,33 +1363,42 @@ textarea {
     margin: 1em 0 0;
   }
 }
-#hm-search-box {
+.hm-search-box {
+  position: absolute;
+  top: 100%;
+  right: 0;
   width: 350px;
   padding: 10px;
   box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
+  z-index: 99;
 }
-#hm-search-box form.search-form {
+.hm-search-box form.search-form {
   display: flex;
   flex-wrap: nowrap;
 }
-#hm-search-box input.search-submit {
+.hm-search-box input.search-submit {
   height: 40px;
   padding: 0 20px;
   line-height: 40px;
 }
-#hm-search-box label {
+.hm-search-box label {
   flex-grow: 1;
 }
-#hm-search-box input.search-field {
+.hm-search-box input.search-field {
   height: 40px;
   border: none;
   border-radius: 0;
   width: 100%;
 }
-#hm-search-box input.search-field:focus {
+.hm-search-box input.search-field:focus {
   outline: none;
   border-bottom: 1px solid var(--hybridmag-color-border);
+}
+@media (max-width: 600px) {
+  .hm-search-box {
+    width: 100%;
+  }
 }
 
 .hm-breadcrumb-wrap {
@@ -2660,18 +2677,23 @@ textarea {
 
 .hm-tab-post-card {
   overflow: hidden;
-  margin: 0 0 30px;
 }
 @media (min-width: 600px) and (max-width: 767px) {
   .hm-tab-post-card {
     flex-basis: calc(50% - 15px);
-    margin: 0;
   }
 }
 @media (min-width: 768px) {
   .hm-tab-post-card {
     flex-basis: calc(25% - 22.5px);
-    margin: 0;
+  }
+}
+@media (max-width: 600px) {
+  .hm-tab-post-card {
+    margin: 0 0 30px;
+  }
+  .hm-tab-post-card:last-child {
+    margin-bottom: 0;
   }
 }
 
