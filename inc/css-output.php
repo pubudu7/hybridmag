@@ -307,8 +307,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
                     line-height: '. esc_attr( $header_line_height ) .'px;
                 }
                 .hm-h-lg .hm-main-menu .hm-social-menu li a,
-                .hm-h-lg .hm-search-toggle,
-                .hm-h-lg .hm-main-menu .hm-slideout-toggle {
+                .hm-h-lg .hm-search-toggle/*,
+                .hm-h-lg .hm-main-menu .hm-slideout-toggle */{
                     height: '. esc_attr( $header_line_height ) .'px;
                 }
                 .hm-h-lg .main-navigation ul ul li a {

@@ -89,7 +89,7 @@ if ( ! function_exists( 'hybridmag_social_nav' ) ) :
 	 */
 	function hybridmag_social_nav() {
 		if ( has_nav_menu( 'social' ) ) : ?>
-			<nav class="hm-social-menu" aria-label="<?php esc_attr_e( 'Expanded Social links', 'hybridmag' ); ?>">
+			<nav class="hm-social-menu hm-social-nav" aria-label="<?php esc_attr_e( 'Expanded Social links', 'hybridmag' ); ?>">
 				<ul class="hm-social-menu hm-social-icons">
 				<?php
 					wp_nav_menu(

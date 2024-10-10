@@ -363,6 +363,47 @@ hybridmag.mobileMenuToggle = {
 };
 
 /**
+ * Toggle dark mode.
+ */
+hybridmag.darkModeToggle = {
+
+    init: function() {
+        // Check if a dark mode preference is already saved
+        if ( localStorage.getItem('hybridmagDarkMode') === 'enabled' ) {
+            document.documentElement.classList.add('hm-dark');
+        }
+
+        // Do the toggle.
+        this.toggle();
+    },
+
+    performToggle: function( element ) {
+
+        var html = document.documentElement;
+
+        if ( html.classList.contains('hm-dark') ) {
+            html.classList.remove('hm-dark');
+            localStorage.setItem('hybridmagDarkMode', 'disabled');
+        } else {
+            html.classList.add('hm-dark');
+            localStorage.setItem('hybridmagDarkMode', 'enabled');
+        }
+
+    },
+
+    toggle: function() {
+        var self = this;
+
+        document.querySelectorAll('.hm-light-dark-toggle').forEach( function( element ) {
+            element.addEventListener( 'click', function( event ) {
+                event.preventDefault();
+                self.performToggle( element );
+            } );
+        } );
+    }
+}
+
+/**
  * Toggle an attribute
  */  
 function hybridmagToggleAttribute( element, attribute, trueVal, falseVal ) {
@@ -378,6 +419,8 @@ function hybridmagToggleAttribute( element, attribute, trueVal, falseVal ) {
 		element.setAttribute( attribute, falseVal );
 	}
 }
+
+
 
 /**
  * Is the DOM ready?
@@ -404,4 +447,5 @@ hybridmagDomReady( function() {
     hybridmag.mobileMenu.init();
     hybridmag.mobileMenuToggle.init();
     hybridmag.slideOutSidebar.init();
+    hybridmag.darkModeToggle.init();
 } );

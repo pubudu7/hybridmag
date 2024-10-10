@@ -446,7 +446,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'hybridmag_header_layout_section',
 		array(
-			'title' => esc_html__( 'Appearance', 'hybridmag' ),
+			'title' => esc_html__( 'Header Layout', 'hybridmag' ),
 			'priority' => 5,
 			'panel'	=> 'hybridmag_panel_header'
 		)
@@ -1022,6 +1022,24 @@ function hybridmag_customize_register( $wp_customize ) {
 			'active_callback'	=> 'hybridmag_is_slideout_active'
 		)
 	);
+	
+	// Header - show Primary Menu on slide out sidebar
+	$wp_customize->add_setting(
+		'hybridmag_show_logo_on_slideout',
+		array(
+			'default'           => true,
+			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'hybridmag_show_logo_on_slideout',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Show Site Logo on Slide-out sidebar', 'hybridmag' ),
+			'section'     => 'hybridmag_slideoutsb_section',
+			'active_callback'	=> 'hybridmag_is_slideout_active'
+		)
+	);
 
 	// Header - slide out menu position
 	$wp_customize->add_setting(
@@ -1071,6 +1089,24 @@ function hybridmag_customize_register( $wp_customize ) {
 			'label'       => esc_html__( 'Show Top Bar Menu on Mobile Menu', 'hybridmag' ),
 			'description' => esc_html__( 'Top bar menu will display on the mobile menu just after the primary menu.', 'hybridmag' ),
 			'section'     => 'hybridmag_mobile_menu_section'
+		)
+	);
+
+	
+	// Header - show log on mobile sidebar
+	$wp_customize->add_setting(
+		'hybridmag_show_logo_on_mobilesb',
+		array(
+			'default'           => false,
+			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+		)
+	);
+	$wp_customize->add_control(
+		'hybridmag_show_logo_on_mobilesb',
+		array(
+			'type'        => 'checkbox',
+			'label'       => esc_html__( 'Show Site Logo on Mobile Menu', 'hybridmag' ),
+			'section'     => 'hybridmag_mobile_menu_section',
 		)
 	);
 

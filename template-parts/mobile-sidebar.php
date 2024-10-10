@@ -1,8 +1,19 @@
 <aside id="hm-mobile-sidebar" class="hm-mobile-sidebar">
-	<button class="hm-mobile-menu-toggle">
-		<span class="screen-reader-text"><?php esc_html_e( 'Close', 'hybridmag' ); ?></span>
-		<?php hybridmag_the_icon_svg( 'close' ); ?>
-	</button>
+
+	<div class="hm-mobile-sb-top">
+
+		<?php if ( true == get_theme_mod( 'hybridmag_show_logo_on_mobilesb', false ) ) : ?>
+			<div class="hm-mobile-sb-logo">
+				<?php hybridmag_site_title(); ?>
+			</div>
+		<?php endif; ?>
+
+		<button class="hm-mobile-menu-toggle">
+			<span class="screen-reader-text"><?php esc_html_e( 'Close', 'hybridmag' ); ?></span>
+			<?php hybridmag_the_icon_svg( 'close' ); ?>
+		</button>
+
+	</div>
 
 	<?php 
 		if ( true === get_theme_mod( 'hybridmag_show_social_mobile_menu', true ) && has_nav_menu( 'social' ) ) {

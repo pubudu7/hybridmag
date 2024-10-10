@@ -15,6 +15,7 @@ input[type="datetime-local"],
 input[type="color"],
 textarea {
 	color: var(--hybridmag-color-input);
+	background-color: var(--hybridmag-color-input-background);
 	border: 1px solid var(--hybridmag-color-input-border);
 	border-radius: 0;
 	padding: 8px;

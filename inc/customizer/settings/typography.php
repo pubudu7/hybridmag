@@ -8,17 +8,13 @@ function hybridmag_get_typography_elements() {
         'body'  => array(
             'title'     => esc_html__( 'Body', 'hybridmag' ),
             'target'    => 'body, button, input, select, optgroup, textarea',
-            'defaults'  => array(
-                'font-family'   => 'Figtree'
-            )
+            'defaults'  => array()
         ),
 
         'headings'  => array(
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
             'target'    => 'h1, h2, h3, h4, h5, h6, .site-title',
-            'defaults'  => array(
-                'font-family'   => 'Figtree'
-            ),
+            'defaults'  => array(),
             'exclude'   => array( 'font-size' ),
         ),
 

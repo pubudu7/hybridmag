@@ -86,12 +86,11 @@ add_action( 'hybridmag_header', 'hybridmag_header_template' );
  */
 function hybridmag_header_inner_gadgets() {
 
-    if ( has_action( 'hybridmag_header_inner_gadgets' ) || is_active_sidebar( 'header-2' ) ) : 
+    if ( has_action( 'hybridmag_header_inner_gadgets' ) ) : 
     ?>
         <div class="hm-header-gadgets">
             <?php 
                 do_action( 'hybridmag_header_inner_gadgets' ); 
-                hybridmag_header_sidebar();
             ?>
         </div>
     <?php
@@ -99,19 +98,24 @@ function hybridmag_header_inner_gadgets() {
 }
 add_action( 'hybridmag_after_header_main', 'hybridmag_header_inner_gadgets' );
 
+
 if ( ! function_exists( 'hybridmag_header_sidebar' ) ) :
 /**
  * Header Sidebar
  */
 function hybridmag_header_sidebar() {
+    if ( is_active_sidebar( 'header-2' ) ) :
     ?>
         <div class="hm-header-sidebar">
-            <?php dynamic_sidebar( 'header-2' ); ?>
+            <div class="hm-header-sidebar-inner">
+                <?php dynamic_sidebar( 'header-2' ); ?>
+            </div>
         </div>
     <?php
+    endif;
 }
+add_action( 'hybridmag_after_header_main', 'hybridmag_header_sidebar', 20 );
 endif;
-
 
 /**
  * Container Header inner right side
@@ -156,6 +160,45 @@ function hybridmag_mobile_menu_toggle() {
     <?php
 }
 add_action( 'hybridmag_after_header_main', 'hybridmag_mobile_menu_toggle', 20 );
+
+if ( ! function_exists( 'hybridmag_light_dark_toggle' ) ) :
+    /**
+     * Dark mode toggle.
+     */
+    function hybridmag_light_dark_toggle() {
+        ?>
+            <div class="hm-light-dark-switch">
+                <div class="hm-light-dark-toggle">
+                    <span class="hm-light-icon">
+                        <?php hybridmag_the_icon_svg( 'sun' ); ?>
+                    </span>
+                    <span class="hm-dark-icon">
+                        <?php hybridmag_the_icon_svg( 'moon' ); ?>
+                    </span>
+                </div>
+            </div>
+        <?php
+    }
+endif;
+
+
+/**
+ * Place dark light toggle.
+ */
+function hybridmag_locate_light_dark_toggle() {
+    if ( false === get_theme_mod( 'hybridmag_show_light_dark_toggle', true ) ) {
+        return;
+    }
+
+    $header_layout = hybridmag_get_header_layout();
+
+    if ( 'large' == $header_layout ) { 
+        add_action( 'hybridmag_after_primary_nav', 'hybridmag_light_dark_toggle', 8 );
+    } elseif ( 'default' == $header_layout ) {
+        add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_light_dark_toggle' );
+    }
+}
+add_action( 'wp', 'hybridmag_locate_light_dark_toggle' );
 
 if ( ! function_exists( 'hybridmag_header_cta' ) ) :
     /**

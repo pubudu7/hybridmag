@@ -1,23 +1,28 @@
 body {
 	background-color: #f5f5f5; // Fallback for when there is no custom background color defined.
+	//background-color: var(--hybridmag-color-bg);
 
 	&.hm-cl-one {
 		background-color: #ffffff;
+		//background-color: var(--hybridmag-color-bg-cl-one);
 	}
 
 	&.hm-boxed {
 		background-color: #dddddd;
+		//background-color: var(--hybridmag-color-bg-boxed);
 
 		#page {
 			margin: 0 auto;
 			width: 1280px;
 			max-width: 100%;
 			background-color: #f5f5f5;
+			//background-color: var(--hybridmag-color-bg-boxed-page);
 		}
 
 		&.hm-cl-one {
 			#page {
 				background-color: #ffffff;
+				//background-color: var(--hybridmag-color-bg-boxed-cl-one);
 			}
 		}
 	}
@@ -91,4 +96,253 @@ body.hm-boxed .hm-container {
 
 .page-template-template-fullwidth #primary {
 	width: 100%;
+}
+
+html.hm-dark {
+
+	--hybridmag-color-text-headings: #ffffff;
+	--hybridmag-color-link: #eeeeee;
+	--hybridmag-color-link-hover: #ffffff;
+	--hybridmag-color-text-main: #dddddd;
+
+	--hybridmag-color-input: #eeeeee;
+	--hybridmag-color-input-background: #222222;
+    --hybridmag-color-input-border: #333333;
+	--hybridmag-color-border: #333333;
+	--hybridmag-color-text-light: #cccccc;
+	--hybridmag-color-bg-cl-sep-inner: #222222;
+
+	body {
+		background-color: #000000; // Fallback for when there is no custom background color defined.
+
+		&.hm-cl-one {
+			background-color: #222222;
+		}
+
+		&.hm-boxed {
+			background-color: #000000;
+
+			#page {
+				background-color: #111111;
+			}
+
+			&.hm-cl-one {
+				#page {
+					background-color: #222222;
+				}
+			}
+		}
+
+	}
+	.hm-top-bar a {
+		color: #dddddd;
+	}
+
+	.hm-top-bar {
+		background: #111111;
+
+		.hm-menu ul ul {
+			background: #111111;
+		}
+
+		.hm-menu ul ul a:hover {
+			background: #000000;
+			color: #ffffff;
+		}
+
+		.hm-social-menu a:hover {
+			color: #ffffff;
+		}
+	}
+
+	.secondary-menu a {
+		color: #dddddd;
+	}
+
+	.page-content a, 
+	.entry-content a, 
+	.entry-summary a {
+		color: var(--hybridmag-color-link);
+	}
+
+	.site-title a, 
+	.site-title a:hover, 
+	.site-title a:active, 
+	.site-title a:focus, 
+	.site-title a:visited {
+		color: #ffffff;
+	}
+
+	.hm-search-box {
+		background: #111111;
+	}
+
+	.hm-h-de .site-header {
+		background-color: #222222;
+	}
+
+	.hm-h-lg .site-header {
+		background-color: #222222;
+	}
+
+	.hm-nav-sticky.hm-header-inner-wrapper, .hm-header-inner-wrapper {
+		background-color: #222222;
+	}
+
+	.hm-search-toggle .hm-svg-icon,
+	.hm-h-de .hm-header-inner .hm-social-menu a,
+	.hm-h-de .main-navigation a {
+		color: #eeeeee;
+	}
+
+	.hm-h-de .hm-slideout-toggle {
+		color: #dddddd;
+	}
+
+	.hm-h-de .main-navigation ul ul .current_page_item > a, 
+	.hm-h-de .main-navigation ul ul .current-menu-item > a, 
+	.hm-h-de .main-navigation ul ul .current_page_ancestor > a, 
+	.hm-h-de .main-navigation ul ul .current-menu-ancestor > a, 
+	.hm-h-de .main-navigation ul ul li a:hover {
+		background-color:  #111111;
+	}
+
+	.hm-h-de .main-navigation ul ul a:hover {
+		background-color: #111111;
+	}
+
+	.hm-h-de .main-navigation {
+		background-color: inherit;
+	}
+
+	.hm-h-de .main-navigation ul ul .current_page_item > a, 
+	.hm-h-de .main-navigation ul ul .current-menu-item > a, 
+	.hm-h-de .main-navigation ul ul .current_page_ancestor > a, 
+	.hm-h-de .main-navigation ul ul .current-menu-ancestor > a {
+		background: #111111;
+	}
+
+	.hm-h-de .main-navigation ul li a:hover, 
+	.hm-h-de .hm-header-inner .hm-social-menu a:hover {
+		color: #ffffff;
+	}
+
+	#site-navigation.hm-menu ul ul,
+	.hm-menu ul ul {
+		background-color: #222222;
+	}
+
+	.hm-h-de .site-header {
+		color: #eeeeee;
+	}
+
+	.hm-h-de .hm-mobile-menu-toggle {
+		color: #eeeeee;
+	}
+
+	.hm-h-lg .site-header .hm-main-menu {
+		background-color: #222222;
+	}
+
+	.hm-h-lg .main-navigation a {
+		color: #dddddd;
+	}
+
+	.hm-h-lg .main-navigation ul li a:hover::before, 
+	.hm-h-lg .main-navigation .current_page_item > a::before, 
+	.hm-h-lg .main-navigation .current-menu-item > a::before, 
+	.hm-h-lg .main-navigation .current_page_ancestor > a::before, 
+	.hm-h-lg .main-navigation .current-menu-ancestor > a::before {
+		background-color: #cccccc;
+	}
+
+	.hm-h-lg .main-navigation .current_page_item > a, 
+	.hm-h-lg .main-navigation .current-menu-item > a, 
+	.hm-h-lg .main-navigation .current_page_ancestor > a, 
+	.hm-h-lg .main-navigation .current-menu-ancestor > a {
+		color: #ffffff;
+	}
+
+	.hm-h-lg .main-navigation ul ul .current_page_item > a, 
+	.hm-h-lg .main-navigation ul ul .current-menu-item > a, 
+	.hm-h-lg .main-navigation ul ul .current_page_ancestor > a, 
+	.hm-h-lg .main-navigation ul ul .current-menu-ancestor > a, 
+	.hm-h-lg .main-navigation ul ul li a:hover {
+		background: #111111;
+		color: #ffffff;
+	}
+
+	.hm-h-lg .hm-slideout-toggle, 
+	.hm-h-lg .hm-slideout-toggle:hover {
+		color: #dddddd;
+	}
+
+	li.hm-tab.th-ui-state-active a {
+		color: #eeeeee;
+	}
+
+	.hm-entry .entry-content {
+		color: #cccccc;
+		margin-top: 5px;
+	}
+
+	.pagination .page-numbers {
+		background: #111111;
+	}
+
+	.post-thumbnail figcaption {
+		color: #ccc;
+	}
+
+	// Block
+	:where(.wp-block-image figcaption) {
+		color: #dddddd;
+	}
+
+	.hm-light-icon {
+		display: block;
+	}
+
+	.hm-dark-icon {
+		display: none;
+	}
+
+	.hm-featured-tabs .hm-tab-anchor {
+		color: #dddddd;
+	}
+
+	.hm-slideout-sidebar {
+		background-color: #222222;
+
+		.hm-slideout-toggle {
+			background-color: #111111;
+		}
+	}
+
+	.hm-mobile-sidebar {
+		background: #222222;
+	}
+
+	.hm-mobile-sidebar .hm-mobile-menu-toggle {
+		background-color: #111111;
+	}
+} 
+
+.hm-light-icon {
+	display: none;
+}
+
+.hm-dark-icon {
+	display: block;
+}
+
+.hm-light-dark-switch {
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+}
+
+.hm-light-dark-toggle {
+	padding: 3px 8px 0 10px;
+	font-size: 1.05em;
 }

@@ -1,6 +1,6 @@
 .hm-cl-sep {
 	.comments-area {
-		background: #ffffff;
+		background: var(--hybridmag-color-bg-cl-sep-inner);
 		border-radius: var(--hybridmag-global-border-radius);
 		box-shadow: var(--hybridmag-global-box-shadow);
 		padding: var(--hybridmag-global-inner-spacing);
@@ -63,7 +63,7 @@
 .comment-list article,
 .comment-list .pingback,
 .comment-list .trackback {
-	border-top: 1px solid #dddddd;
+	border-top: 1px solid var(--hybridmag-color-border);
 	padding: 30px 30px 30px 75px;
 	position: relative;
 }
@@ -187,7 +187,7 @@ footer.comment-meta {
 }
 
 .no-comments {
-	border-top: 1px solid #dddddd;
+	border-top: 1px solid var(--hybridmag-color-border);
 	font-weight: 700;
 	margin: 0;
 	padding-top: 1.75em;
@@ -211,7 +211,7 @@ footer.comment-meta {
 }
 
 .comment-reply-title {
-	border-top: 1px solid #ddd;
+	border-top: 1px solid var(--hybridmag-color-border);
 	position: relative;
 }
 

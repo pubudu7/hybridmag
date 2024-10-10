@@ -40,7 +40,7 @@ function hybridmag_locate_search() {
         add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_search_box' );
     } else {
         add_action( 'hybridmag_after_primary_nav', 'hybridmag_search_box' );
-        add_action( 'hybridmag_after_header_main', 'hybridmag_search_box' );
+        add_action( 'hybridmag_header_inner_right', 'hybridmag_search_box' );
     }
 }
 add_action( 'wp', 'hybridmag_locate_search' );
