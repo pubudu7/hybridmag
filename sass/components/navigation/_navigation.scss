@@ -78,7 +78,7 @@
 				position: relative;
 				width: 0.8em;
 				height: 0.8em;
-				font-size: 15px;
+				font-size: var(--hybridmag-font-size-sm);
 			}
 		}
 
@@ -401,7 +401,7 @@
 		cursor: pointer;
 		background: transparent;
 		//color: #222222;
-		font-size: 18px;
+		font-size: var(--hybridmag-font-size-base);
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -462,14 +462,14 @@
 
 		.posts-nav-text {
 			color: var(--hybridmag-color-text-light);
-			font-size: 14px;
+			font-size: var(--hybridmag-font-size-xs);
 			font-weight: 600;
 		}
 
 		.post-title {
 			font-family: $font__headings;
 			color: var(--hybridmag-color-link);
-			font-size: 18px;
+			font-size: var(--hybridmag-font-size-amd);
 			font-weight: 600;
 
 			&:hover {

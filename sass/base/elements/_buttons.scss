@@ -67,4 +67,9 @@ a.hm-readmore-btn {
 		color: var(--hybridmag-color-button-hover-text);
 		background: var(--hybridmag-color-button-hover-background);
 	}
+
+	@media (max-width:600px) {
+		padding: 8px 10px;
+		font-size: var(--hybridmag-font-size-xs);
+	}
 }

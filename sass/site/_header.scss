@@ -39,7 +39,7 @@
 	}
 
 	.site-title {
-		font-size: 35px;
+		font-size: var(--hybridmag-font-size-xxxxl);
 	}
 
 	.hm-search-toggle,
@@ -154,7 +154,7 @@
 	}
 
 	.hm-slideout-toggle {
-		font-size: 18px;
+		font-size: var(--hybridmag-font-size-amd);
 		margin-right: 0.8em;
 		color: #222222;
 	}
@@ -304,6 +304,12 @@
 	.site-header {
 		background: #ffffff;
 		box-shadow: var(--hybridmag-global-box-shadow);
+
+		.hm-light-dark-switch {
+			@media ( max-width: 960px ) {
+				display: none;
+			}
+		}
 	}
 
 	.hm-header-inner {
@@ -356,11 +362,7 @@
 		height: 50px;
 	}
 
-	.hm-light-dark-switch {
-		@media ( max-width: 960px ) {
-			display: none;
-		}
-	}
+
 }
 
 .hm-header-gadgets {
@@ -413,7 +415,7 @@
 	background-color: transparent;
 	border: none;
 	color: #000000;
-	font-size: 21px;
+	font-size: var(--hybridmag-font-size-lg);
 	padding: 10px;
 
 	&:hover {
@@ -480,7 +482,7 @@
 	}
 
 	.hm-social-menu {
-		font-size: 18px;
+		font-size: var(--hybridmag-font-size-amd);
 		justify-content: center;
 
 		li {
@@ -513,7 +515,7 @@
 	max-width: 95%;
 
 	.site-title {
-		font-size: 28px;
+		font-size: 1.75em;
 	}
 	.site-description {
 		display: none;
@@ -524,7 +526,7 @@
 	background-color: transparent;
 	border: none;
 	color: #222222;
-	font-size: 21px;
+	font-size: var(--hybridmag-font-size-lg);
 	padding: 0 10px;
 
 	&:hover {
@@ -604,7 +606,7 @@
 	float: left;
 
 	.site-title {
-		font-size: 26px;
+		font-size: var(--hybridmag-font-size-xxl);
 	}
 	.site-description {
 		display: none;
@@ -721,9 +723,53 @@
 	}
 
 	.hm-social-menu {
-		font-size: 17px;
+		font-size: var(--hybridmag-font-size-md);
 		@media (max-width: 959px) {
 			display: none;
 		}
+	}
+}
+
+.site-header {
+	.hm-light-icon {
+		display: none;
+	}
+
+	.hm-dark-icon {
+		display: block;
+	}
+
+	.hm-light-dark-switch {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+	}
+
+	.hm-light-dark-toggle {
+		background: transparent;
+		padding: 3px 8px 0 10px;
+		font-size: 1.05em;
+		color: inherit;
+	}
+}
+
+.hm-mobile-sidebar {
+	.hm-light-icon {
+		display: none;
+	}
+
+	.hm-light-dark-switch {
+		text-align: right;
+	}
+
+	.hm-light-dark-toggle {
+		color: inherit;
+		border-radius: 20px;
+		text-align: center;
+		padding: 0;
+		width: 35px;
+		height: 35px;
+		background-color: transparent;
+		border: 1px solid var(--hybridmag-color-border);
 	}
 }

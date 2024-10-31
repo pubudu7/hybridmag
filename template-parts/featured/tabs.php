@@ -13,7 +13,6 @@ for ( $i = 1; $i <= 5; $i++ ) {
     $hybridmag_tab_posts_cat_list[$i] = get_theme_mod( 'hybridmag_tab_posts'. $i .'_category', '' );
 }
 
-
 ?>
 
 <div class="hm-featured-tabs">
@@ -21,6 +20,7 @@ for ( $i = 1; $i <= 5; $i++ ) {
     <ul class="hm-tab-nav">
         <?php 
             foreach ( $hybridmag_tab_posts_cat_list as $index => $cat ) { 
+
                 if ( ! empty( $cat ) ) {
                     $hybridmag_cat_name = get_cat_name( $cat );
                 } else {
@@ -31,13 +31,13 @@ for ( $i = 1; $i <= 5; $i++ ) {
 
                 <?php if ( 1 === $index || ! empty( $cat ) ) : ?>
                     <li class="hm-tab">
-                        <a class="hm-tab-anchor" aria-label="tab-posts-<?php echo $index ?>" href="#hm-tab-posts-<?php echo $index ?>">
+                        <a class="hm-tab-anchor" aria-label="tab-posts-<?php echo esc_attr( $index ); ?>" href="#hm-tab-posts-<?php echo esc_attr( $index ); ?>">
                             <?php echo esc_html( $hybridmag_cat_name ); ?>
                         </a>
                     </li>
                 <?php endif; ?>
-        <?php } 
-        ?>
+
+        <?php } ?>
     </ul>
 
     <div class="tab-content clearfix">
@@ -55,7 +55,8 @@ for ( $i = 1; $i <= 5; $i++ ) {
 
             <?php if ( 1 === $index || ! empty( $cat ) ) : ?>
 
-            <div id="hm-tab-posts-<?php echo $index; ?>">
+            <div id="hm-tab-posts-<?php echo esc_attr( $index ); ?>">
+
                 <div class="hm-tab-posts-wrapper">
             
                 <?php if ( $hybridmag_tab_posts->have_posts() ) : ?>
@@ -88,6 +89,17 @@ for ( $i = 1; $i <= 5; $i++ ) {
                     </div>
                 <?php endif; ?>
                 </div>
+
+                <?php
+                    $view_all_link = hybridmag_get_viewall_link( $cat );
+                    $view_all_text = get_theme_mod( 'hybridmag_tabbed_view_all_text', 'View More' );
+
+                    if ( ! empty( $view_all_link ) && ! empty( $view_all_text ) ) {
+                        echo '<span class="hm-tabs-view-more">';
+                        echo '<a href="'. esc_url( $view_all_link ) .'">' . esc_html( $view_all_text ) . '</a>';
+                        echo '</span>';
+                    }
+                ?>  
 
             </div><!-- #hm-tab-posts-<?php echo $i ?> -->
 

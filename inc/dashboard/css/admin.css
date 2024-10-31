@@ -34,3 +34,12 @@ h3.th-reqbox-heading {
 	background: #ffffff;
 	padding: 35px;
 }
+
+.hm-metabox-select-label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+.hm-metabox-field {
+    margin-bottom: 20px;
+}

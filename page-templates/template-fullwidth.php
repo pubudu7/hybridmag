@@ -6,7 +6,13 @@
  * @since HybridMag 1.0.0
  */
 
- get_header(); ?>
+get_header(); 
+
+if ( is_front_page() ) {
+    do_action( 'hybridmag_featured_section_top' );
+} 
+ 
+?>
 
 <main id="primary" class="site-main">
 

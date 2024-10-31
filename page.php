@@ -14,7 +14,7 @@
 
 get_header();
 
-	if ( is_front_page() && ! is_paged() ) {
+	if ( is_front_page() ) {
 		do_action( 'hybridmag_featured_section_top' );
 	} 
 

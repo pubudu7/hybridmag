@@ -168,14 +168,14 @@ if ( ! function_exists( 'hybridmag_light_dark_toggle' ) ) :
     function hybridmag_light_dark_toggle() {
         ?>
             <div class="hm-light-dark-switch">
-                <div class="hm-light-dark-toggle">
+                <button class="hm-light-dark-toggle">
                     <span class="hm-light-icon">
-                        <?php hybridmag_the_icon_svg( 'sun' ); ?>
+                        <?php hybridmag_the_icon_svg( 'sun1' ); ?>
                     </span>
                     <span class="hm-dark-icon">
                         <?php hybridmag_the_icon_svg( 'moon' ); ?>
                     </span>
-                </div>
+                </button>
             </div>
         <?php
     }
@@ -186,7 +186,7 @@ endif;
  * Place dark light toggle.
  */
 function hybridmag_locate_light_dark_toggle() {
-    if ( false === get_theme_mod( 'hybridmag_show_light_dark_toggle', true ) ) {
+    if ( false === get_theme_mod( 'hybridmag_show_dark_toggle', true ) ) {
         return;
     }
 
@@ -197,6 +197,8 @@ function hybridmag_locate_light_dark_toggle() {
     } elseif ( 'default' == $header_layout ) {
         add_action( 'hybridmag_header_inner_gadgets', 'hybridmag_light_dark_toggle' );
     }
+
+    add_action( 'hybridmag_mobile_sidebar_bottom', 'hybridmag_light_dark_toggle' );
 }
 add_action( 'wp', 'hybridmag_locate_light_dark_toggle' );
 

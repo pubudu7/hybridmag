@@ -62,7 +62,7 @@
 .widget_block h3.wp-block-heading,
 .widget_block h4.wp-block-heading {
 	margin: 0 0 20px;
-	font-size: 21px;
+	font-size: var(--hybridmag-font-size-lg);
 }
 
 .hm-header-sidebar {
@@ -93,6 +93,7 @@ ul.hm-tab-nav {
 	list-style: none;
 	padding: 0;
 	display: flex;
+	flex-wrap: wrap;
 }
 
 li.hm-tab {
@@ -113,6 +114,7 @@ li.hm-tab.th-ui-state-active a {
 }
 
 .hm-featured-tabs {
+	position: relative;
 	margin-bottom: 60px;
 
 	.hm-tab-anchor {
@@ -134,9 +136,23 @@ li.hm-tab.th-ui-state-active a {
 	#hm-tab-posts-4 {
 		display: none;
 	}
-
 }
 
 .hm-cl-one .hm-featured-tabs {
 	margin-bottom: 80px;
+}
+
+.hm-tabs-view-more {
+	@media( min-width: 768px ) {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin-top: 10px;
+		font-size: var( --hybridmag-font-size-sm );
+		text-align: right;
+	}
+	text-align: center;
+	font-weight: var(--hybridmag-font-weight-headings);
+	margin: 20px 0 0;
+	display: block;
 }

@@ -326,23 +326,8 @@ html.hm-dark {
 	.hm-mobile-sidebar .hm-mobile-menu-toggle {
 		background-color: #111111;
 	}
+
+	.wp-block-group.has-background {
+		color: #ffffff;
+	}
 } 
-
-.hm-light-icon {
-	display: none;
-}
-
-.hm-dark-icon {
-	display: block;
-}
-
-.hm-light-dark-switch {
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-}
-
-.hm-light-dark-toggle {
-	padding: 3px 8px 0 10px;
-	font-size: 1.05em;
-}

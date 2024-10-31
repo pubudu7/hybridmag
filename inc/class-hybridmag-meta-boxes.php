@@ -35,7 +35,7 @@ class HybridMag_Metaboxes {
         if ( in_array( $post_type, $post_types ) ) {
             add_meta_box(
                 'hybridmag_layout_meta',
-                esc_html__( 'Select Layout', 'hybridmag' ),
+                esc_html__( 'Theme Page Options', 'hybridmag' ),
                 array( $this, 'render_meta_box_content' ),
                 $post_type,
                 'side',
@@ -57,14 +57,14 @@ class HybridMag_Metaboxes {
          */
  
         // Check if our nonce is set.
-        if ( ! isset( $_POST['hybridmag_layout_metabox_nonce'] ) ) {
+        if ( ! isset( $_POST['hybridmag_theme_page_options_metabox_nonce'] ) ) {
             return $post_id;
         }
  
-        $nonce = sanitize_key( $_POST['hybridmag_layout_metabox_nonce'] );
+        $nonce = sanitize_key( $_POST['hybridmag_theme_page_options_metabox_nonce'] );
  
         // Verify that the nonce is valid.
-        if ( ! wp_verify_nonce( $nonce, 'hybridmag_layout_metabox' ) ) {
+        if ( ! wp_verify_nonce( $nonce, 'hybridmag_theme_page_options_metabox' ) ) {
             return $post_id;
         }
  
@@ -97,9 +97,15 @@ class HybridMag_Metaboxes {
             // Update the meta field.
             update_post_meta( $post_id, '_hybridmag_layout_meta', $selected_layout );
 
-        } else {
-            return $post_id;
         }
+
+        $hide_featured_image = isset( $_POST['hybridmag_hide_featured_image'] ) ? "true" : "false";
+        update_post_meta( $post_id, '_hybridmag_hide_featured_image', $hide_featured_image );
+
+        
+        $hide_page_title = isset( $_POST['hybridmag_hide_page_title'] ) ? true : false;
+        update_post_meta( $post_id, '_hybridmag_hide_page_title', $hide_page_title );
+        
     }
  
  
@@ -111,29 +117,44 @@ class HybridMag_Metaboxes {
     public function render_meta_box_content( $post ) {
  
         // Add an nonce field so we can check for it later.
-        wp_nonce_field( 'hybridmag_layout_metabox', 'hybridmag_layout_metabox_nonce' );
+        wp_nonce_field( 'hybridmag_theme_page_options_metabox', 'hybridmag_theme_page_options_metabox_nonce' );
  
         // Use get_post_meta to retrieve an existing value from the database.
         $selected_layout = get_post_meta( $post->ID, '_hybridmag_layout_meta', true );
  
         // Display the form, using the current value.
         if( empty( $selected_layout) ) { $selected_layout = 'default-layout'; }
+
+        $hide_featured_image = get_post_meta( $post->ID, '_hybridmag_hide_featured_image', true );
+        $hide_page_title = get_post_meta( $post->ID, '_hybridmag_hide_page_title', true );
         ?>
 
-        <input type="radio" id="default-layout" name="hybridmag_layout" value="default-layout" <?php checked( 'default-layout', $selected_layout ); ?> />
-        <label for="default-layout" class="post-format-icon"><?php esc_html_e( 'Default Layout', 'hybridmag' ); ?></label><br/>
-        
-        <input type="radio" id="right-sidebar" name="hybridmag_layout" value="right-sidebar" <?php checked( 'right-sidebar', $selected_layout ); ?> />
-        <label for="right-sidebar" class="post-format-icon"><?php esc_html_e( 'Right Sidebar', 'hybridmag' ); ?></label><br/>
-        
-        <input type="radio" id="left-sidebar" name="hybridmag_layout" value="left-sidebar" <?php checked( 'left-sidebar', $selected_layout ); ?> />
-        <label for="left-sidebar" class="post-format-icon"><?php esc_html_e( 'Left Sidebar', 'hybridmag' ); ?></label><br/>
-        
-        <input type="radio" id="no-sidebar" name="hybridmag_layout" value="no-sidebar" <?php checked( 'no-sidebar', $selected_layout ); ?> />
-        <label for="no-sidebar" class="post-format-icon"><?php esc_html_e( 'Full Width', 'hybridmag' ); ?></label><br/>
-        
-        <input type="radio" id="center-content" name="hybridmag_layout" value="center-content" <?php checked( 'center-content', $selected_layout ); ?> />
-        <label for="center-content" class="post-format-icon"><?php esc_html_e( 'Full Width Content Centered.', 'hybridmag' ); ?></label><br/>
+        <label class="hm-metabox-select-label" for="hybridmag_layout">
+            <?php esc_html_e( 'Sidebar Layout', 'hybridmag' ); ?>
+        </label>
+        <select name="hybridmag_layout" id="hybridmag_layout" class="hm-metabox-field">
+            <option value="default-layout" <?php selected( $selected_layout, 'default-layout' ); ?>><?php esc_html_e( 'Default Layout', 'hybridmag' ); ?></option>
+            <option value="right-sidebar" <?php selected( $selected_layout, 'right-sidebar' ); ?>><?php esc_html_e( 'Right Sidebar', 'hybridmag' ); ?></option>
+            <option value="left-sidebar" <?php selected( $selected_layout, 'left-sidebar' ); ?>><?php esc_html_e( 'Left Sidebar', 'hybridmag' ); ?></option>
+            <option value="no-sidebar" <?php selected( $selected_layout, 'no-sidebar' ); ?>><?php esc_html_e( 'No Sidebar Full Width', 'hybridmag' ); ?></option>
+            <option value="center-content" <?php selected( $selected_layout, 'center-content' ); ?>><?php esc_html_e( 'No Sidebar Content Centered', 'hybridmag' ); ?></option>
+        </select>
+
+        <p>
+            <label for="hybridmag_hide_featured_image" class="hm-metabox-label">
+                <input type="checkbox" name="hybridmag_hide_featured_image" id="hybridmag_hide_featured_image" class="hm-metabox-field" value="true" <?php checked( $hide_featured_image, "true" ); ?>>
+                <?php esc_html_e( 'Hide featured image', 'hybridmag' ); ?>
+            </label>
+        </p>
+
+        <?php if ( $post->post_type == 'page' ) : ?>
+            <p>
+                <label for="hybridmag_hide_page_title" class="hm-metabox-label">
+                    <input type="checkbox" name="hybridmag_hide_page_title" id="hybridmag_hide_page_title" class="hm-metabox-field" value="true" <?php checked( $hide_page_title, "true" ); ?>>
+                    <?php esc_html_e( 'Hide page title', 'hybridmag' ); ?>
+                </label>
+            </p>
+        <?php endif; ?>
         
         <?php
     }

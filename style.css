@@ -81,16 +81,17 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 :root {
   --hybridmag-font-size-base: 16px;
-  --hybridmag-font-size-xxxs: 0.75rem;
-  --hybridmag-font-size-xxs: 0.813rem;
-  --hybridmag-font-size-xs: 0.875rem;
-  --hybridmag-font-size-sm: 0.938rem;
-  --hybridmag-font-size-md: 1.063rem;
-  --hybridmag-font-size-lg: 1.313rem;
-  --hybridmag-font-size-xl: 1.5rem;
-  --hybridmag-font-size-xxl: 1.625rem;
-  --hybridmag-font-size-xxxl: 2rem;
-  --hybridmag-font-size-xxxxl: 2.25rem;
+  --hybridmag-font-size-xxxs: 0.75em;
+  --hybridmag-font-size-xxs: 0.813em;
+  --hybridmag-font-size-xs: 0.875em;
+  --hybridmag-font-size-sm: 0.938em;
+  --hybridmag-font-size-md: 1.063em;
+  --hybridmag-font-size-amd: 1.125em;
+  --hybridmag-font-size-lg: 1.313em;
+  --hybridmag-font-size-xl: 1.5em;
+  --hybridmag-font-size-xxl: 1.625em;
+  --hybridmag-font-size-xxxl: 2em;
+  --hybridmag-font-size-xxxxl: 2.25em;
   --hybridmag-line-height-body: 1.5;
   --hybridmag-line-height-article: 1.7;
   --hybridmag-line-height-headings: 1.3;
@@ -473,7 +474,7 @@ optgroup,
 textarea {
   color: var(--hybridmag-color-text-main);
   font-family: "Figtree", Helvetica, Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1em;
   line-height: var(--hybridmag-line-height-body);
 }
 
@@ -517,14 +518,14 @@ h6 {
 
 .site-title {
   font-family: "Figtree", Helvetica, Arial, sans-serif;
-  font-size: 26px;
+  font-size: var(--hybridmag-font-size-xxl);
   font-weight: bold;
   line-height: 1.2;
   margin: 0;
 }
 @media screen and (min-width: 768px) {
   .site-title {
-    font-size: 32px;
+    font-size: var(--hybridmag-font-size-xxxl);
   }
 }
 .site-title a,
@@ -856,24 +857,8 @@ html.hm-dark .hm-mobile-sidebar {
 html.hm-dark .hm-mobile-sidebar .hm-mobile-menu-toggle {
   background-color: #111111;
 }
-
-.hm-light-icon {
-  display: none;
-}
-
-.hm-dark-icon {
-  display: block;
-}
-
-.hm-light-dark-switch {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-}
-
-.hm-light-dark-toggle {
-  padding: 3px 8px 0 10px;
-  font-size: 1.05em;
+html.hm-dark .wp-block-group.has-background {
+  color: #ffffff;
 }
 
 hr {
@@ -1048,6 +1033,12 @@ a.hm-readmore-btn:visited {
   color: var(--hybridmag-color-button-hover-text);
   background: var(--hybridmag-color-button-hover-background);
 }
+@media (max-width: 600px) {
+  .hm-cta-btn {
+    padding: 8px 10px;
+    font-size: var(--hybridmag-font-size-xs);
+  }
+}
 
 input[type=text],
 input[type=email],
@@ -1138,7 +1129,7 @@ textarea {
   width: 100%;
 }
 .hm-h-lg .site-title {
-  font-size: 35px;
+  font-size: var(--hybridmag-font-size-xxxxl);
 }
 .hm-h-lg .hm-search-toggle,
 .hm-h-lg .hm-slideout-toggle:hover {
@@ -1230,7 +1221,7 @@ textarea {
   color: var(--hybridmag-color-text-main);
 }
 .hm-top-bar .hm-slideout-toggle {
-  font-size: 18px;
+  font-size: var(--hybridmag-font-size-amd);
   margin-right: 0.8em;
   color: #222222;
 }
@@ -1338,6 +1329,11 @@ textarea {
   background: #ffffff;
   box-shadow: var(--hybridmag-global-box-shadow);
 }
+@media (max-width: 960px) {
+  .hm-h-de .site-header .hm-light-dark-switch {
+    display: none;
+  }
+}
 .hm-h-de .hm-header-inner {
   min-height: 50px;
 }
@@ -1380,11 +1376,6 @@ textarea {
 }
 .hm-h-de .hm-header-inner .hm-slideout-toggle {
   height: 50px;
-}
-@media (max-width: 960px) {
-  .hm-h-de .hm-light-dark-switch {
-    display: none;
-  }
 }
 
 .hm-header-gadgets {
@@ -1435,7 +1426,7 @@ textarea {
   background-color: transparent;
   border: none;
   color: #000000;
-  font-size: 21px;
+  font-size: var(--hybridmag-font-size-lg);
   padding: 10px;
 }
 .hm-mobile-menu-toggle:hover {
@@ -1485,7 +1476,7 @@ textarea {
   margin: 20px 10px 20px 10px;
 }
 .hm-mobile-sidebar .hm-social-menu {
-  font-size: 18px;
+  font-size: var(--hybridmag-font-size-amd);
   justify-content: center;
 }
 .hm-mobile-sidebar .hm-social-menu li a {
@@ -1510,7 +1501,7 @@ textarea {
   max-width: 95%;
 }
 .hm-mobile-sb-logo .site-title {
-  font-size: 28px;
+  font-size: 1.75em;
 }
 .hm-mobile-sb-logo .site-description {
   display: none;
@@ -1520,7 +1511,7 @@ textarea {
   background-color: transparent;
   border: none;
   color: #222222;
-  font-size: 21px;
+  font-size: var(--hybridmag-font-size-lg);
   padding: 0 10px;
 }
 .hm-slideout-toggle:hover {
@@ -1593,7 +1584,7 @@ textarea {
   float: left;
 }
 .hm-slideout-sb-logo .site-title {
-  font-size: 26px;
+  font-size: var(--hybridmag-font-size-xxl);
 }
 .hm-slideout-sb-logo .site-description {
   display: none;
@@ -1700,13 +1691,48 @@ textarea {
 }
 .hm-header-inner-left .hm-social-menu,
 .hm-header-inner-right .hm-social-menu {
-  font-size: 17px;
+  font-size: var(--hybridmag-font-size-md);
 }
 @media (max-width: 959px) {
   .hm-header-inner-left .hm-social-menu,
   .hm-header-inner-right .hm-social-menu {
     display: none;
   }
+}
+
+.site-header .hm-light-icon {
+  display: none;
+}
+.site-header .hm-dark-icon {
+  display: block;
+}
+.site-header .hm-light-dark-switch {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.site-header .hm-light-dark-toggle {
+  background: transparent;
+  padding: 3px 8px 0 10px;
+  font-size: 1.05em;
+  color: inherit;
+}
+
+.hm-mobile-sidebar .hm-light-icon {
+  display: none;
+}
+.hm-mobile-sidebar .hm-light-dark-switch {
+  text-align: right;
+}
+.hm-mobile-sidebar .hm-light-dark-toggle {
+  color: inherit;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  border: 1px solid var(--hybridmag-color-border);
 }
 
 /* Footer */
@@ -1846,7 +1872,7 @@ textarea {
   position: relative;
   width: 0.8em;
   height: 0.8em;
-  font-size: 15px;
+  font-size: var(--hybridmag-font-size-sm);
 }
 .hm-menu ul li:hover > ul,
 .hm-menu ul li.focus > ul {
@@ -2076,7 +2102,7 @@ textarea {
 .hm-mobile-menu .hm-dropdown-toggle {
   cursor: pointer;
   background: transparent;
-  font-size: 18px;
+  font-size: var(--hybridmag-font-size-base);
   position: absolute;
   top: 0;
   right: 0;
@@ -2128,13 +2154,13 @@ textarea {
 }
 .post-navigation .nav-links .posts-nav-text {
   color: var(--hybridmag-color-text-light);
-  font-size: 14px;
+  font-size: var(--hybridmag-font-size-xs);
   font-weight: 600;
 }
 .post-navigation .nav-links .post-title {
   font-family: "Figtree", Helvetica, Arial, sans-serif;
   color: var(--hybridmag-color-link);
-  font-size: 18px;
+  font-size: var(--hybridmag-font-size-amd);
   font-weight: 600;
 }
 .post-navigation .nav-links .post-title:hover {
@@ -2383,6 +2409,9 @@ textarea {
   text-decoration: underline;
 }
 
+.entry-title {
+  word-wrap: break-word;
+}
 .entry-title a {
   color: var(--hybridmag-color-link);
 }
@@ -2600,7 +2629,7 @@ textarea {
   display: inline-block;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 0.75rem;
+  font-size: 0.75em;
   border-radius: 3px;
 }
 
@@ -2742,7 +2771,7 @@ textarea {
 }
 
 .hm-slider-title {
-  font-size: 18px;
+  font-size: var(--hybridmag-font-size-md);
   font-weight: bold;
   margin: 0;
   color: #f5f5f5;
@@ -2750,13 +2779,13 @@ textarea {
 }
 @media (min-width: 992px) {
   .hm-slider-title {
-    font-size: 26px;
+    font-size: var(--hybridmag-font-size-xxl);
   }
 }
 
 .hm-slider-details-container {
   z-index: 1;
-  padding: 33px;
+  padding: 33px 33px 38px 33px;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -2764,7 +2793,7 @@ textarea {
 }
 @media (max-width: 767px) {
   .hm-slider-details-container {
-    padding: 15px;
+    padding: 15px 15px 30px 15px;
   }
 }
 
@@ -2804,7 +2833,6 @@ textarea {
   fill: #fff;
   width: 26px;
   height: 26px;
-  top: 5px;
   position: relative;
 }
 
@@ -2843,9 +2871,9 @@ textarea {
 .hm-highlighted-post:first-child {
   margin-bottom: 0.92%;
 }
-@media screen and (max-width: 767px) {
+@media screen and (min-width: 768px) {
   .hm-highlighted-post:first-child {
-    margin-bottom: 0.92%;
+    margin-bottom: 0.97%;
   }
 }
 .hm-highlighted-post:hover .hmhp-details-container::before {
@@ -2890,14 +2918,14 @@ textarea {
 
 .hmhp-title {
   font-weight: 700;
-  font-size: 17px;
+  font-size: var(--hybridmag-font-size-md);
   color: #f5f5f5;
   text-shadow: 0px 1px 1px #000;
   margin: 0;
 }
 @media screen and (min-width: 992px) {
   .hmhp-title {
-    font-size: 20px;
+    font-size: var(--hybridmag-font-size-lg);
   }
 }
 
@@ -2976,6 +3004,7 @@ textarea {
 .hm-tab-post-title {
   font-size: var(--hybridmag-font-size-md);
   margin: 0 0 8px;
+  word-wrap: break-word;
 }
 
 .hm-tab-post-img img {
@@ -3041,11 +3070,11 @@ textarea {
 }
 
 .hm-entry-single {
-  font-size: var(--hybridmag-font-size-md);
   line-height: var(--hybridmag-line-height-article);
 }
 .hm-entry-single .entry-content {
   margin-bottom: 35px;
+  font-size: var(--hybridmag-font-size-md);
 }
 .hm-entry-single .post-thumbnail {
   margin: 0 0 35px;
@@ -3054,12 +3083,12 @@ textarea {
   border-radius: var(--hybridmag-global-border-radius);
 }
 .hm-entry-single .entry-title {
-  font-size: 26px;
+  font-size: var(--hybridmag-font-size-xxl);
   margin: 0 0 10px;
 }
 @media (min-width: 768px) {
   .hm-entry-single .entry-title {
-    font-size: 32px;
+    font-size: var(--hybridmag-font-size-xxxl);
   }
 }
 .hm-entry-single .entry-header {
@@ -3078,6 +3107,13 @@ textarea {
   box-shadow: var(--hybridmag-global-box-shadow);
 }
 
+.page .hm-entry-single .entry-header {
+  margin-bottom: 0;
+}
+.page .hm-entry-single .entry-title {
+  margin: 0 0 35px;
+}
+
 .edit-link {
   font-style: italic;
   font-weight: 600;
@@ -3086,7 +3122,7 @@ textarea {
 
 .post-thumbnail figcaption {
   color: #555;
-  font-size: 13px;
+  font-size: var(--hybridmag-font-size-xxs);
   text-align: center;
   margin-bottom: 1em;
   margin-top: 0;
@@ -3158,8 +3194,7 @@ textarea {
 }
 
 .comments-title {
-  font-size: 23px;
-  font-size: 1.4375rem;
+  font-size: 1.4375em;
   font-weight: 700;
   line-height: 1.3125;
   margin: 0;
@@ -3167,8 +3202,7 @@ textarea {
 }
 
 .comment-reply-title {
-  font-size: 23px;
-  font-size: 1.4375rem;
+  font-size: 1.4375em;
   font-weight: 700;
   line-height: 1.3125;
   padding-top: 1.304em;
@@ -3265,7 +3299,7 @@ footer.comment-meta {
   border-radius: 2px;
   color: #fff;
   display: inline-block;
-  font-size: var(--hybridmag-font-size-xxs);
+  font-size: var(--hybridmag-font-size-xxxs);
   line-height: 1;
   margin-top: 1.25em;
   padding: 0.417em 0.833em;
@@ -3435,7 +3469,7 @@ footer.comment-meta {
 .widget_block h3.wp-block-heading,
 .widget_block h4.wp-block-heading {
   margin: 0 0 20px;
-  font-size: 21px;
+  font-size: var(--hybridmag-font-size-lg);
 }
 
 .hm-header-sidebar figure {
@@ -3462,6 +3496,7 @@ ul.hm-tab-nav {
   list-style: none;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
 }
 
 li.hm-tab {
@@ -3480,6 +3515,7 @@ li.hm-tab.th-ui-state-active a {
 }
 
 .hm-featured-tabs {
+  position: relative;
   margin-bottom: 60px;
 }
 .hm-featured-tabs .hm-tab-anchor {
@@ -3504,6 +3540,23 @@ li.hm-tab.th-ui-state-active a {
 
 .hm-cl-one .hm-featured-tabs {
   margin-bottom: 80px;
+}
+
+.hm-tabs-view-more {
+  text-align: center;
+  font-weight: var(--hybridmag-font-weight-headings);
+  margin: 20px 0 0;
+  display: block;
+}
+@media (min-width: 768px) {
+  .hm-tabs-view-more {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    font-size: var(--hybridmag-font-size-sm);
+    text-align: right;
+  }
 }
 
 /* Media
@@ -3539,6 +3592,7 @@ li.hm-tab.th-ui-state-active a {
 
 .wp-caption-text {
   text-align: center;
+  font-size: var(--hybridmag-font-size-xs);
 }
 
 /* Galleries
@@ -3758,7 +3812,7 @@ li.hm-tab.th-ui-state-active a {
           clip-path: none;
   color: #21759b;
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.875em;
   font-weight: 700;
   height: auto;
   left: 5px;

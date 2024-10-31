@@ -1,11 +1,10 @@
 <?php
 
 function hybridmag_enqueue_admin_scripts( $hook ) {
-    if ( 'appearance_page_hybridmag' != $hook ) {
-        return;
+    if ( $hook === 'post.php' || $hook === 'post-new.php' || 'appearance_page_hybridmag' == $hook ) {
+        wp_register_style( 'hybridmag-admin-css', get_template_directory_uri() . '/inc/dashboard/css/admin.css', false, '1.0.0' );
+        wp_enqueue_style( 'hybridmag-admin-css' );
     }
-    wp_register_style( 'hybridmag-admin-css', get_template_directory_uri() . '/inc/dashboard/css/admin.css', false, '1.0.0' );
-    wp_enqueue_style( 'hybridmag-admin-css' );
 }
 add_action( 'admin_enqueue_scripts', 'hybridmag_enqueue_admin_scripts' );
 

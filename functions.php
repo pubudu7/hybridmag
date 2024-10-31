@@ -310,13 +310,22 @@ function hybridmag_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 
-	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_show_featured_content', true ) && ! is_page_template( 'page-templates/template-fullwidth.php' ) ) {
-		wp_enqueue_style( 'hybridmag-swiper', get_template_directory_uri() . '/assets/css/swiper-bundle.min.css', '', '11.1.4', 'screen' );
+	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_show_featured_content', true ) /*&& ! is_page_template( 'page-templates/template-fullwidth.php' )*/ ) {
+		wp_enqueue_style( 'hybridmag-swiper', get_template_directory_uri() . '/assets/css/swiper-bundle.css', '', '11.1.4', 'screen' );
 		wp_enqueue_script( 'hybridmag-swiper', get_template_directory_uri() . '/assets/js/swiper-bundle.min.js', '', '11.1.4', true );
 		wp_enqueue_script( 'hybridmag-swiper-custom', get_template_directory_uri() . '/assets/js/hybridmag-swiper.js', array(), HYBRIDMAG_VERSION, true );
+		
+		$autoplay = get_theme_mod( 'hybridmag_slider_autoplay', false );
+		$delay = get_theme_mod( 'hybridmag_slider_autoplay_delay', 6 );
+		wp_localize_script( 'hybridmag-swiper-custom', 'hybridmag_swiper_object',
+			array(
+				'autoplay'	=> $autoplay,
+				'delay'		=> $delay
+			)
+		);
 	}
 
-	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_display_tabbed_posts', true ) && ! is_page_template( 'page-templates/template-fullwidth.php' ) ) {
+	if ( ( ( is_home() && ! is_paged() ) || ( is_front_page() && ! is_paged() ) ) && true == get_theme_mod( 'hybridmag_display_tabbed_posts', true ) /*&& ! is_page_template( 'page-templates/template-fullwidth.php' )*/ ) {
 		wp_enqueue_script( 'hybridmag-tabs', get_template_directory_uri() . '/assets/js/tab-widget.js', array(), HYBRIDMAG_VERSION, true );
 	}
 	

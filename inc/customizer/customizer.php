@@ -738,6 +738,22 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	) );
 
+	$wp_customize->add_setting( 
+		'hybridmag_show_dark_toggle',
+		array(
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
+		)
+	);
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_dark_toggle',
+		array(
+			'label' 	=> esc_html__( 'Display Dark/Light Toggle', 'hybridmag' ),
+			'section' 	=> 'hybridmag_primary_menu_section',
+			'priority'	=> 15,
+		)
+	) );
+
 	// Primary Menu - Line Height
 	$wp_customize->add_setting( 
 		'hybridmag_pmenu_line_height',
@@ -2013,22 +2029,21 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Show featured content
-	$wp_customize->add_setting(
+	// Archive - Show category list
+	$wp_customize->add_setting( 
 		'hybridmag_show_featured_content',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_show_featured_content',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_featured_content',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Display featured posts.', 'hybridmag' ),
-			'section'     => 'hybridmag_featured_slider',
+			'label' 	=> esc_html__( 'Display featured posts.', 'hybridmag' ),
+			'section' 	=> 'hybridmag_featured_slider'
 		)
-	);
+	) );
 
 	// Slider Posts Source.
 	$wp_customize->add_setting(
@@ -2049,7 +2064,8 @@ function hybridmag_customize_register( $wp_customize ) {
 				'category' 	=> esc_html__( 'By Category', 'hybridmag' ),
 				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' ),
 				'sticky'	=> esc_html__( 'Sticky Posts', 'hybridmag' ),
-			)
+			),
+			'active_callback' => 'hybridmag_is_featured_content_active'
 		)
 	);
 
@@ -2094,7 +2110,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Show featured content
+	// ignore sticky posts slider
 	$wp_customize->add_setting(
 		'hybridmag_ignore_sticky_posts_slider',
 		array(
@@ -2111,6 +2127,45 @@ function hybridmag_customize_register( $wp_customize ) {
 			'active_callback'	=> 'hybridmag_is_not_sticky_posts_slider'
 		)
 	);
+
+	// Archive - Show category list
+	$wp_customize->add_setting( 
+		'hybridmag_slider_autoplay',
+		array(
+			'default' 			=> false,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
+		)
+	);
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_slider_autoplay',
+		array(
+			'label' 	=> esc_html__( 'Slider autoplay', 'hybridmag' ),
+			'section' 	=> 'hybridmag_featured_slider',
+			'active_callback' => 'hybridmag_is_featured_content_active'
+		)
+	) );
+
+	// Slider - autoplay cycle length
+	$wp_customize->add_setting( 
+		'hybridmag_slider_autoplay_delay',
+		array(
+			'default'           => 6,
+			'sanitize_callback' => 'hybridmag_sanitize_slider_number_input'
+		)
+	);
+	$wp_customize->add_control( 
+		new HybridMag_Slider_Control( $wp_customize, 'hybridmag_slider_autoplay_delay',
+		array(
+			'label'         => esc_html__( 'Slider autoplay delay in seconds', 'hybridmag' ),
+			'section'       => 'hybridmag_featured_slider',
+			'input_attrs'   => array(
+				'min'   => 3,
+				'max'   => 30,
+				'step'  => 1,
+			),
+			'active_callback' => 'hybridmag_is_slider_autoplay_active'
+		)
+	) );
 
 	// Featured Posts Source.
 	$wp_customize->add_setting(
@@ -2131,7 +2186,8 @@ function hybridmag_customize_register( $wp_customize ) {
 				'category' 	=> esc_html__( 'By Category', 'hybridmag' ),
 				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' ),
 				'sticky'	=> esc_html__( 'Sticky Posts', 'hybridmag' ),
-			)
+			),
+			'active_callback' => 'hybridmag_is_featured_content_active'
 		)
 	);
 
@@ -2190,6 +2246,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'type'        => 'checkbox',
 			'label'       => esc_html__( 'Hide placeholder image.', 'hybridmag' ),
 			'section'     => 'hybridmag_featured_slider',
+			'active_callback' => 'hybridmag_is_featured_content_active'
 		)
 	);
 
@@ -2241,6 +2298,25 @@ function hybridmag_customize_register( $wp_customize ) {
 			) 
 		);
 	}
+
+	// View all text
+	$wp_customize->add_setting(
+		'hybridmag_tabbed_view_all_text',
+		array(
+			'default'			=> esc_html__( 'View More', 'hybridmag' ),
+			'type'				=> 'theme_mod',
+			'capability'		=> 'edit_theme_options',
+			'sanitize_callback'	=> 'hybridmag_sanitize_html'
+		)
+	);
+	$wp_customize->add_control(
+		'hybridmag_tabbed_view_all_text',
+		array(
+			'section'			=> 'hybridmag_featured_tabs',
+			'type'				=> 'text',
+			'label'				=> esc_html__( 'View all text', 'hybridmag' )
+		)
+	);
 	
 	/**
 	 * Blog Settings Panel
@@ -3419,6 +3495,28 @@ function hybridmag_is_excerpt_type( $control ) {
 }
 
 /**
+ * Check if the featured content area is displaying.
+ */
+function hybridmag_is_featured_content_active( $control ) {
+	if ( $control->manager->get_setting( 'hybridmag_show_featured_content' )->value() === true ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Check if the featured content area is displaying.
+ */
+function hybridmag_is_slider_autoplay_active( $control ) {
+	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_slider_autoplay' )->value() === true ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
  * Checks featured image alignment should be active or not
  */
 function hybridmag_thumbnail_align_active( $control ) {
@@ -3582,7 +3680,7 @@ function hybridmag_is_sfp_source_tag( $control ) {
  * Check if the slider posts source is "Category"
  */
 function hybridmag_is_slider_source_category( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() === 'category' ) {
+	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() === 'category' ) {
 		return true;
 	} else {
 		return false;
@@ -3593,7 +3691,7 @@ function hybridmag_is_slider_source_category( $control ) {
  * Check if the slider posts source is "Tag"
  */
 function hybridmag_is_slider_source_tag( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() === 'tag' ) {
+	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() === 'tag' ) {
 		return true;
 	} else {
 		return false;
@@ -3604,7 +3702,7 @@ function hybridmag_is_slider_source_tag( $control ) {
  * Check if the featured posts source is "Category"
  */
 function hybridmag_is_fps_source_category( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_featured_posts_source' )->value() === 'category' ) {
+	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_featured_posts_source' )->value() === 'category' ) {
 		return true;
 	} else {
 		return false;
@@ -3615,7 +3713,7 @@ function hybridmag_is_fps_source_category( $control ) {
  * Check if the featured posts source is "Tag"
  */
 function hybridmag_is_fps_source_tag( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_featured_posts_source' )->value() === 'tag' ) {
+	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_featured_posts_source' )->value() === 'tag' ) {
 		return true;
 	} else {
 		return false;
@@ -3626,7 +3724,7 @@ function hybridmag_is_fps_source_tag( $control ) {
  * Returns true if the slider posts source is not sticky posts.
  */
 function hybridmag_is_not_sticky_posts_slider( $control ) {
-	if ( $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() !== 'sticky' ) {
+	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_slider_posts_source' )->value() !== 'sticky' ) {
 		return true;
 	} else {
 		return false;

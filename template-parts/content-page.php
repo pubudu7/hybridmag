@@ -28,7 +28,9 @@
 			// Before page title hook.
 			do_action( 'hybridmag_before_page_title' );
 
-			the_title( '<h1 class="entry-title">', '</h1>' ); 
+			if ( ! get_post_meta( $post->ID, '_hybridmag_hide_page_title', true ) ) {
+				the_title( '<h1 class="entry-title">', '</h1>' ); 
+			}
 
 			// After page title hook.
 			do_action( 'hybridmag_after_page_title' );

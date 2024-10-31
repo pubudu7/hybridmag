@@ -38,13 +38,13 @@ h6 {
 
 .site-title {
 	font-family: $font__main;
-	font-size: 26px;
+	font-size: var(--hybridmag-font-size-xxl);
 	font-weight: bold;
 	line-height: 1.2;
 	margin: 0;
 
 	@media screen and (min-width: 768px) {
-		font-size: 32px;
+		font-size: var(--hybridmag-font-size-xxxl);
 	}
 
 	a,
