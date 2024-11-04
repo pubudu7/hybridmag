@@ -26,7 +26,7 @@ class HybridMag_Multiple_Checkboxes extends WP_Customize_Control {
 	 * @return void
 	 */
 	public function enqueue() {
-		wp_enqueue_script( 'hm-multiple-checkboxes', BAM_DIR_URI . '/inc/customizer/custom-controls/multiple-checkboxes/multiple-checkboxes.js', array( 'jquery' ) );
+		wp_enqueue_script( 'hm-multiple-checkboxes', get_template_directory_uri() . '/inc/customizer/custom-controls/multiple-checkboxes/multiple-checkboxes.js', array( 'jquery' ) );
 	}
 
 	/**

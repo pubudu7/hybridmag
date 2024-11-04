@@ -3177,6 +3177,7 @@ textarea {
   margin: 0 0 1.5em 0;
   list-style: none;
   padding: 0;
+  border-bottom: 1px solid var(--hybridmag-color-border);
 }
 
 .says, .screen-reader-text {
@@ -3202,10 +3203,10 @@ textarea {
 }
 
 .comment-reply-title {
+  position: relative;
   font-size: 1.4375em;
   font-weight: 700;
   line-height: 1.3125;
-  padding-top: 1.304em;
 }
 
 .comment-list {
@@ -3359,11 +3360,6 @@ footer.comment-meta {
 
 .required {
   color: var(--hybridmag-color-primary);
-}
-
-.comment-reply-title {
-  border-top: 1px solid var(--hybridmag-color-border);
-  position: relative;
 }
 
 .comment-reply-title small {

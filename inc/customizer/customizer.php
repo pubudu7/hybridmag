@@ -2040,10 +2040,35 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_featured_content',
 		array(
-			'label' 	=> esc_html__( 'Display featured posts.', 'hybridmag' ),
+			'label' 	=> esc_html__( 'Display slider + 2 posts.', 'hybridmag' ),
 			'section' 	=> 'hybridmag_featured_slider'
 		)
 	) );
+
+	$wp_customize->add_setting(
+		'hybridmag_featured_content_location',
+		array(
+			'default'           => array( 'front' ),
+			'transport'         => 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_multiple_checkboxes'
+		)
+	);
+
+	$wp_customize->add_control(
+		new HybridMag_Multiple_Checkboxes(
+			$wp_customize,
+			'hybridmag_featured_content_location',
+			array(
+				'section' => 'hybridmag_featured_slider',
+				'label'   => esc_html__( 'Where to display slider + 2 posts?', 'hybridmag' ),
+				'choices' => array(
+					'front'		=> esc_html__( 'Front Page', 'hybridmag' ),
+					'blog'		=> esc_html__( 'Blog Posts Page', 'hybridmag' )
+				),
+				'active_callback' => 'hybridmag_is_featured_content_active'
+			)
+		)
+	);
 
 	// Slider Posts Source.
 	$wp_customize->add_setting(
