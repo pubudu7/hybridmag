@@ -76,7 +76,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   --hybridmag-color-input: var(--hybridmag-color-text-main);
   --hybridmag-color-input-background: inherit;
   --hybridmag-color-background-pre: #eeeeee;
-  --hybridmag-color-bg-cl-sep-inner: #ffffff;
+  --hybridmag-color-bg-cl-sep-content: #ffffff;
 }
 
 :root {
@@ -688,7 +688,7 @@ html.hm-dark {
   --hybridmag-color-input-border: #333333;
   --hybridmag-color-border: #333333;
   --hybridmag-color-text-light: #cccccc;
-  --hybridmag-color-bg-cl-sep-inner: #222222;
+  --hybridmag-color-bg-cl-sep-content: #222222;
 }
 html.hm-dark body {
   background-color: #000000;
@@ -2168,7 +2168,7 @@ textarea {
 }
 
 .hm-cl-sep .post-navigation {
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   padding: var(--hybridmag-global-inner-spacing);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
@@ -2327,7 +2327,7 @@ textarea {
 }
 
 .hm-cl-sep .hm-entry {
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   box-shadow: var(--hybridmag-global-box-shadow);
   border-radius: var(--hybridmag-global-border-radius);
   overflow: hidden;
@@ -2695,6 +2695,7 @@ textarea {
 
 .hm-fp1 {
   margin: 0 0 40px;
+  width: 100%;
 }
 @media (max-width: 767px) {
   .hm-fp1::after {
@@ -2982,7 +2983,7 @@ textarea {
 .hm-cl-sep .hm-tab-post-card {
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
 }
 .hm-cl-sep .hm-tab-post-details {
   padding: 20px;
@@ -3102,9 +3103,26 @@ textarea {
 .hm-cl-sep .hm-entry-single {
   margin-bottom: 35px;
   padding: var(--hybridmag-global-inner-spacing);
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
+}
+
+.page-template-template-magazine.hm-cl-sep .hm-entry-single {
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+.page-template-template-magazine.hm-cl-sep .hm-entry-single .entry-content .wp-block {
+  margin-bottom: 35px;
+  padding: var(--hybridmag-global-inner-spacing);
+  background: var(--hybridmag-color-bg-cl-sep-content);
+  border-radius: var(--hybridmag-global-border-radius);
+  box-shadow: var(--hybridmag-global-box-shadow);
+}
+
+.page-template-template-magazine .hm-entry-single .entry-content {
+  margin: 0;
 }
 
 .page .hm-entry-single .entry-header {
@@ -3155,7 +3173,7 @@ textarea {
 /* Comments
 --------------------------------------------- */
 .hm-cl-sep .comments-area {
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
   padding: var(--hybridmag-global-inner-spacing);
@@ -3455,7 +3473,7 @@ footer.comment-meta {
 
 .hm-cl-sep #secondary .widget {
   padding: var(--hybridmag-global-inner-spacing);
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   box-shadow: var(--hybridmag-global-box-shadow);
   border-radius: var(--hybridmag-global-border-radius);
 }

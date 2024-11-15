@@ -2,11 +2,6 @@
 /**
  * Displays featured content on the Blog page.
  */
-
-if ( false == get_theme_mod( 'hybridmag_show_featured_content', true ) ) {
-    return;
-}
-
     
 do_action( 'hybridmag_before_featured_content' ); 
 

@@ -13,11 +13,6 @@
  */
 
 get_header();
-
-	if ( is_home() && ! is_paged() ) {
-		do_action( 'hybridmag_featured_section_top' );
-	} 
-
 ?>
 
 	<main id="primary" class="site-main">

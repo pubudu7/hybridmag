@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width Template
+ * Template Name: Magazine Template
  *
  * @package HybridMag
  * @since HybridMag 1.0.0
@@ -40,4 +40,7 @@ get_header();
 </main><!-- #main -->
 
 <?php
+
+hybridmag_get_sidebar();
+
 get_footer();

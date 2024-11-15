@@ -682,3 +682,40 @@ add_action( 'wp', 'hybridmag_position_featured_image', 5 );
 function hybridmag_can_show_post_thumbnail() {
 	return apply_filters( 'hybridmag_can_show_post_thumbnail', ! post_password_required() && ! is_attachment() && has_post_thumbnail() );
 }
+
+/**
+ * Check if a section is disabled.
+ *
+ * @since 1.0.0
+ *
+ * @param  array $disabled_on Array of pages where the section is disabled.
+ * @param  int   $post_id     Current page ID.
+ * @return bool               Section is displayed.
+ */
+function hybridmag_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
+
+	$disabled = false;
+
+	if ( is_front_page() && in_array( 'front', $disabled_on, true ) ) {
+		$disabled = true;
+	} elseif ( is_home() && in_array( 'blog', $disabled_on, true ) ) {
+		$disabled = true;
+	} elseif ( is_search() && in_array( 'search', $disabled_on, true ) ) {
+		$disabled = true;
+	} elseif ( is_archive() && in_array( 'archive', $disabled_on, true ) ) {
+		$disabled = true;
+	} elseif ( is_404() && in_array( 404, $disabled_on, true ) ) {
+		$disabled = true;
+	} /*elseif ( ( is_singular() || ! empty( $post_id ) ) && ! is_front_page() ) {
+
+		if ( empty( $post_id ) ) {
+			$post_id = hybridmag_get_the_id();
+		}
+
+		if ( in_array( get_post_type( $post_id ), $disabled_on, true ) ) {
+			$disabled = true;
+		}
+	}*/
+
+	return $disabled;
+}

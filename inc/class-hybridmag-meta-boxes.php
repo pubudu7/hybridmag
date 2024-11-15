@@ -103,7 +103,7 @@ class HybridMag_Metaboxes {
         update_post_meta( $post_id, '_hybridmag_hide_featured_image', $hide_featured_image );
 
         
-        $hide_page_title = isset( $_POST['hybridmag_hide_page_title'] ) ? true : false;
+        $hide_page_title = isset( $_POST['hybridmag_hide_page_title'] ) ? "true" : "false";
         update_post_meta( $post_id, '_hybridmag_hide_page_title', $hide_page_title );
         
     }

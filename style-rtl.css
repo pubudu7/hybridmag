@@ -76,7 +76,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   --hybridmag-color-input: var(--hybridmag-color-text-main);
   --hybridmag-color-input-background: inherit;
   --hybridmag-color-background-pre: #eeeeee;
-  --hybridmag-color-bg-cl-sep-inner: #ffffff;
+  --hybridmag-color-bg-cl-sep-content: #ffffff;
 }
 
 :root {
@@ -687,7 +687,7 @@ html.hm-dark {
   --hybridmag-color-input-border: #333333;
   --hybridmag-color-border: #333333;
   --hybridmag-color-text-light: #cccccc;
-  --hybridmag-color-bg-cl-sep-inner: #222222;
+  --hybridmag-color-bg-cl-sep-content: #222222;
 }
 html.hm-dark body {
   background-color: #000000;
@@ -2080,7 +2080,7 @@ textarea {
 }
 
 .hm-cl-sep .post-navigation {
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   padding: var(--hybridmag-global-inner-spacing);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
@@ -2239,7 +2239,7 @@ textarea {
 }
 
 .hm-cl-sep .hm-entry {
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   box-shadow: var(--hybridmag-global-box-shadow);
   border-radius: var(--hybridmag-global-border-radius);
   overflow: hidden;
@@ -2892,7 +2892,7 @@ textarea {
 .hm-cl-sep .hm-tab-post-card {
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
 }
 .hm-cl-sep .hm-tab-post-details {
   padding: 20px;
@@ -3007,7 +3007,7 @@ textarea {
 .hm-cl-sep .hm-entry-single {
   margin-bottom: 35px;
   padding: var(--hybridmag-global-inner-spacing);
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
 }
@@ -3053,7 +3053,7 @@ textarea {
 /* Comments
 --------------------------------------------- */
 .hm-cl-sep .comments-area {
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
   padding: var(--hybridmag-global-inner-spacing);
@@ -3359,7 +3359,7 @@ footer.comment-meta {
 
 .hm-cl-sep #secondary .widget {
   padding: var(--hybridmag-global-inner-spacing);
-  background: var(--hybridmag-color-bg-cl-sep-inner);
+  background: var(--hybridmag-color-bg-cl-sep-content);
   box-shadow: var(--hybridmag-global-box-shadow);
   border-radius: var(--hybridmag-global-border-radius);
 }

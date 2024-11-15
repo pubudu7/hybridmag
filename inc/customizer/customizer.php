@@ -1248,6 +1248,29 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);	
 
+	// Content background color.
+	$wp_customize->add_setting(
+		'hybridmag_sep_content_bg_color',
+		array(
+			'default'			=> '',
+			'transport'         => 'refresh',
+			'type'				=> 'theme_mod',
+			'capability'		=> 'edit_theme_options',
+			'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control( 
+			$wp_customize,
+			'hybridmag_sep_content_bg_color',
+			array(
+				'section'		    => 'hybridmag_base_colors',
+				'label'			    => esc_html__( 'Content Background Color', 'hybridmag' ),
+				'active_callback'	=> 'hybridmag_is_separate_containers_layout_active'
+			)
+		)
+	);
+
 	// Text Color.
 	$wp_customize->add_setting(
 		'hybridmag_text_color',
@@ -1284,6 +1307,29 @@ function hybridmag_customize_register( $wp_customize ) {
 			array(
 				'section'		    => 'hybridmag_base_colors',
 				'label'			    => esc_html__( 'Headings Text Color', 'hybridmag' ),
+			)
+		)
+	);
+
+	// Outer text color.
+	$wp_customize->add_setting(
+		'hybridmag_sep_content_outer_text_color',
+		array(
+			'default'			=> '',
+			'transport'         => 'refresh',
+			'type'				=> 'theme_mod',
+			'capability'		=> 'edit_theme_options',
+			'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
+		)
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Color_Control( 
+			$wp_customize,
+			'hybridmag_sep_content_outer_text_color',
+			array(
+				'section'		    => 'hybridmag_base_colors',
+				'label'			    => esc_html__( 'Outer Text Color', 'hybridmag' ),
+				'active_callback'	=> 'hybridmag_is_separate_containers_layout_active'
 			)
 		)
 	);
@@ -2046,7 +2092,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	) );
 
 	$wp_customize->add_setting(
-		'hybridmag_featured_content_location',
+		'hybridmag_featured_content_displayed_on',
 		array(
 			'default'           => array( 'front' ),
 			'transport'         => 'refresh',
@@ -2057,7 +2103,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		new HybridMag_Multiple_Checkboxes(
 			$wp_customize,
-			'hybridmag_featured_content_location',
+			'hybridmag_featured_content_displayed_on',
 			array(
 				'section' => 'hybridmag_featured_slider',
 				'label'   => esc_html__( 'Where to display slider + 2 posts?', 'hybridmag' ),
@@ -2299,6 +2345,31 @@ function hybridmag_customize_register( $wp_customize ) {
 			'type'        => 'checkbox',
 			'label'       => esc_html__( 'Display tabbed posts section?', 'hybridmag' ),
 			'section'     => 'hybridmag_featured_tabs',
+		)
+	);
+
+	$wp_customize->add_setting(
+		'hybridmag_featured_tabs_displayed_on',
+		array(
+			'default'           => array( 'front' ),
+			'transport'         => 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_multiple_checkboxes'
+		)
+	);
+
+	$wp_customize->add_control(
+		new HybridMag_Multiple_Checkboxes(
+			$wp_customize,
+			'hybridmag_featured_tabs_displayed_on',
+			array(
+				'section' => 'hybridmag_featured_tabs',
+				'label'   => esc_html__( 'Where to display tabbed posts?', 'hybridmag' ),
+				'choices' => array(
+					'front'		=> esc_html__( 'Front Page', 'hybridmag' ),
+					'blog'		=> esc_html__( 'Blog Posts Page', 'hybridmag' )
+				),
+				'active_callback' => 'hybridmag_is_featured_content_active'
+			)
 		)
 	);
 
@@ -3474,17 +3545,16 @@ function hybridmag_is_one_container_layout_active( $control ) {
 	}
 }
 
-//hybridmag_is_not_seperate_container_layout_active
 /**
- * Check if the one container layout is active.
+ * Check if the separate container layout is active.
  */
-// function hybridmag_is_not_boxed_and_seperate_container_layout_active( $control ) {
-// 	if ( $control->manager->get_setting( 'hybridmag_content_layout' )->value() === 'one-container' ) {
-// 		return true;
-// 	} else {
-// 		return false;
-// 	}
-// }
+function hybridmag_is_separate_containers_layout_active( $control ) {
+	if ( $control->manager->get_setting( 'hybridmag_content_layout' )->value() === 'separate-containers' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 /**
  * Check if the grid layout is active.
