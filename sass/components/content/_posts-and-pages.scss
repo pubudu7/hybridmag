@@ -707,14 +707,14 @@
 
 .hm-slider-details-container {
 	z-index: 1;
-	padding: 33px 33px 38px 33px;
+	padding: 33px;
 	position: absolute;
 	bottom: 0;
 	left: 0;
 	right: 0;
 
 	@media (max-width: 767px) {
-		padding: 15px 15px 30px 15px;
+		padding: 15px;
 	}
 }
 
@@ -1113,10 +1113,8 @@
 	margin: 0;
 }
 
-.page .hm-entry-single {
-	.entry-header {
-		margin-bottom: 0;
-	}
+.page.hm-entry-single .entry-header {
+	margin-bottom: 0;
 
 	.entry-title {
 		margin: 0 0 35px;

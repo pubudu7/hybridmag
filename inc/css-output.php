@@ -582,6 +582,7 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
          if ( ! empty( $menu_link_color ) ) {
             $theme_css .= '
+                .hm-light-dark-toggle .hm-svg-icon,
                 .hm-search-toggle .hm-svg-icon {
                     color: '. esc_attr( $menu_link_color ) .';
                 }
@@ -752,12 +753,12 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             $output .= '/* Custom CSS */'. $theme_css;
         }
 
-        return $output;
+        //return $output;
 
         /**
          * hybridmag_theme_custom_css hook since HybridMag 1.0.0
          */
-        // return $theme_css = apply_filters( 'hybridmag_theme_custom_css', $theme_css );
+        return $custom_css = apply_filters( 'hybridmag_theme_custom_css', $output );
 
     }
 }

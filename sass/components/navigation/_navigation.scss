@@ -408,7 +408,7 @@
 		line-height: 45px;
 		padding: 0 15px;
 		border-radius: 0;
-		color: inherit;
+		//color: inherit;
 		border-left: 1px solid var(--hybridmag-color-border);
 		border-right: 1px solid var(--hybridmag-color-border);
 	
@@ -420,12 +420,12 @@
 	}
 }
 
-#hm-slideout-sidebar {
+/*#hm-slideout-sidebar {
 	.hm-dropdown-toggle,
 	.hm-mobile-menu ul li a {
 		color: inherit;
 	}
-}
+}*/
 
 .comment-navigation,
 .posts-navigation,

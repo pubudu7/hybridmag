@@ -445,9 +445,10 @@
 	background-color: #ffffff;
 	font-size: var(--hybridmag-font-size-sm);
 
-    // a {
-    //     color: #ffffff;
-    // }
+	.hm-dropdown-toggle,
+    a {
+        color: var(--hybridmag-color-text-main);
+    }
 
 	div {
 		clear: both;
@@ -554,6 +555,7 @@
 	transition: right 0.2s;
 	padding: 30px;
 
+	.hm-dropdown-toggle,
     a {
         color: var(--hybridmag-color-text-main);
     }

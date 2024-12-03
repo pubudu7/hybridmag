@@ -312,15 +312,43 @@ html.hm-dark {
 	}
 
 	.hm-slideout-sidebar {
+		--hybridmag-color-border: #333333;
 		background-color: #222222;
+		color: #cccccc;
+
+		a,
+		.site-title a,
+		.site-title a:hover,
+		.site-title a:active,
+		.site-title a:focus,
+		.site-title a:visited,
+		.hm-dropdown-toggle {
+			color: #dddddd;
+		}
+
+		a:hover {
+			color: #f5f5f5;
+		}
 
 		.hm-slideout-toggle {
 			background-color: #111111;
+			color: #eeeeee;
 		}
 	}
 
 	.hm-mobile-sidebar {
+		--hybridmag-color-border: #333333;
 		background: #222222;
+
+		a,
+		.site-title a,
+		.site-title a:hover,
+		.site-title a:active,
+		.site-title a:focus,
+		.site-title a:visited,
+		.hm-dropdown-toggle {
+			color: #dddddd;
+		}
 	}
 
 	.hm-mobile-sidebar .hm-mobile-menu-toggle {

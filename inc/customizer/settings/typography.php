@@ -4,7 +4,7 @@
  */
 
 function hybridmag_get_typography_elements() {
-    return apply_filters( 'hybridmag_typography_elements', array (
+    return apply_filters( 'hybridmag_typography_elements', array(
         'body'  => array(
             'title'     => esc_html__( 'Body', 'hybridmag' ),
             'target'    => 'body, button, input, select, optgroup, textarea',
