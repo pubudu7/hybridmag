@@ -53,7 +53,7 @@
 	wp.customize( 'hybridmag_boxed_width', function( value ) {
 		value.bind( function( to ) {
 			if( ( 'blank' !== to ) && ( to >= 300 ) && (to <= 2000 ) ) {
-				$( 'body.hm-boxed #page' ).css( {
+				$( 'body.hybridmag-boxed #page' ).css( {
 					'width': to + 'px'
 				} );
 			}

@@ -295,7 +295,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		array(
 			'default'           => 1280,
 			'sanitize_callback' => 'hybridmag_sanitize_slider_number_input',
-			'transport'         => 'postMessage'
+			//'transport'         => 'postMessage'
 		)
 	);
 	$wp_customize->add_control( 

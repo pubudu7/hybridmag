@@ -52,5 +52,5 @@ if ( hybridmag_swiper_object.autoplay === "1" ) {
         disableOnInteraction: true
     };
 }
-console.log(hybridmag_swiper_object);
+
 const hmThemeSwiper = new Swiper( '.hm-swiper', hybridmagSwiperConfig );

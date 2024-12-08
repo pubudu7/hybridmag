@@ -108,6 +108,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
   --hybridmag-footer-cols-gap: 40px;
   --hybridmag-global-box-shadow: 0 0 15px 0 rgba( 0, 0, 0, 0.06);
   --hybridmag-global-border-radius: 6px;
+  --hybridmag-sticky-element-height: 80px;
 }
 @media (min-width: 480px) {
   :root {
@@ -606,16 +607,16 @@ body {
 body.hm-cl-one {
   background-color: #ffffff;
 }
-body.hm-boxed {
+body.hybridmag-boxed {
   background-color: #dddddd;
 }
-body.hm-boxed #page {
+body.hybridmag-boxed #page {
   margin: 0 auto;
   width: 1280px;
   max-width: 100%;
   background-color: #f5f5f5;
 }
-body.hm-boxed.hm-cl-one #page {
+body.hybridmag-boxed.hm-cl-one #page {
   background-color: #ffffff;
 }
 
@@ -626,7 +627,7 @@ body.hm-boxed.hm-cl-one #page {
   margin-right: auto;
 }
 
-body.hm-boxed .hm-container {
+body.hybridmag-boxed .hm-container {
   width: auto;
   max-width: 93.75%;
 }
@@ -696,13 +697,13 @@ html.hm-dark body {
 html.hm-dark body.hm-cl-one {
   background-color: #222222;
 }
-html.hm-dark body.hm-boxed {
+html.hm-dark body.hybridmag-boxed {
   background-color: #000000;
 }
-html.hm-dark body.hm-boxed #page {
+html.hm-dark body.hybridmag-boxed #page {
   background-color: #111111;
 }
-html.hm-dark body.hm-boxed.hm-cl-one #page {
+html.hm-dark body.hybridmag-boxed.hm-cl-one #page {
   background-color: #222222;
 }
 html.hm-dark .hm-top-bar a {
@@ -2070,7 +2071,7 @@ textarea {
   color: #222222;
 }
 
-.hm-boxed .hm-menu-wrapper.hm-container,
+.hybridmag-boxed .hm-menu-wrapper.hm-container,
 .hm-menu-wrapper.hm-container {
   max-width: 100%;
 }

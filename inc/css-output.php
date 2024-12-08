@@ -116,7 +116,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             $boxed_container_width = get_theme_mod( 'hybridmag_boxed_width', 1280 );
             if ( 1280 != $boxed_container_width && ! empty( $boxed_container_width ) && $boxed_container_width >= 300 ) {
                 $theme_css .= '
-                    body.hm-boxed #page {
+                    body.hybridmag-boxed #page,
+                    .hybridmag-boxed.hm-m-stk.hm-h-sticky-active .hm-main-menu {
                         width: '. esc_attr( $boxed_container_width ) .'px;
                     }
                 ';
@@ -214,13 +215,13 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
 
             if ( 'separate-containers' === $content_layout ) {
                 $theme_css .= '
-                    body.hm-boxed #page {
+                    body.hybridmag-boxed #page {
                         background-color: '. esc_attr( $inner_background_color ) .';
                     }
                 ';   
             } else {
                 $theme_css .= '
-                    body.hm-boxed.hm-cl-one #page {
+                    body.hybridmag-boxed.hm-cl-one #page {
                         background-color: '. esc_attr( $inner_background_color ) .';
                     }
                 ';     
