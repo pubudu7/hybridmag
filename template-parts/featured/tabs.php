@@ -15,6 +15,8 @@ for ( $i = 1; $i <= 5; $i++ ) {
 
 ?>
 
+<div class="hm-container">
+
 <div class="hm-featured-tabs">
 
     <ul class="hm-tab-nav">
@@ -110,3 +112,5 @@ for ( $i = 1; $i <= 5; $i++ ) {
     </div><!-- .tab-content -->		
 
 </div><!-- .hm-featured-tabs -->
+
+</div><!-- .hm-container -->

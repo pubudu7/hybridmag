@@ -37,7 +37,7 @@ function hybridmag_featured_section() {
     do_action( 'hybridmag_after_featured_section' );
 
 }
-add_action( 'hybridmag_inside_container', 'hybridmag_featured_section', 30 );
+add_action( 'hybridmag_inside_site_content_top', 'hybridmag_featured_section', 30 );
 
 
 /**
@@ -75,7 +75,7 @@ function hybridmag_featured_tabs_section() {
     do_action( 'hybridmag_after_featured_tabs_section' );
 
 }
-add_action( 'hybridmag_inside_container', 'hybridmag_featured_tabs_section', 35 );
+add_action( 'hybridmag_inside_site_content_top', 'hybridmag_featured_tabs_section', 35 );
 
 
 /**

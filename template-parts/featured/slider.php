@@ -32,6 +32,8 @@ do_action( 'hybridmag_before_featured_content' );
 
     ?>
 
+    <div class="hm-container">
+
     <div class="hm-fp1">
 
     <div class="hm-fp1-left">
@@ -172,5 +174,7 @@ do_action( 'hybridmag_before_featured_content' );
     </div><!-- .hm-fp1-right -->
 
 </div><!-- .hm-fp1" -->
+
+</div><!-- .hm-container -->
 
 <?php do_action( 'hybridmag_after_featured_content' ); ?>

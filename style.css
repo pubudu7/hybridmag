@@ -1138,11 +1138,6 @@ textarea {
     position: relative;
   }
 }
-@media only screen and (max-width: 768px) {
-  .hm-h-lg .hm-header-inner {
-    border-bottom: 1px solid var(--hybridmag-color-border);
-  }
-}
 .hm-h-lg .hm-header-inner .hm-social-menu li a {
   height: 50px;
 }
@@ -1799,7 +1794,7 @@ textarea {
   color: #ffffff;
 }
 
-.hm-footer-site-info {
+.hm-footer-bottom-content {
   padding: 20px 0;
   border-top: 1px solid #595f64;
 }
@@ -1831,7 +1826,7 @@ textarea {
   width: 100%;
 }
 
-.hm-footer-site-info {
+.hm-footer-bottom-content {
   display: flex;
   flex-wrap: wrap;
   -moz-column-gap: 20px;

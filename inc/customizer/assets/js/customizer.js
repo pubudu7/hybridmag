@@ -98,4 +98,20 @@
 		} );
 	} ); 
 
+	wp.customize( 'nav_menu_locations[primary]', function(value) {
+        value.bind(function(newValue) {
+            // Update header height when setting changes
+			if ( typeof window.hybridMagUpdateHeaderHeight === 'function' ) {
+				setTimeout( function() {
+					if ( document.getElementById('masthead') || document.querySelector('.hm-main-menu') ) {
+						window.hybridMagUpdateHeaderHeight();
+					}
+				}, 1000 );
+			} else {
+				console.error('hybridMagUpdateHeaderHeight is not defined or accessible.');
+			}
+
+        });
+    });
+
 }( jQuery ) );

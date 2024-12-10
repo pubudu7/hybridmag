@@ -199,7 +199,8 @@ add_action( 'template_redirect', 'hybridmag_content_width', 0 );
  * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
  */
 function hybridmag_widgets_init() {
-	register_sidebar(
+
+	$sidebars = array(
 		array(
 			'name'          => esc_html__( 'Sidebar', 'hybridmag' ),
 			'id'            => 'sidebar-1',
@@ -208,9 +209,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Slide-out Sidebar', 'hybridmag' ),
 			'id'            => 'header-1',
@@ -219,9 +218,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Header Sidebar', 'hybridmag' ),
 			'id'            => 'header-2',
@@ -230,9 +227,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Below Header', 'hybridmag' ),
 			'id'            => 'header-3',
@@ -241,9 +236,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Magazine Builder', 'hybridmag' ),
 			'description'   => esc_html__( 'Add Posts Blocks here.', 'hybridmag' ),
@@ -252,9 +245,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Footer 1', 'hybridmag' ),
 			'id'            => 'footer-1',
@@ -262,9 +253,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Footer 2', 'hybridmag' ),
 			'id'            => 'footer-2',
@@ -272,9 +261,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Footer 3', 'hybridmag' ),
 			'id'            => 'footer-3',
@@ -282,9 +269,7 @@ function hybridmag_widgets_init() {
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
-		)
-	);
-	register_sidebar(
+		),
 		array(
 			'name'          => esc_html__( 'Footer 4', 'hybridmag' ),
 			'id'            => 'footer-4',
@@ -294,6 +279,14 @@ function hybridmag_widgets_init() {
 			'after_title'   => '</h2>',
 		)
 	);
+
+	$sidebars = apply_filters( 'hybridmag_sidebars', $sidebars );
+
+	// Register each sidebar
+	foreach ( $sidebars as $sidebar ) {
+		register_sidebar( $sidebar );
+	}
+
 }
 add_action( 'widgets_init', 'hybridmag_widgets_init' );
 
@@ -468,6 +461,7 @@ require get_template_directory() . '/inc/dashboard/theme-info.php';
 require get_template_directory() . '/inc/structure/header.php';
 require get_template_directory() . '/inc/structure/navigation.php';
 require get_template_directory() . '/inc/structure/featured.php';
+require get_template_directory() . '/inc/structure/footer.php';
 
 /**
  * Demo Data.
