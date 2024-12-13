@@ -3480,6 +3480,33 @@ function hybridmag_sanitize_sortable_checkbox( $input ) {
 }
 
 /**
+ * Alpha color picker sanitization.
+ */
+/**
+ * Sanitize colors.
+ *
+ * @since 1.0.0
+ * @param string $value The color.
+ * @return string
+ */
+function hybridmag_sanitize_alpha_color( $value ) {
+	// This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, & hsla colors.
+	$pattern = '/^(\#[\da-f]{3}|\#[\da-f]{6}|\#[\da-f]{8}|rgba\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)(,\s*(0\.\d+|1))\)|hsla\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)(,\s*(0\.\d+|1))\)|rgb\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)|hsl\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)\))$/';
+	\preg_match( $pattern, $value, $matches );
+	// Return the 1st match found.
+	if ( isset( $matches[0] ) ) {
+		if ( is_string( $matches[0] ) ) {
+			return $matches[0];
+		}
+		if ( is_array( $matches[0] ) && isset( $matches[0][0] ) ) {
+			return $matches[0][0];
+		}
+	}
+	// If no match was found, return an empty string.
+	return '';
+}
+
+/**
  * Check if the grid style is active.
  */
 function hybridmag_is_slideout_active( $control ) {
@@ -3835,31 +3862,4 @@ function hybridmag_is_not_sticky_posts_fps( $control ) {
 	} else {
 		return false;
 	}
-}
-
-/**
- * Alpha color picker sanitization.
- */
-/**
- * Sanitize colors.
- *
- * @since 1.0.0
- * @param string $value The color.
- * @return string
- */
-function hybridmag_sanitize_alpha_color( $value ) {
-	// This pattern will check and match 3/6/8-character hex, rgb, rgba, hsl, & hsla colors.
-	$pattern = '/^(\#[\da-f]{3}|\#[\da-f]{6}|\#[\da-f]{8}|rgba\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)(,\s*(0\.\d+|1))\)|hsla\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)(,\s*(0\.\d+|1))\)|rgb\(((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*,\s*){2}((\d{1,2}|1\d\d|2([0-4]\d|5[0-5]))\s*)|hsl\(\s*((\d{1,2}|[1-2]\d{2}|3([0-5]\d|60)))\s*,\s*((\d{1,2}|100)\s*%)\s*,\s*((\d{1,2}|100)\s*%)\))$/';
-	\preg_match( $pattern, $value, $matches );
-	// Return the 1st match found.
-	if ( isset( $matches[0] ) ) {
-		if ( is_string( $matches[0] ) ) {
-			return $matches[0];
-		}
-		if ( is_array( $matches[0] ) && isset( $matches[0][0] ) ) {
-			return $matches[0][0];
-		}
-	}
-	// If no match was found, return an empty string.
-	return '';
 }

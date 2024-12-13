@@ -23,6 +23,14 @@ function hybridmag_footer_bottom_structure() {
     ?>
     
     <div class="hm-container hm-footer-bottom-content">
+
+        <?php
+            /**
+             * Before Copyright hook
+             */
+            do_action( 'hybridmag_before_copyright' );
+        ?>
+
         <div class="hm-footer-copyright">
             <?php 
                 $hybridmag_copyright_text = get_theme_mod( 'hybridmag_footer_copyright_text', '' ); 
@@ -37,6 +45,22 @@ function hybridmag_footer_bottom_structure() {
             ?>
         </div><!-- .hm-footer-copyright -->
 
+        <?php
+            /**
+             * After Copyright hook
+             */
+            do_action( 'hybridmag_after_copyright' );
+        ?>
+
+        </div><!-- .hm-container -->
+
+    <?php
+}
+add_action( 'hybridmag_footer_bottom', 'hybridmag_footer_bottom_structure' );
+
+function hybridmag_designer_credit() {
+    $hybridmag_display_designer_credit = apply_filters( 'hybridmag_display_designer_credit', true );
+    if ( true === $hybridmag_display_designer_credit ) : ?>
         <div class="hm-designer-credit">
             <?php
                 /* translators: 1: WordPress 2: Theme Author. */
@@ -50,8 +74,7 @@ function hybridmag_footer_bottom_structure() {
                 echo $hybridmag_designer_credit; // WPCS: XSS OK.
             ?>
         </div><!-- .hm-designer-credit" -->
-    </div><!-- .hm-container -->
-
     <?php
+    endif;
 }
-add_action( 'hybridmag_footer_bottom', 'hybridmag_footer_bottom_structure' );
+add_action( 'hybridmag_after_copyright', 'hybridmag_designer_credit' );
