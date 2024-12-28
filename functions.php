@@ -361,6 +361,11 @@ require get_template_directory() . '/inc/custom-header.php';
 require get_template_directory() . '/inc/block-editor.php';
 
 /**
+ * Jetpack functions. 
+ */
+require get_template_directory() . '/inc/jetpack.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/wptt-webfont-loader.php';

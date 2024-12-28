@@ -15,6 +15,6 @@ require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custo
 require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/sortable-checkbox/class-sortable-checkbox.php';
 require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/custom-link/class-custom-link.php';
 require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/multiple-checkboxes/class-multiple-checkboxes.php';
-if ( ! defined( 'HybridMag_PRO_VERSION' ) ) {
+if ( ! defined( 'HYBRIDMAG_PRO_VERSION' ) ) {
     require_once trailingslashit( get_template_directory() ) . 'inc/customizer/custom-controls/class-upsell-customize.php';
 }

@@ -3088,6 +3088,7 @@ textarea {
 }
 .page-header .page-title {
   margin: 0;
+  font-size: var(--hybridmag-font-size-xxl);
 }
 .page-header .archive-description {
   margin: 5px 0 0;
