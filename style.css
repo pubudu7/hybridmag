@@ -3206,6 +3206,10 @@ textarea {
   padding: var(--hybridmag-global-inner-spacing);
 }
 
+.comments-area {
+  margin-bottom: 35px;
+}
+
 .comment-content a {
   word-wrap: break-word;
 }
