@@ -2429,7 +2429,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'hybridmag_blog_layout_section',
 		array(
-			'title' => esc_html__( 'Layout', 'hybridmag' ),
+			'title' => esc_html__( 'Blog Layout', 'hybridmag' ),
 			'priority' => 5,
 			'panel'	=> 'hybridmag_panel_blog'
 		)
@@ -2843,7 +2843,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'hybridmag_post_layout_section',
 		array(
-			'title' => esc_html__( 'Layout', 'hybridmag' ),
+			'title' => esc_html__( 'Post Layout', 'hybridmag' ),
 			'priority' => 5,
 			'panel'	=> 'hybridmag_panel_post'
 		)
@@ -3009,23 +3009,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'description' 		=> esc_html__( 'When paired with the "time ago" date format, the cut off for that format will automatically be switched to one day.', 'hybridmag' ),
 			'section'     		=> 'hybridmag_post_meta_section',
 			'active_callback'	=> 'hybridmag_is_showing_date_s'
-		)
-	);
-
-	// Post - Show comments
-	$wp_customize->add_setting(
-		'hybridmag_show_comments_link_s',
-		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_show_comments_link_s',
-		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Show comments link', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
 		)
 	);
 

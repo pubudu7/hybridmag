@@ -33,6 +33,9 @@
     padding-left: 0;
 }
 
+.page-content a.wp-block-button__link, 
+.entry-content a.wp-block-button__link, 
+.entry-summary a.wp-block-button__link,
 .wp-block-button__link {
     border-radius: 3px;
 	background: var(--hybridmag-color-button-background);
@@ -42,21 +45,17 @@
 	padding: 0.8em 1em 0.8em;
     font-size: var(--hybridmag-font-size-base);
 	font-weight: bold;
+	text-decoration: none;
 
 	&:hover {
-        color: #ffffff;
+		color: var(--hybridmag-color-button-hover-text);
 		background: var(--hybridmag-color-button-hover-background);
 	}
 
 	&:active,
 	&:focus {
-        color: #ffffff;
-		background: var(--hybridmag-color-button-focus-background);
+        background: var(--hybridmag-color-button-focus-background);
 	}
-}
-
-.entry-content .wp-block-button__link {
-	text-decoration: none;
 }
 
 .wp-block-search__button {

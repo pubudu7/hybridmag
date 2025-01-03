@@ -32,10 +32,103 @@
     );
 }
 
-function hybridmag_block_editor_css() {
+
+/**
+ * Theme Customizations Specific to Block Editor Custom CSS.
+ */
+function hybridmag_block_editor_custom_css() {
 
     $css = '';
-            
+
+    // SETUP CSS VARIABLES
+    $css_variables = "";
+
+    $primary_color = get_theme_mod( 'hybridmag_primary_color', '#65bc7b' );
+    $inner_background_color = get_theme_mod( 'hybridmag_inner_bg_color', '' );
+    $sep_content_bg_color = get_theme_mod( 'hybridmag_sep_content_bg_color', '' );
+    $text_color = get_theme_mod( 'hybridmag_text_color', '#404040' );
+    $headings_text_color = get_theme_mod( 'hybridmag_headings_text_color', '#222222' );
+    $sep_content_outer_text_color = get_theme_mod( 'hybridmag_sep_content_outer_text_color', '' );
+    $links_color = get_theme_mod( 'hybridmag_links_color', '#0a0808' );
+    $links_hover_color = get_theme_mod( 'hybridmag_links_hover_color', '' );
+    $button_bg_color = get_theme_mod( 'hybridmag_button_bg_color', '' );
+    $button_bg_hover_color = get_theme_mod( 'hybridmag_button_bg_hover_color', '' );
+    $button_text_color = get_theme_mod( 'hybridmag_button_text_color', '' );
+    $button_text_hover_color = get_theme_mod( 'hybridmag_button_text_hover_color', '' );
+    $global_border_radius = get_theme_mod( 'hybridmag_global_border_radius', 6 );
+
+    if ( ! empty( $primary_color ) && '#65bc7b' != $primary_color ) {
+        $css_variables .= '
+            --hybridmag-color-primary: '. esc_attr( $primary_color ) .';
+        ';
+    }
+
+    if ( ! empty( $sep_content_bg_color ) ) {
+        $css_variables .= '
+            --hybridmag-color-bg-cl-sep-content: '. esc_attr( $sep_content_bg_color ) .';
+        ';
+    }
+
+    if ( ! empty( $text_color ) && '#404040' != $text_color ) {
+        $css_variables .= '
+            --hybridmag-color-text-main: '. esc_attr( $text_color ) .';
+        ';
+    }
+
+    if ( ! empty( $headings_text_color ) && '#222222' != $headings_text_color ) {
+        $css_variables .= '
+            --hybridmag-color-text-headings: '. esc_attr( $headings_text_color ) .';
+        ';
+    }
+
+    if ( ! empty( $links_color ) && '#0a0808' != $links_color ) {
+        $css_variables .= '
+            --hybridmag-color-link: '. esc_attr( $links_color ) .';
+        ';
+    }
+
+    if ( ! empty( $links_hover_color ) ) {
+        $css_variables .= '
+            --hybridmag-color-link-hover: '. esc_attr( $links_hover_color ) .';
+        ';
+    }
+
+    if ( ! empty( $button_bg_color ) ) {
+        $css_variables .= '
+            --hybridmag-color-button-background: '. esc_attr( $button_bg_color ) .';
+        ';
+    }
+
+    if ( ! empty( $button_bg_hover_color ) ) {
+        $css_variables .= '
+            --hybridmag-color-button-hover-background: '. esc_attr( $button_bg_hover_color ) .';
+        ';
+    }
+
+    if ( ! empty( $button_text_color ) ) {
+        $css_variables .= '
+            --hybridmag-color-button-text: '. esc_attr( $button_text_color ) .';
+        ';
+    }
+    
+    if ( ! empty( $button_text_hover_color ) ) {
+        $css_variables .= '
+            --hybridmag-color-button-hover-text: '. esc_attr( $button_text_hover_color ) .';
+        ';
+    }
+    
+    if ( 6 != $global_border_radius ) {
+        $css_variables .= '
+            --hybridmag-global-border-radius: '. esc_attr( $global_border_radius ) .'px;
+        ';
+    }
+
+    $css .= '
+        html .editor-styles-wrapper { ' . $css_variables . ' }
+    ';
+
+    // TYPOGRAPHY
+
     $elements = hybridmag_get_editor_typography_elements();
 
     foreach ( $elements as $element => $values ) {
@@ -137,6 +230,10 @@ function hybridmag_block_editor_css() {
 
 }
 
+
+/**
+ * Add Block Editor Styles.
+ */
 function hybridmag_block_editor_styles() {
 
     $fonts_arr = hybridmag_typography_loop( 'fonts' );
@@ -149,13 +246,8 @@ function hybridmag_block_editor_styles() {
 
     $theme_customizations = '';
 
-    // Get typography related customizations.
-    $theme_customizations .= hybridmag_block_editor_css();
-
-    //require_once get_parent_theme_file_path( 'inc/css-output.php' );
-
-    // Get theme custom styles.
-	//$theme_customizations .= hybridmag_custom_css();
+    // Get theme customizations related to block editor.
+    $theme_customizations .= hybridmag_block_editor_custom_css();
 
 	if ( $theme_customizations ) {
 		wp_add_inline_style( 'hybridmag-block-editor-styles', $theme_customizations );

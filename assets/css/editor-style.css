@@ -1,12 +1,10 @@
 :root {
   --hybridmag-color-primary: #65bc7b;
   --hybridmag-color-tertiary: #272c30;
-  --hybridmag-color-light-background: #F7F6F1;
-  --hybridmag-color-dark-background: #3c3c3c;
   --hybridmag-color-main-menu: #272c30;
   --hybridmag-color-text-main: #404040;
   --hybridmag-color-text-light: #7D7D7D;
-  --hybridmag-color-text-headings: var(--hybridmag-color-text-main);
+  --hybridmag-color-text-headings: #222222;
   --hybridmag-color-link: #0a0808;
   --hybridmag-color-link-hover: var(--hybridmag-color-primary);
   --hybridmag-color-link-visited: #5d7ddb;
@@ -19,21 +17,24 @@
   --hybridmag-color-input-border: #ccc;
   --hybridmag-color-text-input-focus: var(--hybridmag-color-text-main);
   --hybridmag-color-input: var(--hybridmag-color-text-main);
+  --hybridmag-color-input-background: inherit;
   --hybridmag-color-background-pre: #eeeeee;
+  --hybridmag-color-bg-cl-sep-content: #ffffff;
 }
-  
+
 :root {
   --hybridmag-font-size-base: 16px;
-  --hybridmag-font-size-xxxs: 0.688rem;
-  --hybridmag-font-size-xxs: 0.75rem;
-  --hybridmag-font-size-xs: 0.875rem;
-  --hybridmag-font-size-sm: 0.938rem;
-  --hybridmag-font-size-md: 1.063rem;
-  --hybridmag-font-size-lg: 1.375rem;
-  --hybridmag-font-size-xl: 1.5rem;
-  --hybridmag-font-size-xxl: 1.625rem;
-  --hybridmag-font-size-xxxl: 2rem;
-  --hybridmag-font-size-xxxxl: 2.25rem;
+  --hybridmag-font-size-xxxs: 0.75em;
+  --hybridmag-font-size-xxs: 0.813em;
+  --hybridmag-font-size-xs: 0.875em;
+  --hybridmag-font-size-sm: 0.938em;
+  --hybridmag-font-size-md: 1.063em;
+  --hybridmag-font-size-amd: 1.125em;
+  --hybridmag-font-size-lg: 1.313em;
+  --hybridmag-font-size-xl: 1.5em;
+  --hybridmag-font-size-xxl: 1.625em;
+  --hybridmag-font-size-xxxl: 2em;
+  --hybridmag-font-size-xxxxl: 2.25em;
   --hybridmag-line-height-body: 1.5;
   --hybridmag-line-height-article: 1.7;
   --hybridmag-line-height-headings: 1.3;
@@ -321,29 +322,37 @@
     padding-left: 0;
 }
 
+.page-content a.wp-block-button__link,
+.entry-content a.wp-block-button__link,
+.entry-summary a.wp-block-button__link,
 .wp-block-button__link {
-    border-radius: 3px;
-    background: var(--hybridmag-color-button-background);
-    color: var(--hybridmag-color-button-text);
-    cursor: pointer;
-    line-height: 1;
-    padding: 0.8em 1em 0.8em;
-    font-size: var(--hybridmag-font-size-base);
-    font-weight: bold;
+  border-radius: 3px;
+  background: var(--hybridmag-color-button-background);
+  color: var(--hybridmag-color-button-text);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0.8em 1em 0.8em;
+  font-size: var(--hybridmag-font-size-base);
+  font-weight: bold;
+  text-decoration: none;
 }
 
+.page-content a.wp-block-button__link:hover,
+.entry-content a.wp-block-button__link:hover,
+.entry-summary a.wp-block-button__link:hover,
 .wp-block-button__link:hover {
-    color: #ffffff;
-    background: var(--hybridmag-color-button-hover-background);
+  color: var(--hybridmag-color-button-hover-text);
+  background: var(--hybridmag-color-button-hover-background);
 }
 
-.wp-block-button__link:active, .wp-block-button__link:focus {
-    color: #ffffff;
-    background: var(--hybridmag-color-button-focus-background);
-}
-
-.entry-content .wp-block-button__link {
-    text-decoration: none;
+.page-content a.wp-block-button__link:active, .page-content a.wp-block-button__link:focus,
+.entry-content a.wp-block-button__link:active,
+.entry-content a.wp-block-button__link:focus,
+.entry-summary a.wp-block-button__link:active,
+.entry-summary a.wp-block-button__link:focus,
+.wp-block-button__link:active,
+.wp-block-button__link:focus {
+  background: var(--hybridmag-color-button-focus-background);
 }
 
 .wp-block-search__button {

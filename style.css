@@ -1028,17 +1028,18 @@ svg.hm-svg-icon {
   font-size: var(--hybridmag-font-size-xs);
   display: inline-block;
   padding: 0.7rem 0.9rem;
+  text-decoration: none !important;
 }
 
 a.hm-readmore-btn {
   text-decoration: none;
-  color: #ffffff;
+  color: var(--hybridmag-color-button-text) !important;
 }
 a.hm-readmore-btn:hover {
-  color: #ffffff;
+  color: var(--hybridmag-color-button-hover-text) !important;
 }
 a.hm-readmore-btn:visited {
-  color: #ffffff;
+  color: var(--hybridmag-color-button-text) !important;
 }
 
 .hm-cta-btn {
@@ -3724,6 +3725,9 @@ li.hm-tab.th-ui-state-active a {
   padding-left: 0;
 }
 
+.page-content a.wp-block-button__link,
+.entry-content a.wp-block-button__link,
+.entry-summary a.wp-block-button__link,
 .wp-block-button__link {
   border-radius: 3px;
   background: var(--hybridmag-color-button-background);
@@ -3733,18 +3737,23 @@ li.hm-tab.th-ui-state-active a {
   padding: 0.8em 1em 0.8em;
   font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
+  text-decoration: none;
 }
+.page-content a.wp-block-button__link:hover,
+.entry-content a.wp-block-button__link:hover,
+.entry-summary a.wp-block-button__link:hover,
 .wp-block-button__link:hover {
-  color: #ffffff;
+  color: var(--hybridmag-color-button-hover-text);
   background: var(--hybridmag-color-button-hover-background);
 }
-.wp-block-button__link:active, .wp-block-button__link:focus {
-  color: #ffffff;
+.page-content a.wp-block-button__link:active, .page-content a.wp-block-button__link:focus,
+.entry-content a.wp-block-button__link:active,
+.entry-content a.wp-block-button__link:focus,
+.entry-summary a.wp-block-button__link:active,
+.entry-summary a.wp-block-button__link:focus,
+.wp-block-button__link:active,
+.wp-block-button__link:focus {
   background: var(--hybridmag-color-button-focus-background);
-}
-
-.entry-content .wp-block-button__link {
-  text-decoration: none;
 }
 
 .wp-block-search__button {

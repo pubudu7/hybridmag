@@ -33,18 +33,19 @@ svg.hm-svg-icon {
 	font-size: var(--hybridmag-font-size-xs);
 	display: inline-block;
 	padding: 0.7rem 0.9rem;
+	text-decoration: none !important;
 }
 
 a.hm-readmore-btn {
 	text-decoration: none;
-	color: #ffffff;
+	color: var(--hybridmag-color-button-text) !important;
 
 	&:hover {
-		color: #ffffff;
+		color: var(--hybridmag-color-button-hover-text) !important;
 	}
 
 	&:visited {
-		color: #ffffff;
+		color: var(--hybridmag-color-button-text) !important;
 	}
 }
 
