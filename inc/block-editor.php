@@ -16,19 +16,33 @@ function hybridmag_get_block_editor_sidebar_layout() {
 		if ( is_object( $screen ) ) {
             if ( 'post' == $screen->post_type ) {
                 $layout = get_theme_mod( 'hybridmag_post_layout', 'right-sidebar' );
+
+				// Get the post specific layout
+				$layout_meta = get_post_meta( get_the_ID(), '_hybridmag_layout_meta', true );
+				if ( $layout_meta && 'default-layout' != $layout_meta ) {
+					$layout = $layout_meta;
+				}
+
             } elseif ( 'page' == $screen->post_type ) {
                 $layout = get_theme_mod( 'hybridmag_page_layout', 'right-sidebar' );
+
+				// Get the page specific layout
+				$layout_meta = get_post_meta( get_the_ID(), '_hybridmag_layout_meta', true );
+				if ( $layout_meta && 'default-layout' != $layout_meta ) {
+					$layout = $layout_meta;
+				}
+
+				$post_id = get_the_ID();
+                if ( $post_id ) {
+					$template_slug = get_page_template_slug( $post_id );
+					// Over write everything if magazine template or fullwidth template
+					if ( 'page-templates/template-magazine.php' === $template_slug || 'page-templates/template-fullwidth.php'=== $template_slug ) {
+						$layout = 'no-sidebar';
+					}
+                }
             }
         } 
 
-	}
-
-	$layout = apply_filters( 'hybridmag_sidebar_layout', $layout );
-
-	$layout_meta = get_post_meta( get_the_ID(), '_hybridmag_layout_meta', true );
-
-	if ( $layout_meta && 'default-layout' != $layout_meta ) {
-		$layout = $layout_meta;
 	}
 
 	return apply_filters( 'hybridmag_block_editor_sidebar_layout', $layout );
@@ -72,9 +86,10 @@ function hybridmag_inline_block_editor_styles() {
 
     $content_width = hybridmag_get_block_editor_content_width();
 
+	// For now this variable is not using.
     if ( $content_width ) {
         $css_variables .= '
-            --hybridmag-content_width: '. esc_attr( $content_width ) .'px !important;
+            --hybridmag-content-width: '. esc_attr( $content_width ) .'px !important;
         ';
     }
 

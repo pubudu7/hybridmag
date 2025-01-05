@@ -5,34 +5,34 @@
     
 do_action( 'hybridmag_before_featured_content' ); 
 
-    $hybridmag_slider_source = get_theme_mod( 'hybridmag_slider_posts_source', 'latest' );
-    $hybridmag_ignore_sticky_posts_slider = get_theme_mod( 'hybridmag_ignore_sticky_posts_slider', false );
-    $hybridmag_slider_args = array(
-        'posts_per_page'        => 5,
-    );
-    if ( 'category' === $hybridmag_slider_source ) {
-        $hybridmag_slider_args['cat'] = get_theme_mod( 'hybridmag_slider_posts_category', '' );
-        if ( false === $hybridmag_ignore_sticky_posts_slider ) {
-            $hybridmag_slider_args['ignore_sticky_posts'] = true;
-        }
-    } elseif ( 'tag' === $hybridmag_slider_source ) {
-        $hybridmag_slider_args['tag'] = get_theme_mod( 'hybridmag_slider_posts_tag', '' );
-        if ( true === $hybridmag_ignore_sticky_posts_slider ) {
-            $hybridmag_slider_args['ignore_sticky_posts'] = true;
-        }
-    } elseif ( 'sticky' === $hybridmag_slider_source ) {
-        $hybridmag_slider_args[ 'post__in' ] = get_option( 'sticky_posts' );
-        $hybridmag_slider_args[ 'ignore_sticky_posts' ] = 1;
+$hybridmag_slider_source = get_theme_mod( 'hybridmag_slider_posts_source', 'latest' );
+$hybridmag_ignore_sticky_posts_slider = get_theme_mod( 'hybridmag_ignore_sticky_posts_slider', false );
+$hybridmag_slider_args = array(
+    'posts_per_page'        => 5,
+);
+if ( 'category' === $hybridmag_slider_source ) {
+    $hybridmag_slider_args['cat'] = get_theme_mod( 'hybridmag_slider_posts_category', '' );
+    if ( false === $hybridmag_ignore_sticky_posts_slider ) {
+        $hybridmag_slider_args['ignore_sticky_posts'] = true;
     }
-    
-    $hybridmag_slider_posts = new WP_Query( $hybridmag_slider_args );
+} elseif ( 'tag' === $hybridmag_slider_source ) {
+    $hybridmag_slider_args['tag'] = get_theme_mod( 'hybridmag_slider_posts_tag', '' );
+    if ( true === $hybridmag_ignore_sticky_posts_slider ) {
+        $hybridmag_slider_args['ignore_sticky_posts'] = true;
+    }
+} elseif ( 'sticky' === $hybridmag_slider_source ) {
+    $hybridmag_slider_args[ 'post__in' ] = get_option( 'sticky_posts' );
+    $hybridmag_slider_args[ 'ignore_sticky_posts' ] = 1;
+}
 
-    if ( $hybridmag_slider_posts->have_posts() ) : 
-    $hybridmag_fp_counter = 1;
+$hybridmag_slider_posts = new WP_Query( $hybridmag_slider_args );
 
-    ?>
+if ( $hybridmag_slider_posts->have_posts() ) : 
+$hybridmag_fp_counter = 1;
 
-    <div class="hm-container">
+?>
+
+<div class="hm-container">
 
     <div class="hm-fp1">
 
@@ -62,7 +62,7 @@ do_action( 'hybridmag_before_featured_content' );
                                             $hm_lazy_loading = false;
                                         }
                                         if ( has_post_thumbnail() ) {
-                                            the_post_thumbnail( 'post-thumbnail', array( 'loading' => $hm_lazy_loading ) );
+                                            the_post_thumbnail( 'hybridmag-featured-image', array( 'loading' => $hm_lazy_loading ) );
                                         } else {
                                             if ( false === get_theme_mod( 'hybridmag_remove_placeholder', false ) ) {
                                                 $featured_image_url = get_template_directory_uri() . '/assets/images/default.jpg'; ?>

@@ -11,13 +11,17 @@
         'body'  => array(
             'title'     => esc_html__( 'Body', 'hybridmag' ),
             'target'    => 'html .editor-styles-wrapper',
-            'defaults'  => array()
+            'defaults'  => array(
+                'font-family' => 'Figtree'
+            )
         ),
 
         'headings'  => array(
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
             'target'    => 'html .editor-styles-wrapper h1, html .editor-styles-wrapper h2, html .editor-styles-wrapper h3, html .editor-styles-wrapper h4, html .editor-styles-wrapper h5, html .editor-styles-wrapper h6',
-            'defaults'  => array(),
+            'defaults'  => array(
+                'font-family' => 'Figtree'
+            ),
             'exclude'   => array( 'font-size' ),
         ),
 
@@ -237,6 +241,24 @@ function hybridmag_block_editor_custom_css() {
 function hybridmag_block_editor_styles() {
 
     $fonts_arr = hybridmag_typography_loop( 'fonts' );
+
+    if ( ! empty( $fonts_arr ) ) {
+        $fonts_arr = array_unique( $fonts_arr );
+
+        $default_font_index = array_search( 'Figtree', $fonts_arr );
+    
+        if ( $default_font_index !== false ) {
+    
+            // Enqueue Default Font CSS from theme.
+            wp_enqueue_style( 'hybridmag-font-figtree', get_theme_file_uri( '/assets/css/font-figtree.css' ), array(), null );
+    
+            unset( $fonts_arr[ $default_font_index ] );
+            $fonts_arr = array_values( $fonts_arr );
+    
+        }
+    }
+
+    // Check again $fonts_arr after changing the array above.
 	if ( ! empty( $fonts_arr ) ) {
 		wp_enqueue_style( 'hybridmag-block-editor-fonts', hybridmag_get_google_font_uri( $fonts_arr ), array(), null );
 	}

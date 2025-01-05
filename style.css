@@ -2320,6 +2320,10 @@ textarea {
   margin: 0 0 1.5em;
 }
 
+.post-thumbnail img {
+  vertical-align: middle;
+}
+
 .hm-entry {
   word-break: break-word;
   overflow-wrap: break-word;
@@ -2328,9 +2332,6 @@ textarea {
 .hm-entry .post-thumbnail {
   margin: 0 0 15px;
   overflow: hidden;
-}
-.hm-entry .post-thumbnail img {
-  vertical-align: middle;
 }
 .hm-entry .entry-header {
   margin: 0 0 15px;
@@ -2980,7 +2981,6 @@ textarea {
   .hm-tab-posts-wrapper {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
     gap: 30px;
   }
 }
@@ -3005,6 +3005,11 @@ textarea {
   .hm-tab-post-card:last-child {
     margin-bottom: 0;
   }
+}
+
+.hm-tab-post-img {
+  max-height: 342px;
+  overflow: hidden;
 }
 
 .hm-cl-sep .hm-tab-post-card {
@@ -3063,7 +3068,6 @@ textarea {
   margin-right: 16px;
 }
 .hm-fp-small .post-thumbnail img {
-  vertical-align: middle;
   border-radius: var(--hybridmag-global-border-radius);
 }
 .hm-fp-small .entry-title {
@@ -3105,7 +3109,7 @@ textarea {
   margin-bottom: 35px;
   font-size: var(--hybridmag-font-size-md);
 }
-.hm-entry-single .post-thumbnail {
+.hm-entry-single > .post-thumbnail {
   margin: 0 0 35px;
 }
 .hm-entry-single .post-thumbnail img {

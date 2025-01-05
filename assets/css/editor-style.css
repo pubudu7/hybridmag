@@ -63,7 +63,7 @@
   optgroup,
   textarea {
     color: var(--hybridmag-color-text-main);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;;
+    font-family: "Figtree", Helvetica, Arial, sans-serif;
     font-size: 1rem;
     line-height: var(--hybridmag-line-height-body);
   }
@@ -75,7 +75,7 @@
   h5,
   h6 {
     clear: both;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    font-family: "Figtree", Helvetica, Arial, sans-serif;
     line-height: var(--hybridmag-line-height-headings);
     font-weight: var(--hybridmag-font-weight-headings);
     margin: 20px 0;

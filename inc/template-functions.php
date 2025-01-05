@@ -186,6 +186,11 @@ if ( ! function_exists( 'hybridmag_get_layout' ) ) {
 				$layout = get_theme_mod( 'hybridmag_page_layout', 'right-sidebar' );
 			} else {
 				$layout = $page_specific_layout;
+			}
+			$template_slug = get_page_template_slug( $post->ID );
+			// Over write everything if magazine template or fullwidth template
+			if ( 'page-templates/template-magazine.php' === $template_slug || 'page-templates/template-fullwidth.php'=== $template_slug ) {
+				$layout = 'no-sidebar';
 			}	
 		}
 
@@ -708,7 +713,7 @@ function hybridmag_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
 		$disabled = true;
 	} elseif ( is_archive() && in_array( 'archive', $disabled_on, true ) ) {
 		$disabled = true;
-	} elseif ( is_404() && in_array( 404, $disabled_on, true ) ) {
+	} elseif ( is_404() && in_array( '404', $disabled_on, true ) ) {
 		$disabled = true;
 	} /*elseif ( ( is_singular() || ! empty( $post_id ) ) && ! is_front_page() ) {
 

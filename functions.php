@@ -419,6 +419,7 @@ function hybridmag_load_fonts() {
 
 	}
 
+	// Check again if empty after changing the array above.
 	if ( empty( $fonts_arr ) ) {
 		return;
 	}
@@ -432,7 +433,7 @@ function hybridmag_load_fonts() {
 		}
 	
 		// Load Google Fonts
-		wp_enqueue_style( 'hm-fonts', $font_url, array(), null, 'screen' );
+		wp_enqueue_style( 'hybridmag-fonts', $font_url, array(), null, 'screen' );
 
 	}
 
