@@ -58,7 +58,21 @@
 				} );
 			}
 		} )
-	} );
+	} );	
+	
+	/*wp.customize( 'hybridmag_sidebar_width', function( value ) {
+		value.bind( function( to ) {
+			if( ( 'blank' !== to ) && ( to >= 15 ) && (to <= 50 ) ) {
+				var contentWidth = 100 - to;
+				$( '#secondary' ).css( {
+					'width': to + '%'
+				} );
+				$( '#primary' ).css( {
+					'width': contentWidth + '%'
+				} );
+			}
+		} )
+	} );*/
 
 	// Menu height.
 	wp.customize( 'hybridmag_pmenu_line_height', function( value ) {

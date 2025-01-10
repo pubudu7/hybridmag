@@ -294,8 +294,11 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 	
 		if ( is_single() ) {
 			$entry_meta = get_theme_mod( 'hybridmag_archive_entry_meta_s', 'author,date,comments' );
+			$show_avatar = get_theme_mod( 'hybridmag_show_author_avatar_s', false );
+
 		} else {
 			$entry_meta = get_theme_mod( 'hybridmag_archive_entry_meta', 'author,date,comments' );
+			$show_avatar = get_theme_mod( 'hybridmag_show_author_avatar', false );
 		}
 
 		if ( strpos( $entry_meta, ',' ) !== false ) {
@@ -313,7 +316,6 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 		foreach( $entry_meta_type_array as $meta_item ) {
 
 			if ( 'author' === $meta_item ) {
-				$show_avatar = get_theme_mod( 'hybridmag_show_author_avatar', false );
 				$author_str = '<span class="byline">';
 				if ( 'icon' === $entry_meta_seperator && false === $show_avatar ) {
 					$author_str .= hybridmag_get_icon_svg( 'user' );
@@ -548,7 +550,8 @@ if ( ! function_exists( 'hybridmag_post_thumbnail_caption' ) ) {
 		}
 
 		// Check the existance of the caption separately.
-		$caption_exists = get_post( get_post_thumbnail_id() )->post_excerpt;
+		$thumbnail      = get_post( get_post_thumbnail_id() );
+		$caption_exists = $thumbnail && $thumbnail->post_excerpt;
 
 		// Only get the caption if one exists.
 		if ( $caption_exists ) {

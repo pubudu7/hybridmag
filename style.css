@@ -722,6 +722,9 @@ html.hm-dark .hm-top-bar .hm-menu ul ul a:hover {
 html.hm-dark .hm-top-bar .hm-social-menu a:hover {
   color: #ffffff;
 }
+html.hm-dark .hm-cl-sep .hm-header-bar {
+  background: #111111;
+}
 html.hm-dark .secondary-menu a {
   color: #dddddd;
 }
@@ -1690,7 +1693,6 @@ textarea {
 .hm-header-bar {
   z-index: -1;
   position: relative;
-  border-bottom: 1px solid var(--hybridmag-color-border);
 }
 .hm-header-bar .hm-breadcrumb-wrap {
   padding: 10px 15px;

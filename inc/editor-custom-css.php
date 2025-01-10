@@ -192,7 +192,14 @@ function hybridmag_block_editor_custom_css() {
 
                 // CSS properties and values.
                 if ( ! empty( $theme_setting ) && $default != $theme_setting ) {
-                    $common_css .= $property .':'. esc_attr( $theme_setting ).';';
+                    if ( $theme_setting === 'system-stack' ) {
+                        // System Fonts Stack.
+                        $system_stack = apply_filters( 'hybridmag_typography_system_stack', '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' );
+                        
+                        $common_css .= $property .':'.  $system_stack .';';
+                    } else {
+                        $common_css .= $property .':'. esc_attr( $theme_setting ).';';
+                    }
                 }
 
             } else {

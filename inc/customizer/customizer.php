@@ -907,21 +907,20 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 
 	// Header - show header cta on desktop header
-	$wp_customize->add_setting(
+	$wp_customize->add_setting( 
 		'hybridmag_show_header_cta',
 		array(
-			'default'           => false,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> false,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_show_header_cta',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_header_cta',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Display on header', 'hybridmag' ),
-			'section'     => 'hybridmag_header_cta_section',
+			'label' 	=> esc_html__( 'Display on header', 'hybridmag' ),
+			'section' 	=> 'hybridmag_header_cta_section'
 		)
-	);
+	) );
 
 	// Header - show header cta on mobile header
 	$wp_customize->add_setting(
@@ -934,9 +933,10 @@ function hybridmag_customize_register( $wp_customize ) {
 	$wp_customize->add_control(
 		'hybridmag_hide_cta_mobile',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Hide on Mobile Header', 'hybridmag' ),
-			'section'     => 'hybridmag_header_cta_section',
+			'type'        		=> 'checkbox',
+			'label'       		=> esc_html__( 'Hide on Mobile Header', 'hybridmag' ),
+			'section'     		=> 'hybridmag_header_cta_section',
+			'active_callback' 	=> 'hybridmag_is_cta_active'
 		)
 	);	
 
@@ -953,6 +953,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'section'		=> 'hybridmag_header_cta_section',
 			'type'			=> 'text',
 			'label'			=> esc_html__( 'Button Text', 'hybridmag' ),
+			'active_callback' 	=> 'hybridmag_is_cta_active'
 		)
 	);
 
@@ -969,6 +970,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'section'		=> 'hybridmag_header_cta_section',
 			'type'			=> 'url',
 			'label'			=> esc_html__( 'Button URL', 'hybridmag' ),
+			'active_callback' 	=> 'hybridmag_is_cta_active'
 		)
 	);
 
@@ -986,6 +988,7 @@ function hybridmag_customize_register( $wp_customize ) {
 			'type'        => 'checkbox',
 			'label'       => esc_html__( 'Open link in new window', 'hybridmag' ),
 			'section'     => 'hybridmag_header_cta_section',
+			'active_callback' 	=> 'hybridmag_is_cta_active'
 		)
 	);
 
@@ -1986,86 +1989,9 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Show small posts?
-	$wp_customize->add_setting(
-		'hybridmag_show_sfp',
-		array(
-			'default'           => false,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_show_sfp',
-		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Show small posts?', 'hybridmag' ),
-			'section'     => 'hybridmag_sfp_section',
-		)
-	);
-
-	// Featured Small Posts Source.
-	$wp_customize->add_setting(
-		'hybridmag_sfp_source',
-		array(
-			'default' => 'latest',
-			'sanitize_callback' => 'hybridmag_sanitize_select'
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_sfp_source',
-		array(
-			'type' 		=> 'select',
-			'label' 	=> esc_html__( 'Select Posts Source', 'hybridmag' ),
-			'section' 	=> 'hybridmag_sfp_section',
-			'choices' 	=> array(
-				'latest' 	=> esc_html__( 'Latest Posts', 'hybridmag' ),
-				'category' 	=> esc_html__( 'By Category', 'hybridmag' ),
-				'tag' 		=> esc_html__( 'By Tag', 'hybridmag' )
-			)
-		)
-	);
-
-	// Featured Small Posts Source - Category
-	$wp_customize->add_setting(
-		'hybridmag_sfp_category',
-		array(
-			'default'			=> '0',
-			'sanitize_callback'	=> 'hybridmag_sanitize_category_dropdown'
-		)
-	);
-
-	$wp_customize->add_control(
-		new HybridMag_Customize_Category_Control( 
-			$wp_customize,
-			'hybridmag_sfp_category', 
-			array(
-				'label'   			=> esc_html__( 'Select the category for posts.', 'hybridmag' ),
-				'section' 			=> 'hybridmag_sfp_section',
-				'active_callback'	=> 'hybridmag_is_sfp_source_category'
-			) 
-		) 
-	);
-
-	// Featured Small Posts Source - Tag
-	$wp_customize->add_setting(
-		'hybridmag_sfp_tag',
-		array(
-			'default'			=> '',
-			'type'				=> 'theme_mod',
-			'capability'		=> 'edit_theme_options',
-			'sanitize_callback'	=> 'hybridmag_sanitize_html'
-		)
-	);
-	$wp_customize->add_control(
-		'hybridmag_sfp_tag',
-		array(
-			'section'			=> 'hybridmag_sfp_section',
-			'type'				=> 'text',
-			'label'				=> esc_html__( 'Enter the tag slug', 'hybridmag' ),
-			'active_callback'	=> 'hybridmag_is_sfp_source_tag'
-		)
-	);
-
+	/**
+	 * Slider + 2 Posts Section
+	 */
 	$wp_customize->add_section(
 		'hybridmag_featured_slider',
 		array(
@@ -2331,23 +2257,22 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 
 	// Show tabbed posts section
-	$wp_customize->add_setting(
+	$wp_customize->add_setting( 
 		'hybridmag_display_tabbed_posts',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
-			'priority'			=> 15
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_display_tabbed_posts',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_display_tabbed_posts',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Display tabbed posts section?', 'hybridmag' ),
-			'section'     => 'hybridmag_featured_tabs',
+			'label' 	=> esc_html__( 'Display tabbed posts section', 'hybridmag' ),
+			'section' 	=> 'hybridmag_featured_tabs'
 		)
-	);
+	) );
 
+	// Where to display tabbed posts?
 	$wp_customize->add_setting(
 		'hybridmag_featured_tabs_displayed_on',
 		array(
@@ -2356,7 +2281,6 @@ function hybridmag_customize_register( $wp_customize ) {
 			'sanitize_callback' => 'hybridmag_sanitize_multiple_checkboxes'
 		)
 	);
-
 	$wp_customize->add_control(
 		new HybridMag_Multiple_Checkboxes(
 			$wp_customize,
@@ -2368,7 +2292,7 @@ function hybridmag_customize_register( $wp_customize ) {
 					'front'		=> esc_html__( 'Front Page', 'hybridmag' ),
 					'blog'		=> esc_html__( 'Blog Posts Page', 'hybridmag' )
 				),
-				'active_callback' => 'hybridmag_is_featured_content_active'
+				'active_callback' => 'hybridmag_is_tabbed_posts_active'
 			)
 		)
 	);
@@ -2382,7 +2306,6 @@ function hybridmag_customize_register( $wp_customize ) {
 				'sanitize_callback'	=> 'hybridmag_sanitize_category_dropdown'
 			)
 		);
-
 		$wp_customize->add_control(
 			new HybridMag_Customize_Category_Control( 
 				$wp_customize,
@@ -2390,6 +2313,7 @@ function hybridmag_customize_register( $wp_customize ) {
 				array(
 					'label'   			=> esc_html__( 'Select the category for tab ' . $i, 'hybridmag' ),
 					'section' 			=> 'hybridmag_featured_tabs',
+					'active_callback' 	=> 'hybridmag_is_tabbed_posts_active'
 				) 
 			) 
 		);
@@ -2410,7 +2334,8 @@ function hybridmag_customize_register( $wp_customize ) {
 		array(
 			'section'			=> 'hybridmag_featured_tabs',
 			'type'				=> 'text',
-			'label'				=> esc_html__( 'View all text', 'hybridmag' )
+			'label'				=> esc_html__( 'View all text', 'hybridmag' ),
+			'active_callback' 	=> 'hybridmag_is_tabbed_posts_active'
 		)
 	);
 	
@@ -3611,10 +3536,32 @@ function hybridmag_is_featured_content_active( $control ) {
 }
 
 /**
+ * Check if the tabbed posts section is displaying.
+ */
+function hybridmag_is_tabbed_posts_active( $control ) {
+	if ( $control->manager->get_setting( 'hybridmag_display_tabbed_posts' )->value() === true ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
  * Check if the featured content area is displaying.
  */
 function hybridmag_is_slider_autoplay_active( $control ) {
 	if ( hybridmag_is_featured_content_active( $control ) && $control->manager->get_setting( 'hybridmag_slider_autoplay' )->value() === true ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Check if the cta button active
+ */
+function hybridmag_is_cta_active( $control ) {
+	if ( $control->manager->get_setting( 'hybridmag_show_header_cta' )->value() === true ) {
 		return true;
 	} else {
 		return false;

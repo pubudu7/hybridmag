@@ -7,14 +7,15 @@ function hybridmag_import_files() {
 		array(
 			'import_file_name'              => 'Demo Import 1',
 			'categories'                    => array( 'Category 1', 'Category 2' ),
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/bam-pro/demo1/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/bam-pro/demo1/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/bam-pro/demo1/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/bam-pro/demo1/demo1.jpg',
-			'import_notice'                 => __( 'After you import this demo, you will have to setup the slider separately.', 'hybridmag' ),
+            'import_file_url'               => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/screenshot.png',
+			'import_notice'                 => __( 'After you import this demo, you will have to setup the slider separately.', 'your-textdomain' ),
 			'preview_url'                   => 'https://themezhut.com/demo/bam-pro/',
+            'plan'                          => 'free'
 		),
-		array(
+		/*array(
 			'import_file_name'              => 'Demo Import 2',
 			'categories'                    => array( 'New category', 'Old category' ),
             'import_file_url'               => 'https://themezhut.com/demo/ocdi/bam-pro/demo2/demo-content.xml',
@@ -47,7 +48,7 @@ function hybridmag_import_files() {
             'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/bam-pro/demo5/customizer.dat',
             'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/bam-pro/demo5/demo5.jpg',
 			'preview_url'                   => 'https://themezhut.com/demo/bam-pro-demo-5/',
-        )
+        )*/
 	);
 }
 add_filter( 'bnmbt_import_files', 'hybridmag_import_files' );
