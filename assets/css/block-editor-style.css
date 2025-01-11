@@ -14,8 +14,3 @@
     margin-top: 0;
     margin-bottom: 40px;
 }
-
-.wp-block-post-content {
-    line-height: var( --hybridmag-line-height-article );
-    font-size: var( --hybridmag-font-size-md );
-}

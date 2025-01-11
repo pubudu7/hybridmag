@@ -45,9 +45,14 @@ function hybridmag_setup() {
 
 	// Add support for editor styles.
 	add_theme_support( 'editor-styles' );
+
+	$classic_editor_styles = array(
+		'assets/css/editor-style.css',
+		'assets/css/font-figtree.css',
+	);
 	
 	// Enqueue editor styles.
-	add_editor_style( 'assets/css/editor-style.css' );
+	add_editor_style( $classic_editor_styles );
 
 	// Add support for full and wide align images.
 	add_theme_support( 'align-wide' );

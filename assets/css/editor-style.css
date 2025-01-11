@@ -24,17 +24,17 @@
 
 :root {
   --hybridmag-font-size-base: 16px;
-  --hybridmag-font-size-xxxs: 0.75em;
-  --hybridmag-font-size-xxs: 0.813em;
-  --hybridmag-font-size-xs: 0.875em;
-  --hybridmag-font-size-sm: 0.938em;
-  --hybridmag-font-size-md: 1.063em;
-  --hybridmag-font-size-amd: 1.125em;
-  --hybridmag-font-size-lg: 1.313em;
-  --hybridmag-font-size-xl: 1.5em;
-  --hybridmag-font-size-xxl: 1.625em;
-  --hybridmag-font-size-xxxl: 2em;
-  --hybridmag-font-size-xxxxl: 2.25em;
+  --hybridmag-font-size-xxxs: 0.75rem;
+  --hybridmag-font-size-xxs: 0.813rem;
+  --hybridmag-font-size-xs: 0.875rem;
+  --hybridmag-font-size-sm: 0.938rem;
+  --hybridmag-font-size-md: 1.063rem;
+  --hybridmag-font-size-amd: 1.125rem;
+  --hybridmag-font-size-lg: 1.313rem;
+  --hybridmag-font-size-xl: 1.5rem;
+  --hybridmag-font-size-xxl: 1.625rem;
+  --hybridmag-font-size-xxxl: 2rem;
+  --hybridmag-font-size-xxxxl: 2.25rem;
   --hybridmag-line-height-body: 1.5;
   --hybridmag-line-height-article: 1.7;
   --hybridmag-line-height-headings: 1.3;
@@ -46,11 +46,6 @@
   --hybridmag-post-cols-gap: 40px;
   --hybridmag-footer-cols-gap: 40px;
 }
-
-  h1 {
-    font-size: 2em;
-    margin: 0.67em 0;
-  }
 
   html {
     font-size: var(--hybridmag-font-size-base);
@@ -64,8 +59,8 @@
   textarea {
     color: var(--hybridmag-color-text-main);
     font-family: "Figtree", Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    line-height: var(--hybridmag-line-height-body);
+    font-size: 17px;
+    line-height: 1.7;
   }
   
   h1,

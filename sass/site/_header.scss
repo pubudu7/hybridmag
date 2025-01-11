@@ -114,9 +114,10 @@
 	padding: 0 8px;
 	display: flex;
 	align-items: center;
+	line-height: 1;
 
 	.hm-svg-icon {
-		font-size: 1.125em;
+		font-size: 1.125rem;
         width: 1em;
 	}
 
@@ -516,7 +517,7 @@
 	max-width: 95%;
 
 	.site-title {
-		font-size: 1.75em;
+		font-size: 1.75rem;
 	}
 	.site-description {
 		display: none;
@@ -749,7 +750,7 @@
 	.hm-light-dark-toggle {
 		background: transparent;
 		padding: 3px 8px 0 10px;
-		font-size: 1.05em;
+		font-size: 1.05rem;
 		color: inherit;
 	}
 }

@@ -412,7 +412,7 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Primary Menu - Line Height
+	// Global Border Radius
 	$wp_customize->add_setting( 
 		'hybridmag_global_border_radius',
 		array(
@@ -2938,55 +2938,52 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 
 	// Post - Show tags
-	$wp_customize->add_setting(
+	$wp_customize->add_setting( 
 		'hybridmag_show_tags_list_s',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_show_tags_list_s',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_tags_list_s',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Show tags list', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
+			'label' 	=> esc_html__( 'Show tags list', 'hybridmag' ),
+			'section' 	=> 'hybridmag_post_meta_section'
 		)
-	);
+	) );
 	
-	// Post - Show category list
-	$wp_customize->add_setting(
+	// Post - Show Next Previous Links
+	$wp_customize->add_setting( 
 		'hybridmag_post_previous_next',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_post_previous_next',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_post_previous_next',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Display previous and next links at the bottom of each post.', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
+			'label' 	=> esc_html__( 'Display previous and next links at the bottom of each post.', 'hybridmag' ),
+			'section' 	=> 'hybridmag_post_meta_section'
 		)
-	);
+	) );
 	
-	// Post - Show category list
-	$wp_customize->add_setting(
+	// Post - Show Author Bio
+	$wp_customize->add_setting( 
 		'hybridmag_show_author_bio',
 		array(
-			'default'           => true,
-			'sanitize_callback' => 'hybridmag_sanitize_checkbox',
+			'default' 			=> true,
+			'transport' 		=> 'refresh',
+			'sanitize_callback' => 'hybridmag_sanitize_switch'
 		)
 	);
-	$wp_customize->add_control(
-		'hybridmag_show_author_bio',
+	$wp_customize->add_control( new HybridMag_Toggle_Switch_Control( $wp_customize, 'hybridmag_show_author_bio',
 		array(
-			'type'        => 'checkbox',
-			'label'       => esc_html__( 'Display author bio at the bottom of the post.', 'hybridmag' ),
-			'section'     => 'hybridmag_post_meta_section',
+			'label' 	=> esc_html__( 'Display author bio at the bottom of the post.', 'hybridmag' ),
+			'section' 	=> 'hybridmag_post_meta_section'
 		)
-	);
+	) );
 
 	// Page Settings Section
 	$wp_customize->add_section(

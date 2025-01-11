@@ -81,17 +81,17 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 
 :root {
   --hybridmag-font-size-base: 16px;
-  --hybridmag-font-size-xxxs: 0.75em;
-  --hybridmag-font-size-xxs: 0.813em;
-  --hybridmag-font-size-xs: 0.875em;
-  --hybridmag-font-size-sm: 0.938em;
-  --hybridmag-font-size-md: 1.063em;
-  --hybridmag-font-size-amd: 1.125em;
-  --hybridmag-font-size-lg: 1.313em;
-  --hybridmag-font-size-xl: 1.5em;
-  --hybridmag-font-size-xxl: 1.625em;
-  --hybridmag-font-size-xxxl: 2em;
-  --hybridmag-font-size-xxxxl: 2.25em;
+  --hybridmag-font-size-xxxs: 0.75rem;
+  --hybridmag-font-size-xxs: 0.813rem;
+  --hybridmag-font-size-xs: 0.875rem;
+  --hybridmag-font-size-sm: 0.938rem;
+  --hybridmag-font-size-md: 1.063rem;
+  --hybridmag-font-size-amd: 1.125rem;
+  --hybridmag-font-size-lg: 1.313rem;
+  --hybridmag-font-size-xl: 1.5rem;
+  --hybridmag-font-size-xxl: 1.625rem;
+  --hybridmag-font-size-xxxl: 2rem;
+  --hybridmag-font-size-xxxxl: 2.25rem;
   --hybridmag-line-height-body: 1.5;
   --hybridmag-line-height-article: 1.7;
   --hybridmag-line-height-headings: 1.3;
@@ -475,7 +475,7 @@ optgroup,
 textarea {
   color: var(--hybridmag-color-text-main);
   font-family: "Figtree", Helvetica, Arial, sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   line-height: var(--hybridmag-line-height-body);
 }
 
@@ -1000,7 +1000,6 @@ input[type=submit],
   line-height: 1;
   padding: 0.8rem 1rem;
   font-family: "Figtree", Helvetica, Arial, sans-serif;
-  font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
 }
 button:hover,
@@ -1052,7 +1051,6 @@ a.hm-readmore-btn:visited {
   line-height: 1;
   padding: 10px 20px;
   font-family: "Figtree", Helvetica, Arial, sans-serif;
-  font-size: var(--hybridmag-font-size-base);
   font-weight: bold;
   margin: 0 8px;
 }
@@ -1217,9 +1215,10 @@ textarea {
   padding: 0 8px;
   display: flex;
   align-items: center;
+  line-height: 1;
 }
 .hm-search-toggle .hm-svg-icon {
-  font-size: 1.125em;
+  font-size: 1.125rem;
   width: 1em;
 }
 .hm-search-toggle:focus, .hm-search-toggle:active, .hm-search-toggle:hover {
@@ -1530,7 +1529,7 @@ textarea {
   max-width: 95%;
 }
 .hm-mobile-sb-logo .site-title {
-  font-size: 1.75em;
+  font-size: 1.75rem;
 }
 .hm-mobile-sb-logo .site-description {
   display: none;
@@ -1743,7 +1742,7 @@ textarea {
 .site-header .hm-light-dark-toggle {
   background: transparent;
   padding: 3px 8px 0 10px;
-  font-size: 1.05em;
+  font-size: 1.05rem;
   color: inherit;
 }
 
@@ -1928,7 +1927,6 @@ textarea {
 }
 .main-navigation a {
   display: block;
-  font-size: var(--hybridmag-font-size-base);
   font-weight: 600;
   text-decoration: none;
   padding: 0 12px;
@@ -2659,7 +2657,7 @@ textarea {
   display: inline-block;
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 0.75em;
+  font-size: 0.75rem;
   border-radius: 3px;
 }
 
@@ -3251,7 +3249,7 @@ textarea {
 }
 
 .comments-title {
-  font-size: 1.4375em;
+  font-size: 1.4375rem;
   font-weight: 700;
   line-height: 1.3125;
   margin: 0;
@@ -3260,7 +3258,7 @@ textarea {
 
 .comment-reply-title {
   position: relative;
-  font-size: 1.4375em;
+  font-size: 1.4375rem;
   font-weight: 700;
   margin: 0 0 20px;
   line-height: 1.3125;
@@ -3868,7 +3866,7 @@ li.hm-tab.th-ui-state-active a {
           clip-path: none;
   color: #21759b;
   display: block;
-  font-size: 0.875em;
+  font-size: 0.875rem;
   font-weight: 700;
   height: auto;
   left: 5px;

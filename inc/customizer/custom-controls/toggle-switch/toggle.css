@@ -1,21 +1,18 @@
-.toggle-switch-control .customize-control-title {
-	display: inline-block;
-}
-
-.toggle-switch {
+.hm-toggle-switch {
 	position: relative;
-	width: 64px;
+	width: 48px;
+	display: inline-block;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	float: right;
+	padding-left: 15px;
 }
 
-.toggle-switch .toggle-switch-checkbox {
+.hm-toggle-switch .hm-toggle-switch-checkbox {
 	display: none;
 }
 
-.toggle-switch .toggle-switch-label {
+.hm-toggle-switch .hm-toggle-switch-label {
 	display: block;
 	overflow: hidden;
 	cursor: pointer;
@@ -25,15 +22,15 @@
 	margin: 0;
 }
 
-.toggle-switch-inner {
+.hm-toggle-switch-inner {
 	display: block;
 	width: 200%;
 	margin-left: -100%;
 	transition: margin 0.3s ease-in 0s;
 }
 
-.toggle-switch-inner:before,
-.toggle-switch-inner:after {
+.hm-toggle-switch-inner:before,
+.hm-toggle-switch-inner:after {
 	display: block;
 	float: left;
 	width: 50%;
@@ -47,22 +44,22 @@
 	box-sizing: border-box;
 }
 
-.toggle-switch-inner:before {
-	content: "\f147";
+.hm-toggle-switch-inner:before {
+	content: "";
 	padding-left: 8px;
 	background-color: #2885bb;
 	color: #fff;
 }
 
-.toggle-switch-inner:after {
-	content: "\f158";
+.hm-toggle-switch-inner:after {
+	content: "";
 	padding-right: 8px;
 	background-color: #eee;
 	color: #999;
 	text-align: right;
 }
 
-.toggle-switch-switch {
+.hm-toggle-switch-switch {
 	display: block;
 	width: 16px;
 	margin: 3px;
@@ -70,16 +67,36 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	right: 38px;
+	right: 22px;
 	border: 2px solid #ddd;
 	border-radius: 20px;
 	transition: all 0.3s ease-in 0s;
 }
 
-.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-inner {
+.hm-toggle-switch-checkbox:checked + .hm-toggle-switch-label .hm-toggle-switch-inner {
 	margin-left: 0;
 }
 
-.toggle-switch-checkbox:checked + .toggle-switch-label .toggle-switch-switch {
+.hm-toggle-switch-checkbox:checked + .hm-toggle-switch-label .hm-toggle-switch-switch {
 	right: 0px;
+}
+
+.hm-toggle-switch-control {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.customize-control.customize-control-hybridmag-toggle-switch {
+	margin-bottom: 20px;
+}
+
+.hm-toggle-switch-control .customize-control-title {
+	display: inline-block;
+	line-height: 1.5;
+	margin-bottom: 0;
+}
+
+.hm-toggle-switch-desc {
+	flex: 1;
 }

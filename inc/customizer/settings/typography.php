@@ -9,7 +9,8 @@ function hybridmag_get_typography_elements() {
             'title'     => esc_html__( 'Body', 'hybridmag' ),
             'target'    => 'body, button, input, select, optgroup, textarea',
             'defaults'  => array(
-                'font-family' => 'Figtree'
+                'font-family' => 'Figtree',
+                'line-height' => 1.5
             )
         ),
 
@@ -17,7 +18,8 @@ function hybridmag_get_typography_elements() {
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
             'target'    => 'h1, h2, h3, h4, h5, h6, .site-title',
             'defaults'  => array(
-                'font-family' => 'Figtree'
+                'font-family' => 'Figtree',
+                'line-height' => 1.3
             ),
             'exclude'   => array( 'font-size' ),
         ),
@@ -25,20 +27,26 @@ function hybridmag_get_typography_elements() {
         'logo'  => array(
             'title'     => esc_html__( 'Site Title', 'hybridmag' ),
             'target'    => '.site-title',
-            'defaults'  => array(), 
+            'defaults'  => array(
+                'line-height' => 1.2
+            ), 
         ),
 
         'blog_entry_title'  => array(
             'title'     => esc_html__( 'Blog Entry Title', 'hybridmag' ),
             'target'    => '.hm-entry .entry-title',
-            'defaults'  => array(),
+            'defaults'  => array(
+                'line-height' => 1.3
+            ),
             'exclude'   => array( 'font-family' )
         ),
 
         'single_post_body'  => array(
             'title'     => esc_html__( 'Single Post Content', 'hybridmag' ),
             'target'    => '.hm-entry-single .entry-content',
-            'defaults'  => array(),
+            'defaults'  => array(
+                'line-height' => 1.7
+            ),
             'exclude'   => array( 'font-family' )
         ),
 
@@ -306,7 +314,7 @@ function hybridmag_customize_typography( $wp_customize ) {
                 array(
                     'label'         => esc_html__( 'Line Height', 'hybridmag' ),
                     'section'       => 'hybridmag_'. $element .'_typography_section',
-                    'choices'       => array(
+                    'input_attrs'   => array(
                         'min'   => 0.5,
                         'max'   => 4,
                         'step'  => 0.1,

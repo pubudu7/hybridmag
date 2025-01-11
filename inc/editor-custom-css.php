@@ -12,7 +12,8 @@
             'title'     => esc_html__( 'Body', 'hybridmag' ),
             'target'    => 'html .editor-styles-wrapper',
             'defaults'  => array(
-                'font-family' => 'Figtree'
+                'font-family' => 'Figtree',
+                'line-height' => 1.5
             )
         ),
 
@@ -20,7 +21,8 @@
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
             'target'    => 'html .editor-styles-wrapper h1, html .editor-styles-wrapper h2, html .editor-styles-wrapper h3, html .editor-styles-wrapper h4, html .editor-styles-wrapper h5, html .editor-styles-wrapper h6',
             'defaults'  => array(
-                'font-family' => 'Figtree'
+                'font-family' => 'Figtree',
+                'line-height' => 1.3
             ),
             'exclude'   => array( 'font-size' ),
         ),
@@ -28,7 +30,9 @@
         'single_post_body'  => array(
             'title'     => esc_html__( 'Single Post Content', 'hybridmag' ),
             'target'    => 'html .editor-styles-wrapper',
-            'defaults'  => array(),
+            'defaults'  => array(
+                'line-height' => 1.7
+            ),
             'exclude'   => array( 'font-family' )
         )
 

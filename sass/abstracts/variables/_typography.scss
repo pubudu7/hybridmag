@@ -5,17 +5,17 @@ $font__pre: "Courier 10 Pitch", courier, monospace;
 
 :root {
     --hybridmag-font-size-base: 16px;
-    --hybridmag-font-size-xxxs: 0.75em; // 12px
-    --hybridmag-font-size-xxs: 0.813em; // 13px
-    --hybridmag-font-size-xs: 0.875em; // 14px
-    --hybridmag-font-size-sm: 0.938em; // 15px
-    --hybridmag-font-size-md: 1.063em; // 17px;
-    --hybridmag-font-size-amd: 1.125em; // 18px; 
-    --hybridmag-font-size-lg: 1.313em; // 21px
-    --hybridmag-font-size-xl: 1.5em; // 24px
-    --hybridmag-font-size-xxl: 1.625em; // 26px
-    --hybridmag-font-size-xxxl: 2em; // 32px
-    --hybridmag-font-size-xxxxl: 2.25em; // 36px
+    --hybridmag-font-size-xxxs: 0.75rem; // 12px
+    --hybridmag-font-size-xxs: 0.813rem; // 13px
+    --hybridmag-font-size-xs: 0.875rem; // 14px
+    --hybridmag-font-size-sm: 0.938rem; // 15px
+    --hybridmag-font-size-md: 1.063rem; // 17px;
+    --hybridmag-font-size-amd: 1.125rem; // 18px; 
+    --hybridmag-font-size-lg: 1.313rem; // 21px
+    --hybridmag-font-size-xl: 1.5rem; // 24px
+    --hybridmag-font-size-xxl: 1.625rem; // 26px
+    --hybridmag-font-size-xxxl: 2rem; // 32px
+    --hybridmag-font-size-xxxxl: 2.25rem; // 36px
 
     --hybridmag-line-height-body: 1.5;
     --hybridmag-line-height-article: 1.7;
@@ -24,24 +24,3 @@ $font__pre: "Courier 10 Pitch", courier, monospace;
 
     --hybridmag-font-weight-headings: 600;
 }
-
-// :root {
-//     --hybridmag-font-size-base: 16px;
-//     --hybridmag-font-size-xxxs: 0.75rem; // 12px
-//     --hybridmag-font-size-xxs: 0.813rem; // 13px
-//     --hybridmag-font-size-xs: 0.875rem; // 14px
-//     --hybridmag-font-size-sm: 0.938rem; // 15px
-//     --hybridmag-font-size-md: 1.063rem; // 17px;
-//     --hybridmag-font-size-lg: 1.313rem; // 21px
-//     --hybridmag-font-size-xl: 1.5rem; // 24px
-//     --hybridmag-font-size-xxl: 1.625rem; // 26px
-//     --hybridmag-font-size-xxxl: 2rem; // 32px
-//     --hybridmag-font-size-xxxxl: 2.25rem; // 36px
-
-//     --hybridmag-line-height-body: 1.5;
-//     --hybridmag-line-height-article: 1.7;
-//     --hybridmag-line-height-headings: 1.3;
-//     --hybridmag-line-height-pre: 1.6;
-
-//     --hybridmag-font-weight-headings: 600;
-// }
