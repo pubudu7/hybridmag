@@ -693,38 +693,26 @@ function hybridmag_can_show_post_thumbnail() {
 }
 
 /**
- * Check if a section is disabled.
+ * Check if a section is displayed.
  *
- * @since 1.0.0
- *
- * @param  array $disabled_on Array of pages where the section is disabled.
- * @param  int   $post_id     Current page ID.
+ * @param  array $displayed_on Array of pages where the section is displayed.
  * @return bool               Section is displayed.
  */
-function hybridmag_is_section_disabled( $disabled_on = array(), $post_id = 0 ) {
+function hybridmag_is_section_displayed( $displayed_on = array() ) {
 
-	$disabled = false;
+	$displayed = false;
 
-	if ( is_front_page() && in_array( 'front', $disabled_on, true ) ) {
-		$disabled = true;
-	} elseif ( is_home() && in_array( 'blog', $disabled_on, true ) ) {
-		$disabled = true;
-	} elseif ( is_search() && in_array( 'search', $disabled_on, true ) ) {
-		$disabled = true;
-	} elseif ( is_archive() && in_array( 'archive', $disabled_on, true ) ) {
-		$disabled = true;
-	} elseif ( is_404() && in_array( '404', $disabled_on, true ) ) {
-		$disabled = true;
-	} /*elseif ( ( is_singular() || ! empty( $post_id ) ) && ! is_front_page() ) {
+	if ( is_front_page() && in_array( 'front', $displayed_on, true ) ) {
+		$displayed = true;
+	} elseif ( is_home() && in_array( 'blog', $displayed_on, true ) ) {
+		$displayed = true;
+	} elseif ( is_search() && in_array( 'search', $displayed_on, true ) ) {
+		$displayed = true;
+	} elseif ( is_archive() && in_array( 'archive', $displayed_on, true ) ) {
+		$displayed = true;
+	} elseif ( is_404() && in_array( '404', $displayed_on, true ) ) {
+		$displayed = true;
+	}
 
-		if ( empty( $post_id ) ) {
-			$post_id = hybridmag_get_the_id();
-		}
-
-		if ( in_array( get_post_type( $post_id ), $disabled_on, true ) ) {
-			$disabled = true;
-		}
-	}*/
-
-	return $disabled;
+	return $displayed;
 }

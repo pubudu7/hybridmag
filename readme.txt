@@ -30,10 +30,10 @@ HybridMag WordPress theme is designed specially for bloggers who want a seamless
 * Based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 * normalize.css https://necolas.github.io/normalize.css/, (C) 2012-2018 Nicolas Gallagher and Jonathan Neal, [MIT](https://opensource.org/licenses/MIT)
 * Font Awesome SVG, (C) 2018 Dave Gandy, CC BY 4.0 license - https://creativecommons.org/licenses/by/4.0/
+* Customizer Custom Controls, (C) Anthony Hortin, General Public License v2 or later (http://www.gnu.org/licenses/gpl-2.0.html)
 * Slider Control slider.js based on Kirki Customizer Framework, (C) 2019 Ari Stathopoulos, MIT
 * Webfonts Loader, (C) 2020 WPTT, MIT
-* Inter Font, (c) 2016-2019 The Inter Project Authors (me@rsms.me), SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
-* Roboto Condensed, (c) Christian Robertson, SIL Open Font License, 1.1, https://opensource.org/licenses/OFL-1.1
+* Figtree Font, (c) 2022 The Figtree Project Authors, SIL Open Font License, 1.1, https://openfontlicense.org/open-font-license-official-text/
 
 Code from Twenty Twenty
 Copyright (c) 2020-2023 WordPress.org

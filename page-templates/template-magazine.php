@@ -19,9 +19,10 @@ get_header();
     do_action( 'hybridmag_before_main_content' );
 
     while ( have_posts() ) :
+        
         the_post();
 
-        get_template_part( 'template-parts/content', 'page' );
+        the_content();
 
     endwhile; // End of the loop.
 

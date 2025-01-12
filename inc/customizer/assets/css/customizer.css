@@ -65,3 +65,11 @@ ul.th-responsive-switches li {
 .customize-control {
     margin-bottom: 15px;
 }
+
+#customize-theme-controls .accordion-section-title button.accordion-trigger {
+    max-height: fit-content;
+}
+
+#customize-theme-controls #accordion-section-hybridmag_upsell .accordion-section-title:after {
+    display: none;
+}

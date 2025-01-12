@@ -43,6 +43,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	// uri for the customizer images folder
 	$images_uri = get_template_directory_uri() . '/inc/customizer/assets/images/'; 
 
+	// Selective Refresh
 	if ( isset( $wp_customize->selective_refresh ) ) {
 		$wp_customize->selective_refresh->add_partial(
 			'blogname',
@@ -57,6 +58,33 @@ function hybridmag_customize_register( $wp_customize ) {
 				'selector'        => '.site-description',
 				'render_callback' => 'hybridmag_customize_partial_blogdescription',
 			)
+		);
+		$wp_customize->selective_refresh->add_partial( 
+			'hybridmag_show_featured_content', 
+			array(
+				'selector' 				=> '.hm-fp1',
+				'render_callback' 		=> 'hybridmag_featured_section',
+				'container_inclusive' 	=> true,
+				'fallback_refresh'		=> true
+			) 
+		);
+		$wp_customize->selective_refresh->add_partial( 
+			'hybridmag_display_tabbed_posts', 
+			array(
+				'selector' 				=> '.hm-tab-posts-wrapper',
+				'render_callback' 		=> 'hybridmag_featured_tabs_section',
+				'container_inclusive' 	=> true,
+				'fallback_refresh'		=> true
+			) 
+		);
+		$wp_customize->selective_refresh->add_partial( 
+			'hybridmag_blog_section_title', 
+			array(
+				'selector' 				=> '.hm-blog-entries-title',
+				'render_callback' 		=> 'hybridmag_homepage_article_title',
+				'container_inclusive' 	=> true,
+				'fallback_refresh'		=> true
+			) 
 		);
 	}
 
@@ -2311,7 +2339,11 @@ function hybridmag_customize_register( $wp_customize ) {
 				$wp_customize,
 				'hybridmag_tab_posts'. $i .'_category', 
 				array(
-					'label'   			=> esc_html__( 'Select the category for tab ' . $i, 'hybridmag' ),
+					'label'   			=> sprintf( 
+						/* translators: %s: tab number in tabbed posts section. */
+						esc_html__( 'Select the category for tab %s', 'hybridmag' ), 
+						$i 
+					),
 					'section' 			=> 'hybridmag_featured_tabs',
 					'active_callback' 	=> 'hybridmag_is_tabbed_posts_active'
 				) 

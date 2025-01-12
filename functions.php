@@ -243,15 +243,6 @@ function hybridmag_widgets_init() {
 			'after_title'   => '</h2>',
 		),
 		array(
-			'name'          => esc_html__( 'Magazine Builder', 'hybridmag' ),
-			'description'   => esc_html__( 'Add Posts Blocks here.', 'hybridmag' ),
-			'id'            => 'hybridmag-magazine-1',
-			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-			'after_widget'  => '</section>',
-			'before_title'  => '<h2 class="widget-title">',
-			'after_title'   => '</h2>',
-		),
-		array(
 			'name'          => esc_html__( 'Footer 1', 'hybridmag' ),
 			'id'            => 'footer-1',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',

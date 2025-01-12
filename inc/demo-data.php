@@ -11,7 +11,7 @@ function hybridmag_import_files() {
             'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/customizer.dat',
             'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/screenshot.png',
-			'import_notice'                 => __( 'After you import this demo, you will have to setup the slider separately.', 'your-textdomain' ),
+			'import_notice'                 => __( 'After you import this demo, you will have to setup the slider separately.', 'hybridmag' ),
 			'preview_url'                   => 'https://themezhut.com/demo/bam-pro/',
             'plan'                          => 'free'
 		),

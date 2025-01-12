@@ -608,13 +608,14 @@
 }
 
 .hm-blog-section-header {
-	margin: 0 0 35px;
-	border-bottom: 1px solid var(--hybridmag-color-border);
+	margin: 0 0 30px;
 	position: relative;
 
 	.hm-blog-entries-title {
 		display: inline-block;
-		margin: 0 0 6px;
+		border-bottom: 2px solid var(--hybridmag-color-primary);
+		margin: 0;
+		font-size: var(--hybridmag-font-size-lg);
 	}
 }
 
