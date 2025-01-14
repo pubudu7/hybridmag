@@ -732,24 +732,6 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
-	// Menu - show Search on menu
-	// $wp_customize->add_setting(
-	// 	'hybridmag_show_search_onmenu',
-	// 	array(
-	// 		'default'           => true,
-	// 		'sanitize_callback' => 'hybridmag_sanitize_checkbox',
-	// 	)
-	// );
-	// $wp_customize->add_control(
-	// 	'hybridmag_show_search_onmenu',
-	// 	array(
-	// 		'type'        => 'checkbox',
-	// 		'label'       => esc_html__( 'Display Search Box', 'hybridmag' ),
-	// 		'section'     => 'hybridmag_primary_menu_section',
-	// 		'priority'	  => 15,
-	// 	)
-	// );
-
 	$wp_customize->add_setting( 
 		'hybridmag_show_search_onmenu',
 		array(
