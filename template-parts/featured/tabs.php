@@ -26,7 +26,7 @@ for ( $i = 1; $i <= 5; $i++ ) {
                 if ( ! empty( $cat ) ) {
                     $hybridmag_cat_name = get_cat_name( $cat );
                 } else {
-                    $hybridmag_cat_name = __( 'Latest', 'hybridmag' );
+                    $hybridmag_cat_name = esc_html__( 'Latest', 'hybridmag' );
                 }
 
                 ?>

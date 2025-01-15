@@ -5,6 +5,9 @@
     
 do_action( 'hybridmag_before_featured_content' ); 
 
+/**
+ * Posts query for slider.
+ */
 $hybridmag_slider_source = get_theme_mod( 'hybridmag_slider_posts_source', 'latest' );
 $hybridmag_ignore_sticky_posts_slider = get_theme_mod( 'hybridmag_ignore_sticky_posts_slider', false );
 $hybridmag_slider_args = array(
@@ -27,23 +30,47 @@ if ( 'category' === $hybridmag_slider_source ) {
 
 $hybridmag_slider_posts = new WP_Query( $hybridmag_slider_args );
 
-if ( $hybridmag_slider_posts->have_posts() ) : 
-$hybridmag_fp_counter = 1;
+/**
+ * Posts query for highlighted posts.
+ */
+$hybridmag_fps_source = get_theme_mod( 'hybridmag_featured_posts_source', 'latest' );
+$hybridmag_fps_args = array(
+    'posts_per_page'        => 2,
+);
+
+if ( 'category' === $hybridmag_fps_source ) {
+    $hybridmag_fps_args['cat'] = get_theme_mod( 'hybridmag_featured_posts_category', '' );
+    $hybridmag_fps_args[ 'ignore_sticky_posts' ] = true;
+} elseif ( 'tag' === $hybridmag_fps_source ) {
+    $hybridmag_fps_args['tag'] = get_theme_mod( 'hybridmag_featured_posts_tag', '' );
+    $hybridmag_fps_args[ 'ignore_sticky_posts' ] = true;
+} elseif ( 'sticky' === $hybridmag_fps_source ) {
+    $hybridmag_fps_args = array(
+        'posts_per_page'        => 2,
+        'post__in'              => get_option( 'sticky_posts' ),
+        'ignore_sticky_posts'   => 1,
+    );
+} else {
+    $hybridmag_fps_args[ 'ignore_sticky_posts' ] = true;
+}
+
+$hybridmag_highlighted_posts = new WP_Query( $hybridmag_fps_args );
 
 ?>
 
 <div class="hm-container">
 
-    <div class="hm-fp1">
+<div class="hm-fp1">
 
     <div class="hm-fp1-left">
+
+    <?php if ( $hybridmag_slider_posts->have_posts() ) : ?>
 
         <div class="hm-swiper hm-slider">
 
             <div class="hm-swiper-wrapper">
 
                 <?php 
-                    if ( $hybridmag_slider_posts->have_posts() ) :
 
                     $hm_slide_count = 1;
                     
@@ -87,7 +114,6 @@ $hybridmag_fp_counter = 1;
                 <?php 
                     $hm_slide_count++;
                     endwhile; 
-                endif;
                 
                 ?>
 
@@ -101,75 +127,60 @@ $hybridmag_fp_counter = 1;
 
         </div><!-- .hm-slider -->
 
-    </div><!-- .hm-fp1-left" -->
-
+    <?php else : ?>
+        <div>
+            <?php esc_html_e( 'No posts found', 'hybridmag' ); ?>
+        </div>
     <?php endif; ?>
+
+    </div><!-- .hm-fp1-left" -->
 
     <div class="hm-fp1-right">
 
-    <?php
+    <?php if ( $hybridmag_highlighted_posts->have_posts() ) : ?>
 
-    $hybridmag_fps_source = get_theme_mod( 'hybridmag_featured_posts_source', 'latest' );
-    $hybridmag_fps_args = array(
-        'posts_per_page'        => 2,
-    );
+        <div class="hm-highlighted-posts">
 
-    if ( 'category' === $hybridmag_fps_source ) {
-        $hybridmag_fps_args['cat'] = get_theme_mod( 'hybridmag_featured_posts_category', '' );
-        $hybridmag_fps_args[ 'ignore_sticky_posts' ] = true;
-    } elseif ( 'tag' === $hybridmag_fps_source ) {
-        $hybridmag_fps_args['tag'] = get_theme_mod( 'hybridmag_featured_posts_tag', '' );
-        $hybridmag_fps_args[ 'ignore_sticky_posts' ] = true;
-    } elseif ( 'sticky' === $hybridmag_fps_source ) {
-        $hybridmag_fps_args = array(
-            'posts_per_page'        => 2,
-            'post__in'              => get_option( 'sticky_posts' ),
-            'ignore_sticky_posts'   => 1,
-        );
-    } else {
-        $hybridmag_fps_args[ 'ignore_sticky_posts' ] = true;
-    }
+            <?php 
+                while( $hybridmag_highlighted_posts->have_posts() ) : $hybridmag_highlighted_posts->the_post(); ?>
 
-    $hybridmag_highlighted_posts = new WP_Query( $hybridmag_fps_args );
+                    <div class="hm-highlighted-post">
+                        <div class="hmhp-inner">
+                            <div class="hmhp-thumb">
+                                <?php if ( has_post_thumbnail() ) { ?>
+                                    <?php the_post_thumbnail( 'hybridmag-archive-image', array( 'class' => 'hm-fpw-img') ); ?>
+                                <?php } else { 
+                                    if ( false === get_theme_mod( 'hybridmag_remove_placeholder', false ) ) {
+                                        $featured_image_url = get_template_directory_uri() . '/assets/images/default.jpg'; ?>
+                                        <img src="<?php echo esc_url( $featured_image_url ); ?>">
+                                        <?php
+                                    }
+                                } ?>
+                            </div>
+                            <div class="hm-fp-overlay">
+                                <a class="hm-fp-link-overlay" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>" rel="bookmark"></a>
+                            </div>
+                            <div class="hmhp-content">
+                                <div class="hmhp-details-container">
+                                    <h3 class="hmhp-title">
+                                        <?php the_title(); ?>
+                                    </h3>
+                                </div><!-- .hmhp-details-container -->
+                            </div><!-- .hmhp-content -->
+                        </div><!-- .hmhp-inner -->
+                    </div><!-- .hm-highlighted-post -->
 
-?>
+            <?php endwhile; ?>
 
-    <div class="hm-highlighted-posts">
-
-        <?php 
-            while( $hybridmag_highlighted_posts->have_posts() ) : $hybridmag_highlighted_posts->the_post(); ?>
-
-                <div class="hm-highlighted-post">
-                    <div class="hmhp-inner">
-                        <div class="hmhp-thumb">
-                            <?php if ( has_post_thumbnail() ) { ?>
-                                <?php the_post_thumbnail( 'hybridmag-archive-image', array( 'class' => 'hm-fpw-img') ); ?>
-                            <?php } else { 
-                                if ( false === get_theme_mod( 'hybridmag_remove_placeholder', false ) ) {
-                                    $featured_image_url = get_template_directory_uri() . '/assets/images/default.jpg'; ?>
-                                    <img src="<?php echo esc_url( $featured_image_url ); ?>">
-                                    <?php
-                                }
-                            } ?>
-                        </div>
-                        <div class="hm-fp-overlay">
-                            <a class="hm-fp-link-overlay" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" aria-label="<?php the_title_attribute(); ?>" rel="bookmark"></a>
-                        </div>
-                        <div class="hmhp-content">
-                            <div class="hmhp-details-container">
-                                <h3 class="hmhp-title">
-                                    <?php the_title(); ?>
-                                </h3>
-                            </div><!-- .hmhp-details-container -->
-                        </div><!-- .hmhp-content -->
-                    </div><!-- .hmhp-inner -->
-                </div><!-- .hm-highlighted-post -->
-
-        <?php endwhile; ?>
-
-        <?php wp_reset_postdata(); ?>
+            <?php wp_reset_postdata(); ?>
 
         </div><!-- .hm-highlighted-posts -->
+
+    <?php else : ?>
+        <div>
+            <?php esc_html_e( 'No posts found', 'hybridmag' ); ?>
+        </div>
+    <?php endif; ?>
 
     </div><!-- .hm-fp1-right -->
 

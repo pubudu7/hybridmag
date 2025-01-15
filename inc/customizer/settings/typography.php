@@ -322,38 +322,8 @@ function hybridmag_customize_typography( $wp_customize ) {
                 )
             ) );
         }
-
-        /**
-         * Color
-         */
-        /*if ( in_array( 'color', $attributes ) ) {
-
-            $color = ! empty( $values[ 'defaults' ][ 'color' ] ) ? $values[ 'defaults' ][ 'color' ] : '';
-
-            $wp_customize->add_setting(
-                'hybridmag_'. $element .'_color',
-                array(
-                    'default'			=> $color,
-                    'type'				=> 'theme_mod',
-                    'capability'		=> 'edit_theme_options',
-                    'sanitize_callback'	=> 'hybridmag_sanitize_hex_color'
-                )
-            );
-            $wp_customize->add_control(
-                new WP_Customize_Color_Control(
-                    $wp_customize,
-                    'hybridmag_'. $element .'_color',
-                    array(
-                        'settings'		=> 'hybridmag_'. $element .'_color',
-                        'section'		=> 'hybridmag_'. $element .'_typography_section',
-                        'label'			=> __( 'Color', 'hybridmag' ),
-                    )
-                )
-            );
-
-        }*/
     
-    }
+    } // end foreach;
 
 }
 add_action( 'customize_register', 'hybridmag_customize_typography' );

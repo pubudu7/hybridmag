@@ -4,10 +4,10 @@ Theme Name: HybridMag
 Theme URI: https://themezhut.com/themes/hybridmag/
 Author: ThemezHut
 Author URI: https://themezhut.com
-Description: HybridMag WordPress theme is designed specially for bloggers who want a seamless online publishing experience. Packed with an array of customization options, this theme empowers online publishers with the tools they need to stand out. Its clean and minimal design ensures a distraction-free reading experience, while its lightweight build guarantees blazing-fast loading times. HybridMag is implemented with the best coding practices to ensure stability, security, and compatibility with WordPress standards. See more details at https://themezhut.com/themes/hybridmag/ See the demo at - https://themezhut.com/demo/hybridmag/
+Description: HybridMag is a modern and stylish WordPress theme for blogs, newspapers, and magazine websites. The advanced options provided with HybridMag allow you to tailor every aspect of your website to match your brand, making it the best choice for online publishers.
 Version: 1.0.0
-Tested up to: 6.5
-Requires PHP: 5.6
+Tested up to: 6.7
+Requires PHP: 7.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: hybridmag
@@ -3171,7 +3171,7 @@ textarea {
   font-size: var(--hybridmag-font-size-xxs);
   text-align: center;
   margin-bottom: 1em;
-  margin-top: 0;
+  margin-top: 0.3em;
 }
 
 .page-links {
@@ -3832,6 +3832,52 @@ li.hm-tab.th-ui-state-active a {
 /* Re-display the Theme Footer when Infinite Scroll has reached its end. */
 .infinity-end.neverending .site-footer {
   display: block;
+}
+
+/* BNM Blocks
+--------------------------------------------- */
+.wpbnmpb1,
+.wpbnmpb2,
+.wpbnmspp {
+  --bnm-meta-color: var(--hybridmag-color-text-light);
+  --bnm-meta-hover-color: var(--hybridmag-color-link-hover);
+  --bnm-title-color: var(--hybridmag-color-link);
+  --bnm-title-hover-color: var(--hybridmag-color-link-hover);
+}
+
+.hm-cl-sep .wpbnmpb1,
+.hm-cl-sep .wpbnmpb2,
+.hm-cl-sep .wpbnmspp {
+  padding: var(--hybridmag-global-inner-spacing);
+  border-radius: var(--hybridmag-global-border-radius);
+  box-shadow: var(--hybridmag-global-box-shadow);
+  background: #ffffff;
+}
+.hm-cl-sep .wpbnmfpb1,
+.hm-cl-sep .wpbnmfpb2,
+.hm-cl-sep .wpbnmposw {
+  box-shadow: var(--hybridmag-global-box-shadow);
+}
+
+.bnm-fp1-container,
+.bnm-fp2-container,
+.thbnm-swiper {
+  overflow: hidden;
+  border-radius: var(--hybridmag-global-border-radius);
+}
+
+.wpbnmpb1 .post-thumbnail,
+.wpbnmpb2 .post-thumbnail {
+  border-radius: var(--hybridmag-global-border-radius);
+}
+
+.wpbnmspp.image-alignbehind .post-thumbnail,
+.wpbnmspp .post-thumbnail {
+  overflow: hidden;
+}
+.wpbnmspp.image-alignbehind .post-thumbnail img,
+.wpbnmspp .post-thumbnail img {
+  border-radius: var(--hybridmag-global-border-radius);
 }
 
 /*--------------------------------------------------------------

@@ -257,12 +257,12 @@ if ( ! function_exists( 'hybridmag_comments_link' ) ) :
 			$num_comments = esc_attr( get_comments_number() );
 
 			if ( $num_comments == 0 ) {
-				$comments_txt = __( '0', 'hybridmag' );
+				$comments_txt = esc_html__( '0', 'hybridmag' );
 			} elseif ( $num_comments > 1 ) {
 				/* translators: %d: number of comments */
 				$comments_txt = sprintf( esc_html__( '%d', 'hybridmag' ), $num_comments );
 			} else {
-				$comments_txt = __( '1', 'hybridmag' );
+				$comments_txt = esc_html__( '1', 'hybridmag' );
 			}
 
 			return '<a href="' . esc_url( get_comments_link() ).'">' . $comments_txt . '</a>';
@@ -612,8 +612,8 @@ if ( ! function_exists( 'hybridmag_posts_pagination' ) ) {
 		} else {
 			the_posts_navigation(
 				array(
-					'prev_text' => __( '&larr; Older Posts', 'hybridmag' ),
-					'next_text' => __( 'Newer Posts &rarr;', 'hybridmag' ),
+					'prev_text' => esc_html__( '&larr; Older Posts', 'hybridmag' ),
+					'next_text' => esc_html__( 'Newer Posts &rarr;', 'hybridmag' ),
 				)
 			);
 		}

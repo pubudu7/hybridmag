@@ -2567,7 +2567,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control( new HybridMag_Pill_Checkbox_Custom_Control( $wp_customize, 'hybridmag_archive_entry_meta',
 		array(
-			'label' 		=> __( 'Post Meta', 'hybridmag' ),
+			'label' 		=> esc_html__( 'Post Meta', 'hybridmag' ),
 			'description' 	=> esc_html__( 'Select what you want to display and order them as you prefer', 'hybridmag' ),
 			'section' 		=> 'hybridmag_blog_meta_section',
 			'input_attrs' 	=> array(
@@ -2575,11 +2575,11 @@ function hybridmag_customize_register( $wp_customize ) {
 				'fullwidth' => true,
 			),
 			'choices' => array(
-				'author' 		=> __( 'Author', 'hybridmag' ),
-				'date' 			=> __( 'Date', 'hybridmag' ),
-				'comments' 		=> __( 'Comments', 'hybridmag'  ),
-				'categories' 	=> __( 'Categories', 'hybridmag'  ),
-				'tags' 			=> __( 'Tags', 'hybridmag'  ),
+				'author' 		=> esc_html__( 'Author', 'hybridmag' ),
+				'date' 			=> esc_html__( 'Date', 'hybridmag' ),
+				'comments' 		=> esc_html__( 'Comments', 'hybridmag'  ),
+				'categories' 	=> esc_html__( 'Categories', 'hybridmag'  ),
+				'tags' 			=> esc_html__( 'Tags', 'hybridmag'  ),
 			)
 		)
 	) );
@@ -2874,7 +2874,7 @@ function hybridmag_customize_register( $wp_customize ) {
 	);
 	$wp_customize->add_control( new HybridMag_Pill_Checkbox_Custom_Control( $wp_customize, 'hybridmag_archive_entry_meta_s',
 		array(
-			'label' 		=> __( 'Post Meta', 'hybridmag' ),
+			'label' 		=> esc_html__( 'Post Meta', 'hybridmag' ),
 			'description' 	=> esc_html__( 'Select what you want to display and order them as you prefer', 'hybridmag' ),
 			'section' 		=> 'hybridmag_post_meta_section',
 			'input_attrs' 	=> array(
@@ -2882,11 +2882,11 @@ function hybridmag_customize_register( $wp_customize ) {
 				'fullwidth' => true,
 			),
 			'choices' => array(
-				'author' 		=> __( 'Author', 'hybridmag' ),
-				'date' 			=> __( 'Date', 'hybridmag' ),
-				'comments' 		=> __( 'Comments', 'hybridmag'  ),
-				'categories' 	=> __( 'Categories', 'hybridmag'  ),
-				'tags' 			=> __( 'Tags', 'hybridmag'  ),
+				'author' 		=> esc_html__( 'Author', 'hybridmag' ),
+				'date' 			=> esc_html__( 'Date', 'hybridmag' ),
+				'comments' 		=> esc_html__( 'Comments', 'hybridmag'  ),
+				'categories' 	=> esc_html__( 'Categories', 'hybridmag'  ),
+				'tags' 			=> esc_html__( 'Tags', 'hybridmag'  ),
 			)
 		)
 	) );
