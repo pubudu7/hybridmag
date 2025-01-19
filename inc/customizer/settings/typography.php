@@ -16,7 +16,7 @@ function hybridmag_get_typography_elements() {
 
         'headings'  => array(
             'title'     => esc_html__( 'Headings', 'hybridmag' ),
-            'target'    => 'h1, h2, h3, h4, h5, h6, .site-title',
+            'target'    => 'h1, h2, h3, h4, h5, h6, .site-title, .post-navigation .nav-links .post-title, button, input[type="button"], input[type="reset"], input[type="submit"], .hm-readmore-btn, .hm-cta-btn',
             'defaults'  => array(
                 'font-family' => 'Figtree',
                 'line-height' => 1.3

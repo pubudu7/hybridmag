@@ -22,6 +22,9 @@ HybridMag is a modern and stylish WordPress theme for blogs, newspapers, and mag
 
 == Changelog ==
 
+= 1.0.1 =
+* New: Added sidebar posts widget.
+
 = 1.0.0 - Jan 16 2025 =
 * Initial release
 

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: HybridMag 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
-"POT-Creation-Date: 2025-01-16 00:34+0530\n"
+"POT-Creation-Date: 2025-01-16 00:47+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ThemezHut\n"
@@ -1154,107 +1154,67 @@ msgstr ""
 msgid "Line Height"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:13
-msgid "Installing"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:14
-msgid "Activating"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:15
-msgid "Error"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:28
+#: inc/dashboard/theme-info.php:17
 msgid "Welcome to HybridMag! To get started with HybridMag please visit the theme Welcome page."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:29
+#: inc/dashboard/theme-info.php:18
 msgid "Get Started with HybridMag"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:47 inc/dashboard/theme-info.php:49
+#: inc/dashboard/theme-info.php:36 inc/dashboard/theme-info.php:38
 msgid "HybridMag Theme"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:65
-msgid "Starter Templates"
+#: inc/dashboard/theme-info.php:50
+msgid "Welcome to HybridMag"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:127
-msgid "Install Magazine Companion Plugin Now"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:128 inc/dashboard/theme-info.php:156
-msgid "Magazine Companion"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:129
-msgid "Install and activate"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:146
-msgid "Activate"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:148
-msgid "Activate Plugin"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:155
-msgid "Activate Magazine Companion Plugin Now"
-msgstr ""
-
-#: inc/dashboard/theme-info.php:166
-msgid "To import demos, simply install and activate our \"Magazine Companion\" plugin. Click to install and activate."
-msgstr ""
-
-#: inc/dashboard/theme-info.php:205
+#: inc/dashboard/theme-info.php:77
 msgid "Theme Customizer"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:206
+#: inc/dashboard/theme-info.php:78
 msgid "All the HybridMag theme settings are located at the customizer. Start customizing your website with customizer."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:207
+#: inc/dashboard/theme-info.php:79
 msgid "Go to customizer"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:213
+#: inc/dashboard/theme-info.php:85
 msgid "Theme Documentation"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:214
+#: inc/dashboard/theme-info.php:86
 msgid "Need to learn all about HybridMag? Read the theme documentation carefully."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:215
+#: inc/dashboard/theme-info.php:87
 msgid "Read the documentation."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:221
+#: inc/dashboard/theme-info.php:93
 msgid "Theme Info"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:222
+#: inc/dashboard/theme-info.php:94
 msgid "Know all the details about HybridMag theme."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:223
+#: inc/dashboard/theme-info.php:95
 msgid "Theme Details."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:229
+#: inc/dashboard/theme-info.php:101
 msgid "Theme Demo"
 msgstr ""
 
-#: inc/dashboard/theme-info.php:230
+#: inc/dashboard/theme-info.php:102
 msgid "See the theme preview of free version."
 msgstr ""
 
-#: inc/dashboard/theme-info.php:231
+#: inc/dashboard/theme-info.php:103
 msgid "Theme Preview"
 msgstr ""
 

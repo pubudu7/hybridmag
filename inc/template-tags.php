@@ -142,8 +142,6 @@ if ( ! function_exists( 'hybridmag_posted_on' ) ) :
 
 		return $posted_on;
 
-		// echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-
 	}
 endif;
 
@@ -173,7 +171,6 @@ if ( ! function_exists( 'hybridmag_posted_by' ) ) :
 
 		return $byline;
 
-		//echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 endif;
 

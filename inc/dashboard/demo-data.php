@@ -2,8 +2,8 @@
 /**
  * Demo setup data needed for our BNM Blocks plugin's demo importer.
  */
-function hybridmag_import_files() {
-    return array(
+function hybridmag_demo_importer_files() {
+    $demo_data = array(
 		array(
 			'import_file_name'              => 'Demo Import 1',
 			'categories'                    => array( 'Category 1', 'Category 2' ),
@@ -11,8 +11,7 @@ function hybridmag_import_files() {
             'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/customizer.dat',
             'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/screenshot.png',
-			'import_notice'                 => esc_html__( 'After you import this demo, you will have to setup the slider separately.', 'hybridmag' ),
-			'preview_url'                   => 'https://themezhut.com/demo/bam-pro/',
+			'preview_url'                   => 'https://themezhut.com/demo/hybridmag/',
             'plan'                          => 'free'
 		),
 		/*array(
@@ -50,8 +49,11 @@ function hybridmag_import_files() {
 			'preview_url'                   => 'https://themezhut.com/demo/bam-pro-demo-5/',
         )*/
 	);
+
+    // 
+    return apply_filters( 'hybridmag_demo_import_data', $demo_data );
 }
-add_filter( 'bnmbt_import_files', 'hybridmag_import_files' );
+add_filter( 'bnmbt_import_files', 'hybridmag_demo_importer_files' );
 
 /**
  * This information is needed for the demo importer to function properly.
@@ -64,3 +66,9 @@ function hybridmag_demo_importer_display_location() {
     );
 }
 add_filter( 'bnmbt_importer_display_location_data', 'hybridmag_demo_importer_display_location' );
+
+function hybridmag_theme_pro_url( $url ) {
+    $url = 'https://themezhut.com/themes/hybridmag-pro';
+    return $url;
+}
+add_filter( 'bnmbt_importer_pro_url', 'hybridmag_theme_pro_url' );

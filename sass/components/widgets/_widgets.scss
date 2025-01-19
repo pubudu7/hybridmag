@@ -156,3 +156,52 @@ li.hm-tab.th-ui-state-active a {
 	margin: 20px 0 0;
 	display: block;
 }
+
+// Latest posts widget
+
+.hm-sidebar-posts {
+	.widget-title {
+		margin-bottom: 25px;
+	}
+
+	.hms-post:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.hms-thumb {
+	float: left;
+	margin-right: 15px; 
+	position: relative;
+
+	img {
+		max-width: 75px;
+		vertical-align: top;
+		border-radius: var(--hybridmag-global-border-radius);
+
+		@media (min-width: 768px) and (max-width: 992px) {
+			max-width: 100%;
+		}
+	}
+
+	@media (min-width: 768px) and (max-width: 992px) {
+		width: 30%;
+		margin-right: 12px; 
+	}
+}
+
+.hms-details {
+	overflow: hidden;
+}
+
+.hms-title {
+	font-size: var(--hybridmag-font-size-base);
+	margin: 0 0 8px;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+	line-height: 1.27;	
+}
+
+.hms-post {
+    margin-bottom: 30px;
+}

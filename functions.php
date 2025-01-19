@@ -371,6 +371,11 @@ require get_template_directory() . '/inc/customizer/settings/typography.php';
 require get_template_directory() . '/inc/css-output.php';
 require get_template_directory() . '/inc/editor-custom-css.php';
 
+/**
+ * Widgets.
+ */
+require get_template_directory() . '/inc/widgets/class-sidebar-posts.php';
+
 if ( ! function_exists( 'hybridmag_get_fonts_url' ) ) :
 	/**
 	 * Gets the font url.
@@ -468,4 +473,4 @@ require get_template_directory() . '/inc/structure/footer.php';
 /**
  * Demo Data.
  */
-require get_template_directory() . '/inc/demo-data.php';
+require get_template_directory() . '/inc/dashboard/demo-data.php';
