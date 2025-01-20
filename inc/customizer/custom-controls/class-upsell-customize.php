@@ -75,7 +75,7 @@ final class HybridMag_Upsell_Customize {
 				array(
 					'title'    => esc_html__( 'Ready for more?', 'hybridmag' ),
 					'pro_text' => esc_html__( 'Get HybridMag Pro', 'hybridmag' ),
-					'pro_url'  => 'https://themezhut.com/themes/hybridmag/',
+					'pro_url'  => 'https://themezhut.com/themes/hybridmag-pro/',
 					'priority' => 1
 				)
 			)

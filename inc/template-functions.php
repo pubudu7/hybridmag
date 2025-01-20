@@ -41,6 +41,9 @@ function hybridmag_body_classes( $classes ) {
 		$classes[] = 'hm-' . esc_attr( $sidebar_layout );
 	}
 
+	// body class to be targeted by other plugins to style.
+	$classes[] = 'th-hm-es';
+
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
 		$classes[] = 'hfeed';

@@ -5,55 +5,50 @@
 function hybridmag_demo_importer_files() {
     $demo_data = array(
 		array(
-			'import_file_name'              => 'Demo Import 1',
-			'categories'                    => array( 'Category 1', 'Category 2' ),
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/demotest/screenshot.png',
-			'preview_url'                   => 'https://themezhut.com/demo/hybridmag/',
-            'plan'                          => 'free'
-		),
-		/*array(
-			'import_file_name'              => 'Demo Import 2',
-			'categories'                    => array( 'New category', 'Old category' ),
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/bam-pro/demo2/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/bam-pro/demo2/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/bam-pro/demo2/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/bam-pro/demo2/demo2.jpg',
-			'import_notice'                 => esc_html__( 'A special note for this import.', 'hybridmag' ),
-			'preview_url'                   => 'https://themezhut.com/demo/bam-pro-demo-2/',
-		),
-        array(
-            'import_file_name'              => 'Demo 3',
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/bam-pro/demo3/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/bam-pro/demo3/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/bam-pro/demo3/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/bam-pro/demo3/demo3.jpg',
-			'preview_url'                   => 'https://themezhut.com/demo/bam-pro-demo-3/',
-        ),
-        array(
-            'import_file_name'              => 'Demo 4',
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/bam-pro/demo4/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/bam-pro/demo4/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/bam-pro/demo4/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/bam-pro/demo4/demo4.jpg',
-			'preview_url'                   => 'https://themezhut.com/demo/bam-pro-demo-4/',
-        ),
-        array(
-            'import_file_name'              => 'Demo 5',
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/bam-pro/demo5/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/bam-pro/demo5/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/bam-pro/demo5/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/bam-pro/demo5/demo5.jpg',
-			'preview_url'                   => 'https://themezhut.com/demo/bam-pro-demo-5/',
-        )*/
+			'import_file_name'              => esc_html__( 'Default', 'hybridmag' ),
+            'import_file_url'               => 'https://themezhut.com/demo/ocdi/hybridmag/default/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/default/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/default/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/default/screenshot.png',
+			'preview_url'                   => 'https://themezhut.com/demo/hybridmag/'
+		)
 	);
 
-    // 
+    // Filter to change import data.
     return apply_filters( 'hybridmag_demo_import_data', $demo_data );
 }
 add_filter( 'bnmbt_import_files', 'hybridmag_demo_importer_files' );
+
+/**
+ * After demo import action.
+ */
+function hybridmag_after_import( $selected_import ) {
+ 
+    if ( 'Default' === $selected_import['import_file_name'] ) {
+        // Assign menus to their locations.
+        $main_menu = get_term_by( 'name', 'Main Menu', 'nav_menu' );
+        $social_menu = get_term_by( 'name', 'Social Menu', 'nav_menu' );
+    
+        set_theme_mod( 'nav_menu_locations', [
+                'primary' => $main_menu->term_id,
+                'social' => $social_menu->term_id 
+            ]
+        );
+    }
+
+}
+
+/**
+ * Selects what after import method to run.
+ */
+function hybridmag_handle_after_import( $selected_import ) {
+    if ( function_exists( 'hybridmag_pro_after_import' ) ) {
+        hybridmag_pro_after_import( $selected_import );
+    } else {
+        hybridmag_after_import( $selected_import );
+    }
+}
+add_action( 'bnmbt_importer_after_import', 'hybridmag_handle_after_import' );
 
 /**
  * This information is needed for the demo importer to function properly.

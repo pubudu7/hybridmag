@@ -119,3 +119,9 @@
 .wp-block-gallery .wp-block-image {
     border-radius: var(--hybridmag-global-border-radius);
 }
+
+.th-hm-es .article-section-title {
+	border-bottom: 2px solid var(--hybridmag-color-primary);
+	display: inline-block;
+	line-height: 1.2;
+}

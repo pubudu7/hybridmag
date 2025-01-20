@@ -3871,6 +3871,12 @@ li.hm-tab.th-ui-state-active a {
   border-radius: var(--hybridmag-global-border-radius);
 }
 
+.th-hm-es .article-section-title {
+  border-bottom: 2px solid var(--hybridmag-color-primary);
+  display: inline-block;
+  line-height: 1.2;
+}
+
 /*--------------------------------------------------------------
 # Plugins
 --------------------------------------------------------------*/
@@ -3904,7 +3910,7 @@ li.hm-tab.th-ui-state-active a {
   padding: var(--hybridmag-global-inner-spacing);
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
-  background: #ffffff;
+  background: var(--hybridmag-color-bg-cl-sep-content);
 }
 .hm-cl-sep .wpbnmfpb1,
 .hm-cl-sep .wpbnmfpb2,

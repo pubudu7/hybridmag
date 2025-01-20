@@ -404,3 +404,9 @@
   margin-left: 0;
   margin-right: 0;
 }
+
+.article-section-title {
+	border-bottom: 2px solid var(--hybridmag-color-primary);
+	display: inline-block;
+	line-height: 1.2;
+}
