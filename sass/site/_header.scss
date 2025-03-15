@@ -37,10 +37,10 @@
 			width: 100%;
 		}
 	}
-
-	.site-title {
-		font-size: var(--hybridmag-font-size-xxxxl);
-	}
+	// If we add the following css it will break the typography.
+	// .site-title {
+	// 	font-size: var(--hybridmag-font-size-xxxxl);
+	// }
 
 	.hm-search-toggle,
 	.hm-slideout-toggle:hover {

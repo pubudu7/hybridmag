@@ -7,7 +7,7 @@
 
 if ( ! defined( 'HYBRIDMAG_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( 'HYBRIDMAG_VERSION', '1.0.0' );
+	define( 'HYBRIDMAG_VERSION', '1.0.2' );
 }
 
 /**
@@ -116,6 +116,8 @@ function hybridmag_setup() {
 	add_theme_support(
 		'custom-logo',
 		array(
+			'height'      	=> 50,
+			'width'       	=> 165,
 			'flex-height'	=> true,
 			'flex-width' 	=> true,
 		)
@@ -236,7 +238,7 @@ function hybridmag_widgets_init() {
 		array(
 			'name'          => esc_html__( 'Below Header', 'hybridmag' ),
 			'id'            => 'header-3',
-			'description'   => esc_html__( 'Add widgets here to appear before the Header', 'hybridmag' ),
+			'description'   => esc_html__( 'Add widgets here to appear below the Header', 'hybridmag' ),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',
@@ -469,8 +471,3 @@ require get_template_directory() . '/inc/structure/header.php';
 require get_template_directory() . '/inc/structure/navigation.php';
 require get_template_directory() . '/inc/structure/featured.php';
 require get_template_directory() . '/inc/structure/footer.php';
-
-/**
- * Demo Data.
- */
-require get_template_directory() . '/inc/dashboard/demo-data.php';

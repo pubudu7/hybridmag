@@ -4,7 +4,7 @@ Contributors: pubudu-malalasekara
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,9 +22,16 @@ HybridMag is a modern and stylish WordPress theme for blogs, newspapers, and mag
 
 == Changelog ==
 
+= 1.0.2 =
+* Changed logo recommended width and height.
+* Changed screenshot.
+* Fix: Fixed a translation issue.
+* Fix: Fixed an issue in Logo Height control.
+
 = 1.0.1 =
 * New: Added sidebar posts widget.
 * Fix: Copyright issue in hybridmag.pot file.
+* Fix: Fixed some CSS issues.
 
 = 1.0.0 - Jan 16 2025 =
 * Initial release
@@ -49,30 +56,30 @@ Included as part of the following classes and functions:
 - hybridmag_nav_menu_social_icons()
 
 * Images shown in screenshot.
-Image 1 shown in screenshot.png, Copyright ashwinivk, PxHere
+Image 1 shown in screenshot.png, Copyright PxHere
 License: CC0 1.0 Universal (CC0 1.0)
-Source: https://pxhere.com/en/photo/1686366
+Source: https://pxhere.com/en/photo/939435
 
 Image 2 shown in screenshot.png, Copyright PxHere
 License: CC0 Public Domain
-Source: https://pxhere.com/en/photo/937093
+Source: https://pxhere.com/en/photo/899371
 
 Image 3 shown in screenshot.png, Copyright PxHere
 License: CC0 Public Domain
-Source: https://pxhere.com/en/photo/3329
+Source: https://pxhere.com/en/photo/937093
 
 Image 4 shown in screenshot.png, Copyright PxHere
 License: CC0 Public Domain
-Source: https://pxhere.com/en/photo/899371
+Source: https://pxhere.com/en/photo/669015
 
 Image 5 shown in screenshot.png, Copyright PxHere
 License: CC0 Public Domain
-Source: https://pxhere.com/en/photo/1043111
+Source: https://pxhere.com/en/photo/140293
 
-Image 6 shown in screenshot.png, Copyright PxHere
+Image 6 shown in screenshot.png Copyright PxHere
 License: CC0 Public Domain
-Source: https://pxhere.com/en/photo/137312
+Source: https://pxhere.com/en/photo/23989
 
-Image 7 shown in the screenshot.png Copyright Dana Tentis
+Image 7 shown in screenshot.png Copyright Mike Moloney
 License: CC0 Public Domain
-Source: https://pxhere.com/en/photo/597140
+Source: https://stocksnap.io/photo/america-boat-XMKNFV44W9
