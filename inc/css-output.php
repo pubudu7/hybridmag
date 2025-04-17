@@ -735,7 +735,8 @@ if ( ! function_exists( 'hybridmag_custom_css' ) ) {
             if ( ! empty( $cat_color ) ) {
 
                 $theme_css .= '
-                    .cat-links:not(.entry-meta .cat-links) a.cat-' . absint( $term_id ) . ' {
+                    .cat-links:not(.entry-meta .cat-links) a.cat-' . absint( $term_id ) . ',
+                    .bnm-box-cat .bnm-cat-links a.cat-' . absint( $term_id ) . '  {
                         background: ' . esc_attr( $cat_color ) . ';
                     }
                 ';

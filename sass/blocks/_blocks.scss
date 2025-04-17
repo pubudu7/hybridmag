@@ -125,3 +125,17 @@
 	display: inline-block;
 	line-height: 1.2;
 }
+
+// Commented code because there is a scroll bar appearing bottom of the page.
+// .hybridmag-wide.post,
+// .hybridmag-wide.page {
+// 	&.page-template-template-magazine,
+// 	&.hm-no-sidebar,
+// 	&.hm-center-content {
+// 		.alignfull {
+// 			width: 100vw;
+// 			max-width: 100vw;
+// 			margin-left: calc(-50vw + 50%);
+// 		}
+// 	}
+// }

@@ -416,6 +416,37 @@ if ( ! function_exists( 'hybridmag_entry_meta' ) ) :
 
 endif;
 
+/**
+ * Sync BNM Blocks meta data separtor with the theme
+ */
+function hybridmag_sync_meta_separator( $default ) {
+	
+	$meta_separator = get_theme_mod( 'hybridmag_entry_meta_seperator', 'dot' );
+	switch ( $meta_separator ) {
+		case 'dash': 
+			$sep = '-';
+			break;
+		case 'vbar': 
+			$sep = '|';
+			break;
+		case 'mdash': 
+			$sep = '—';
+			break;
+		case 'dot': 
+			$sep = '•';
+			break;
+		case 'slash': 
+			$sep = '/';
+			break;
+		default: 
+			$sep = $default;
+			break;
+	}
+
+	return '<span class="hm-meta-sep">' . $sep . '</span>';
+}
+add_filter( 'bnm_blocks_meta_data_separator', 'hybridmag_sync_meta_separator' );
+
 if ( ! function_exists( 'hybridmag_entry_footer' ) ) :
 	/**
 	 * Prints HTML with meta information for the categories, tags and comments.
@@ -707,4 +738,19 @@ function hybridmag_get_viewall_link( $category_id ) {
 
 	}
 	return $viewall_link;
+}
+
+add_filter( 'bnm_blocks_meta_order', 'hybridmag_sync_bnm_blocks_meta_order', 10, 1 );
+function hybridmag_sync_bnm_blocks_meta_order( $plugin_meta_array ) {
+	// Get the meta order defined in the theme customizer
+	$theme_meta = get_theme_mod( 'hybridmag_archive_entry_meta', 'author,date,comments' );
+
+	$theme_meta_array = array_map( 'trim', explode( ',', $theme_meta ) );
+
+	// Filter the theme's meta array to include only items defined in the plugin's $plugin_meta_array
+	$final_meta_array = array_filter( $theme_meta_array, function( $item ) use ( $plugin_meta_array ) {
+		return in_array( $item, $plugin_meta_array, true );
+	});
+
+	return $final_meta_array;
 }

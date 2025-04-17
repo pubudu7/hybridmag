@@ -362,4 +362,25 @@ html.hm-dark {
 	.wp-block-group.has-background {
 		color: #ffffff;
 	}
+
+	.wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+		background-color: #000000;
+	}
+
+	pre {
+		background-color: #000000;
+	}
+
+	th {
+		background-color: #111111;
+	}
+
+	.wp-block-table :where(figcaption) {
+		color: #bbbbbb;
+	}
+
+	.hm-tagged, .hm-tags-links a {
+		color: #f5f5f5;
+		background-color: #111111;
+	}
 } 

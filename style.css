@@ -5,8 +5,8 @@ Theme URI: https://themezhut.com/themes/hybridmag/
 Author: ThemezHut
 Author URI: https://themezhut.com
 Description: HybridMag is a modern and stylish WordPress theme for blogs, newspapers, and magazine websites. The advanced options provided with HybridMag allow you to tailor every aspect of your website to match your brand, making it the best choice for online publishers.
-Version: 1.0.2
-Tested up to: 6.7
+Version: 1.0.3
+Tested up to: 6.8
 Requires PHP: 7.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -883,6 +883,22 @@ html.hm-dark .hm-mobile-sidebar .hm-mobile-menu-toggle {
 }
 html.hm-dark .wp-block-group.has-background {
   color: #ffffff;
+}
+html.hm-dark .wp-block-table.is-style-stripes tbody tr:nth-child(odd) {
+  background-color: #000000;
+}
+html.hm-dark pre {
+  background-color: #000000;
+}
+html.hm-dark th {
+  background-color: #111111;
+}
+html.hm-dark .wp-block-table :where(figcaption) {
+  color: #bbbbbb;
+}
+html.hm-dark .hm-tagged, html.hm-dark .hm-tags-links a {
+  color: #f5f5f5;
+  background-color: #111111;
 }
 
 hr {
@@ -2415,14 +2431,17 @@ textarea {
   margin: 0 0.6em;
 }
 
+.hm-read-more,
 .hm-entry .entry-content .hm-read-more {
   text-decoration: none;
   color: var(--hybridmag-color-link);
   font-weight: 500;
 }
+.hm-read-more:visited,
 .hm-entry .entry-content .hm-read-more:visited {
   color: var(--hybridmag-color-link);
 }
+.hm-read-more:hover,
 .hm-entry .entry-content .hm-read-more:hover {
   color: var(--hybridmag-color-link-hover);
   text-decoration: underline;
@@ -3889,7 +3908,7 @@ li.hm-tab.th-ui-state-active a {
   display: block;
 }
 
-/* BNM Blocks
+/* Magazine Companion
 --------------------------------------------- */
 .wpbnmpb1,
 .wpbnmpb2,
@@ -3898,6 +3917,8 @@ li.hm-tab.th-ui-state-active a {
   --bnm-meta-hover-color: var(--hybridmag-color-link-hover);
   --bnm-title-color: var(--hybridmag-color-link);
   --bnm-title-hover-color: var(--hybridmag-color-link-hover);
+  --bnm-category-bg-color: var(--hybridmag-color-primary);
+  --bnm-category-bg-hover-color: #333333;
 }
 
 .hm-cl-sep .wpbnmpb1,
@@ -3907,6 +3928,9 @@ li.hm-tab.th-ui-state-active a {
   border-radius: var(--hybridmag-global-border-radius);
   box-shadow: var(--hybridmag-global-box-shadow);
   background: var(--hybridmag-color-bg-cl-sep-content);
+}
+.hm-cl-sep .wpbnmspp.image-alignbehind {
+  padding: 0;
 }
 .hm-cl-sep .wpbnmfpb1,
 .hm-cl-sep .wpbnmfpb2,
@@ -3933,6 +3957,61 @@ li.hm-tab.th-ui-state-active a {
 .wpbnmspp.image-alignbehind .post-thumbnail img,
 .wpbnmspp .post-thumbnail img {
   border-radius: var(--hybridmag-global-border-radius);
+}
+.wpbnmspp.image-alignbehind .post-has-image .bnm-entry-wrapper {
+  border-bottom-left-radius: var(--hybridmag-global-border-radius);
+  border-bottom-right-radius: var(--hybridmag-global-border-radius);
+}
+.wpbnmspp.image-alignbehind {
+  background: inherit;
+  box-shadow: none;
+}
+.wpbnmspp.image-alignbehind .bnmsp-post {
+  box-shadow: var(--hybridmag-global-box-shadow);
+}
+
+.th-hm-es .wpbnmpb1 .entry-meta .byline,
+.th-hm-es .wpbnmpb1 .entry-meta .posted-on,
+.th-hm-es .wpbnmpb1 .entry-meta .bnm-comment-count,
+.th-hm-es .wpbnmpb2 .entry-meta .byline,
+.th-hm-es .wpbnmpb2 .entry-meta .posted-on,
+.th-hm-es .wpbnmpb2 .entry-meta .bnm-comment-count,
+.th-hm-es .wpbnmposw .entry-meta .byline,
+.th-hm-es .wpbnmposw .entry-meta .posted-on,
+.th-hm-es .wpbnmposw .entry-meta .bnm-comment-count,
+.th-hm-es .wpbnmfpb2 .entry-meta .byline,
+.th-hm-es .wpbnmfpb2 .entry-meta .posted-on,
+.th-hm-es .wpbnmfpb2 .entry-meta .bnm-comment-count,
+.th-hm-es .wpbnmfpb1 .entry-meta .byline,
+.th-hm-es .wpbnmfpb1 .entry-meta .posted-on,
+.th-hm-es .wpbnmfpb1 .entry-meta .bnm-comment-count,
+.th-hm-es .wpbnmspp .entry-meta .byline,
+.th-hm-es .wpbnmspp .entry-meta .posted-on,
+.th-hm-es .wpbnmspp .entry-meta .bnm-comment-count {
+  margin-right: 0;
+}
+.th-hm-es .wpbnmpb1 .entry-meta .hm-meta-sep,
+.th-hm-es .wpbnmpb2 .entry-meta .hm-meta-sep,
+.th-hm-es .wpbnmposw .entry-meta .hm-meta-sep,
+.th-hm-es .wpbnmfpb2 .entry-meta .hm-meta-sep,
+.th-hm-es .wpbnmfpb1 .entry-meta .hm-meta-sep,
+.th-hm-es .wpbnmspp .entry-meta .hm-meta-sep {
+  margin: 0 calc(var(--bnm-meta-spacing, 0.6em) / 2);
+}
+
+.widget .bnmbcs ul li {
+  margin: 0;
+}
+
+.bnm-box-cat .bnm-cat-links a {
+  color: #ffffff;
+  border-radius: 4px;
+}
+.bnm-box-cat .bnm-cat-links a:hover {
+  color: #ffffff;
+}
+.bnm-box-cat .bnm-cat-links a:visited {
+  color: #ffffff;
 }
 
 /*--------------------------------------------------------------
