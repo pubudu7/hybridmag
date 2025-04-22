@@ -4,7 +4,7 @@ Contributors: pubudu-malalasekara
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.0.5
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,9 +22,17 @@ HybridMag is a modern and stylish WordPress theme for blogs, newspapers, and mag
 
 == Changelog ==
 
+= 1.0.5 =
+* Fix: Version change for cache busting.
+
+= 1.0.4 =
+* New: Dark mode logo support added.
+* Fix: Fixed the link highlight/color issue on the block editor.
+* New: Images on the search results page are displaying now.
+
 = 1.0.3 =
-* Fixed a few color issues on dark mode.
-* Improved support for "Magazine Companion" plugin.
+* Fix: Fixed a few color issues on dark mode.
+* New: Improved support for "Magazine Companion" plugin.
 
 = 1.0.2 =
 * Changed logo recommended width and height.

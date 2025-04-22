@@ -145,6 +145,30 @@ function hybridmag_customize_register( $wp_customize ) {
 		)
 	);
 
+	// Dark Mode Logo
+	$wp_customize->add_setting( 
+		'hybridmag_dark_mode_logo', 
+		array(
+			'default'           => '',
+			'sanitize_callback' => 'absint',
+		) 
+	);
+	$wp_customize->add_control(
+		new WP_Customize_Cropped_Image_Control(
+			$wp_customize,
+			'hybridmag_dark_mode_logo',
+			array(
+				'label'			=> esc_html__( 'Dark Mode Logo', 'hybridmag' ),
+				'section'		=> 'title_tagline',
+				'height'		=> 50,
+				'width'			=> 165, 
+				'flex_width'	=> true, 
+				'flex_height'	=> true, 
+				'priority'		=> 9,
+			)
+		)
+	);
+
 	// Logo Max Width
 	$wp_customize->add_setting(
 		'hybridmag_logo_max_width_desktop',
