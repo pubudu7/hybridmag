@@ -694,9 +694,6 @@
 }
 
 .hm-header-bar {
-    z-index: -1;
-    position: relative;
-
 	.hm-breadcrumb-wrap {
 		padding: 10px 15px;
 		margin-bottom: 0;
@@ -733,6 +730,8 @@
 }
 
 .site-header {
+	position: relative;
+	z-index: 100;
 	.hm-light-icon {
 		display: none;
 	}

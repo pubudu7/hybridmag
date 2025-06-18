@@ -9,7 +9,8 @@
     --bnm-category-bg-hover-color: #333333;
 }
 
-.hm-cl-sep {
+.hm-cl-sep .hm-magazine-1-sb,
+.hm-cl-sep .hm-magazine-2-sb {
     .wpbnmpb1,
     .wpbnmpb2,
     .wpbnmspp {
@@ -39,7 +40,7 @@
 
 .wpbnmpb1,
 .wpbnmpb2 {
-    .post-thumbnail {
+    .post-thumbnail img {
         border-radius: var(--hybridmag-global-border-radius);
     }
 }
@@ -103,5 +104,12 @@
     &:visited {
         color: #ffffff;
     }
+}
 
+/* Custom Block Styles */
+.bnmbcs.is-style-boxed { 
+    padding: var(--hybridmag-global-inner-spacing); 
+    background: var(--hybridmag-color-bg-cl-sep-content);
+    border-radius: var(--hybridmag-global-border-radius);
+    box-shadow: var(--hybridmag-global-box-shadow);
 }
