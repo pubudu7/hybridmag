@@ -107,6 +107,7 @@ html.hm-dark {
 	}
 
 	.hm-search-toggle .hm-svg-icon,
+	.hm-light-dark-toggle .hm-svg-icon,
 	.hm-h-de .hm-header-inner .hm-social-menu a,
 	.hm-h-de .main-navigation a {
 		color: #eeeeee;
@@ -192,6 +193,10 @@ html.hm-dark {
 	.hm-h-lg .hm-slideout-toggle, 
 	.hm-h-lg .hm-slideout-toggle:hover {
 		color: #dddddd;
+	}
+
+	.hm-h-lg .hm-mobile-menu-toggle {
+		color: #eeeeee;
 	}
 
 	li.hm-tab.th-ui-state-active a {
