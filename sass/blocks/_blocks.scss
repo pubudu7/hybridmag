@@ -121,6 +121,25 @@
 }
 
 .th-hm-es .article-section-title {
+	border-color: var(--hybridmag-color-primary);
+	border-bottom: 2px solid var(--hybridmag-color-primary);
+	display: inline-block;
+	line-height: 1.2;
+}
+
+.th-hm-es {
+	.bnm-bhs-2 {
+		.article-section-title {
+			border-bottom: none;
+		}
+	}
+} 
+
+.hm-dark .bnm-thumbnail-swiper.swiper {
+	background: #111;
+}
+
+.is-style-hybridmag-heading-s1 {
 	border-bottom: 2px solid var(--hybridmag-color-primary);
 	display: inline-block;
 	line-height: 1.2;

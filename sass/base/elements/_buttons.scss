@@ -60,8 +60,10 @@ a.hm-readmore-btn {
 	font-weight: bold;
 	margin: 0 8px;
 
-	&:visited {
+	&:active,
+	&:focus {
 		color: var(--hybridmag-color-button-hover-text);
+		background: var(--hybridmag-color-button-hover-background);
 	}
 	
 	&:hover {

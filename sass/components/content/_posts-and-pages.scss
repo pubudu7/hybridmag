@@ -84,6 +84,10 @@
 		margin-bottom: 0;
 	}
 
+	.entry-content .wp-block-spacer {
+		margin-bottom: 0;
+	}
+
 	.entry-content-wrapper .entry-meta {
 		margin-top: 20px;
 	}
@@ -478,6 +482,12 @@
 			margin-bottom: 0;
 		}
 	}
+
+	&.hm-cl-one {
+		.post-thumbnail {
+			border-radius: var(--hybridmag-global-border-radius);
+		}
+	}
 }
 
 // Image after header
@@ -499,6 +509,12 @@
 
 		.hm-entry .entry-title {
 			margin-bottom: 0;
+		}
+	}
+
+	&.hm-cl-one {
+		.post-thumbnail {
+			border-radius: var(--hybridmag-global-border-radius);
 		}
 	}
 }
@@ -1176,5 +1192,13 @@
 		background-color: var(--hybridmag-color-primary);
 		border: 1px solid var(--hybridmag-color-primary);
 		color: #ffffff !important;
+	}
+}
+
+.hm-no-pt {
+	.hm-entry-single {
+		.entry-content {
+			margin-top: 0;
+		}
 	}
 }

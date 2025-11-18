@@ -6,12 +6,47 @@ function hybridmag_demo_importer_files() {
     $demo_data = array(
 		array(
 			'import_file_name'              => esc_html__( 'Default', 'hybridmag' ),
-            'import_file_url'               => 'https://themezhut.com/demo/ocdi/hybridmag/default/demo-content.xml',
-            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/default/widgets.wie',
-            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/default/customizer.dat',
-            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/default/screenshot.png',
-			'preview_url'                   => 'https://themezhut.com/demo/hybridmag/'
-		)
+            'import_file_url'               => 'https://themezhutdemos.com/demo-data/free/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/free/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/free/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhutdemos.com/demo-data/free/screenshot.jpg',
+			'preview_url'                   => 'https://themezhutdemos.com/hybridmag/free/'
+        ),
+        array(
+			'import_file_name'              => esc_html__( 'HybMag', 'hybridmag' ),
+            'import_file_url'               => 'https://themezhutdemos.com/demo-data/hybmag/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/hybmag/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/hybmag/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhutdemos.com/demo-data/hybmag/screenshot.jpg',
+			'preview_url'                   => 'https://themezhutdemos.com/hybridmag/hybmag/'
+		),
+        array(
+			'import_file_name'              => esc_html__( 'Journal', 'hybridmag' ),
+            'import_file_url'               => 'https://themezhutdemos.com/demo-data/journal/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/journal/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/journal/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhutdemos.com/demo-data/journal/screenshot.jpg',
+			'preview_url'                   => 'https://themezhutdemos.com/hybridmag/journal/',
+            'plan'                          => 'pro'
+		),
+        array(
+			'import_file_name'              => esc_html__( 'Lifestyle', 'hybridmag' ),
+            'import_file_url'               => 'https://themezhutdemos.com/demo-data/lifestyle/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/lifestyle/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/lifestyle/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhutdemos.com/demo-data/lifestyle/screenshot.jpg',
+			'preview_url'                   => 'https://themezhutdemos.com/hybridmag/lifestyle/',
+            'plan'                          => 'pro'
+		),
+        array(
+			'import_file_name'              => esc_html__( 'PRO Default', 'hybridmag' ),
+            'import_file_url'               => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/demo-content.xml',
+            'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/widgets.wie',
+            'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/customizer.dat',
+            'import_preview_image_url'      => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/screenshot.png',
+			'preview_url'                   => 'https://themezhut.com/demo/hybridmag-pro/',
+            'plan'                          => 'pro'
+        ),
 	);
 
     // Filter to change import data.
@@ -34,8 +69,32 @@ function hybridmag_after_import( $selected_import ) {
                 'social' => $social_menu->term_id 
             ]
         );
+    } elseif ( 'HybMag' === $selected_import['import_file_name'] ) {
+
+        $main_menu = get_term_by( 'name', 'Main Menu', 'nav_menu' );
+        $social_menu = get_term_by( 'name', 'Social Menu', 'nav_menu' );
+        $top_menu = get_term_by( 'name', 'Top Menu', 'nav_menu' );
+    
+        set_theme_mod( 'nav_menu_locations', [
+                'primary' => $main_menu->term_id,
+                'social' => $social_menu->term_id,
+                'secondary' => $top_menu->term_id
+            ]
+        );
+
     }
 
+    // Assign front page and posts page (blog page).
+    if ( 'HybMag' === $selected_import['import_file_name'] ) {
+        
+        $front_page_id = get_page_by_title( 'Home' );
+        $blog_page_id  = get_page_by_title( 'Blog' );
+
+        update_option( 'show_on_front', 'page' );
+        update_option( 'page_on_front', $front_page_id->ID );
+        update_option( 'page_for_posts', $blog_page_id->ID );
+    }
+    
 }
 
 /**

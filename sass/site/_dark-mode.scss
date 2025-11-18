@@ -210,6 +210,10 @@ html.hm-dark {
 
 	.pagination .page-numbers {
 		background: #111111;
+
+		&.current {
+			background: var(--hybridmag-color-primary);
+		}
 	}
 
 	.post-thumbnail figcaption {
@@ -301,4 +305,28 @@ html.hm-dark {
 		color: #f5f5f5;
 		background-color: #111111;
 	}
+
+	.site-footer,
+	.hm-footer-bottom,
+	.hm-footer-widget-area {
+		background-color: #272c30; 
+	}
+
+	.site-footer,
+	.hm-footer-bottom {
+		color: #cccccc;
+	}
+
+	.site-footer .widget-title {
+		color: #ffffff;
+	}
+
+	.site-footer a {
+		color: #cccccc;
+	}
+
+	.site-footer a:hover {
+		color: #ffffff;
+	}
+
 } 
