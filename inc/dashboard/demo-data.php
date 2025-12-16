@@ -5,7 +5,7 @@
 function hybridmag_demo_importer_files() {
     $demo_data = array(
 		array(
-			'import_file_name'              => esc_html__( 'Default', 'hybridmag' ),
+			'import_file_name'              => 'Default',
             'import_file_url'               => 'https://themezhutdemos.com/demo-data/free/demo-content.xml',
             'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/free/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/free/customizer.dat',
@@ -13,7 +13,7 @@ function hybridmag_demo_importer_files() {
 			'preview_url'                   => 'https://themezhutdemos.com/hybridmag/free/'
         ),
         array(
-			'import_file_name'              => esc_html__( 'HybMag', 'hybridmag' ),
+			'import_file_name'              => 'HybMag',
             'import_file_url'               => 'https://themezhutdemos.com/demo-data/hybmag/demo-content.xml',
             'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/hybmag/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/hybmag/customizer.dat',
@@ -21,7 +21,7 @@ function hybridmag_demo_importer_files() {
 			'preview_url'                   => 'https://themezhutdemos.com/hybridmag/hybmag/'
 		),
         array(
-			'import_file_name'              => esc_html__( 'Journal', 'hybridmag' ),
+			'import_file_name'              => 'Journal',
             'import_file_url'               => 'https://themezhutdemos.com/demo-data/journal/demo-content.xml',
             'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/journal/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/journal/customizer.dat',
@@ -30,7 +30,7 @@ function hybridmag_demo_importer_files() {
             'plan'                          => 'pro'
 		),
         array(
-			'import_file_name'              => esc_html__( 'Lifestyle', 'hybridmag' ),
+			'import_file_name'              => 'Lifestyle',
             'import_file_url'               => 'https://themezhutdemos.com/demo-data/lifestyle/demo-content.xml',
             'import_widget_file_url'        => 'https://themezhutdemos.com/demo-data/lifestyle/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhutdemos.com/demo-data/lifestyle/customizer.dat',
@@ -39,7 +39,7 @@ function hybridmag_demo_importer_files() {
             'plan'                          => 'pro'
 		),
         array(
-			'import_file_name'              => esc_html__( 'PRO Default', 'hybridmag' ),
+			'import_file_name'              => 'PRO Default',
             'import_file_url'               => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/demo-content.xml',
             'import_widget_file_url'        => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/widgets.wie',
             'import_customizer_file_url'    => 'https://themezhut.com/demo/ocdi/hybridmag/default-pro/customizer.dat',
@@ -86,13 +86,43 @@ function hybridmag_after_import( $selected_import ) {
 
     // Assign front page and posts page (blog page).
     if ( 'HybMag' === $selected_import['import_file_name'] ) {
-        
-        $front_page_id = get_page_by_title( 'Home' );
-        $blog_page_id  = get_page_by_title( 'Blog' );
 
-        update_option( 'show_on_front', 'page' );
-        update_option( 'page_on_front', $front_page_id->ID );
-        update_option( 'page_for_posts', $blog_page_id->ID );
+        // Get the front page.
+        $front_page = get_posts(
+            [
+            'post_type'              => 'page',
+            'title'                  => 'Demo Front Page',
+            'post_status'            => 'any',
+            'numberposts'            => 1,
+            'update_post_term_cache' => false,
+            'update_post_meta_cache' => false,
+            ]
+        );
+        
+        if ( ! empty( $front_page ) ) {
+            update_option( 'page_on_front', $front_page[0]->ID );
+        }
+        
+        // Get the blog page.
+        $blog_page = get_posts(
+            [
+            'post_type'              => 'page',
+            'title'                  => 'Demo Blog Page',
+            'post_status'            => 'any',
+            'numberposts'            => 1,
+            'update_post_term_cache' => false,
+            'update_post_meta_cache' => false,
+            ]
+        );
+        
+        if ( ! empty( $blog_page ) ) {
+            update_option( 'page_for_posts', $blog_page[0]->ID );
+        }
+        
+        if ( ! empty( $blog_page ) || ! empty( $front_page ) ) {
+            update_option( 'show_on_front', 'page' );
+        }
+        
     }
     
 }

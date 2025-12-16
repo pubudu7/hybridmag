@@ -3,9 +3,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: HybridMag 1.0.9\n"
+"Project-Id-Version: HybridMag 1.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hybridmag\n"
-"POT-Creation-Date: 2025-11-17 00:10+0530\n"
+"POT-Creation-Date: 2025-11-26 17:07+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ThemezHut\n"
@@ -1119,7 +1119,7 @@ msgstr ""
 
 #: inc/customizer/settings/typography.php:158
 #: inc/customizer/settings/typography.php:198
-#: inc/customizer/settings/typography.php:232 inc/dashboard/demo-data.php:8
+#: inc/customizer/settings/typography.php:232
 msgid "Default"
 msgstr ""
 
@@ -1197,22 +1197,6 @@ msgstr ""
 
 #: inc/customizer/settings/typography.php:315
 msgid "Line Height"
-msgstr ""
-
-#: inc/dashboard/demo-data.php:16
-msgid "HybMag"
-msgstr ""
-
-#: inc/dashboard/demo-data.php:24
-msgid "Journal"
-msgstr ""
-
-#: inc/dashboard/demo-data.php:33
-msgid "Lifestyle"
-msgstr ""
-
-#: inc/dashboard/demo-data.php:42
-msgid "PRO Default"
 msgstr ""
 
 #: inc/dashboard/theme-info.php:13
@@ -1453,7 +1437,7 @@ msgid "HybridMag: Sidebar Posts"
 msgstr ""
 
 #: inc/widgets/class-sidebar-posts.php:15
-msgid "Displays popular posts, latest posts or latest posts from a choosen cateogry. Use this widget in the main sidebars."
+msgid "Displays popular posts, latest posts or latest posts from a choosen cateogory. Use this widget in the main sidebars."
 msgstr ""
 
 #: inc/widgets/class-sidebar-posts.php:41
