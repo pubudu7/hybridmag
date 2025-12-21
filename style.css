@@ -3196,7 +3196,8 @@ html.hm-dark .site-footer a:hover {
   margin: 40px 0;
 }
 
-.hm-cl-sep .hm-entry-single {
+.hm-cl-sep .hm-entry-single,
+.hm-cl-sep .hm-woocommerce-container {
   margin-bottom: 35px;
   padding: var(--hybridmag-global-inner-spacing);
   background: var(--hybridmag-color-bg-cl-sep-content);

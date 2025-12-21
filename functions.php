@@ -210,7 +210,7 @@ add_action( 'template_redirect', 'hybridmag_content_width', 0 );
 function hybridmag_widgets_init() {
 
 	$sidebars = array(
-		array(
+		'sidebar-1' => array(
 			'name'          => esc_html__( 'Sidebar', 'hybridmag' ),
 			'id'            => 'sidebar-1',
 			'description'   => esc_html__( 'Add widgets here.', 'hybridmag' ),
@@ -219,7 +219,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'header-1' => array(
 			'name'          => esc_html__( 'Slide-out Sidebar', 'hybridmag' ),
 			'id'            => 'header-1',
 			'description'   => esc_html__( 'Add widgets here to appear in an off-screen sidebar when it is enabled under the Customizer Header Settings.', 'hybridmag' ),
@@ -228,7 +228,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'header-2' => array(
 			'name'          => esc_html__( 'Header Sidebar', 'hybridmag' ),
 			'id'            => 'header-2',
 			'description'   => esc_html__( 'Add widgets here to appear on the Header', 'hybridmag' ),
@@ -237,7 +237,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'header-3' => array(
 			'name'          => esc_html__( 'Below Header', 'hybridmag' ),
 			'id'            => 'header-3',
 			'description'   => esc_html__( 'Add widgets here to appear below the Header', 'hybridmag' ),
@@ -246,7 +246,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'footer-1' => array(
 			'name'          => esc_html__( 'Footer 1', 'hybridmag' ),
 			'id'            => 'footer-1',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -254,7 +254,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'footer-2' => array(
 			'name'          => esc_html__( 'Footer 2', 'hybridmag' ),
 			'id'            => 'footer-2',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -262,7 +262,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'footer-3' => array(
 			'name'          => esc_html__( 'Footer 3', 'hybridmag' ),
 			'id'            => 'footer-3',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -270,7 +270,7 @@ function hybridmag_widgets_init() {
 			'before_title'  => '<h2 class="widget-title">',
 			'after_title'   => '</h2>',
 		),
-		array(
+		'footer-4' => array(
 			'name'          => esc_html__( 'Footer 4', 'hybridmag' ),
 			'id'            => 'footer-4',
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
@@ -281,6 +281,23 @@ function hybridmag_widgets_init() {
 	);
 
 	$sidebars = apply_filters( 'hybridmag_sidebars', $sidebars );
+
+	/**
+	 * Normalize sidebars array.
+	 * Supports both numeric (legacy) and associative (modern) formats.
+	 */
+	$normalized = array();
+	foreach ( $sidebars as $key => $sidebar ) {
+		if ( is_string( $key ) && isset( $sidebar['id'] ) ) {
+			$normalized[ $key ] = $sidebar;
+			continue;
+		}
+
+		if ( is_array( $sidebar ) && isset( $sidebar['id'] ) ) {
+			$normalized[ $sidebar['id'] ] = $sidebar;
+		}
+	}
+	$sidebars = $normalized;
 
 	// Register each sidebar
 	foreach ( $sidebars as $sidebar ) {
@@ -483,6 +500,13 @@ require get_template_directory() . '/inc/structure/header.php';
 require get_template_directory() . '/inc/structure/navigation.php';
 require get_template_directory() . '/inc/structure/featured.php';
 require get_template_directory() . '/inc/structure/footer.php';
+
+/**
+ * Load WooCommerce compatibility file.
+ */
+if ( class_exists( 'WooCommerce' ) ) {
+	require get_template_directory() . '/inc/woocommerce.php';
+}
 
 /**
  * Demo data.

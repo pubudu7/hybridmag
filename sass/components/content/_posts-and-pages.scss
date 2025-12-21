@@ -1114,7 +1114,8 @@
 }
 
 .hm-cl-sep {
-	.hm-entry-single {
+	.hm-entry-single,
+	.hm-woocommerce-container {
 		margin-bottom: 35px;
 		padding: var(--hybridmag-global-inner-spacing);
 		background: var(--hybridmag-color-bg-cl-sep-content);
