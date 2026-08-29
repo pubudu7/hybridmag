@@ -53,37 +53,50 @@ add_action( 'admin_menu', 'hybridmag_add_themeinfo_page' );
 
 function hybridmag_themeinfo_page_render() { ?>
 
-    <div class="th-theme-info-page wrap">
+    <div class="th-theme-info-page">
 
-        <?php $theme_info = wp_get_theme(); ?>
+        <div class="th-admin-header-section">
+            <div class="th-admin-container">
+                <div class="th-admin-theme-info">
+                    <span class="th-admin-theme-name"><?php echo esc_html( 'HybridMag', 'hybridmag'); ?></span>
+                    <span class="th-admin-theme-version">
+                        <?php echo esc_html( wp_get_theme()->get( 'Version' ) ); ?>
+                    </span>
+                </div>
+            </div>
+        </div>
 
+        <div class="th-hm-admin-navbar">
+            <div class="th-admin-container">
+                <div class="th-nav-tab-wrapper">
+                    <a class="th-nav-tab <?php if ( $_GET['page'] == 'hybridmag' && ! isset( $_GET['tab'] ) ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag' ), 'themes.php' ) ) ); ?>">
+                        <?php esc_html_e( 'Welcome', 'hybridmag'); ?>
+                    </a>
+                    <a class="th-nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'starter-templates' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag', 'tab' => 'starter-templates' ), 'themes.php' ) ) ); ?>">
+                        <?php esc_html_e( 'Starter Templates', 'hybridmag' ); ?>
+                    </a>
+                    <a class="th-nav-tab" href="https://themezhut.com/themes/hybridmag-pro/" target="_blank">
+                        <?php esc_html_e( 'Get HybridMag Pro' ); ?>
+                    </a>
+                </div>
+            </div>
+        </div>
 
+        <div class="th-nav-tab-inner">
 
-            <h2 class="nav-tab-wrapper">
-                <a class="nav-tab <?php if ( $_GET['page'] == 'hybridmag' && ! isset( $_GET['tab'] ) ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag' ), 'themes.php' ) ) ); ?>">
-                    <?php echo 'HybridMag'; ?>
-                </a>
-                <a class="nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'starter-templates' ) echo 'nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag', 'tab' => 'starter-templates' ), 'themes.php' ) ) ); ?>">
-                    <?php esc_html_e( 'Starter Templates', 'hybridmag' ); ?>
-                </a>
-            </h2>
+            <?php
 
+                $current_tab = ! empty( $_GET['tab'] ) ? sanitize_title( $_GET['tab'] ) : '';
 
-            <div class="th-nav-tab-inner">
+                if ( $current_tab == 'starter-templates' ) {
+                    hybridmag_starter_templates();
+                } else {
+                    hybridmag_admin_welcome_page();
+                } 
+            
+            ?>
 
-                <?php
-
-                    $current_tab = ! empty( $_GET['tab'] ) ? sanitize_title( $_GET['tab'] ) : '';
-
-                    if ( $current_tab == 'starter-templates' ) {
-                        hybridmag_starter_templates();
-                    } else {
-                        hybridmag_admin_welcome_page();
-                    } 
-                
-                ?>
-
-            </div><!-- .th-nav-tab-inner -->
+        </div><!-- .th-nav-tab-inner -->
         
 
 
@@ -202,6 +215,7 @@ function hybridmag_is_plugin_installed( $slug ) {
 function hybridmag_admin_welcome_page() {
     ?>
     <div class="th-theme-details-page">
+        <div class="th-admin-container">
         <div class="th-theme-details-page-inner">
             <div class="th-theme-page-infobox">
                 <div class="th-theme-infobox-content">
@@ -242,6 +256,7 @@ function hybridmag_admin_welcome_page() {
                 <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hybridmag-wordpress-theme-documentation/#demos' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>    
             </div>
             </div>
+        </div>
         </div>
     </div>
 
