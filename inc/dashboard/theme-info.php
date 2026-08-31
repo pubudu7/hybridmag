@@ -60,7 +60,7 @@ function hybridmag_themeinfo_page_render() { ?>
                 <div class="th-admin-theme-info">
                     <span class="th-admin-theme-name"><?php echo esc_html( 'HybridMag', 'hybridmag'); ?></span>
                     <span class="th-admin-theme-version">
-                        <?php echo esc_html( wp_get_theme()->get( 'Version' ) ); ?>
+                        v<?php echo esc_html( wp_get_theme()->get( 'Version' ) ); ?>
                     </span>
                 </div>
             </div>
@@ -89,7 +89,9 @@ function hybridmag_themeinfo_page_render() { ?>
                 $current_tab = ! empty( $_GET['tab'] ) ? sanitize_title( $_GET['tab'] ) : '';
 
                 if ( $current_tab == 'starter-templates' ) {
-                    hybridmag_starter_templates();
+                    echo '<div class="th-admin-container">';
+                        hybridmag_starter_templates();
+                    echo '</div>';
                 } else {
                     hybridmag_admin_welcome_page();
                 } 
@@ -214,49 +216,110 @@ function hybridmag_is_plugin_installed( $slug ) {
 
 function hybridmag_admin_welcome_page() {
     ?>
-    <div class="th-theme-details-page">
-        <div class="th-admin-container">
-        <div class="th-theme-details-page-inner">
-            <div class="th-theme-page-infobox">
+    <div class="th-admin-container">
+        <div class="th-theme-details-page">
+        
+            <div class="th-admin-theme-content">
+                <div class="th-admin-theme-settings">
+                    <h3 class="th-admin-theme-setting-title"><?php echo esc_html__( 'Get Started', 'hybridmag' ); ?></h3>
+                    
+                    <div class="th-admin-theme-setting-links">
+                        <div class="th-admin-theme-qs-box">
+                            <a href="#" class="">
+                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Upload Logo', 'hybridmag' ); ?></span>
+                            </a>
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+                            <a href="#" class="">
+                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Header Options', 'hybridmag' ); ?></span>
+                            </a>
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+                            <a href="#" class="">
+                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Change Colors', 'hybridmag' ); ?></span>
+                            </a>
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+                            <a href="#" class="">
+                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Layout Options', 'hybridmag' ); ?></span>
+                            </a>
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+                            <a href="#" class="">
+                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Typography', 'hybridmag' ); ?></span>
+                            </a>
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+
+                        </div>
+
+                        <div class="th-admin-theme-qs-box">
+
+                        </div>
+                    </div><!-- .th-admin-theme-setting-links -->
+                </div><!-- .th-admin-theme-settings -->
+
+                <div class="th-theme-page-infobox">
                 <div class="th-theme-infobox-content">
-                <h3><?php esc_html_e( 'Theme Customizer', 'hybridmag' ); ?></h3>
-                <p><?php esc_html_e( 'All the HybridMag theme settings are located at the customizer. Start customizing your website with customizer.', 'hybridmag' ) ?></p>
-                <a class="button" target="_blank" href="<?php echo esc_url( admin_url( '/customize.php' ) ); ?>"><?php esc_html_e( 'Go to customizer','hybridmag' ); ?></a>
+                    <h3><?php esc_html_e( 'Theme Customizer', 'hybridmag' ); ?></h3>
+                    <p><?php esc_html_e( 'All the HybridMag theme settings are located at the customizer. Start customizing your website with customizer.', 'hybridmag' ) ?></p>
+                    <a class="button" target="_blank" href="<?php echo esc_url( admin_url( '/customize.php' ) ); ?>"><?php esc_html_e( 'Go to customizer','hybridmag' ); ?></a>
+                    </div>
                 </div>
-            </div>
 
-            <div class="th-theme-page-infobox">
-            <div class="th-theme-infobox-content">
-                <h3><?php esc_html_e( 'Theme Documentation', 'hybridmag' ); ?></h3>
-                <p><?php esc_html_e( 'Need to learn all about HybridMag? Read the theme documentation carefully.', 'hybridmag' ) ?></p>
-                <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hybridmag-wordpress-theme-documentation/' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>
-            </div>
-            </div>
+                <div class="th-theme-page-infobox">
+                <div class="th-theme-infobox-content">
+                    <h3><?php esc_html_e( 'Theme Documentation', 'hybridmag' ); ?></h3>
+                    <p><?php esc_html_e( 'Need to learn all about HybridMag? Read the theme documentation carefully.', 'hybridmag' ) ?></p>
+                    <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hybridmag-wordpress-theme-documentation/' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>
+                </div>
+                </div>
 
-            <div class="th-theme-page-infobox">
-            <div class="th-theme-infobox-content">
-                <h3><?php esc_html_e( 'Theme Info', 'hybridmag' ); ?></h3>
-                <p><?php esc_html_e( 'Know all the details about HybridMag theme.', 'hybridmag' ) ?></p>
-                <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/themes/hybridmag/' ); ?>"><?php esc_html_e( 'Theme Details.','hybridmag' ); ?></a>
-            </div>
-            </div>
+                <div class="th-theme-page-infobox">
+                <div class="th-theme-infobox-content">
+                    <h3><?php esc_html_e( 'Theme Info', 'hybridmag' ); ?></h3>
+                    <p><?php esc_html_e( 'Know all the details about HybridMag theme.', 'hybridmag' ) ?></p>
+                    <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/themes/hybridmag/' ); ?>"><?php esc_html_e( 'Theme Details.','hybridmag' ); ?></a>
+                </div>
+                </div>
 
-            <div class="th-theme-page-infobox">
-            <div class="th-theme-infobox-content">
-                <h3><?php esc_html_e( 'Theme Demo', 'hybridmag' ); ?></h3>
-                <p><?php esc_html_e( 'See the theme preview of free version.', 'hybridmag' ) ?></p>
-                <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/demo/hybridmag/' ); ?>"><?php esc_html_e( 'Theme Preview','hybridmag' ); ?></a>    
-            </div>
-            </div>
+                <div class="th-theme-page-infobox">
+                <div class="th-theme-infobox-content">
+                    <h3><?php esc_html_e( 'Theme Demo', 'hybridmag' ); ?></h3>
+                    <p><?php esc_html_e( 'See the theme preview of free version.', 'hybridmag' ) ?></p>
+                    <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/demo/hybridmag/' ); ?>"><?php esc_html_e( 'Theme Preview','hybridmag' ); ?></a>    
+                </div>
+                </div>
 
-            <div class="th-theme-page-infobox">
-            <div class="th-theme-infobox-content">
-                <h3><?php esc_html_e( 'Demo Installation', 'hybridmag' ); ?></h3>
-                <p><?php esc_html_e( 'Learn about starter sites.', 'hybridmag' ) ?></p>
-                <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hybridmag-wordpress-theme-documentation/#demos' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>    
-            </div>
-            </div>
-        </div>
+                <div class="th-theme-page-infobox">
+                <div class="th-theme-infobox-content">
+                    <h3><?php esc_html_e( 'Demo Installation', 'hybridmag' ); ?></h3>
+                    <p><?php esc_html_e( 'Learn about starter sites.', 'hybridmag' ) ?></p>
+                    <a class="button" target="_blank" href="<?php echo esc_url( 'https://themezhut.com/hybridmag-wordpress-theme-documentation/#demos' ); ?>"><?php esc_html_e( 'Read the documentation.','hybridmag' ); ?></a>    
+                </div>
+                </div>
+            </div><!-- .th-admin-theme-content -->
+            <div class="th-admin-theme-sidebar">
+                <div class="th-admin-quick-access-links">
+                    <?php echo esc_html__( 'Quick Links', 'hybridmag' ); ?>
+                    <ul>
+                        <li><a href="https://themezhut.com/contact/" target="_blank"><?php echo esc_html__( 'Developer Support', 'hybridmag' ); ?></a></li>
+                        <li><a href="https://themezhut.com/hybridmag-wordpress-theme-documentation/" target="_blank"><?php echo esc_html__( 'Documentation', 'hybridmag' ); ?></a></li>
+                        <li><a href="https://themezhut.com/contact/" target="_blank"><?php echo esc_html__( 'Changelog', 'hybridmag' ); ?></a></li>
+                        <li><a href="https://themezhut.com/contact/" target="_blank"><?php echo esc_html__( 'Rate Us', 'hybridmag' ); ?></a></li>
+                    </ul>
+                </div>
+            </div><!-- .th-admin-theme-sidebar -->
+
         </div>
     </div>
 
