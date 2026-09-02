@@ -104,7 +104,7 @@ a.th-nav-tab {
     padding: 15px 15px;
     text-decoration: none;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     color: #222222;
 }
 
@@ -141,7 +141,7 @@ a.th-nav-tab {
     border: 1px solid #eeeeee;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .th-admin-theme-setting-header {
@@ -149,6 +149,16 @@ a.th-nav-tab {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 10px;
+}
+
+.menu-get-pro-link {
+    display: flex;
+    align-items: center;
+}
+
+.menu-get-pro-link svg {
+    margin-left: 5px;
+    font-size: 18px;
 }
 
 
