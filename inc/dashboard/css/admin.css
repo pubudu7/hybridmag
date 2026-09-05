@@ -67,7 +67,8 @@ h3.th-reqbox-heading {
 }
 
 .th-admin-container {
-    max-width: 1536px;
+    width: 1536px;
+    max-width: 95%;
     margin: 0 auto;
 }
 
@@ -84,10 +85,19 @@ h3.th-reqbox-heading {
     color: #000000;
 }
 
+.th-admin-theme-info {
+    text-align: right;
+}
+
+.th-admin-pro-version,
 .th-admin-theme-version {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
     color: #666666;
+}
+
+.th-admin-pro-version {
+    color: green;
 }
 
 .th-hm-admin-navbar {
@@ -107,6 +117,23 @@ a.th-nav-tab {
     font-weight: 500;
     color: #222222;
 }
+
+a.th-nav-tab.menu-get-pro-link {
+    color: #3858e9;
+    font-weight: 600;
+}
+
+.menu-get-pro-link {
+    display: flex;
+    align-items: center;
+}
+
+.menu-get-pro-link svg {
+    margin-left: 5px;
+    font-size: 16px;
+    fill: currentColor;
+}
+
 
 @media (min-width: 800px) {
     .th-theme-details-page {
@@ -128,6 +155,10 @@ a.th-nav-tab {
     }
 }
 
+.th-admin-theme-setting-title {
+    margin: 0;
+}
+
 .th-admin-theme-settings {
     padding: 40px;
     background: #ffffff;
@@ -141,24 +172,14 @@ a.th-nav-tab {
     border: 1px solid #eeeeee;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 17px;
 }
 
 .th-admin-theme-setting-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.menu-get-pro-link {
-    display: flex;
-    align-items: center;
-}
-
-.menu-get-pro-link svg {
-    margin-left: 5px;
-    font-size: 18px;
+    margin-bottom: 20px;
 }
 
 
@@ -175,10 +196,21 @@ a.th-nav-tab {
 
 
 
+.th-admin-review-box,
 .th-admin-quick-access-links {
-    padding: 20px;
+    padding: 35px 30px;
     background: #ffffff;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
+    margin: 0 0 35px;
+}
+
+.th-admin-review-box h4,
+.th-admin-quick-access-links h4 {
+    margin: 0 0 16px;
+}
+
+.th-admin-quick-access-links ul {
+    margin: 0;
 }
 
 .th-admin-quick-access-links ul li {
@@ -188,12 +220,39 @@ a.th-nav-tab {
     border-bottom: 1px solid #eee;
 }
 
+.th-admin-quick-access-links ul li:last-child {
+    border-bottom: none;
+}
+
 .th-admin-quick-access-links ul li a {
     padding: 5px 0;
     display: block;
     text-decoration: none;
     color: #000000;
     font-size: 14px;
-    font-weight: 500;
 }
 
+.th-admin-quick-access-links ul li a svg {
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+}
+
+.th-admin-quick-access-links .dashicons {
+    margin-right: 4px;
+    font-size: 16px;
+}
+
+.th-admin-review-box svg {
+    fill: currentColor;
+}
+
+.th-admin-review-box a {
+    text-decoration: none;
+}
+
+.th-admin-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
