@@ -36,9 +36,6 @@ function hybridmag_setup() {
 		*/
 	add_theme_support( 'title-tag' );
 
-	// Add support for Block Styles.
-	add_theme_support( 'wp-block-styles' );
-
 	// Add support for responsive embedded content.
 	add_theme_support( 'responsive-embeds' );
 

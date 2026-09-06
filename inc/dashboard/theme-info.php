@@ -24,9 +24,9 @@ add_action( 'admin_enqueue_scripts', 'hybridmag_enqueue_admin_scripts' );
  */
 function hybridmag_admin_notice() {
     ?>
-    <div class="updated notice notice-info is-dismissible">
-        <p><?php esc_html_e( 'Welcome to HybridMag! To get started with HybridMag please visit the theme Welcome page.', 'hybridmag' ); ?></p>
-        <p><a class="button" href="<?php echo esc_url( admin_url( 'themes.php?page=hybridmag' ) ); ?>"><?php _e( 'Get Started with HybridMag', 'hybridmag' ) ?></a></p>
+    <div style="position: relative; background: #fff; padding: 20px; border-left: 4px solid #046bd2; margin-bottom: 20px;" class="notice notice-succes is-dismissible">
+        <p style="font-size: 14px; margin: 0 0 10px;"><?php esc_html_e( 'Welcome to HybridMag! To get started with HybridMag please visit the theme admin page.', 'hybridmag' ); ?></p>
+        <p><a class="button" href="<?php echo esc_url( admin_url( 'themes.php?page=hybridmag' ) ); ?>" style="border-radius: 3px; padding: 12px 24px; background: #046bd2; color: #fff; font-size: 15px; font-weight: 500; line-height:20px;"><?php _e( 'HybridMag Admin Page', 'hybridmag' ) ?></a></p>
     </div>
     <?php
 }
@@ -235,7 +235,7 @@ function hybridmag_admin_welcome_page() {
                 <div class="th-admin-theme-settings">
                     <div class="th-admin-theme-setting-header">
                         <h3 class="th-admin-theme-setting-title"><?php echo esc_html__( 'Get Started', 'hybridmag' ); ?></h3>
-                        <a href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>" class="button"><?php echo esc_html__( 'Go to Customizer', 'hybridmag' ); ?></a>
+                        <a href="<?php echo esc_url( admin_url( 'customize.php' ) ); ?>" class="button hm-admin-go-customizer"><?php echo esc_html__( 'Go to Customizer', 'hybridmag' ); ?></a>
                     </div>
                     
                     <div class="th-admin-theme-setting-links">
@@ -295,28 +295,19 @@ function hybridmag_admin_welcome_page() {
                     <h4><?php echo esc_html__( 'Quick Links', 'hybridmag' ); ?></h4>
                     <ul>
                         <li>
-                            <a href="https://themezhut.com/contact/" target="_blank">
-                                <span class="dashicons dashicons-email-alt"></span>
-                                <?php echo esc_html__( 'Contact Support', 'hybridmag' ); ?>
-                            </a>
+                            <a href="https://themezhut.com/hybridmag-wordpress-theme-documentation/" target="_blank"><span class="dashicons dashicons-book-alt"></span><?php echo esc_html__( 'Documentation / Theme Setup Guide', 'hybridmag' ); ?></a>
                         </li>
                         <li>
-                            <a href="https://themezhut.com/hybridmag-wordpress-theme-documentation/" target="_blank">
-                                <span class="dashicons dashicons-book-alt"></span>
-                                <?php echo esc_html__( 'Documentation', 'hybridmag' ); ?>
-                            </a>
+                            <a href="https://themezhut.com/contact/" target="_blank"><span class="dashicons dashicons-email-alt"></span><?php echo esc_html__( 'Contact Support', 'hybridmag' ); ?></a>
+                        </li>                        
+                        <li>
+                            <a href="https://themezhut.com/hybridmag-and-hybridmag-pro-changelog/" target="_blank"><span class="dashicons dashicons-list-view"></span><?php echo esc_html__( 'Changelog', 'hybridmag' ); ?></a>
                         </li>
                         <li>
-                            <a href="https://themezhut.com/themes/hybridmag/" target="_blank">
-                                <span class="dashicons dashicons-list-view"></span>
-                                <?php echo esc_html__( 'Changelog', 'hybridmag' ); ?>
-                            </a>
+                            <a href="https://themezhut.com/contact/" target="_blank"><span class="dashicons dashicons-lightbulb"></span><?php echo esc_html__( 'Feature Requests', 'hybridmag' ); ?></a>
                         </li>
                         <li>
-                            <a href="https://themezhut.com/contact/" target="_blank">
-                                <span class="dashicons dashicons-lightbulb"></span>
-                                <?php echo esc_html__( 'Feature Requests', 'hybridmag' ); ?>
-                            </a>
+                            <a style="font-weight: 600;" href="https://themezhut.com/themes/hybridmag-pro/#free-vs-pro" target="_blank"><span class="dashicons dashicons-star-filled"></span><?php echo esc_html__( 'Free vs Pro', 'hybridmag' ); ?></a>
                         </li>
                     </ul>
                 </div>
