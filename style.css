@@ -3886,8 +3886,8 @@ li.hm-tab.th-ui-state-active a {
 .wp-block-pullquote {
   border-left: none;
   border-right: none;
-  font-size: var(--hybridmag-font-size-xl);
-  padding: 2rem 0;
+  font-size: var(--hybridmag-font-size-xl) !important;
+  padding: 2rem 0 !important;
   text-align: left;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -3961,6 +3961,7 @@ li.hm-tab.th-ui-state-active a {
   line-height: 1.2;
 }
 
+/* Following includes the theme.css styles that was there before WordPress 7.0 */
 .wp-block-audio :where(figcaption) {
   color: #555;
   font-size: 13px;

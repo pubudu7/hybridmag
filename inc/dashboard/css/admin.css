@@ -19,7 +19,7 @@ h3.th-reqbox-heading {
 
 .th-theme-info-page p {
     font-size: 15px;
-    margin: 0 0 1em;
+    margin: 1em 0 0;
 }
 
 .th-admin-theme-setting-links {
@@ -231,7 +231,7 @@ a.th-nav-tab.menu-get-pro-link {
 .th-admin-quick-access-links ul li {
     list-style: none;
     margin: 0;
-    padding: 2px 0;
+    padding: 4px 0;
     border-bottom: 1px solid #eee;
 }
 
