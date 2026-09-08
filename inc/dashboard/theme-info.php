@@ -241,49 +241,57 @@ function hybridmag_admin_welcome_page() {
                     <div class="th-admin-theme-setting-links">
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[section]=title_tagline' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Upload Logo', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Upload Logo', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Site Branding', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[panel]=hybridmag_panel_header' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Header Options', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Header Options', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Header Layout, Menu Options, Social Menu, Top Bar', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[panel]=hybridmag_colors_panel' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Change Colors', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Set Colors', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Customize site colors', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[section]=hybridmag_panel_blog' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Blog Options', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Blog Options', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Post display & formatting', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[panel]=hybridmag_typography_panel' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Fonts', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Fonts', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Typography & text styles', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[section]=hybridmag_blog_layout_section' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Blog Layout Options', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Blog Layout', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Blog layout options', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'customize.php?autofocus[panel]=hybridmag_panel_footer' ) ); ?>" target="_blank">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Footer Options', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Footer Options', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Copyright info & footer widgets', 'hybridmag' ); ?></div>
                             </a>
                         </div>
 
                         <div class="th-admin-theme-setting-box">
                             <a href="<?php echo esc_url( admin_url( 'themes.php?page=hybridmag&tab=starter-templates' ) ); ?>">
-                                <span class="th-admin-qsc-name"><?php echo esc_html__( 'Starter Templates / Demo Installation', 'hybridmag' ); ?></span>
+                                <div class="th-admin-qsc-name"><?php echo esc_html__( 'Starter Templates', 'hybridmag' ); ?></div>
+                                <div class="th-admin-qsc-desc"><?php echo esc_html__( 'Select and install pre-built demos', 'hybridmag' ); ?></div>
                             </a>
                         </div>
                     </div><!-- .th-admin-theme-setting-links -->

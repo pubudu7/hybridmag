@@ -167,14 +167,22 @@ a.th-nav-tab.menu-get-pro-link {
 }
 
 .th-admin-theme-setting-box a {
-    padding: 25px;
+    padding: 16px;
     display: block;
     background: #f5f5f5;
     border: 1px solid #eeeeee;
     border-radius: 5px;
     text-decoration: none;
+}
+
+.th-admin-qsc-name {
     font-size: 17px;
-    font-weight: 500;
+}
+
+.th-admin-qsc-desc {
+    color: #555555;
+    font-size: 13px;
+    margin-top: 5px;
 }
 
 .th-admin-theme-setting-header {
