@@ -296,6 +296,37 @@ function hybridmag_admin_welcome_page() {
                         </div>
                     </div><!-- .th-admin-theme-setting-links -->
                 </div><!-- .th-admin-theme-settings -->
+
+                <div class="th-admin-pro-feature-box">
+                    <h3 class="th-admin-pro-heading"><?php echo esc_html__( 'Take Your HybridMag Site Further', 'hybridmag' ); ?></h3>
+                    <p class="th-admin-pro-desc"><?php echo esc_html__( 'HybridMag Free gives you everything you need to get started. Pro gives you more control over how your site looks, works and presents your content.', 'hybridmag' ); ?></p>
+                    <div class="th-pro-features-container">
+                        <div class="th-pro-feature-box">
+                            <h4 class="th-pro-feature-title"><?php echo esc_html( 'Advanced Design Controls', 'hybridmag' ); ?></h4>
+                            <p class="th-pro-feature-desc"><?php echo esc_html( 'Fine tune your site\'s appearance.', 'hybridmag' ); ?></p>
+                        </div>
+                        <div class="th-pro-feature-box">
+                            <h4 class="th-pro-feature-title"><?php echo esc_html( 'Advanced Post Blocks & Tools', 'hybridmag' ); ?></h4>
+                            <p class="th-pro-feature-desc"><?php echo esc_html( 'Pro adds AJAX filters and navigation to Post Blocks', 'hybridmag' ); ?></p>
+                        </div>
+                        <div class="th-pro-feature-box">
+                            <h4 class="th-pro-feature-title"><?php echo esc_html( 'Auto loading single posts', 'hybridmag' ); ?></h4>
+                            <p class="th-pro-feature-desc"><?php echo esc_html( 'Deliver more content automatically', 'hybridmag' ); ?></p>
+                        </div>
+                        <div class="th-pro-feature-box">
+                            <h4 class="th-pro-feature-title"><?php echo esc_html( 'Video Block', 'hybridmag' ); ?></h4>
+                            <p class="th-pro-feature-desc"><?php echo esc_html( 'Display youtube video playlist in a grid layout', 'hybridmag' ); ?></p>
+                        </div>
+                        <div class="th-pro-feature-box">
+                            <h4 class="th-pro-feature-title"><?php echo esc_html( 'Infine Scroll', 'hybridmag' ); ?></h4>
+                            <p class="th-pro-feature-desc"><?php echo esc_html( 'Deliver more content automatically', 'hybridmag' ); ?></p>
+                        </div>
+                        <div class="th-pro-feature-box">
+                            <h4 class="th-pro-feature-title"><?php echo esc_html( 'WooCommerce Support', 'hybridmag' ); ?></h4>
+                            <p class="th-pro-feature-desc"><?php echo esc_html( 'Display youtube video playlist in a grid layout', 'hybridmag' ); ?></p>
+                        </div>                        
+                    </div>
+                </div>
             </div><!-- .th-admin-theme-content -->
             <div class="th-admin-theme-sidebar">
                 <?php do_action( 'hybridmag_admin_page_before_sidebar' ); ?>
