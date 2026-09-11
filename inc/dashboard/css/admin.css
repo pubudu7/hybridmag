@@ -1,3 +1,4 @@
+
 .th-required-box {
     padding: 20px;
     background: #fff;
@@ -67,7 +68,7 @@ h3.th-reqbox-heading {
 }
 
 .th-admin-container {
-    width: 1536px;
+    width: 1510px;
     max-width: 95%;
     margin: 0 auto;
 }
@@ -118,6 +119,10 @@ a.th-nav-tab {
     color: #222222;
 }
 
+a.th-nav-tab:focus {
+    outline-color: #3858e9;
+}
+
 a.th-nav-tab.menu-get-pro-link {
     color: #3858e9;
     font-weight: 600;
@@ -126,6 +131,10 @@ a.th-nav-tab.menu-get-pro-link {
 .menu-get-pro-link {
     display: flex;
     align-items: center;
+}
+
+a.th-nav-tab.menu-get-pro-link:focus {
+    outline-color: #3858e9;
 }
 
 .menu-get-pro-link svg {
@@ -157,6 +166,7 @@ a.th-nav-tab.menu-get-pro-link {
 
 .th-admin-theme-setting-title {
     margin: 0;
+    font-size: 18px;
 }
 
 .th-admin-theme-setting-box a {
@@ -176,22 +186,26 @@ a.th-nav-tab.menu-get-pro-link {
 }
 
 .th-pro-feature-title {
-    margin: 0 0 10px;
-}
-
-.th-pro-feature-title {
     margin: 0;
+    color: #000000;
+    font-weight: 500;
 }
 
 .th-pro-feature-box {
-    padding: 16px;
-    background: #f5f5f5;
+    padding: 20px;
+    background: #ffffff;
     border: 1px solid #eeeeee;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.06);
+}
+
+.th-pro-feature-box .hm-svg-icon {
+    fill: #25AD97;
 }
 
 .th-admin-pro-heading {
-    margin: 0 0 15px;
+    margin: 0;
+    font-size: 18px;
 }
 
 .th-admin-qsc-name {
@@ -217,7 +231,6 @@ a.th-nav-tab.menu-get-pro-link {
 }
 
 .th-admin-theme-settings,
-.th-admin-pro-feature-box,
 .hybridmag-license-box,
 .th-admin-review-box,
 .th-admin-quick-access-links {
@@ -228,9 +241,8 @@ a.th-nav-tab.menu-get-pro-link {
     border-radius: 10px;   
 }
 
-.th-admin-pro-feature-box,
 .th-admin-theme-settings {
-    padding: 40px;
+    padding: 25px 30px 30px 30px;
 }
 
 .hybridmag-license-box p.submit {
@@ -304,13 +316,88 @@ a.th-nav-tab.menu-get-pro-link {
     justify-content: space-between;
 }
 
+.wp-core-ui .button.hm-admin-go-pro,
 .wp-core-ui .button.hm-admin-go-customizer {
     border-radius: 5px;
-    background: #3858e9;
+    background: #000000;
     color: #fff;
     font-weight: 500;
+    border: 1px solid #000000;
 }
 
-.th-admin-pro-feature-box {
+.wp-core-ui .button.hm-admin-go-pro:hover,
+.wp-core-ui .button.hm-admin-go-customizer:hover {
+    outline-color: #25AD97;
+    background-color: #25AD97;
+    border-color: #25AD97;
+}
 
+.wp-core-ui .button.hm-admin-go-customizer:focus {
+    outline-color: #000;
+    border: none;
+}
+
+.hm-svg-icon {
+    fill: currentColor;
+    margin-left: 5px;
+}
+
+.th-admin-pro-box-bottom {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.wp-core-ui .button.hm-admin-go-pro {
+    background-color: #25AD97;
+    font-size: 14px;
+    font-weight: 500;
+    border-color: #25AD97;
+    margin-left: auto;
+}
+
+.th-admin-pro-desc {
+    width: 80%;
+}
+
+p.th-pro-feature-desc {
+    font-size: 14px;
+}
+
+.wp-core-ui .button.hm-admin-go-pro:hover {
+    background-color: #111;
+    border-color: #111;
+}
+
+.wp-core-ui .button.hm-admin-go-pro:focus {
+    outline-color: #111;
+}
+
+.th-pro-feature-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.th-pro-feature-title-wrap .hm-svg-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.th-admin-pro-label {
+    margin-left: auto;
+}
+
+.th-admin-pro-label {
+    background: #b7f7ed;
+    font-size: 12px;
+    font-weight: 600;
+    color: #308e7d;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.th-admin-pro-features-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
 }
