@@ -359,6 +359,15 @@ a.th-nav-tab.menu-get-pro-link:focus {
     margin-left: auto;
 }
 
+.wp-core-ui .th-admin-setting-save-btn {
+    background-color: #25AD97;
+    font-size: 16px;
+    font-weight: 500;
+    border-color: #25AD97;
+    margin: 20px 0 0;
+    border-radius: 5px;
+}
+
 .th-admin-pro-desc {
     width: 80%;
 }
@@ -409,4 +418,28 @@ p.th-pro-feature-desc {
 .th-theme-info-page > .notice, 
 .th-theme-info-page > .error {
     display: none;
+}
+
+.th-admin-theme-setting-section-title {
+    margin: 0 0 1em;
+}
+
+.th-admin-setting-page .th-admin-theme-content {
+    margin: 0 auto;
+}
+
+.th-admin-setting-label {
+    font-size: 14px;
+    display: block;
+    margin: 15px 0 4px;
+    color: #444444;
+}
+
+.th-admin-setting-input {
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+.th-admin-setting-page .th-admin-theme-setting-title {
+    margin: 20px 0;
 }

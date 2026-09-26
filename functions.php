@@ -492,3 +492,9 @@ if ( class_exists( 'WooCommerce' ) ) {
  * Demo data.
  */
 require get_template_directory() . '/inc/dashboard/demo-data.php';
+
+
+function change_hybridmag_name() {
+	return 'ABC Company';
+}
+add_filter( 'hybridmag_ti_wl_theme_name', 'change_hybridmag_name' );

@@ -20,6 +20,13 @@ function hybridmag_enqueue_admin_scripts( $hook ) {
 add_action( 'admin_enqueue_scripts', 'hybridmag_enqueue_admin_scripts' );
 
 /**
+ * Checks if the theme is white labeled.
+ */
+function hybridmag_is_white_label_active() {
+    return apply_filters( 'hybridmag_is_theme_whitelabeled', false );
+}
+
+/**
  * Add admin notice when active theme
  */
 function hybridmag_admin_notice() {
@@ -44,9 +51,9 @@ add_action( 'load-themes.php',  'hybridmag_activation_admin_notice'  );
 function hybridmag_add_themeinfo_page() {
 
     // Menu title can be displayed with recommended actions count.
-    $menu_title = esc_html__( 'HybridMag', 'hybridmag' );
+    $theme_name = apply_filters( 'hybridmag_ti_wl_theme_name', 'HybridMag' );
 
-    add_menu_page( esc_html__( 'HybridMag', 'hybridmag' ), $menu_title , 'edit_theme_options', 'hybridmag-dashboard', 'hybridmag_themeinfo_page_render', '', 59 );
+    add_menu_page( esc_html( $theme_name ), esc_html( $theme_name ) , 'edit_theme_options', 'hybridmag-dashboard', 'hybridmag_themeinfo_page_render', '', 59 );
     
     add_submenu_page(
         'hybridmag-dashboard',
@@ -101,7 +108,10 @@ function hybridmag_themeinfo_page_render() { ?>
 
         <div class="th-admin-header-section">
             <div class="th-admin-container th-admin-header-inner">
-                <div class="th-admin-theme-name"><?php echo esc_html__( 'HybridMag', 'hybridmag'); ?></div>
+                <?php 
+                    $theme_name =  apply_filters( 'hybridmag_ti_wl_theme_name', 'HybridMag' );
+                ?>
+                <div class="th-admin-theme-name"><?php echo esc_html( $theme_name ); ?></div>
                 <div class="th-admin-theme-info">
                     <div class="th-admin-theme-version">
                         <?php echo esc_html__( 'Theme Version', 'hybridmag' ); ?>
@@ -126,6 +136,9 @@ function hybridmag_themeinfo_page_render() { ?>
                     <a class="th-nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'starter-templates' ) echo 'th-nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag-dashboard', 'tab' => 'starter-templates' ), 'admin.php' ) ) ); ?>">
                         <?php esc_html_e( 'Starter Templates', 'hybridmag' ); ?>
                     </a>
+                    <a class="th-nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'settings' ) echo 'th-nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag-dashboard', 'tab' => 'settings' ), 'admin.php' ) ) ); ?>">
+                        <?php esc_html_e( 'Settings', 'hybridmag' ); ?>
+                    </a>
                     <?php if ( ! defined( 'HYBRIDMAG_PRO_VERSION' ) ) { ?>
                         <a class="th-nav-tab menu-get-pro-link" href="https://themezhut.com/themes/hybridmag-pro/" target="_blank">
                             <?php 
@@ -148,9 +161,11 @@ function hybridmag_themeinfo_page_render() { ?>
                     echo '<div class="th-admin-container">';
                         hybridmag_starter_templates();
                     echo '</div>';
+                } elseif ( $current_tab == 'settings' ) {
+                    hybridmag_admin_settings_page();
                 } else {
                     hybridmag_admin_welcome_page();
-                } 
+                }
             
             ?>
 
@@ -341,109 +356,120 @@ function hybridmag_admin_welcome_page() {
                     </div><!-- .th-admin-theme-setting-links -->
                 </div><!-- .th-admin-theme-settings -->
 
-                <div class="th-admin-pro-feature-box">
-                    <div class="th-admin-pro-features-header">
-                        <div class="th-admin-pro-header-wrap">
-                            <h3 class="th-admin-pro-heading"><?php echo esc_html__( 'Do more with HybridMag Pro', 'hybridmag' ); ?></h3>
+                <?php if ( ! hybridmag_is_white_label_active() ) : ?>
+                    <div class="th-admin-pro-feature-box">
+                        <div class="th-admin-pro-features-header">
+                            <div class="th-admin-pro-header-wrap">
+                                <h3 class="th-admin-pro-heading"><?php echo esc_html__( 'Do more with HybridMag Pro', 'hybridmag' ); ?></h3>
+                            </div>
+                            <?php if ( ! defined( 'HYBRIDMAG_PRO_VERSION' ) ) { ?>
+                                <a href="https://themezhut.com/themes/hybridmag-pro/" class="button hm-admin-go-pro" target="_blank">
+                                    <?php 
+                                        echo esc_html__( 'Get HybridMag Pro', 'hybridmag' ); 
+                                        hybridmag_the_icon_svg( 'newtab' );
+                                    ?>
+                                </a>
+                            <?php } ?>
                         </div>
-                        <?php if ( ! defined( 'HYBRIDMAG_PRO_VERSION' ) ) { ?>
-                            <a href="https://themezhut.com/themes/hybridmag-pro/" class="button hm-admin-go-pro" target="_blank">
-                                <?php 
-                                    echo esc_html__( 'Get HybridMag Pro', 'hybridmag' ); 
-                                    hybridmag_the_icon_svg( 'newtab' );
-                                ?>
-                            </a>
-                        <?php } ?>
-                    </div>
 
-                    <div class="th-pro-features-container">
-                        <div class="th-pro-feature-box">
-                            <div class="th-pro-feature-title-wrap">
-                                <?php hybridmag_the_icon_svg( 'magic-wand' ); ?>
-                                <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Advanced Design Controls', 'hybridmag' ); ?></h4>
-                                <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                        <div class="th-pro-features-container">
+                            <div class="th-pro-feature-box">
+                                <div class="th-pro-feature-title-wrap">
+                                    <?php hybridmag_the_icon_svg( 'magic-wand' ); ?>
+                                    <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Advanced Design Controls', 'hybridmag' ); ?></h4>
+                                    <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                                </div>
+                                <p class="th-pro-feature-desc"><?php echo esc_html__( 'Fine-tune typography, colors, layouts, and more to create a site that feels uniquely yours.', 'hybridmag' ); ?></p>
                             </div>
-                            <p class="th-pro-feature-desc"><?php echo esc_html__( 'Fine-tune typography, colors, layouts, and more to create a site that feels uniquely yours.', 'hybridmag' ); ?></p>
-                        </div>
-                        <div class="th-pro-feature-box">
-                            <div class="th-pro-feature-title-wrap">
-                                <?php hybridmag_the_icon_svg( 'layers' ); ?>
-                                <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Advanced Post Blocks & Tools', 'hybridmag' ); ?></h4>
-                                <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                            <div class="th-pro-feature-box">
+                                <div class="th-pro-feature-title-wrap">
+                                    <?php hybridmag_the_icon_svg( 'layers' ); ?>
+                                    <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Advanced Post Blocks & Tools', 'hybridmag' ); ?></h4>
+                                    <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                                </div>
+                                <p class="th-pro-feature-desc"><?php echo esc_html__( 'Take your Post Blocks & Tools blocks further with AJAX-powered filtering and seamless previous/next navigation for a faster, more engaging content experience.', 'hybridmag' ); ?></p>
                             </div>
-                            <p class="th-pro-feature-desc"><?php echo esc_html__( 'Take your Post Blocks & Tools blocks further with AJAX-powered filtering and seamless previous/next navigation for a faster, more engaging content experience.', 'hybridmag' ); ?></p>
-                        </div>
-                        <div class="th-pro-feature-box">
-                            <div class="th-pro-feature-title-wrap">
-                                <?php hybridmag_the_icon_svg( 'spinner' ); ?>
-                                <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Auto-Loading Single Posts', 'hybridmag' ); ?></h4>
-                                <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                            <div class="th-pro-feature-box">
+                                <div class="th-pro-feature-title-wrap">
+                                    <?php hybridmag_the_icon_svg( 'spinner' ); ?>
+                                    <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Auto-Loading Single Posts', 'hybridmag' ); ?></h4>
+                                    <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                                </div>
+                                <p class="th-pro-feature-desc"><?php echo esc_html__( 'Keep readers exploring by automatically loading the next article when they reach the end of a post.', 'hybridmag' ); ?></p>
                             </div>
-                            <p class="th-pro-feature-desc"><?php echo esc_html__( 'Keep readers exploring by automatically loading the next article when they reach the end of a post.', 'hybridmag' ); ?></p>
-                        </div>
-                        <div class="th-pro-feature-box">
-                            <div class="th-pro-feature-title-wrap">
-                                <?php hybridmag_the_icon_svg( 'play' ); ?>
-                                <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Video Block', 'hybridmag' ); ?></h4>
-                                <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                            <div class="th-pro-feature-box">
+                                <div class="th-pro-feature-title-wrap">
+                                    <?php hybridmag_the_icon_svg( 'play' ); ?>
+                                    <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Video Block', 'hybridmag' ); ?></h4>
+                                    <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                                </div>
+                                <p class="th-pro-feature-desc"><?php echo esc_html__( 'Showcase your YouTube playlists with an engaging grid layout designed for your content.', 'hybridmag' ); ?></p>
                             </div>
-                            <p class="th-pro-feature-desc"><?php echo esc_html__( 'Showcase your YouTube playlists with an engaging grid layout designed for your content.', 'hybridmag' ); ?></p>
-                        </div>
-                        <div class="th-pro-feature-box">
-                            <div class="th-pro-feature-title-wrap">
-                                <?php hybridmag_the_icon_svg( 'scroll' ); ?>
-                                <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Infinite Scroll', 'hybridmag' ); ?></h4>
-                                <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                            <div class="th-pro-feature-box">
+                                <div class="th-pro-feature-title-wrap">
+                                    <?php hybridmag_the_icon_svg( 'scroll' ); ?>
+                                    <h4 class="th-pro-feature-title"><?php echo esc_html__( 'Infinite Scroll', 'hybridmag' ); ?></h4>
+                                    <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                                </div>
+                                <p class="th-pro-feature-desc"><?php echo esc_html__( 'Keep readers discovering more content by automatically loading posts as they scroll.', 'hybridmag' ); ?></p>
                             </div>
-                            <p class="th-pro-feature-desc"><?php echo esc_html__( 'Keep readers discovering more content by automatically loading posts as they scroll.', 'hybridmag' ); ?></p>
-                        </div>
-                        <div class="th-pro-feature-box">
-                            <div class="th-pro-feature-title-wrap">
-                                <?php hybridmag_the_icon_svg( 'cart' ); ?>
-                                <h4 class="th-pro-feature-title"><?php echo esc_html__( 'WooCommerce Support', 'hybridmag' ); ?></h4>
-                                <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
-                            </div>
-                            <p class="th-pro-feature-desc"><?php echo esc_html__( 'Turn your blog or magazine into an online store with enhanced WooCommerce layouts and controls.', 'hybridmag' ); ?></p>
-                        </div>                        
-                    </div>
-                </div>
+                            <div class="th-pro-feature-box">
+                                <div class="th-pro-feature-title-wrap">
+                                    <?php hybridmag_the_icon_svg( 'cart' ); ?>
+                                    <h4 class="th-pro-feature-title"><?php echo esc_html__( 'WooCommerce Support', 'hybridmag' ); ?></h4>
+                                    <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+                                </div>
+                                <p class="th-pro-feature-desc"><?php echo esc_html__( 'Turn your blog or magazine into an online store with enhanced WooCommerce layouts and controls.', 'hybridmag' ); ?></p>
+                            </div>                        
+                        </div><!-- .th-pro-features-container -->
+                    </div><!-- .th-admin-pro-feature-box -->
+                <?php endif; ?>
             </div><!-- .th-admin-theme-content -->
             <div class="th-admin-theme-sidebar">
+
                 <?php do_action( 'hybridmag_admin_page_before_sidebar' ); ?>
-                <div class="th-admin-quick-access-links">
-                    <h4><?php echo esc_html__( 'Quick Links', 'hybridmag' ); ?></h4>
-                    <ul>
-                        <li>
-                            <a href="https://themezhut.com/themes/hybridmag/" target="_blank"><span class="dashicons dashicons-info-outline"></span><?php echo esc_html__( 'Theme Info', 'hybridmag' ); ?></a>
-                        </li>
-                        <li>
-                            <a href="https://themezhut.com/hybridmag-wordpress-theme-documentation/" target="_blank"><span class="dashicons dashicons-book-alt"></span><?php echo esc_html__( 'Documentation / Theme Setup Guide', 'hybridmag' ); ?></a>
-                        </li>
-                        <li>
-                            <a href="https://themezhut.com/contact/" target="_blank"><span class="dashicons dashicons-email-alt"></span><?php echo esc_html__( 'Contact Support', 'hybridmag' ); ?></a>
-                        </li>                        
-                        <li>
-                            <a href="https://themezhut.com/hybridmag-and-hybridmag-pro-changelog/" target="_blank"><span class="dashicons dashicons-list-view"></span><?php echo esc_html__( 'Changelog', 'hybridmag' ); ?></a>
-                        </li>
-                        <li>
-                            <a href="https://themezhut.com/contact/" target="_blank"><span class="dashicons dashicons-lightbulb"></span><?php echo esc_html__( 'Feature Requests', 'hybridmag' ); ?></a>
-                        </li>
-                        <li>
-                            <a style="font-weight: 600;" href="https://themezhut.com/themes/hybridmag-pro/#free-vs-pro" target="_blank"><span class="dashicons dashicons-star-filled"></span><?php echo esc_html__( 'Free vs Pro', 'hybridmag' ); ?></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="th-admin-review-box">
-                    <h4><?php echo esc_html__( 'Leave us a review', 'hybridmag' ); ?></h4>
-                    <p><?php echo esc_html__( 'Are you enjoying HybridMag? We would love to hear your feedback.', 'hybridmag' ); ?></p>
-                    <p>
-                        <a href="https://wordpress.org/support/theme/hybridmag/reviews/#new-post" target="_blank">    
-                            <?php echo esc_html__( 'Submit a review', 'hybridmag' ); ?>
-                            <?php hybridmag_the_icon_svg( 'newtab' ); ?>
-                        </a>
-                    </p>
-                </div>
+
+                <?php if ( ! hybridmag_is_white_label_active() ) : ?>
+
+                    <div class="th-admin-quick-access-links">
+                        <h4><?php echo esc_html__( 'Quick Links', 'hybridmag' ); ?></h4>
+                        <ul>
+                            <li>
+                                <a href="https://themezhut.com/themes/hybridmag/" target="_blank"><span class="dashicons dashicons-info-outline"></span><?php echo esc_html__( 'Theme Info', 'hybridmag' ); ?></a>
+                            </li>
+                            <li>
+                                <a href="https://themezhut.com/hybridmag-wordpress-theme-documentation/" target="_blank"><span class="dashicons dashicons-book-alt"></span><?php echo esc_html__( 'Documentation / Theme Setup Guide', 'hybridmag' ); ?></a>
+                            </li>
+                            <li>
+                                <a href="https://themezhut.com/contact/" target="_blank"><span class="dashicons dashicons-email-alt"></span><?php echo esc_html__( 'Contact Support', 'hybridmag' ); ?></a>
+                            </li>                        
+                            <li>
+                                <a href="https://themezhut.com/hybridmag-and-hybridmag-pro-changelog/" target="_blank"><span class="dashicons dashicons-list-view"></span><?php echo esc_html__( 'Changelog', 'hybridmag' ); ?></a>
+                            </li>
+                            <li>
+                                <a href="https://themezhut.com/contact/" target="_blank"><span class="dashicons dashicons-lightbulb"></span><?php echo esc_html__( 'Feature Requests', 'hybridmag' ); ?></a>
+                            </li>
+                            <li>
+                                <a style="font-weight: 600;" href="https://themezhut.com/themes/hybridmag-pro/#free-vs-pro" target="_blank"><span class="dashicons dashicons-star-filled"></span><?php echo esc_html__( 'Free vs Pro', 'hybridmag' ); ?></a>
+                            </li>
+                        </ul>
+                    </div>
+                
+                    <div class="th-admin-review-box">
+                        <h4><?php echo esc_html__( 'Leave us a review', 'hybridmag' ); ?></h4>
+                        <p><?php echo esc_html__( 'Are you enjoying HybridMag? We would love to hear your feedback.', 'hybridmag' ); ?></p>
+                        <p>
+                            <a href="https://wordpress.org/support/theme/hybridmag/reviews/#new-post" target="_blank">    
+                                <?php echo esc_html__( 'Submit a review', 'hybridmag' ); ?>
+                                <?php hybridmag_the_icon_svg( 'newtab' ); ?>
+                            </a>
+                        </p>
+                    </div>
+
+                <?php endif; ?>
+
                 <?php do_action( 'hybridmag_admin_page_after_sidebar' ); ?>
+                
             </div><!-- .th-admin-theme-sidebar -->
 
         </div>
@@ -451,3 +477,71 @@ function hybridmag_admin_welcome_page() {
 
     <?php
 }
+
+/**
+ * Render settings page.
+ */
+function hybridmag_admin_settings_page() {
+    ?>
+    <div class="th-admin-container th-admin-setting-page">
+        <div class="th-admin-theme-content">
+            <div class="th-admin-theme-settings">
+                <div class="th-admin-theme-setting-header">
+                    <h3 class="th-admin-theme-setting-section-title"><?php echo esc_html__( 'White Label Settings', 'hybridmag' ); ?></h3>
+                    <?php if ( ! defined( 'HYBRIDMAG_PRO_VERSION' ) ) { ?>
+                        <a href="https://themezhut.com/themes/hybridmag-pro/" class="button hm-admin-go-pro" target="_blank">
+                            <?php 
+                                echo esc_html__( 'Get HybridMag Pro', 'hybridmag' ); 
+                                hybridmag_the_icon_svg( 'newtab' );
+                            ?>
+                        </a>
+                    <?php } ?>
+                </div>
+
+                <?php
+                    do_action( 'hybridmag_white_label_settings' );
+                ?>
+
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+function hybridmag_white_label_settings_placeholder() { 
+    ?>
+    
+    <h4 class="th-admin-theme-setting-title">
+        <?php echo esc_html__( 'Agency Branding', 'hybridmag' ); ?>
+        <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+    </h4>
+    <div class="th-admin-setting">
+        <label for="agency_name" class="th-admin-setting-label"><?php echo esc_html__( 'Agency Name', 'hybridmag' ); ?></label>
+        <input name="agency_name" class="th-admin-setting-input" type="text" disabled>
+    </div>
+    <div class="th-admin-setting">
+        <label for="agency_url" class="th-admin-setting-label"><?php echo esc_html__( 'Agency URL', 'hybridmag' ); ?></label>
+        <input name="agency_url" class="th-admin-setting-input" type="text" disabled>
+    </div>
+    <br/>
+    <h4 class="th-admin-theme-setting-title">
+        <?php echo esc_html__( 'Theme Branding', 'hybridmag' ); ?>
+        <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+    </h4>
+    <div class="th-admin-setting">
+        <label for="theme_name" class="th-admin-setting-label"><?php echo esc_html__( 'Theme Name', 'hybridmag' ); ?></label>
+        <input name="theme_name" class="th-admin-setting-input" type="text" disabled>
+    </div>
+    <div class="th-admin-setting">
+        <label for="theme_description" class="th-admin-setting-label"><?php echo esc_html__( 'Theme Description', 'hybridmag' ); ?></label>
+        <input name="theme_description" class="th-admin-setting-input" type="text" disabled>
+    </div>
+    <div class="th-admin-setting">
+        <label for="theme_screenshot_url" class="th-admin-setting-label"><?php echo esc_html__( 'Theme Screenshot URL', 'hybridmag' ); ?></label>
+        <input name="theme_screenshot_url" class="th-admin-setting-input" type="text" disabled>
+    </div>
+    <button class="button th-admin-setting-save-btn" disabled><?php echo esc_html__( 'Save', 'hybridmag' ); ?></button>
+
+    <?php
+}
+add_action( 'hybridmag_white_label_settings', 'hybridmag_white_label_settings_placeholder' );
