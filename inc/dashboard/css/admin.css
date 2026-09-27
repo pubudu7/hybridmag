@@ -360,12 +360,7 @@ a.th-nav-tab.menu-get-pro-link:focus {
 }
 
 .wp-core-ui .th-admin-setting-save-btn {
-    background-color: #25AD97;
-    font-size: 16px;
-    font-weight: 500;
-    border-color: #25AD97;
     margin: 20px 0 0;
-    border-radius: 5px;
 }
 
 .th-admin-pro-desc {

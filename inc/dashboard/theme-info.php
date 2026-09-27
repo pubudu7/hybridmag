@@ -498,9 +498,20 @@ function hybridmag_admin_settings_page() {
                     <?php } ?>
                 </div>
 
+                <form method="post" action="">
+
                 <?php
+
+                    wp_nonce_field(
+                        'hybridmag_white_label_save',
+                        'hybridmag_white_label_nonce'
+                    );
+
                     do_action( 'hybridmag_white_label_settings' );
+
                 ?>
+
+                </form>
 
             </div>
         </div>
@@ -508,9 +519,12 @@ function hybridmag_admin_settings_page() {
     <?php
 }
 
+/**
+ * HybridMag Settings Placeholder.
+ */
 function hybridmag_white_label_settings_placeholder() { 
     ?>
-    
+
     <h4 class="th-admin-theme-setting-title">
         <?php echo esc_html__( 'Agency Branding', 'hybridmag' ); ?>
         <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
@@ -523,7 +537,9 @@ function hybridmag_white_label_settings_placeholder() {
         <label for="agency_url" class="th-admin-setting-label"><?php echo esc_html__( 'Agency URL', 'hybridmag' ); ?></label>
         <input name="agency_url" class="th-admin-setting-input" type="text" disabled>
     </div>
+    
     <br/>
+
     <h4 class="th-admin-theme-setting-title">
         <?php echo esc_html__( 'Theme Branding', 'hybridmag' ); ?>
         <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
@@ -540,8 +556,10 @@ function hybridmag_white_label_settings_placeholder() {
         <label for="theme_screenshot_url" class="th-admin-setting-label"><?php echo esc_html__( 'Theme Screenshot URL', 'hybridmag' ); ?></label>
         <input name="theme_screenshot_url" class="th-admin-setting-input" type="text" disabled>
     </div>
-    <button class="button th-admin-setting-save-btn" disabled><?php echo esc_html__( 'Save', 'hybridmag' ); ?></button>
+    <button type="submit" id="submit" name="submit" class="button button-primary th-admin-setting-save-btn" disabled><?php echo esc_html__( 'Save Changes', 'hybridmag' ); ?></button>
 
     <?php
 }
-add_action( 'hybridmag_white_label_settings', 'hybridmag_white_label_settings_placeholder' );
+if ( ! defined( 'HYBRIDMAG_PRO_VERSION' ) ) {
+    add_action( 'hybridmag_white_label_settings', 'hybridmag_white_label_settings_placeholder' );
+}
