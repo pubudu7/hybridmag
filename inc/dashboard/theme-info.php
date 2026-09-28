@@ -102,7 +102,11 @@ function hybridmag_admin_menu_highlight( $submenu_file, $parent_file ) {
 }
 add_filter( 'submenu_file', 'hybridmag_admin_menu_highlight', 10, 2 );
 
-function hybridmag_themeinfo_page_render() { ?>
+function hybridmag_themeinfo_page_render() { 
+    
+    $show_starter_templates = apply_filters( 'hybridmag_display_starter_templates', true );
+    
+    ?>
 
     <div class="th-theme-info-page">
 
@@ -133,9 +137,11 @@ function hybridmag_themeinfo_page_render() { ?>
                     <a class="th-nav-tab <?php if ( $_GET['page'] == 'hybridmag-dashboard' && ! isset( $_GET['tab'] ) ) echo 'th-nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag-dashboard' ), 'admin.php' ) ) ); ?>">
                         <?php esc_html_e( 'Welcome', 'hybridmag' ); ?>
                     </a>
-                    <a class="th-nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'starter-templates' ) echo 'th-nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag-dashboard', 'tab' => 'starter-templates' ), 'admin.php' ) ) ); ?>">
-                        <?php esc_html_e( 'Starter Templates', 'hybridmag' ); ?>
-                    </a>
+                    <?php if ( $show_starter_templates ) : ?>
+                        <a class="th-nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'starter-templates' ) echo 'th-nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag-dashboard', 'tab' => 'starter-templates' ), 'admin.php' ) ) ); ?>">
+                            <?php esc_html_e( 'Starter Templates', 'hybridmag' ); ?>
+                        </a>
+                    <?php endif; ?>
                     <a class="th-nav-tab <?php if ( isset( $_GET['tab'] ) && $_GET['tab'] == 'settings' ) echo 'th-nav-tab-active'; ?>" href="<?php echo esc_url( admin_url( add_query_arg( array( 'page' => 'hybridmag-dashboard', 'tab' => 'settings' ), 'admin.php' ) ) ); ?>">
                         <?php esc_html_e( 'Settings', 'hybridmag' ); ?>
                     </a>
@@ -157,11 +163,11 @@ function hybridmag_themeinfo_page_render() { ?>
 
                 $current_tab = ! empty( $_GET['tab'] ) ? sanitize_title( $_GET['tab'] ) : '';
 
-                if ( $current_tab == 'starter-templates' ) {
+                if ( $current_tab === 'starter-templates' && $show_starter_templates ) {
                     echo '<div class="th-admin-container">';
                         hybridmag_starter_templates();
                     echo '</div>';
-                } elseif ( $current_tab == 'settings' ) {
+                } elseif ( $current_tab === 'settings' ) {
                     hybridmag_admin_settings_page();
                 } else {
                     hybridmag_admin_welcome_page();
@@ -556,6 +562,55 @@ function hybridmag_white_label_settings_placeholder() {
         <label for="theme_screenshot_url" class="th-admin-setting-label"><?php echo esc_html__( 'Theme Screenshot URL', 'hybridmag' ); ?></label>
         <input name="theme_screenshot_url" class="th-admin-setting-input" type="text" disabled>
     </div>
+
+    <br/>
+
+    <h4 class="th-admin-theme-setting-title">
+        <?php echo esc_html__( 'Plugin Branding', 'hybridmag' ); ?>
+        <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+    </h4>
+    <div class="th-admin-setting">
+        <label for="plugin_name" class="th-admin-setting-label"><?php echo esc_html__( 'Plugin Name', 'hybridmag' ); ?></label>
+        <input name="plugin_name" id="plugin_name" class="th-admin-setting-input" type="text" disabled>
+    </div>
+    <div class="th-admin-setting">
+        <label for="plugin_description" class="th-admin-setting-label"><?php echo esc_html__( 'Plugin Description', 'hybridmag' ); ?></label>
+        <input name="plugin_description" id="plugin_description" class="th-admin-setting-input" type="text" disabled>
+    </div>     
+
+    <br/>
+
+    <h4 class="th-admin-theme-setting-title">
+        <?php echo esc_html__( 'Admin Visibility', 'hybridmag' ); ?>
+        <span class="th-admin-pro-label"><?php echo esc_html__( 'PRO', 'hybridmag' ); ?></span>
+    </h4>
+
+    <div class="th-admin-setting">
+        <label>
+            <input
+                name="hide_starter_sites"
+                type="checkbox"
+                value="1"
+                disabled
+            >
+            <?php echo esc_html__( 'Hide Starter Templates Library.', 'hybridmag' ); ?>
+        </label>
+    </div>
+    <div class="th-admin-setting">
+        <label>
+            <input
+                name="hide_license_section"
+                type="checkbox"
+                value="1"
+                disabled
+            >
+            <?php echo esc_html__( 'Enable License Hiding.', 'hybridmag' ); ?>
+        </label>
+
+    </div>
+
+<br/>
+
     <button type="submit" id="submit" name="submit" class="button button-primary th-admin-setting-save-btn" disabled><?php echo esc_html__( 'Save Changes', 'hybridmag' ); ?></button>
 
     <?php

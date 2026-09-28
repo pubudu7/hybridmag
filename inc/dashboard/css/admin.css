@@ -426,15 +426,19 @@ p.th-pro-feature-desc {
 .th-admin-setting-label {
     font-size: 14px;
     display: block;
-    margin: 15px 0 4px;
+    margin: 0 0 4px;
     color: #444444;
 }
 
 .th-admin-setting-input {
     width: 100%;
-    margin: 0 0 10px;
+    margin: 0;
 }
 
 .th-admin-setting-page .th-admin-theme-setting-title {
     margin: 20px 0;
+}
+
+.th-admin-setting {
+    margin: 0 0 25px;
 }
